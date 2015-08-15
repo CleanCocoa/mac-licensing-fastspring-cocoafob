@@ -1,5 +1,7 @@
 import Cocoa
 
+let isRunningTests = NSClassFromString("XCTestCase") != nil
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -8,6 +10,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var licenseProvider: LicenseProvider = LicenseProvider()
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        
+        if isRunningTests {
+            return
+        }
         
         switch licenseProvider.currentLicense {
         case .Unregistered:
@@ -23,7 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let licenseWindowController = LicenseWindowController(windowNibName: "LicenseWindowController")
         licenseWindowController.showWindow(self)
-        assert(hasValue(licenseWindowController.window))
         
         self.licenseWindowController = licenseWindowController
     }
