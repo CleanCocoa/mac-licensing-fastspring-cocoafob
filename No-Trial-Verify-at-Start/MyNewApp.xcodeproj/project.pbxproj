@@ -10,6 +10,11 @@
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
+		50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */; };
+		50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */; };
+		50C9B0C91B7F7844002C5449 /* LicenseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */; };
+		50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0CF1B7F7B7C002C5449 /* Optional.swift */; };
+		50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +35,11 @@
 		50C9B0A71B7F6DAC002C5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		50C9B0AD1B7F6DAC002C5449 /* MyNewAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNewAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0B21B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseProvider.swift; sourceTree = "<group>"; };
+		50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWindowController.swift; sourceTree = "<group>"; };
+		50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseWindowController.xib; sourceTree = "<group>"; };
+		50C9B0CF1B7F7B7C002C5449 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,7 @@
 		50C9B0941B7F6DAC002C5449 = {
 			isa = PBXGroup;
 			children = (
+				50C9B0CE1B7F7B7C002C5449 /* Shared */,
 				50C9B09F1B7F6DAC002C5449 /* MyNewApp */,
 				50C9B0B01B7F6DAC002C5449 /* MyNewAppTests */,
 				50C9B09E1B7F6DAC002C5449 /* Products */,
@@ -72,8 +83,11 @@
 			isa = PBXGroup;
 			children = (
 				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
+				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
 				50C9B0A41B7F6DAC002C5449 /* Images.xcassets */,
 				50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */,
+				50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */,
+				50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */,
 				50C9B0A01B7F6DAC002C5449 /* Supporting Files */,
 			);
 			path = MyNewApp;
@@ -101,6 +115,16 @@
 				50C9B0B21B7F6DAC002C5449 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50C9B0CE1B7F7B7C002C5449 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B0CF1B7F7B7C002C5449 /* Optional.swift */,
+				50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */,
+			);
+			name = Shared;
+			path = ../Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C9B0C91B7F7844002C5449 /* LicenseWindowController.xib in Resources */,
 				50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */,
 				50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */,
 			);
@@ -202,7 +227,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
+				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
+				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
+				50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
