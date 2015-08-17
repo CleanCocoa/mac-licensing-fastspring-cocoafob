@@ -14,11 +14,6 @@ class LicenseWindowControllerTests: XCTestCase {
         loadWindow(controller)
     }
     
-    override func tearDown() {
-        
-        super.tearDown()
-    }
-    
     
     // MARK: Nib Loading
     

@@ -1,9 +1,17 @@
-//
-//  Helpers.swift
-//  MyNewApp
-//
-//  Created by Christian Tietze on 17/08/15.
-//  Copyright (c) 2015 Christian Tietze. All rights reserved.
-//
+import AppKit
 
-import Foundation
+func loadWindow(controller: NSWindowController) {
+    forceInitialize(controller.window)
+}
+
+func loadView(controller: NSViewController) {
+    forceInitialize(controller.view)
+}
+
+func forceInitialize(view: NSView) {
+    // no op
+}
+
+func forceInitialize(view: NSWindow?) {
+    // no op
+}
