@@ -21,6 +21,8 @@ public class RegisterApplication: HandlesRegistering {
     public func register(name: String, licenseCode: String) {
         
         if !licenseVerifier.licenseCodeIsValid(licenseCode, forName: name) {
+            
+            displayLicenseCodeError()
             return
         }
         
@@ -28,5 +30,10 @@ public class RegisterApplication: HandlesRegistering {
         
         licenseWriter.storeLicenseCode(licenseCode, forName: name)
         changeBroadcaster.broadcast(licenseInformation)
+    }
+    
+    func displayLicenseCodeError() {
+        
+        Alerts.invalidLicenseCodeAlert()?.runModal()
     }
 }

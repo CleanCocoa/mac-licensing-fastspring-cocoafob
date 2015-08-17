@@ -39,6 +39,7 @@
 		50E75DBC1B82119B0092CD19 /* LicenseChangeBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */; };
 		50E75DBE1B8211BA0092CD19 /* LicenseInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */; };
 		50E75DC01B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */; };
+		50E75DC31B8225230092CD19 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DC21B8225230092CD19 /* Alerts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseChangeBroadcaster.swift; sourceTree = "<group>"; };
 		50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInformationTests.swift; sourceTree = "<group>"; };
 		50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseChangeBroadcasterTests.swift; sourceTree = "<group>"; };
+		50E75DC21B8225230092CD19 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
+				50E75DC21B8225230092CD19 /* Alerts.swift */,
 				50E75DB71B820A730092CD19 /* RegisterApplication.swift */,
 				50E75DC11B821D590092CD19 /* License */,
 				50E75D801B81E8810092CD19 /* User Interface */,
@@ -349,6 +352,7 @@
 				50E75D9F1B81EE090092CD19 /* CFobLicVerifier.m in Sources */,
 				50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */,
 				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
+				50E75DC31B8225230092CD19 /* Alerts.swift in Sources */,
 				50E75DA11B81EE090092CD19 /* encoder.c in Sources */,
 				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
 				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,

@@ -48,12 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func displayThankYouAlert() {
         
-        let alert = NSAlert()
-        alert.alertStyle = .InformationalAlertStyle
-        alert.messageText = "Thank You for Purchasing!"
-        alert.addButtonWithTitle("Continue")
-        
-        alert.runModal()
+        Alerts.thankYouAlert()?.runModal()
     }
     
     func showRegisterApp() {
