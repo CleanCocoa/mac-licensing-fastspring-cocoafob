@@ -23,4 +23,15 @@ public class LicenseWindowController: NSWindowController {
         case .Registered(_): buyButton.enabled = false
         }
     }
+    
+    public var registrationEventHandler: HandlesRegistering? {
+        
+        set {
+            existingLicenseViewController.eventHandler = newValue
+        }
+        
+        get {
+            return existingLicenseViewController.eventHandler
+        }
+    }
 }

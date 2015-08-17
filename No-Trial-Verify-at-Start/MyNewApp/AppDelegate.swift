@@ -8,12 +8,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     
     lazy var licenseProvider: LicenseProvider = LicenseProvider()
+    lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
+    
+    lazy var licenseEventHandler: HandlesRegistering? = RegisterApplication()
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
         if isRunningTests {
             return
         }
+        
+        licenseWindowController.registrationEventHandler = licenseEventHandler
         
         switch licenseProvider.currentLicense {
         case .Unregistered:
@@ -23,14 +28,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    var licenseWindowController: LicenseWindowController?
-    
     func showRegisterApp() {
         
-        let licenseWindowController = LicenseWindowController(windowNibName: "LicenseWindowController")
         licenseWindowController.showWindow(self)
-        
-        self.licenseWindowController = licenseWindowController
     }
     
     func unlockApp() {

@@ -46,6 +46,39 @@ class LicenseWindowControllerTests: XCTestCase {
     }
     
     
+    // MARK: License change handler
+    
+    let existingLicenseVCDouble = TestExistingLicenseViewController()
+    
+    func testSetRegistrationHandler_DelegatesToVC() {
+        
+        let handler = TestHandler()
+        controller.existingLicenseViewController = existingLicenseVCDouble
+        
+        controller.registrationEventHandler = handler
+        
+        XCTAssert(hasValue(existingLicenseVCDouble.didSetEventHandlerTo))
+        if let newHandler = existingLicenseVCDouble.didSetEventHandlerTo {
+            
+            XCTAssert(newHandler === handler)
+        }
+    }
+    
+    func testGetRegistrationHandler_DelegatesToVC() {
+        
+        let handler = TestHandler()
+        existingLicenseVCDouble.testEventHandler = handler
+        controller.existingLicenseViewController = existingLicenseVCDouble
+        
+        let result = controller.registrationEventHandler
+        
+        XCTAssert(hasValue(result))
+        if let result = result {
+            XCTAssert(result === handler)
+        }
+    }
+    
+    
     // MARK: License Changes
     
     func testLicenseChange_ToRegistered_DisabledBuyButton() {
@@ -81,6 +114,28 @@ class LicenseWindowControllerTests: XCTestCase {
         var testCurrentLicense = LicenseInformation.Unregistered
         override var currentLicense: LicenseInformation {
             return testCurrentLicense
+        }
+    }
+    
+    class TestHandler: HandlesRegistering {
+        
+        func register(name: String, licenseCode: String) {
+            // no-op
+        }
+    }
+    
+    class TestExistingLicenseViewController: ExistingLicenseViewController {
+        
+        var testEventHandler: HandlesRegistering?
+        var didSetEventHandlerTo: HandlesRegistering?
+        override var eventHandler: HandlesRegistering? {
+            set {
+                didSetEventHandlerTo = newValue
+            }
+            
+            get {
+                return testEventHandler
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 import Cocoa
 
-public protocol HandlesRegistering {
+public protocol HandlesRegistering: class {
     
     func register(name: String, licenseCode: String)
 }
