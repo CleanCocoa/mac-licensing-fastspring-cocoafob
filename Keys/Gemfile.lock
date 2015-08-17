@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    base32 (0.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  base32
