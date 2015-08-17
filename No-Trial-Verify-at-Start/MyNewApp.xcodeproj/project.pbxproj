@@ -143,13 +143,10 @@
 			children = (
 				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
 				50E75DB71B820A730092CD19 /* RegisterApplication.swift */,
-				50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */,
-				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
-				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
-				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
-				50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */,
+				50E75DC11B821D590092CD19 /* License */,
 				50E75D801B81E8810092CD19 /* User Interface */,
 				50C9B0A01B7F6DAC002C5449 /* Supporting Files */,
+				50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */,
 			);
 			path = MyNewApp;
 			sourceTree = "<group>";
@@ -233,6 +230,17 @@
 				50E75D9C1B81EE090092CD19 /* URLCommand.m */,
 			);
 			name = CocoaFob;
+			sourceTree = "<group>";
+		};
+		50E75DC11B821D590092CD19 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
+				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
+				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
+				50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */,
+			);
+			name = License;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

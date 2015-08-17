@@ -10,7 +10,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var licenseProvider: LicenseProvider = LicenseProvider()
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
-    lazy var licenseEventHandler: HandlesRegistering? = RegisterApplication()
+    var licenseEventHandler: HandlesRegistering = RegisterApplication()
+    
+    lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
@@ -18,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        licenseWindowController.registrationEventHandler = licenseEventHandler
+        notificationCenter.addObserver(self, selector: Selector("licenseDidChange:"), name: Events.LicenseChanged.rawValue, object: nil)
         
         switch licenseProvider.currentLicense {
         case .Unregistered:
@@ -28,13 +30,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    func licenseDidChange(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo, licenseInformation = LicenseInformation.fromUserInfo(userInfo) {
+            
+            switch licenseInformation {
+            case .Registered(_):
+                displayThankYouAlert()
+                unlockApp()
+                
+            default:
+                // If you support un-registering, handle it here
+                return
+            }
+        }
+    }
+    
+    func displayThankYouAlert() {
+        
+        let alert = NSAlert()
+        alert.alertStyle = .InformationalAlertStyle
+        alert.messageText = "Thank You for Purchasing!"
+        alert.addButtonWithTitle("Continue")
+        
+        alert.runModal()
+    }
+    
     func showRegisterApp() {
         
         licenseWindowController.showWindow(self)
+        licenseWindowController.registrationEventHandler = licenseEventHandler
     }
     
     func unlockApp() {
         
+        licenseWindowController.close()
         window.makeKeyAndOrderFront(self)
     }
 }
