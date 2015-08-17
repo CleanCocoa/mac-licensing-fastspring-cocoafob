@@ -32,6 +32,8 @@
 		50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D9C1B81EE090092CD19 /* URLCommand.m */; };
 		50E75DAA1B81FB4F0092CD19 /* LicenseVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */; };
 		50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */; };
+		50E75DB41B82084E0092CD19 /* LicenseWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */; };
+		50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB51B82085A0092CD19 /* LicenseWriter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		50E75D9C1B81EE090092CD19 /* URLCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLCommand.m; path = ../External/cocoafob/objc/URLCommand.m; sourceTree = "<group>"; };
 		50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifierTests.swift; sourceTree = "<group>"; };
 		50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifier.swift; sourceTree = "<group>"; };
+		50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriterTests.swift; sourceTree = "<group>"; };
+		50E75DB51B82085A0092CD19 /* LicenseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 			children = (
 				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
 				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
+				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
 				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
 				50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */,
 				50E75D801B81E8810092CD19 /* User Interface */,
@@ -149,9 +154,10 @@
 			isa = PBXGroup;
 			children = (
 				50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */,
+				50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */,
+				50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */,
 				50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */,
 				50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */,
-				50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */,
 				50E75D7C1B81D9990092CD19 /* Helpers.swift */,
 				50C9B0B11B7F6DAC002C5449 /* Supporting Files */,
 				50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */,
@@ -315,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50E75DA01B81EE090092CD19 /* decoder.c in Sources */,
+				50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */,
 				50E75D9F1B81EE090092CD19 /* CFobLicVerifier.m in Sources */,
 				50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */,
 				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
@@ -339,6 +346,7 @@
 			files = (
 				50C9B0D51B7F7E3D002C5449 /* LicenseProviderTests.swift in Sources */,
 				50E75DAA1B81FB4F0092CD19 /* LicenseVerifierTests.swift in Sources */,
+				50E75DB41B82084E0092CD19 /* LicenseWriterTests.swift in Sources */,
 				50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */,
 				50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */,
 				50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */,
