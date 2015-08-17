@@ -5,6 +5,12 @@ public struct License {
     public let name: String
     public let key: String
     
+    public init(name: String, key: String) {
+        
+        self.name = name
+        self.key = key
+    }
+    
     public enum UserDefaultsKeys: String, Printable {
         
         case Name = "licensee"

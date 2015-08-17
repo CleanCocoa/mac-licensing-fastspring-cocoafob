@@ -1,11 +1,26 @@
 import Cocoa
 
-class LicenseWindowController: NSWindowController {
-
-    override func windowDidLoad() {
-        super.windowDidLoad()
-
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+public class LicenseWindowController: NSWindowController {
+    
+    static let nibName = "LicenseWindowController"
+    
+    public convenience init() {
+        
+        self.init(windowNibName: LicenseWindowController.nibName)
     }
     
+    @IBOutlet public var existingLicenseViewController: ExistingLicenseViewController!
+    @IBOutlet public var buyButton: NSButton!
+    
+    @IBAction public func buy(sender: AnyObject) {
+        
+    }
+    
+    public func licenseChanged(licenseInformation: LicenseInformation) {
+        
+        switch licenseInformation {
+        case .Unregistered: buyButton.enabled = true
+        case .Registered(_): buyButton.enabled = false
+        }
+    }
 }

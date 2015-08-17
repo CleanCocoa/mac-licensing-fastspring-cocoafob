@@ -6,6 +6,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LicenseWindowController" customModule="MyNewApp" customModuleProvider="target">
             <connections>
+                <outlet property="buyButton" destination="j6x-P8-587" id="Vk4-Fo-4sl"/>
+                <outlet property="existingLicenseViewController" destination="wB9-IV-BIA" id="TBk-82-3ub"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -25,6 +27,9 @@
                         <buttonCell key="cell" type="push" title="Buy Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nvH-oq-LkR">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="buy:" target="-2" id="7Do-dk-A1c"/>
+                            </connections>
                         </buttonCell>
                     </button>
                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="u1l-UB-a2p">
@@ -74,6 +79,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="register:" target="wB9-IV-BIA" id="nbX-qZ-i77"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -105,5 +113,13 @@
             </connections>
             <point key="canvasLocation" x="303" y="184.5"/>
         </window>
+        <customObject id="wB9-IV-BIA" customClass="ExistingLicenseViewController" customModule="MyNewApp" customModuleProvider="target">
+            <connections>
+                <outlet property="licenseCodeTextField" destination="mOE-Ed-uYF" id="deT-3y-fHN"/>
+                <outlet property="licenseeTextField" destination="g5f-4D-yNK" id="19c-CQ-C0R"/>
+                <outlet property="registerButton" destination="GVD-Bh-qbk" id="0Tg-GA-Rvj"/>
+                <outlet property="view" destination="se5-gp-TjO" id="wj6-72-COG"/>
+            </connections>
+        </customObject>
     </objects>
 </document>
