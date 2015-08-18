@@ -1,5 +1,10 @@
 import Cocoa
 
+public protocol HandlesPurchases {
+    
+    func purchase()
+}
+
 public class LicenseWindowController: NSWindowController {
     
     static let nibName = "LicenseWindowController"
@@ -12,8 +17,11 @@ public class LicenseWindowController: NSWindowController {
     @IBOutlet public var existingLicenseViewController: ExistingLicenseViewController!
     @IBOutlet public var buyButton: NSButton!
     
+    public var purchasingEventHandler: HandlesPurchases?
+    
     @IBAction public func buy(sender: AnyObject) {
         
+        purchasingEventHandler?.purchase()
     }
     
     public func licenseChanged(licenseInformation: LicenseInformation) {

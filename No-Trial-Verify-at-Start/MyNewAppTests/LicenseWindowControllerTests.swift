@@ -104,7 +104,15 @@ class LicenseWindowControllerTests: XCTestCase {
     
     // MARK: Buying
     
-    
+    func testBuying_DelegatesToPurchaseEventHandler() {
+        
+        let handlerDouble = TestPurchaseHandler()
+        controller.purchasingEventHandler = handlerDouble
+            
+        controller.buy(self)
+        
+        XCTAssert(handlerDouble.didPurchase)
+    }
     
     
     // MARK: -
@@ -136,6 +144,15 @@ class LicenseWindowControllerTests: XCTestCase {
             get {
                 return testEventHandler
             }
+        }
+    }
+    
+    class TestPurchaseHandler: HandlesPurchases {
+        
+        var didPurchase = false
+        func purchase() {
+            
+            didPurchase = true
         }
     }
 }
