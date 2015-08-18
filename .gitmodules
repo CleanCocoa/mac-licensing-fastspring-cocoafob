@@ -1,3 +1,6 @@
 [submodule "External/cocoafob"]
 	path = External/cocoafob
 	url = git@github.com:glebd/cocoafob.git
+[submodule "External/FsprgEmbeddedStoreMac"]
+	path = External/FsprgEmbeddedStoreMac
+	url = git@github.com:FastSpring/FsprgEmbeddedStoreMac.git
