@@ -22,7 +22,7 @@ extension PurchaseLicense: HandlesPurchases {
 
 extension PurchaseLicense: StoreDelegate {
     
-    public func store(store: Store, didPurchaseLicense license: License) {
+    public func didPurchaseLicense(license: License) {
         
         registerApplication.register(license.name, licenseCode: license.key)
     }

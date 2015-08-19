@@ -7,11 +7,11 @@ public protocol HandlesPurchases {
 
 public class LicenseWindowController: NSWindowController {
     
-    static let nibName = "LicenseWindowController"
+    static let NibName = "LicenseWindowController"
     
     public convenience init() {
         
-        self.init(windowNibName: LicenseWindowController.nibName)
+        self.init(windowNibName: LicenseWindowController.NibName)
     }
     
     @IBOutlet public var existingLicenseViewController: ExistingLicenseViewController!

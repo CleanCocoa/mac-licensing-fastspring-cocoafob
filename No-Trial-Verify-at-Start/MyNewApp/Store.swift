@@ -1,76 +1,39 @@
 import Foundation
 
-public protocol StoreDelegate {
+public protocol StoreDelegate: class {
     
-    func store(store: Store, didPurchaseLicense license: License)
+    func didPurchaseLicense(license: License)
 }
 
-public class Store: NSObject {
+public class Store {
+
+    let storeInfo: StoreInfo
     
     public var storeDelegate: StoreDelegate?
     
+    let storeWindowController: StoreWindowController
+    public lazy var storeController: StoreController = StoreController(storeInfo: self.storeInfo)
+    
+    convenience init(storeInfo: StoreInfo) {
+        
+        self.init(storeInfo: storeInfo, storeWindowController: StoreWindowController())
+    }
+    
+    public init(storeInfo: StoreInfo, storeWindowController: StoreWindowController) {
+        
+        self.storeWindowController = storeWindowController
+        self.storeInfo = storeInfo
+    }
+    
     public func showStore() {
         
-    }
-}
-
-extension Store: FsprgEmbeddedStoreDelegate {
-    
-    public func didLoadStore(url: NSURL!) {
+        storeWindowController.storeController = storeController
+        storeWindowController.showWindow(self)
+        storeWindowController.storeDelegate = storeDelegate
     }
     
-    public func didLoadPage(url: NSURL!, ofType pageType: FsprgPageType) {
-    }
-    
-    // MARK: Order receiced
-    
-    public func didReceiveOrder(order: FsprgOrder!) {
+    public func closeStore() {
         
-        // Thanks Obj-C bridging without nullability annotations:
-        // implicit unwrapped optionals are not safe
-        if !hasValue(order) {
-            return
-        }
-        
-        if let items = order.orderItems() as? [FsprgOrderItem],
-            license = items
-                .filter(orderItemIsForThisApp)
-                .map(licenseFromOrderItem) // -> [License?]
-                .filter(hasValue)          // keep non-nil
-                .map({ $0! })              // -> [License]
-                .first {
-            
-            storeDelegate?.store(self, didPurchaseLicense: license)
-        }
-    }
-    
-    private func orderItemIsForThisApp(orderItem: FsprgOrderItem) -> Bool {
-        
-        let appName = "New App"
-        
-        if let productName = orderItem.productName() {
-            return productName.hasPrefix(appName)
-        }
-        
-        return false
-    }
-    
-    private func licenseFromOrderItem(orderItem: FsprgOrderItem) -> License? {
-    
-        if let orderLicense = orderItem.license(),
-            name = orderLicense.licenseName(),
-            licenseCode = orderLicense.firstLicenseCode() {
-        
-            return License(name: name, key: licenseCode)
-        }
-        
-        return nil
-    }
-    
-    // MARK: Thank-you view
-    
-    public func viewWithFrame(frame: NSRect, forOrder order: FsprgOrder!) -> NSView! {
-        
-        return nil
+        storeWindowController.close()
     }
 }

@@ -10,9 +10,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var licenseProvider: LicenseProvider = LicenseProvider()
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
-    var licenseEventHandler: HandlesRegistering = RegisterApplication()
+    var purchaseLicense: HandlesPurchases!
+    var registerApplication = RegisterApplication()
     
     lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+    
+    
+    // MARK: Startup
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
@@ -20,7 +24,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
+        observeLicenseChanges()
+        prepareLicenseWindowController()
+        launchAppOrShowLicenseWindow()
+    }
+    
+    func observeLicenseChanges() {
+        
         notificationCenter.addObserver(self, selector: Selector("licenseDidChange:"), name: Events.LicenseChanged.rawValue, object: nil)
+    }
+    
+    func prepareLicenseWindowController() {
+        
+        let storeInfo = StoreInfoReader.storeInfo()
+        let store = Store(storeInfo: storeInfo)
+        purchaseLicense = PurchaseLicense(store: store, registerApplication: registerApplication)
+        
+        licenseWindowController.purchasingEventHandler = purchaseLicense
+    }
+    
+    func launchAppOrShowLicenseWindow() {
         
         switch licenseProvider.currentLicense {
         case .Unregistered:
@@ -29,6 +52,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             unlockApp()
         }
     }
+    
+    
+    // MARK: Show windows
+    
+    func showRegisterApp() {
+        
+        licenseWindowController.showWindow(self)
+        licenseWindowController.registrationEventHandler = registerApplication
+    }
+    
+    func unlockApp() {
+        
+        licenseWindowController.close()
+        window.makeKeyAndOrderFront(self)
+    }
+
+    
+    // MARK: License changes
     
     func licenseDidChange(notification: NSNotification) {
         
@@ -39,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 displayThankYouAlert()
                 unlockApp()
                 
-            default:
+            case .Unregistered:
                 // If you support un-registering, handle it here
                 return
             }
@@ -50,16 +91,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         Alerts.thankYouAlert()?.runModal()
     }
+}
+
+class StoreInfoReader {
     
-    func showRegisterApp() {
+    static func storeInfo() -> StoreInfo {
         
-        licenseWindowController.showWindow(self)
-        licenseWindowController.registrationEventHandler = licenseEventHandler
-    }
-    
-    func unlockApp() {
+        let storeId = ""
         
-        licenseWindowController.close()
-        window.makeKeyAndOrderFront(self)
+        let productName = ""
+        let productId = ""
+        
+        #if DEBUG
+            NSLog("Test Store Mode")
+            let storeMode = kFsprgModeTest
+        #else
+            NSLog("Active Store Mode")
+            let storeMode = kFsprgModeActive
+        #endif
+        
+        return StoreInfo(storeId: storeId, productName: productName, productId: productId, storeMode: storeMode)
     }
 }

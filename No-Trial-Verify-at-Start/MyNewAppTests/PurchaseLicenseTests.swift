@@ -29,7 +29,7 @@ class PurchaseLicenseTests: XCTestCase {
         let licenseCode = "XXX-123-YYY"
         let license = License(name: name, key: licenseCode)
         
-        service.store(storeDouble, didPurchaseLicense: license)
+        service.didPurchaseLicense(license)
         
         let values = registerAppDouble.didRegisterWith
         XCTAssert(hasValue(values))
@@ -45,6 +45,11 @@ class PurchaseLicenseTests: XCTestCase {
     // MARK: -
     
     class TestStore: Store {
+        
+        convenience init() {
+            
+            self.init(storeInfo: StoreInfo(storeId: "", productName: "", productId: "", storeMode: ""), storeWindowController: StoreWindowController())
+        }
         
         var didShowStore = false
         override func showStore() {
