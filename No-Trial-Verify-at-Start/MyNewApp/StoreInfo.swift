@@ -2,12 +2,12 @@ import Foundation
 
 public struct StoreInfo {
     
-    let storeId: String
+    public let storeId: String
     
-    let productName: String
-    let productId: String
+    public let productName: String
+    public let productId: String
     
-    let storeMode: String
+    public let storeMode: String
     
     public init(storeId: String, productName: String, productId: String, storeMode: String) {
         

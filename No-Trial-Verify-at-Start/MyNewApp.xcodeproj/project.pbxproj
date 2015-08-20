@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */; };
+		50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */; };
+		50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */; };
 		50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA01B8313E700727FBA /* PurchaseLicense.swift */; };
 		50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */; };
 		506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FA1B84AEA10072CEC8 /* Me.swift */; };
@@ -14,6 +17,7 @@
 		506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */; };
 		506AB4011B84B0790072CEC8 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB4001B84B0790072CEC8 /* StoreTests.swift */; };
 		506AB4031B84B5A00072CEC8 /* StoreWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */; };
+		506AB4071B84CC310072CEC8 /* FastSpringCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */; };
 		506DA9381B8340C9007B110F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9371B8340C9007B110F /* Store.swift */; };
 		506DA9451B835784007B110F /* StoreWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9431B835784007B110F /* StoreWindowController.swift */; };
 		506DA9461B835784007B110F /* StoreWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506DA9441B835784007B110F /* StoreWindowController.xib */; };
@@ -72,6 +76,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReader.swift; sourceTree = "<group>"; };
+		50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReaderTests.swift; sourceTree = "<group>"; };
+		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
 		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
 		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; };
 		506AB3FA1B84AEA10072CEC8 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
@@ -79,6 +86,7 @@
 		506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
 		506AB4001B84B0790072CEC8 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
 		506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowControllerTests.swift; sourceTree = "<group>"; };
+		506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FastSpringCredentials.plist; path = ../FastSpringCredentials.plist; sourceTree = "<group>"; };
 		506DA9371B8340C9007B110F /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		506DA9431B835784007B110F /* StoreWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowController.swift; sourceTree = "<group>"; };
 		506DA9441B835784007B110F /* StoreWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWindowController.xib; sourceTree = "<group>"; };
@@ -169,9 +177,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50337B951B85B4490056FC3B /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
 		50C9B0941B7F6DAC002C5449 = {
 			isa = PBXGroup;
 			children = (
+				506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */,
 				50C9B0CE1B7F7B7C002C5449 /* Shared */,
 				50C9B09F1B7F6DAC002C5449 /* MyNewApp */,
 				50C9B0B01B7F6DAC002C5449 /* MyNewAppTests */,
@@ -194,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
+				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
 				50E75DC21B8225230092CD19 /* Alerts.swift */,
 				50E75DB71B820A730092CD19 /* RegisterApplication.swift */,
 				50455FA01B8313E700727FBA /* PurchaseLicense.swift */,
@@ -230,7 +248,9 @@
 				506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */,
 				50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */,
 				50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */,
+				50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */,
 				50E75D7C1B81D9990092CD19 /* Helpers.swift */,
+				50337B951B85B4490056FC3B /* Fixtures */,
 				50C9B0B11B7F6DAC002C5449 /* Supporting Files */,
 				50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */,
 			);
@@ -424,6 +444,7 @@
 			files = (
 				50C9B0C91B7F7844002C5449 /* LicenseWindowController.xib in Resources */,
 				50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */,
+				506AB4071B84CC310072CEC8 /* FastSpringCredentials.plist in Resources */,
 				50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */,
 				506DA9461B835784007B110F /* StoreWindowController.xib in Resources */,
 			);
@@ -433,6 +454,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */,
 				50E75DA01B81EE090092CD19 /* decoder.c in Sources */,
 				50E75DB81B820A730092CD19 /* RegisterApplication.swift in Sources */,
 				50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */,
@@ -493,6 +516,7 @@
 				50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */,
 				50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */,
 				50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */,
+				50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */,
 				50E75DBA1B820A880092CD19 /* RegisterApplicationTests.swift in Sources */,
 				50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */,
 				50E75DC01B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift in Sources */,

@@ -16,6 +16,7 @@ If that doesn't work, do it manually:
 2. Initialize all submodules:
     
         $ git submodule update --init --recursive
+3. Change `FastSpringCredentials.plist` file to your store settings
 
 ## Dependencies
 

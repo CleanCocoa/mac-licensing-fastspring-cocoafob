@@ -36,8 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func prepareLicenseWindowController() {
         
-        let storeInfo = StoreInfoReader.storeInfo()
-        let store = Store(storeInfo: storeInfo)
+        let storeInfo = StoreInfoReader.defaultStoreInfo()
+        assert(hasValue(storeInfo), "Provide store details in FastSpringCredentials")
+        
+        let store = Store(storeInfo: storeInfo!)
         purchaseLicense = PurchaseLicense(store: store, registerApplication: registerApplication)
         
         licenseWindowController.purchasingEventHandler = purchaseLicense
@@ -90,26 +92,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func displayThankYouAlert() {
         
         Alerts.thankYouAlert()?.runModal()
-    }
-}
-
-class StoreInfoReader {
-    
-    static func storeInfo() -> StoreInfo {
-        
-        let storeId = ""
-        
-        let productName = ""
-        let productId = ""
-        
-        #if DEBUG
-            NSLog("Test Store Mode")
-            let storeMode = kFsprgModeTest
-        #else
-            NSLog("Active Store Mode")
-            let storeMode = kFsprgModeActive
-        #endif
-        
-        return StoreInfo(storeId: storeId, productName: productName, productId: productId, storeMode: storeMode)
     }
 }
