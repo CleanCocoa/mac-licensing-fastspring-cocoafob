@@ -12,6 +12,7 @@
 		50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */; };
 		50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA01B8313E700727FBA /* PurchaseLicense.swift */; };
 		50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */; };
+		505D9DEE1B89E47600D412F1 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D9DED1B89E47600D412F1 /* License.swift */; };
 		506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FA1B84AEA10072CEC8 /* Me.swift */; };
 		506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FC1B84AEB90072CEC8 /* StoreController.swift */; };
 		506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */; };
@@ -81,6 +82,7 @@
 		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
 		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
 		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; };
+		505D9DED1B89E47600D412F1 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		506AB3FA1B84AEA10072CEC8 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		506AB3FC1B84AEB90072CEC8 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
 		506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		50E75DC11B821D590092CD19 /* License */ = {
 			isa = PBXGroup;
 			children = (
+				505D9DED1B89E47600D412F1 /* License.swift */,
 				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
 				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
 				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
@@ -478,6 +481,7 @@
 				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
 				50E75DA11B81EE090092CD19 /* encoder.c in Sources */,
 				506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */,
+				505D9DEE1B89E47600D412F1 /* License.swift in Sources */,
 				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
 				50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */,
 				50E75DDD1B82275D0092CD19 /* FsprgFileDownload.m in Sources */,
