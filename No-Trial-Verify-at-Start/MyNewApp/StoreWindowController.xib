@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="backButton" destination="qAy-gT-bYn" id="55i-JC-JVz"/>
                 <outlet property="forwardButton" destination="Aqs-zs-Tid" id="sWr-BX-PW9"/>
+                <outlet property="orderConfirmationView" destination="gew-xr-3oa" id="TKJ-HN-VeC"/>
                 <outlet property="reloadButton" destination="ZBc-du-J2O" id="9uX-vd-MVp"/>
                 <outlet property="webView" destination="XDH-H6-vXb" id="vcD-cB-8WM"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -101,6 +102,52 @@
             <point key="canvasLocation" x="672" y="554"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="qQ6-zf-mzL"/>
+        <customView id="gew-xr-3oa" customClass="OrderConfirmationView" customModule="MyNewApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="337"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Fr-iW-uEg">
+                    <rect key="frame" x="13" y="281" width="349" height="36"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Thank you for purchasing!" id="ALu-re-gPp">
+                        <font key="font" metaFont="system" size="30"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="khL-hI-XPf">
+                    <rect key="frame" x="141" y="256" width="93" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="License Code:" id="MUN-xf-WEq">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rD-Xs-DXO">
+                    <rect key="frame" x="38" y="231" width="299" height="17"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="XXXX-XXXX-XXXX" id="S39-jY-0pf">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="0rD-Xs-DXO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gew-xr-3oa" secondAttribute="leading" constant="20" id="6fg-8y-rgm"/>
+                <constraint firstItem="0rD-Xs-DXO" firstAttribute="leading" secondItem="gew-xr-3oa" secondAttribute="leading" priority="800" constant="40" id="9cg-MV-TRr"/>
+                <constraint firstAttribute="trailing" secondItem="0rD-Xs-DXO" secondAttribute="trailing" priority="800" constant="40" id="Eeh-CO-Wfm"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0rD-Xs-DXO" secondAttribute="trailing" constant="20" id="FaL-iP-nS5"/>
+                <constraint firstAttribute="centerX" secondItem="0rD-Xs-DXO" secondAttribute="centerX" id="LES-m8-732"/>
+                <constraint firstItem="0rD-Xs-DXO" firstAttribute="top" secondItem="khL-hI-XPf" secondAttribute="bottom" constant="8" id="U54-Jq-5hN"/>
+                <constraint firstAttribute="centerX" secondItem="1Fr-iW-uEg" secondAttribute="centerX" id="e1w-6Q-rw0"/>
+                <constraint firstAttribute="centerX" secondItem="khL-hI-XPf" secondAttribute="centerX" id="gYs-k7-Kwi"/>
+                <constraint firstItem="1Fr-iW-uEg" firstAttribute="top" secondItem="gew-xr-3oa" secondAttribute="top" constant="20" id="njJ-w7-tcn"/>
+                <constraint firstItem="khL-hI-XPf" firstAttribute="top" secondItem="1Fr-iW-uEg" secondAttribute="bottom" constant="8" id="sAc-pR-Pgh"/>
+            </constraints>
+            <connections>
+                <outlet property="licenseCodeTextField" destination="0rD-Xs-DXO" id="9rQ-rm-QB4"/>
+            </connections>
+            <point key="canvasLocation" x="42.5" y="558.5"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>

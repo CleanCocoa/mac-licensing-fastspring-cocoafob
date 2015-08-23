@@ -1,5 +1,15 @@
 import Cocoa
 
+public class OrderConfirmationView: NSView {
+    
+    @IBOutlet public var licenseCodeTextField: NSTextField!
+    
+    public func displayLicenseCode(licenseCode: String) {
+        
+        licenseCodeTextField.stringValue = licenseCode
+    }
+}
+
 public class StoreWindowController: NSWindowController {
 
     static let NibName = "StoreWindowController"
@@ -10,6 +20,7 @@ public class StoreWindowController: NSWindowController {
     }
     
     @IBOutlet public var webView: WebView!
+    @IBOutlet public var orderConfirmationView: OrderConfirmationView!
     
     @IBOutlet public var backButton: NSButton!
     @IBOutlet public var forwardButton: NSButton!
@@ -31,6 +42,7 @@ public class StoreWindowController: NSWindowController {
         
         storeController.setWebView(webView)
         storeController.loadStore()
+        storeController.orderConfirmationView = orderConfirmationView
     }
     
     @IBAction public func reloadStore(sender: AnyObject) {

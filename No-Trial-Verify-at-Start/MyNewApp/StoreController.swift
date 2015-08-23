@@ -3,6 +3,8 @@ import Foundation
 public class StoreController: NSObject {
     
     var storeDelegate: StoreDelegate?
+    var orderConfirmationView: OrderConfirmationView?
+    
     let storeController: FsprgEmbeddedStoreController
     let storeInfo: StoreInfo
     
@@ -71,6 +73,13 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
             return
         }
         
+        if let license = licenseFromOrder(order) {
+            storeDelegate?.didPurchaseLicense(license)
+        }
+    }
+    
+    private func licenseFromOrder(order: FsprgOrder) -> License? {
+        
         if let items = order.orderItems() as? [FsprgOrderItem],
             license = items
                 .filter(orderItemIsForThisApp)
@@ -79,8 +88,10 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
                 .map({ $0! })              // -> [License]
                 .first {
             
-            storeDelegate?.didPurchaseLicense(license)
+            return license
         }
+        
+        return nil
     }
     
     private func orderItemIsForThisApp(orderItem: FsprgOrderItem) -> Bool {
@@ -106,9 +117,18 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         return nil
     }
     
+    
     // MARK: Thank-you view
     
     public func viewWithFrame(frame: NSRect, forOrder order: FsprgOrder!) -> NSView! {
+        
+        if let orderConfirmationView = orderConfirmationView,
+            license = licenseFromOrder(order) {
+            
+            orderConfirmationView.displayLicenseCode(license.licenseCode)
+            
+            return orderConfirmationView
+        }
         
         return nil
     }

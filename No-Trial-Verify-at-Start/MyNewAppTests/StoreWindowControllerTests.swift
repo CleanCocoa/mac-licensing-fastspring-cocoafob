@@ -30,6 +30,16 @@ class StoreWindowControllerTests: XCTestCase {
         XCTAssert(hasValue(controller.webView))
     }
 
+    func testOrderView_IsConnected() {
+        
+        XCTAssert(hasValue(controller.orderConfirmationView))
+    }
+    
+    func testOrderViewsLicenseCodeTextField_IsConnected() {
+        
+        XCTAssert(hasValue(controller.orderConfirmationView?.licenseCodeTextField))
+    }
+    
     func testBackButton_IsConnected() {
         
         XCTAssert(hasValue(controller.backButton))
