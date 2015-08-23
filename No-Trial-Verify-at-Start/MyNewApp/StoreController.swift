@@ -100,7 +100,7 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
             name = orderLicense.licenseName(),
             licenseCode = orderLicense.firstLicenseCode() {
                 
-            return License(name: name, key: licenseCode)
+            return License(name: name, licenseCode: licenseCode)
         }
         
         return nil

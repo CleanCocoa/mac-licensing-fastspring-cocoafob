@@ -83,7 +83,7 @@ class LicenseWindowControllerTests: XCTestCase {
     
     func testLicenseChange_ToRegistered_DisabledBuyButton() {
         
-        let irrelevantLicense = License(name: "", key: "")
+        let irrelevantLicense = License(name: "", licenseCode: "")
         let licenseInfo = LicenseInformation.Registered(irrelevantLicense)
         
         controller.licenseChanged(licenseInfo)
@@ -129,7 +129,7 @@ class LicenseWindowControllerTests: XCTestCase {
     
     func testDisplayLicenseInfo_Registered_DisplaysLicense() {
         
-        let license = License(name: "the name", key: "the code")
+        let license = License(name: "the name", licenseCode: "the code")
         controller.existingLicenseViewController = existingLicenseVCDouble
         
         controller.displayLicenseInformation(.Registered(license))

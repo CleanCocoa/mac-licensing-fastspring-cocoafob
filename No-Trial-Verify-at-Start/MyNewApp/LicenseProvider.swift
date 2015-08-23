@@ -7,9 +7,9 @@ public class LicenseProvider {
     public var currentLicense: LicenseInformation {
         
         if let name = userDefaults.stringForKey("\(License.UserDefaultsKeys.Name)"),
-            key = userDefaults.stringForKey("\(License.UserDefaultsKeys.Key)") {
+            licenseCode = userDefaults.stringForKey("\(License.UserDefaultsKeys.LicenseCode)") {
                 
-                return .Registered(License(name: name, key: key))
+                return .Registered(License(name: name, licenseCode: licenseCode))
         }
         
         return .Unregistered

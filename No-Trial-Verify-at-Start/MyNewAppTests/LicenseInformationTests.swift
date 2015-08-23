@@ -34,7 +34,7 @@ class LicenseInformationTests: XCTestCase {
     
     // MARK: Registered user info
     
-    let license = License(name: "a name", key: "a license code")
+    let license = License(name: "a name", licenseCode: "a license code")
     
     func testToUserInfo_Registered_SetsRegisteredToTrue() {
         
@@ -65,7 +65,7 @@ class LicenseInformationTests: XCTestCase {
         let licenseCode = licenseInfo.userInfo()["licenseCode"] as? String
         XCTAssert(hasValue(licenseCode))
         if let licenseCode = licenseCode {
-            XCTAssertEqual(licenseCode, license.key)
+            XCTAssertEqual(licenseCode, license.licenseCode)
         }
     }
     
@@ -170,7 +170,7 @@ class LicenseInformationTests: XCTestCase {
         switch result {
         case let .Some(.Registered(license)):
             XCTAssertEqual(license.name, name)
-            XCTAssertEqual(license.key, licenseCode)
+            XCTAssertEqual(license.licenseCode, licenseCode)
         default:
             XCTFail("expected Registered")
         }
@@ -187,7 +187,7 @@ class LicenseInformationTests: XCTestCase {
         switch result {
         case let .Some(.Registered(license)):
             XCTAssertEqual(license.name, name)
-            XCTAssertEqual(license.key, licenseCode)
+            XCTAssertEqual(license.licenseCode, licenseCode)
         default:
             XCTFail("expected Registered")
         }

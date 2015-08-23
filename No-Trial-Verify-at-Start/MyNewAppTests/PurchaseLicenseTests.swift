@@ -27,7 +27,7 @@ class PurchaseLicenseTests: XCTestCase {
         
         let name = "The Name!"
         let licenseCode = "XXX-123-YYY"
-        let license = License(name: name, key: licenseCode)
+        let license = License(name: name, licenseCode: licenseCode)
         
         service.didPurchaseLicense(license)
         

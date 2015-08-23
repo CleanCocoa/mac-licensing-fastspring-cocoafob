@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func licenseIsInvalid(license: License) -> Bool {
         
-        return !LicenseVerifier().licenseCodeIsValid(license.key, forName: license.name)
+        return !LicenseVerifier().licenseCodeIsValid(license.licenseCode, forName: license.name)
     }
     
     func displayInvalidLicenseAlert() {

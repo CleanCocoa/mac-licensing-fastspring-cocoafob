@@ -9,6 +9,6 @@ public class LicenseWriter {
     public func storeLicenseCode(licenseCode: String, forName name: String) {
         
         userDefaults.setValue(name, forKey: "\(License.UserDefaultsKeys.Name)")
-        userDefaults.setValue(licenseCode, forKey: "\(License.UserDefaultsKeys.Key)")
+        userDefaults.setValue(licenseCode, forKey: "\(License.UserDefaultsKeys.LicenseCode)")
     }
 }

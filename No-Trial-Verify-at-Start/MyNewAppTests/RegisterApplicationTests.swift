@@ -84,7 +84,7 @@ class RegisterApplicationTests: XCTestCase {
             case .Unregistered: XCTFail("should be registered")
             case let .Registered(license):
                 XCTAssertEqual(license.name, name)
-                XCTAssertEqual(license.key, licenseCode)
+                XCTAssertEqual(license.licenseCode, licenseCode)
             }
         }
     }

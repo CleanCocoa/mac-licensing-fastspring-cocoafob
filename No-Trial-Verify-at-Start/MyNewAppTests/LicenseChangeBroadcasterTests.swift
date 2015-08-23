@@ -45,7 +45,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
 
     func testBroadcast_Registered_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.Registered(License(name: "the name", key: "a license"))
+        let licenseInfo = LicenseInformation.Registered(License(name: "the name", licenseCode: "a license"))
         
         broadcaster.broadcast(licenseInfo)
         

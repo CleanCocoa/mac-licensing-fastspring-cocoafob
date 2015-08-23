@@ -13,7 +13,7 @@ extension LicenseInformation {
             return [
                 "registered" : true,
                 "name" : license.name,
-                "licenseCode" : license.key
+                "licenseCode" : license.licenseCode
             ]
         }
     }
@@ -28,7 +28,7 @@ extension LicenseInformation {
             
             if let name = userInfo["name"] as? String, licenseCode = userInfo["licenseCode"] as? String {
                 
-                return .Registered(License(name: name, key: licenseCode))
+                return .Registered(License(name: name, licenseCode: licenseCode))
             }
         }
         

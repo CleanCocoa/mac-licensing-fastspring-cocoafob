@@ -32,6 +32,6 @@ public class ExistingLicenseViewController: NSViewController {
     public func displayLicense(license: License) {
         
         licenseeTextField.stringValue = license.name
-        licenseCodeTextField.stringValue = license.key
+        licenseCodeTextField.stringValue = license.licenseCode
     }
 }

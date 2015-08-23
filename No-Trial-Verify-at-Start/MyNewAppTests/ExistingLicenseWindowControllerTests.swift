@@ -89,7 +89,7 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
     
     func testDisplayLicense_FillsLicenseeNameTextField() {
         
-        let license = License(name: "a name", key: "a code")
+        let license = License(name: "a name", licenseCode: "a code")
         controller.licenseeTextField.stringValue = ""
         
         controller.displayLicense(license)
@@ -99,7 +99,7 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
     
     func testDisplayLicense_FillsLicenseCodeTextField() {
         
-        let license = License(name: "a name", key: "a code")
+        let license = License(name: "alicenseCodeme", licenseCode: "a code")
         controller.licenseCodeTextField.stringValue = ""
         
         controller.displayLicense(license)
