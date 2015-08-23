@@ -34,6 +34,7 @@ public class LicenseVerifier {
             return verified
         } else {
             // handle optional public key error (programmer error)
+            assertionFailure("CFobLicVerifier could not be constructed")
         }
         
         return false
