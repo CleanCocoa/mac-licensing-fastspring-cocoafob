@@ -94,4 +94,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         Alerts.thankYouAlert()?.runModal()
     }
+    
+    
+    // MARK: UI Interactions
+    
+    // NOTE: Don't cram too much into your AppDelegate. Extract the window
+    // from the MainMenu Nib instead and provide a real `NSWindowController`.
+    
+    @IBAction func reviewLicense(sender: AnyObject) {
+    
+        showRegisterApp()
+    }
 }

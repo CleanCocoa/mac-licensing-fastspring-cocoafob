@@ -669,14 +669,14 @@
         <window title="The Main Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="463" height="106"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="contentRect" x="335" y="390" width="463" height="167"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="463" height="106"/>
+                <rect key="frame" x="0.0" y="0.0" width="463" height="167"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QF7-ur-7Id">
-                        <rect key="frame" x="45" y="62" width="375" height="24"/>
+                        <rect key="frame" x="45" y="123" width="375" height="24"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="This is the application’s main interface." id="UA9-kl-npc">
                             <font key="font" metaFont="systemBold" size="20"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -684,7 +684,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mZ5-HD-2kQ">
-                        <rect key="frame" x="73" y="20" width="318" height="34"/>
+                        <rect key="frame" x="73" y="81" width="318" height="34"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="fA7-wE-Bk6">
                             <font key="font" metaFont="system"/>
                             <string key="title">If you can read this, this means you’re a customer.
@@ -693,16 +693,28 @@ Thank you for buying my app!</string>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4iI-Ou-jp2">
+                        <rect key="frame" x="126" y="13" width="210" height="32"/>
+                        <buttonCell key="cell" type="push" title="Review License Information" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZu-VR-2am">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="reviewLicense:" target="Voe-Tx-rLC" id="3WG-5Z-ZdS"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="centerX" secondItem="4iI-Ou-jp2" secondAttribute="centerX" constant="0.5" id="M1N-S8-Wym"/>
                     <constraint firstItem="QF7-ur-7Id" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="SG3-0O-uul"/>
                     <constraint firstItem="mZ5-HD-2kQ" firstAttribute="top" secondItem="QF7-ur-7Id" secondAttribute="bottom" constant="8" id="WfU-xp-6Gb"/>
+                    <constraint firstItem="4iI-Ou-jp2" firstAttribute="top" secondItem="mZ5-HD-2kQ" secondAttribute="bottom" constant="40" id="bpI-aN-YGz"/>
                     <constraint firstAttribute="centerX" secondItem="QF7-ur-7Id" secondAttribute="centerX" constant="-0.5" id="fVz-9H-tDL"/>
-                    <constraint firstAttribute="bottom" secondItem="mZ5-HD-2kQ" secondAttribute="bottom" constant="20" id="xBp-tc-cxV"/>
+                    <constraint firstAttribute="bottom" secondItem="4iI-Ou-jp2" secondAttribute="bottom" constant="20" id="tDe-2Z-Mva"/>
                     <constraint firstAttribute="centerX" secondItem="mZ5-HD-2kQ" secondAttribute="centerX" id="xgH-82-Lpf"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="288.5" y="320.5"/>
+            <point key="canvasLocation" x="288.5" y="361.5"/>
         </window>
     </objects>
 </document>
