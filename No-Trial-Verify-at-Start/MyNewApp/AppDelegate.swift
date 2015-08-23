@@ -52,8 +52,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case .Unregistered:
             showRegisterApp()
         case let .Registered(license):
+            
+            if licenseIsInvalid(license) {
+                
+                displayInvalidLicenseAlert()
+                showRegisterApp()
+                return
+            }
+            
             unlockApp()
         }
+    }
+    
+    func licenseIsInvalid(license: License) -> Bool {
+        
+        return !LicenseVerifier().licenseCodeIsValid(license.key, forName: license.name)
+    }
+    
+    func displayInvalidLicenseAlert() {
+        
+        Alerts.invalidLicenseCodeAlert()?.runModal()
     }
     
     
