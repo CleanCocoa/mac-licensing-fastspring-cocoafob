@@ -81,6 +81,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         licenseWindowController.showWindow(self)
         licenseWindowController.registrationEventHandler = registerApplication
+        licenseWindowController.displayLicenseInformation(licenseProvider.currentLicense)
     }
     
     func unlockApp() {

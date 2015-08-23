@@ -22,4 +22,16 @@ public class ExistingLicenseViewController: NSViewController {
             eventHandler.register(name, licenseCode: licenseCode)
         }
     }
+    
+    public func displayEmptyForm() {
+        
+        licenseeTextField.stringValue = ""
+        licenseCodeTextField.stringValue = ""
+    }
+    
+    public func displayLicense(license: License) {
+        
+        licenseeTextField.stringValue = license.name
+        licenseCodeTextField.stringValue = license.key
+    }
 }

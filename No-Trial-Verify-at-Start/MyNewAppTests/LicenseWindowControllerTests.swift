@@ -115,6 +115,35 @@ class LicenseWindowControllerTests: XCTestCase {
     }
     
     
+    // MARK: Displaying License Info
+    
+    func testDisplayLicenseInfo_Unregistered_DisplaysEmptyForm() {
+        
+        controller.existingLicenseViewController = existingLicenseVCDouble
+        
+        controller.displayLicenseInformation(.Unregistered)
+        
+        XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
+        XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
+    }
+    
+    func testDisplayLicenseInfo_Registered_DisplaysLicense() {
+        
+        let license = License(name: "the name", key: "the code")
+        controller.existingLicenseViewController = existingLicenseVCDouble
+        
+        controller.displayLicenseInformation(.Registered(license))
+        
+        XCTAssertFalse(existingLicenseVCDouble.didDisplayEmptyForm)
+        XCTAssert(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
+        
+        if let displayedLicense = existingLicenseVCDouble.didDisplayLicenseWith {
+            
+            XCTAssertEqual(displayedLicense, license)
+        }
+    }
+    
+    
     // MARK: -
     
     class TestLicenseProvider: LicenseProvider {
@@ -144,6 +173,18 @@ class LicenseWindowControllerTests: XCTestCase {
             get {
                 return testEventHandler
             }
+        }
+        
+        var didDisplayEmptyForm = false
+        override func displayEmptyForm() {
+            
+            didDisplayEmptyForm = true
+        }
+        
+        var didDisplayLicenseWith: License? = nil
+        override func displayLicense(license: License) {
+            
+            didDisplayLicenseWith = license
         }
     }
     

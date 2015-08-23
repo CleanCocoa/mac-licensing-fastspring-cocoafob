@@ -32,6 +32,14 @@ public class LicenseWindowController: NSWindowController {
         }
     }
     
+    public func displayLicenseInformation(licenseInformation: LicenseInformation) {
+        
+        switch licenseInformation {
+        case .Unregistered: existingLicenseViewController.displayEmptyForm()
+        case let .Registered(license): existingLicenseViewController.displayLicense(license)
+        }
+    }
+    
     public var registrationEventHandler: HandlesRegistering? {
         
         set {

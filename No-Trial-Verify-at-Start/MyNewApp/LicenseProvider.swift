@@ -20,6 +20,13 @@ public struct License {
     }
 }
 
+extension License: Equatable { }
+
+public func ==(lhs: License, rhs: License) -> Bool {
+    
+    return lhs.name == rhs.name && lhs.key == rhs.key
+}
+
 public enum LicenseInformation {
     case Unregistered
     case Registered(License)

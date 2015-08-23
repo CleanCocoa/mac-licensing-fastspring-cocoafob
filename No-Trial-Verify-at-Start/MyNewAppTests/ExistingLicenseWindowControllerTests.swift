@@ -67,6 +67,47 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
     }
     
     
+    // MARK: Displaying licenses
+
+    func testDisplayEmptyForm_EmptiesLicenseeNameTextField() {
+        
+        controller.licenseeTextField.stringValue = "something"
+        
+        controller.displayEmptyForm()
+        
+        XCTAssertEqual(controller.licenseeTextField.stringValue, "")
+    }
+    
+    func testDisplayEmptyForm_EmptiesLicenseCodeTextField() {
+        
+        controller.licenseCodeTextField.stringValue = "something"
+        
+        controller.displayEmptyForm()
+        
+        XCTAssertEqual(controller.licenseCodeTextField.stringValue, "")
+    }
+    
+    func testDisplayLicense_FillsLicenseeNameTextField() {
+        
+        let license = License(name: "a name", key: "a code")
+        controller.licenseeTextField.stringValue = ""
+        
+        controller.displayLicense(license)
+        
+        XCTAssertEqual(controller.licenseeTextField.stringValue, "a name")
+    }
+    
+    func testDisplayLicense_FillsLicenseCodeTextField() {
+        
+        let license = License(name: "a name", key: "a code")
+        controller.licenseCodeTextField.stringValue = ""
+        
+        controller.displayLicense(license)
+        
+        XCTAssertEqual(controller.licenseCodeTextField.stringValue, "a code")
+    }
+    
+    
     // MARK: - 
     
     class TestEventHandler: HandlesRegistering {
