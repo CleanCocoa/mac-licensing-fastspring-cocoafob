@@ -6,14 +6,14 @@ let isRunningTests = NSClassFromString("XCTestCase") != nil
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
     lazy var licenseProvider: LicenseProvider = LicenseProvider()
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
-    var purchaseLicense: HandlesPurchases!
+    // Use Cases / Services
+    var purchaseLicense: PurchaseLicense!
     var registerApplication = RegisterApplication()
-    
-    lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
     
     // MARK: Startup
@@ -41,7 +41,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let store = Store(storeInfo: storeInfo!)
         purchaseLicense = PurchaseLicense(store: store, registerApplication: registerApplication)
-        
+
+        store.storeDelegate = purchaseLicense
         licenseWindowController.purchasingEventHandler = purchaseLicense
     }
     
