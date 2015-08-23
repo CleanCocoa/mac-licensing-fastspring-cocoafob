@@ -16,23 +16,24 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="Buy NewApp" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="353"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="contentRect" x="196" y="240" width="690" height="456"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <value key="minSize" type="size" width="690" height="450"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="-1" width="480" height="353"/>
+                <rect key="frame" x="0.0" y="0.0" width="690" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <webView translatesAutoresizingMaskIntoConstraints="NO" id="XDH-H6-vXb">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="292"/>
+                        <rect key="frame" x="0.0" y="0.0" width="690" height="395"/>
                         <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
                             <nil key="identifier"/>
                         </webPreferences>
                     </webView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZBc-du-J2O" userLabel="Reload">
-                        <rect key="frame" x="419" y="305" width="47" height="32"/>
+                        <rect key="frame" x="629" y="408" width="47" height="32"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Ul-DA-eLH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -43,7 +44,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aqs-zs-Tid" userLabel="&gt;">
-                        <rect key="frame" x="59" y="305" width="45" height="32"/>
+                        <rect key="frame" x="59" y="408" width="45" height="32"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ueA-MY-mve">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -53,11 +54,11 @@
                         </connections>
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t7Z-X5-KvH">
-                        <rect key="frame" x="407" y="316" width="10" height="14"/>
+                        <rect key="frame" x="617" y="419" width="10" height="14"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSLockLockedTemplate" id="mi0-pJ-PuW"/>
                     </imageView>
                     <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="KFm-u2-Lgf">
-                        <rect key="frame" x="444" y="314" width="16" height="16"/>
+                        <rect key="frame" x="654" y="417" width="16" height="16"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="self.storeController.storeController.isLoading" id="HNQ-Ue-hc9">
                                 <dictionary key="options">
@@ -67,7 +68,7 @@
                         </connections>
                     </progressIndicator>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qAy-gT-bYn" userLabel="&lt;">
-                        <rect key="frame" x="14" y="305" width="45" height="32"/>
+                        <rect key="frame" x="14" y="408" width="45" height="32"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G7k-sM-Co1">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -97,7 +98,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="567" y="502.5"/>
+            <point key="canvasLocation" x="672" y="554"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="qQ6-zf-mzL"/>
     </objects>
