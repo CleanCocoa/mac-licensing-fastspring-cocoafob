@@ -1,0 +1,740 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */; };
+		50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */; };
+		50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */; };
+		50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA01B8313E700727FBA /* PurchaseLicense.swift */; };
+		50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */; };
+		505D9DEE1B89E47600D412F1 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D9DED1B89E47600D412F1 /* License.swift */; };
+		506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FA1B84AEA10072CEC8 /* Me.swift */; };
+		506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FC1B84AEB90072CEC8 /* StoreController.swift */; };
+		506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */; };
+		506AB4011B84B0790072CEC8 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB4001B84B0790072CEC8 /* StoreTests.swift */; };
+		506AB4031B84B5A00072CEC8 /* StoreWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */; };
+		506AB4071B84CC310072CEC8 /* FastSpringCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */; };
+		506DA9381B8340C9007B110F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9371B8340C9007B110F /* Store.swift */; };
+		506DA9451B835784007B110F /* StoreWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9431B835784007B110F /* StoreWindowController.swift */; };
+		506DA9461B835784007B110F /* StoreWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506DA9441B835784007B110F /* StoreWindowController.xib */; };
+		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
+		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
+		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
+		50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */; };
+		50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */; };
+		50C9B0C91B7F7844002C5449 /* LicenseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */; };
+		50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0CF1B7F7B7C002C5449 /* Optional.swift */; };
+		50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */; };
+		50C9B0D51B7F7E3D002C5449 /* LicenseProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */; };
+		50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0CF1B7F7B7C002C5449 /* Optional.swift */; };
+		50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */; };
+		50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */; };
+		50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7C1B81D9990092CD19 /* Helpers.swift */; };
+		50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */; };
+		50E75D9D1B81EE090092CD19 /* CFobError.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D8C1B81EE090092CD19 /* CFobError.m */; };
+		50E75D9E1B81EE090092CD19 /* CFobLicGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D8E1B81EE090092CD19 /* CFobLicGenerator.m */; };
+		50E75D9F1B81EE090092CD19 /* CFobLicVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D901B81EE090092CD19 /* CFobLicVerifier.m */; };
+		50E75DA01B81EE090092CD19 /* decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D911B81EE090092CD19 /* decoder.c */; };
+		50E75DA11B81EE090092CD19 /* encoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D931B81EE090092CD19 /* encoder.c */; };
+		50E75DA21B81EE090092CD19 /* NSData+PECrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D961B81EE090092CD19 /* NSData+PECrypt.m */; };
+		50E75DA31B81EE090092CD19 /* NSString-Base64Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D981B81EE090092CD19 /* NSString-Base64Extensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DA41B81EE090092CD19 /* NSString+PECrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D9A1B81EE090092CD19 /* NSString+PECrypt.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D9C1B81EE090092CD19 /* URLCommand.m */; };
+		50E75DAA1B81FB4F0092CD19 /* LicenseVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */; };
+		50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */; };
+		50E75DB41B82084E0092CD19 /* LicenseWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */; };
+		50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB51B82085A0092CD19 /* LicenseWriter.swift */; };
+		50E75DB81B820A730092CD19 /* RegisterApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB71B820A730092CD19 /* RegisterApplication.swift */; };
+		50E75DBA1B820A880092CD19 /* RegisterApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */; };
+		50E75DBC1B82119B0092CD19 /* LicenseChangeBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */; };
+		50E75DBE1B8211BA0092CD19 /* LicenseInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */; };
+		50E75DC01B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */; };
+		50E75DC31B8225230092CD19 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DC21B8225230092CD19 /* Alerts.swift */; };
+		50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DC61B82275D0092CD19 /* FsprgEmbeddedStoreController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DDA1B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DC91B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DCB1B82275D0092CD19 /* FsprgOrderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DDC1B82275D0092CD19 /* FsprgStoreParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DCD1B82275D0092CD19 /* FsprgStoreParameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DDD1B82275D0092CD19 /* FsprgFileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DD01B82275D0092CD19 /* FsprgFileDownload.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DD21B82275D0092CD19 /* FsprgFulfillment.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DDF1B82275D0092CD19 /* FsprgLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DD41B82275D0092CD19 /* FsprgLicense.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DE01B82275D0092CD19 /* FsprgOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DD61B82275D0092CD19 /* FsprgOrder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50E75DE11B82275D0092CD19 /* FsprgOrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DD81B82275D0092CD19 /* FsprgOrderItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50C9B0AE1B7F6DAC002C5449 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C9B0951B7F6DAC002C5449 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50C9B09C1B7F6DAC002C5449;
+			remoteInfo = MyNewApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReader.swift; sourceTree = "<group>"; };
+		50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReaderTests.swift; sourceTree = "<group>"; };
+		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
+		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
+		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; };
+		505D9DED1B89E47600D412F1 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		506AB3FA1B84AEA10072CEC8 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
+		506AB3FC1B84AEB90072CEC8 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
+		506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
+		506AB4001B84B0790072CEC8 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
+		506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowControllerTests.swift; sourceTree = "<group>"; };
+		506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FastSpringCredentials.plist; path = ../FastSpringCredentials.plist; sourceTree = "<group>"; };
+		506DA9371B8340C9007B110F /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		506DA9431B835784007B110F /* StoreWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowController.swift; sourceTree = "<group>"; };
+		506DA9441B835784007B110F /* StoreWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWindowController.xib; sourceTree = "<group>"; };
+		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		50C9B0A41B7F6DAC002C5449 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		50C9B0A71B7F6DAC002C5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		50C9B0AD1B7F6DAC002C5449 /* MyNewAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNewAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C9B0B21B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseProvider.swift; sourceTree = "<group>"; };
+		50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWindowController.swift; sourceTree = "<group>"; };
+		50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseWindowController.xib; sourceTree = "<group>"; };
+		50C9B0CF1B7F7B7C002C5449 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseProviderTests.swift; sourceTree = "<group>"; };
+		50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseViewController.swift; sourceTree = "<group>"; };
+		50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWindowControllerTests.swift; sourceTree = "<group>"; };
+		50E75D7C1B81D9990092CD19 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseWindowControllerTests.swift; sourceTree = "<group>"; };
+		50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		50E75D8B1B81EE090092CD19 /* CFobError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobError.h; path = ../External/cocoafob/objc/CFobError.h; sourceTree = "<group>"; };
+		50E75D8C1B81EE090092CD19 /* CFobError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobError.m; path = ../External/cocoafob/objc/CFobError.m; sourceTree = "<group>"; };
+		50E75D8D1B81EE090092CD19 /* CFobLicGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobLicGenerator.h; path = ../External/cocoafob/objc/CFobLicGenerator.h; sourceTree = "<group>"; };
+		50E75D8E1B81EE090092CD19 /* CFobLicGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobLicGenerator.m; path = ../External/cocoafob/objc/CFobLicGenerator.m; sourceTree = "<group>"; };
+		50E75D8F1B81EE090092CD19 /* CFobLicVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobLicVerifier.h; path = ../External/cocoafob/objc/CFobLicVerifier.h; sourceTree = "<group>"; };
+		50E75D901B81EE090092CD19 /* CFobLicVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobLicVerifier.m; path = ../External/cocoafob/objc/CFobLicVerifier.m; sourceTree = "<group>"; };
+		50E75D911B81EE090092CD19 /* decoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = decoder.c; path = ../External/cocoafob/objc/decoder.c; sourceTree = "<group>"; };
+		50E75D921B81EE090092CD19 /* decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = decoder.h; path = ../External/cocoafob/objc/decoder.h; sourceTree = "<group>"; };
+		50E75D931B81EE090092CD19 /* encoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = encoder.c; path = ../External/cocoafob/objc/encoder.c; sourceTree = "<group>"; };
+		50E75D941B81EE090092CD19 /* encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = encoder.h; path = ../External/cocoafob/objc/encoder.h; sourceTree = "<group>"; };
+		50E75D951B81EE090092CD19 /* NSData+PECrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+PECrypt.h"; path = "../External/cocoafob/objc/NSData+PECrypt.h"; sourceTree = "<group>"; };
+		50E75D961B81EE090092CD19 /* NSData+PECrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+PECrypt.m"; path = "../External/cocoafob/objc/NSData+PECrypt.m"; sourceTree = "<group>"; };
+		50E75D971B81EE090092CD19 /* NSString-Base64Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString-Base64Extensions.h"; path = "../External/cocoafob/objc/NSString-Base64Extensions.h"; sourceTree = "<group>"; };
+		50E75D981B81EE090092CD19 /* NSString-Base64Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString-Base64Extensions.m"; path = "../External/cocoafob/objc/NSString-Base64Extensions.m"; sourceTree = "<group>"; };
+		50E75D991B81EE090092CD19 /* NSString+PECrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PECrypt.h"; path = "../External/cocoafob/objc/NSString+PECrypt.h"; sourceTree = "<group>"; };
+		50E75D9A1B81EE090092CD19 /* NSString+PECrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PECrypt.m"; path = "../External/cocoafob/objc/NSString+PECrypt.m"; sourceTree = "<group>"; };
+		50E75D9B1B81EE090092CD19 /* URLCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLCommand.h; path = ../External/cocoafob/objc/URLCommand.h; sourceTree = "<group>"; };
+		50E75D9C1B81EE090092CD19 /* URLCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLCommand.m; path = ../External/cocoafob/objc/URLCommand.m; sourceTree = "<group>"; };
+		50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifierTests.swift; sourceTree = "<group>"; };
+		50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifier.swift; sourceTree = "<group>"; };
+		50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriterTests.swift; sourceTree = "<group>"; };
+		50E75DB51B82085A0092CD19 /* LicenseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriter.swift; sourceTree = "<group>"; };
+		50E75DB71B820A730092CD19 /* RegisterApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApplication.swift; sourceTree = "<group>"; };
+		50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApplicationTests.swift; sourceTree = "<group>"; };
+		50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseChangeBroadcaster.swift; sourceTree = "<group>"; };
+		50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInformationTests.swift; sourceTree = "<group>"; };
+		50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseChangeBroadcasterTests.swift; sourceTree = "<group>"; };
+		50E75DC21B8225230092CD19 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		50E75DC41B82275D0092CD19 /* FsprgEmbeddedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FsprgEmbeddedStore.h; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgEmbeddedStore.h; sourceTree = "<group>"; };
+		50E75DC51B82275D0092CD19 /* FsprgEmbeddedStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FsprgEmbeddedStoreController.h; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgEmbeddedStoreController.h; sourceTree = "<group>"; };
+		50E75DC61B82275D0092CD19 /* FsprgEmbeddedStoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FsprgEmbeddedStoreController.m; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgEmbeddedStoreController.m; sourceTree = "<group>"; };
+		50E75DC71B82275D0092CD19 /* FsprgEmbeddedStoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FsprgEmbeddedStoreDelegate.h; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgEmbeddedStoreDelegate.h; sourceTree = "<group>"; };
+		50E75DC81B82275D0092CD19 /* FsprgOrderDocumentRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FsprgOrderDocumentRepresentation.h; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgOrderDocumentRepresentation.h; sourceTree = "<group>"; };
+		50E75DC91B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FsprgOrderDocumentRepresentation.m; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgOrderDocumentRepresentation.m; sourceTree = "<group>"; };
+		50E75DCA1B82275D0092CD19 /* FsprgOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FsprgOrderView.h; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgOrderView.h; sourceTree = "<group>"; };
+		50E75DCB1B82275D0092CD19 /* FsprgOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FsprgOrderView.m; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgOrderView.m; sourceTree = "<group>"; };
+		50E75DCC1B82275D0092CD19 /* FsprgStoreParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FsprgStoreParameters.h; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgStoreParameters.h; sourceTree = "<group>"; };
+		50E75DCD1B82275D0092CD19 /* FsprgStoreParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FsprgStoreParameters.m; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgStoreParameters.m; sourceTree = "<group>"; };
+		50E75DCF1B82275D0092CD19 /* FsprgFileDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FsprgFileDownload.h; sourceTree = "<group>"; };
+		50E75DD01B82275D0092CD19 /* FsprgFileDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FsprgFileDownload.m; sourceTree = "<group>"; };
+		50E75DD11B82275D0092CD19 /* FsprgFulfillment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FsprgFulfillment.h; sourceTree = "<group>"; };
+		50E75DD21B82275D0092CD19 /* FsprgFulfillment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FsprgFulfillment.m; sourceTree = "<group>"; };
+		50E75DD31B82275D0092CD19 /* FsprgLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FsprgLicense.h; sourceTree = "<group>"; };
+		50E75DD41B82275D0092CD19 /* FsprgLicense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FsprgLicense.m; sourceTree = "<group>"; };
+		50E75DD51B82275D0092CD19 /* FsprgOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FsprgOrder.h; sourceTree = "<group>"; };
+		50E75DD61B82275D0092CD19 /* FsprgOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FsprgOrder.m; sourceTree = "<group>"; };
+		50E75DD71B82275D0092CD19 /* FsprgOrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FsprgOrderItem.h; sourceTree = "<group>"; };
+		50E75DD81B82275D0092CD19 /* FsprgOrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FsprgOrderItem.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50C9B09A1B7F6DAC002C5449 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C9B0AA1B7F6DAC002C5449 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50337B951B85B4490056FC3B /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
+		50C9B0941B7F6DAC002C5449 = {
+			isa = PBXGroup;
+			children = (
+				506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */,
+				50C9B0CE1B7F7B7C002C5449 /* Shared */,
+				50C9B09F1B7F6DAC002C5449 /* MyNewApp */,
+				50C9B0B01B7F6DAC002C5449 /* MyNewAppTests */,
+				50E75D891B81EB680092CD19 /* CocoaFob */,
+				50E75DE21B8227610092CD19 /* FastSpring */,
+				50C9B09E1B7F6DAC002C5449 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		50C9B09E1B7F6DAC002C5449 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */,
+				50C9B0AD1B7F6DAC002C5449 /* MyNewAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50C9B09F1B7F6DAC002C5449 /* MyNewApp */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
+				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
+				50E75DC21B8225230092CD19 /* Alerts.swift */,
+				50E75DB71B820A730092CD19 /* RegisterApplication.swift */,
+				50455FA01B8313E700727FBA /* PurchaseLicense.swift */,
+				506DA9371B8340C9007B110F /* Store.swift */,
+				506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */,
+				506AB3FA1B84AEA10072CEC8 /* Me.swift */,
+				50E75DC11B821D590092CD19 /* License */,
+				50E75D801B81E8810092CD19 /* User Interface */,
+				50C9B0A01B7F6DAC002C5449 /* Supporting Files */,
+				50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */,
+			);
+			path = MyNewApp;
+			sourceTree = "<group>";
+		};
+		50C9B0A01B7F6DAC002C5449 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B0A11B7F6DAC002C5449 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50C9B0B01B7F6DAC002C5449 /* MyNewAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */,
+				50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */,
+				50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */,
+				50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */,
+				50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */,
+				50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */,
+				50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */,
+				506AB4001B84B0790072CEC8 /* StoreTests.swift */,
+				506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */,
+				50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */,
+				50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */,
+				50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */,
+				50E75D7C1B81D9990092CD19 /* Helpers.swift */,
+				50337B951B85B4490056FC3B /* Fixtures */,
+				50C9B0B11B7F6DAC002C5449 /* Supporting Files */,
+				50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */,
+			);
+			path = MyNewAppTests;
+			sourceTree = "<group>";
+		};
+		50C9B0B11B7F6DAC002C5449 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B0B21B7F6DAC002C5449 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50C9B0CE1B7F7B7C002C5449 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B0CF1B7F7B7C002C5449 /* Optional.swift */,
+				50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */,
+			);
+			name = Shared;
+			path = ../Shared;
+			sourceTree = "<group>";
+		};
+		50E75D801B81E8810092CD19 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */,
+				50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */,
+				50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */,
+				50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */,
+				506DA9431B835784007B110F /* StoreWindowController.swift */,
+				506DA9441B835784007B110F /* StoreWindowController.xib */,
+				506AB3FC1B84AEB90072CEC8 /* StoreController.swift */,
+				50C9B0A41B7F6DAC002C5449 /* Images.xcassets */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		50E75D891B81EB680092CD19 /* CocoaFob */ = {
+			isa = PBXGroup;
+			children = (
+				50E75D8B1B81EE090092CD19 /* CFobError.h */,
+				50E75D8C1B81EE090092CD19 /* CFobError.m */,
+				50E75D8D1B81EE090092CD19 /* CFobLicGenerator.h */,
+				50E75D8E1B81EE090092CD19 /* CFobLicGenerator.m */,
+				50E75D8F1B81EE090092CD19 /* CFobLicVerifier.h */,
+				50E75D901B81EE090092CD19 /* CFobLicVerifier.m */,
+				50E75D911B81EE090092CD19 /* decoder.c */,
+				50E75D921B81EE090092CD19 /* decoder.h */,
+				50E75D931B81EE090092CD19 /* encoder.c */,
+				50E75D941B81EE090092CD19 /* encoder.h */,
+				50E75D951B81EE090092CD19 /* NSData+PECrypt.h */,
+				50E75D961B81EE090092CD19 /* NSData+PECrypt.m */,
+				50E75D971B81EE090092CD19 /* NSString-Base64Extensions.h */,
+				50E75D981B81EE090092CD19 /* NSString-Base64Extensions.m */,
+				50E75D991B81EE090092CD19 /* NSString+PECrypt.h */,
+				50E75D9A1B81EE090092CD19 /* NSString+PECrypt.m */,
+				50E75D9B1B81EE090092CD19 /* URLCommand.h */,
+				50E75D9C1B81EE090092CD19 /* URLCommand.m */,
+			);
+			name = CocoaFob;
+			sourceTree = "<group>";
+		};
+		50E75DC11B821D590092CD19 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				505D9DED1B89E47600D412F1 /* License.swift */,
+				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
+				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
+				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
+				50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */,
+			);
+			name = License;
+			sourceTree = "<group>";
+		};
+		50E75DCE1B82275D0092CD19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				50E75DCF1B82275D0092CD19 /* FsprgFileDownload.h */,
+				50E75DD01B82275D0092CD19 /* FsprgFileDownload.m */,
+				50E75DD11B82275D0092CD19 /* FsprgFulfillment.h */,
+				50E75DD21B82275D0092CD19 /* FsprgFulfillment.m */,
+				50E75DD31B82275D0092CD19 /* FsprgLicense.h */,
+				50E75DD41B82275D0092CD19 /* FsprgLicense.m */,
+				50E75DD51B82275D0092CD19 /* FsprgOrder.h */,
+				50E75DD61B82275D0092CD19 /* FsprgOrder.m */,
+				50E75DD71B82275D0092CD19 /* FsprgOrderItem.h */,
+				50E75DD81B82275D0092CD19 /* FsprgOrderItem.m */,
+			);
+			name = Model;
+			path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/Model;
+			sourceTree = "<group>";
+		};
+		50E75DE21B8227610092CD19 /* FastSpring */ = {
+			isa = PBXGroup;
+			children = (
+				50E75DC41B82275D0092CD19 /* FsprgEmbeddedStore.h */,
+				50E75DC51B82275D0092CD19 /* FsprgEmbeddedStoreController.h */,
+				50E75DC61B82275D0092CD19 /* FsprgEmbeddedStoreController.m */,
+				50E75DC71B82275D0092CD19 /* FsprgEmbeddedStoreDelegate.h */,
+				50E75DC81B82275D0092CD19 /* FsprgOrderDocumentRepresentation.h */,
+				50E75DC91B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m */,
+				50E75DCA1B82275D0092CD19 /* FsprgOrderView.h */,
+				50E75DCB1B82275D0092CD19 /* FsprgOrderView.m */,
+				50E75DCC1B82275D0092CD19 /* FsprgStoreParameters.h */,
+				50E75DCD1B82275D0092CD19 /* FsprgStoreParameters.m */,
+				50E75DCE1B82275D0092CD19 /* Model */,
+			);
+			name = FastSpring;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50C9B09C1B7F6DAC002C5449 /* MyNewApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C9B0B71B7F6DAC002C5449 /* Build configuration list for PBXNativeTarget "MyNewApp" */;
+			buildPhases = (
+				50C9B0991B7F6DAC002C5449 /* Sources */,
+				50C9B09A1B7F6DAC002C5449 /* Frameworks */,
+				50C9B09B1B7F6DAC002C5449 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyNewApp;
+			productName = MyNewApp;
+			productReference = 50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		50C9B0AC1B7F6DAC002C5449 /* MyNewAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C9B0BA1B7F6DAC002C5449 /* Build configuration list for PBXNativeTarget "MyNewAppTests" */;
+			buildPhases = (
+				50C9B0A91B7F6DAC002C5449 /* Sources */,
+				50C9B0AA1B7F6DAC002C5449 /* Frameworks */,
+				50C9B0AB1B7F6DAC002C5449 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50C9B0AF1B7F6DAC002C5449 /* PBXTargetDependency */,
+			);
+			name = MyNewAppTests;
+			productName = MyNewAppTests;
+			productReference = 50C9B0AD1B7F6DAC002C5449 /* MyNewAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50C9B0951B7F6DAC002C5449 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Christian Tietze";
+				TargetAttributes = {
+					50C9B09C1B7F6DAC002C5449 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					50C9B0AC1B7F6DAC002C5449 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 50C9B09C1B7F6DAC002C5449;
+					};
+				};
+			};
+			buildConfigurationList = 50C9B0981B7F6DAC002C5449 /* Build configuration list for PBXProject "MyNewApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 50C9B0941B7F6DAC002C5449;
+			productRefGroup = 50C9B09E1B7F6DAC002C5449 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50C9B09C1B7F6DAC002C5449 /* MyNewApp */,
+				50C9B0AC1B7F6DAC002C5449 /* MyNewAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50C9B09B1B7F6DAC002C5449 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C9B0C91B7F7844002C5449 /* LicenseWindowController.xib in Resources */,
+				50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */,
+				506AB4071B84CC310072CEC8 /* FastSpringCredentials.plist in Resources */,
+				50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */,
+				506DA9461B835784007B110F /* StoreWindowController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C9B0AB1B7F6DAC002C5449 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50C9B0991B7F6DAC002C5449 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */,
+				50E75DA01B81EE090092CD19 /* decoder.c in Sources */,
+				50E75DB81B820A730092CD19 /* RegisterApplication.swift in Sources */,
+				50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */,
+				50E75D9F1B81EE090092CD19 /* CFobLicVerifier.m in Sources */,
+				50E75DE11B82275D0092CD19 /* FsprgOrderItem.m in Sources */,
+				50E75DDC1B82275D0092CD19 /* FsprgStoreParameters.m in Sources */,
+				50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */,
+				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
+				50E75DC31B8225230092CD19 /* Alerts.swift in Sources */,
+				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
+				50E75DA11B81EE090092CD19 /* encoder.c in Sources */,
+				506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */,
+				505D9DEE1B89E47600D412F1 /* License.swift in Sources */,
+				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
+				50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */,
+				50E75DDD1B82275D0092CD19 /* FsprgFileDownload.m in Sources */,
+				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
+				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
+				50E75DA31B81EE090092CD19 /* NSString-Base64Extensions.m in Sources */,
+				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
+				50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */,
+				50E75DBC1B82119B0092CD19 /* LicenseChangeBroadcaster.swift in Sources */,
+				50E75DA21B81EE090092CD19 /* NSData+PECrypt.m in Sources */,
+				50E75DDF1B82275D0092CD19 /* FsprgLicense.m in Sources */,
+				50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */,
+				506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */,
+				50E75D9D1B81EE090092CD19 /* CFobError.m in Sources */,
+				50E75DDA1B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m in Sources */,
+				50E75D9E1B81EE090092CD19 /* CFobLicGenerator.m in Sources */,
+				506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */,
+				50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */,
+				506DA9381B8340C9007B110F /* Store.swift in Sources */,
+				50E75DE01B82275D0092CD19 /* FsprgOrder.m in Sources */,
+				50E75DA41B81EE090092CD19 /* NSString+PECrypt.m in Sources */,
+				50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */,
+				506DA9451B835784007B110F /* StoreWindowController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C9B0A91B7F6DAC002C5449 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C9B0D51B7F7E3D002C5449 /* LicenseProviderTests.swift in Sources */,
+				50E75DAA1B81FB4F0092CD19 /* LicenseVerifierTests.swift in Sources */,
+				50E75DB41B82084E0092CD19 /* LicenseWriterTests.swift in Sources */,
+				506AB4031B84B5A00072CEC8 /* StoreWindowControllerTests.swift in Sources */,
+				50E75DBE1B8211BA0092CD19 /* LicenseInformationTests.swift in Sources */,
+				50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */,
+				50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */,
+				50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */,
+				50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */,
+				50E75DBA1B820A880092CD19 /* RegisterApplicationTests.swift in Sources */,
+				50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */,
+				50E75DC01B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift in Sources */,
+				50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */,
+				506AB4011B84B0790072CEC8 /* StoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50C9B0AF1B7F6DAC002C5449 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50C9B09C1B7F6DAC002C5449 /* MyNewApp */;
+			targetProxy = 50C9B0AE1B7F6DAC002C5449 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50C9B0A71B7F6DAC002C5449 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		50C9B0B51B7F6DAC002C5449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		50C9B0B61B7F6DAC002C5449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		50C9B0B81B7F6DAC002C5449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MyNewApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		50C9B0B91B7F6DAC002C5449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MyNewApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		50C9B0BB1B7F6DAC002C5449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyNewAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyNewAppTests/MyNewAppTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNewApp.app/Contents/MacOS/MyNewApp";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore\"/**";
+			};
+			name = Debug;
+		};
+		50C9B0BC1B7F6DAC002C5449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyNewAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyNewAppTests/MyNewAppTests-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNewApp.app/Contents/MacOS/MyNewApp";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore\"/**";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50C9B0981B7F6DAC002C5449 /* Build configuration list for PBXProject "MyNewApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C9B0B51B7F6DAC002C5449 /* Debug */,
+				50C9B0B61B7F6DAC002C5449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C9B0B71B7F6DAC002C5449 /* Build configuration list for PBXNativeTarget "MyNewApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C9B0B81B7F6DAC002C5449 /* Debug */,
+				50C9B0B91B7F6DAC002C5449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C9B0BA1B7F6DAC002C5449 /* Build configuration list for PBXNativeTarget "MyNewAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C9B0BB1B7F6DAC002C5449 /* Debug */,
+				50C9B0BC1B7F6DAC002C5449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 50C9B0951B7F6DAC002C5449 /* Project object */;
+}

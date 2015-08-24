@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="StoreWindowController" customModule="MyNewApp" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="qAy-gT-bYn" id="55i-JC-JVz"/>
+                <outlet property="forwardButton" destination="Aqs-zs-Tid" id="sWr-BX-PW9"/>
+                <outlet property="orderConfirmationView" destination="gew-xr-3oa" id="TKJ-HN-VeC"/>
+                <outlet property="reloadButton" destination="ZBc-du-J2O" id="9uX-vd-MVp"/>
+                <outlet property="webView" destination="XDH-H6-vXb" id="vcD-cB-8WM"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Buy NewApp" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="690" height="456"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <value key="minSize" type="size" width="690" height="450"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="690" height="456"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView translatesAutoresizingMaskIntoConstraints="NO" id="XDH-H6-vXb">
+                        <rect key="frame" x="0.0" y="0.0" width="690" height="395"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZBc-du-J2O" userLabel="Reload">
+                        <rect key="frame" x="629" y="408" width="47" height="32"/>
+                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Ul-DA-eLH">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="reloadStore:" target="-2" id="doO-00-Tt4"/>
+                            <binding destination="-2" name="hidden" keyPath="self.storeController.storeController.isLoading" id="2pD-mh-fwu"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aqs-zs-Tid" userLabel="&gt;">
+                        <rect key="frame" x="59" y="408" width="45" height="32"/>
+                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ueA-MY-mve">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="goForward:" target="XDH-H6-vXb" id="f1s-Jz-O1J"/>
+                        </connections>
+                    </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t7Z-X5-KvH">
+                        <rect key="frame" x="617" y="419" width="10" height="14"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSLockLockedTemplate" id="mi0-pJ-PuW"/>
+                    </imageView>
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="KFm-u2-Lgf">
+                        <rect key="frame" x="654" y="417" width="16" height="16"/>
+                        <connections>
+                            <binding destination="-2" name="hidden" keyPath="self.storeController.storeController.isLoading" id="HNQ-Ue-hc9">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </progressIndicator>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qAy-gT-bYn" userLabel="&lt;">
+                        <rect key="frame" x="14" y="408" width="45" height="32"/>
+                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G7k-sM-Co1">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="goBack:" target="XDH-H6-vXb" id="uyF-mW-HFA"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ZBc-du-J2O" secondAttribute="trailing" constant="20" id="13Y-iW-fXy"/>
+                    <constraint firstItem="ZBc-du-J2O" firstAttribute="centerY" secondItem="t7Z-X5-KvH" secondAttribute="centerY" constant="0.5" id="6DH-Fc-bFu"/>
+                    <constraint firstItem="ZBc-du-J2O" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="HYH-qa-dRh"/>
+                    <constraint firstAttribute="bottom" secondItem="XDH-H6-vXb" secondAttribute="bottom" id="J5c-6v-Kle"/>
+                    <constraint firstItem="qAy-gT-bYn" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Pgg-TW-xYO"/>
+                    <constraint firstItem="ZBc-du-J2O" firstAttribute="leading" secondItem="t7Z-X5-KvH" secondAttribute="trailing" constant="8" id="QER-zA-BE2"/>
+                    <constraint firstItem="Aqs-zs-Tid" firstAttribute="top" secondItem="qAy-gT-bYn" secondAttribute="top" id="V38-4c-L7S"/>
+                    <constraint firstAttribute="trailing" secondItem="XDH-H6-vXb" secondAttribute="trailing" id="V7C-Lq-3Pe"/>
+                    <constraint firstItem="Aqs-zs-Tid" firstAttribute="top" secondItem="ZBc-du-J2O" secondAttribute="top" id="aoK-15-k6q"/>
+                    <constraint firstItem="XDH-H6-vXb" firstAttribute="top" secondItem="ZBc-du-J2O" secondAttribute="bottom" constant="20" id="bZt-aJ-Ms7"/>
+                    <constraint firstItem="XDH-H6-vXb" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="dWO-km-lRP"/>
+                    <constraint firstItem="Aqs-zs-Tid" firstAttribute="leading" secondItem="qAy-gT-bYn" secondAttribute="trailing" constant="12" id="lXY-Nd-Qr1"/>
+                    <constraint firstItem="ZBc-du-J2O" firstAttribute="trailing" secondItem="KFm-u2-Lgf" secondAttribute="trailing" id="sTy-AX-X2t"/>
+                    <constraint firstItem="ZBc-du-J2O" firstAttribute="top" secondItem="KFm-u2-Lgf" secondAttribute="top" constant="-3" id="u4i-1M-SLw"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="672" y="554"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="qQ6-zf-mzL"/>
+        <customView id="gew-xr-3oa" customClass="OrderConfirmationView" customModule="MyNewApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="337"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Fr-iW-uEg">
+                    <rect key="frame" x="13" y="281" width="349" height="36"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Thank you for purchasing!" id="ALu-re-gPp">
+                        <font key="font" metaFont="system" size="30"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="khL-hI-XPf">
+                    <rect key="frame" x="141" y="256" width="93" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="License Code:" id="MUN-xf-WEq">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rD-Xs-DXO">
+                    <rect key="frame" x="38" y="231" width="299" height="17"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="XXXX-XXXX-XXXX" id="S39-jY-0pf">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="0rD-Xs-DXO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gew-xr-3oa" secondAttribute="leading" constant="20" id="6fg-8y-rgm"/>
+                <constraint firstItem="0rD-Xs-DXO" firstAttribute="leading" secondItem="gew-xr-3oa" secondAttribute="leading" priority="800" constant="40" id="9cg-MV-TRr"/>
+                <constraint firstAttribute="trailing" secondItem="0rD-Xs-DXO" secondAttribute="trailing" priority="800" constant="40" id="Eeh-CO-Wfm"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0rD-Xs-DXO" secondAttribute="trailing" constant="20" id="FaL-iP-nS5"/>
+                <constraint firstAttribute="centerX" secondItem="0rD-Xs-DXO" secondAttribute="centerX" id="LES-m8-732"/>
+                <constraint firstItem="0rD-Xs-DXO" firstAttribute="top" secondItem="khL-hI-XPf" secondAttribute="bottom" constant="8" id="U54-Jq-5hN"/>
+                <constraint firstAttribute="centerX" secondItem="1Fr-iW-uEg" secondAttribute="centerX" id="e1w-6Q-rw0"/>
+                <constraint firstAttribute="centerX" secondItem="khL-hI-XPf" secondAttribute="centerX" id="gYs-k7-Kwi"/>
+                <constraint firstItem="1Fr-iW-uEg" firstAttribute="top" secondItem="gew-xr-3oa" secondAttribute="top" constant="20" id="njJ-w7-tcn"/>
+                <constraint firstItem="khL-hI-XPf" firstAttribute="top" secondItem="1Fr-iW-uEg" secondAttribute="bottom" constant="8" id="sAc-pR-Pgh"/>
+            </constraints>
+            <connections>
+                <outlet property="licenseCodeTextField" destination="0rD-Xs-DXO" id="9rQ-rm-QB4"/>
+            </connections>
+            <point key="canvasLocation" x="42.5" y="558.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="NSLockLockedTemplate" width="10" height="14"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
+</document>
