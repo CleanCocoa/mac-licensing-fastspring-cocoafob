@@ -110,7 +110,7 @@
 		50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWindowControllerTests.swift; sourceTree = "<group>"; };
 		50E75D7C1B81D9990092CD19 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseWindowControllerTests.swift; sourceTree = "<group>"; };
-		50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewApp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		50E75D8B1B81EE090092CD19 /* CFobError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobError.h; path = ../External/cocoafob/objc/CFobError.h; sourceTree = "<group>"; };
 		50E75D8C1B81EE090092CD19 /* CFobError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobError.m; path = ../External/cocoafob/objc/CFobError.m; sourceTree = "<group>"; };
 		50E75D8D1B81EE090092CD19 /* CFobLicGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobLicGenerator.h; path = ../External/cocoafob/objc/CFobLicGenerator.h; sourceTree = "<group>"; };
@@ -641,7 +641,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -656,7 +656,7 @@
 				INFOPLIST_FILE = MyNewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
