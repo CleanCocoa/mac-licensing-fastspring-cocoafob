@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol KnowsTimeAndDate {
+public protocol KnowsTimeAndDate: class {
     
     func now() -> NSDate
 }

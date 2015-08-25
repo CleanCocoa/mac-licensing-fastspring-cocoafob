@@ -16,4 +16,14 @@ public class TrialProvider {
         
         return .None
     }
+    
+    public func currentTrialWithClock(clock: KnowsTimeAndDate) -> Trial? {
+        
+        if let trialPeriod = currentTrialPeriod {
+            
+            return Trial(trialPeriod: trialPeriod, clock: clock)
+        }
+        
+        return .None
+    }
 }

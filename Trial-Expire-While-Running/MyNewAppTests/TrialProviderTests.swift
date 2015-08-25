@@ -86,7 +86,32 @@ class TrialProviderTests: XCTestCase {
             XCTAssertEqual(trialPeriod.startDate, startDate)
             XCTAssertEqual(trialPeriod.endDate, endDate)
         }
-   }
+    }
+    
+    
+    // MARK: Trial wrapping
+    
+    let clockDouble = TestClock()
+    
+    func testCurrentTrial_WithoutDefaults_ReturnsNil() {
+        
+        XCTAssertFalse(hasValue(trialProvider.currentTrialWithClock(clockDouble)))
+    }
+    
+    func testCurrentTrial_WithTrialPeriod_ReturnsTrialWithClockAndPeriod() {
+        
+        let startDate = NSDate(timeIntervalSince1970: 456)
+        let endDate = NSDate(timeIntervalSince1970: 999)
+        provideTrialDefaults(startDate, endDate: endDate)
+        
+        let trial = trialProvider.currentTrialWithClock(clockDouble)
+        
+        XCTAssert(hasValue(trial))
+        if let trial = trial {
+            XCTAssertEqual(trial.trialPeriod, trialProvider.currentTrialPeriod!)
+            XCTAssert(trial.clock === clockDouble)
+        }
+    }
     
     
     // MARK : -
@@ -104,6 +129,15 @@ class TrialProviderTests: XCTestCase {
             didCallObjectForKeyWith?.append(defaultName)
             
             return testValues[defaultName]
+        }
+    }
+    
+    class TestClock: KnowsTimeAndDate {
+        
+        var testDate: NSDate!
+        func now() -> NSDate {
+            
+            return testDate
         }
     }
 }
