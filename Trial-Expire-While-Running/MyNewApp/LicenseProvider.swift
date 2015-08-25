@@ -2,7 +2,12 @@ import Foundation
 
 public class LicenseProvider {
     
-    public init() { }
+    let trialProvider: TrialProvider
+    
+    public init(trialProvider: TrialProvider) {
+        
+        self.trialProvider = trialProvider
+    }
     
     lazy var userDefaults: NSUserDefaults = UserDefaults.standardUserDefaults()
     
@@ -34,6 +39,6 @@ public class LicenseProvider {
 
     func trial() -> TrialPeriod? {
         
-        return .None
+        return trialProvider.currentTrialPeriod
     }
 }

@@ -24,6 +24,7 @@
 		506DA9461B835784007B110F /* StoreWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506DA9441B835784007B110F /* StoreWindowController.xib */; };
 		5070B9B61B8C50BB0036A86C /* TrialProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B51B8C50BB0036A86C /* TrialProvider.swift */; };
 		5070B9B81B8C50C90036A86C /* TrialProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B71B8C50C90036A86C /* TrialProviderTests.swift */; };
+		5070B9BA1B8C58A60036A86C /* TrialPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B91B8C58A60036A86C /* TrialPeriod.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -97,6 +98,7 @@
 		506DA9441B835784007B110F /* StoreWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWindowController.xib; sourceTree = "<group>"; };
 		5070B9B51B8C50BB0036A86C /* TrialProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialProvider.swift; sourceTree = "<group>"; };
 		5070B9B71B8C50C90036A86C /* TrialProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialProviderTests.swift; sourceTree = "<group>"; };
+		5070B9B91B8C58A60036A86C /* TrialPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialPeriod.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				50E62FC61B8B6F690047FC6A /* Trial.swift */,
+				5070B9B91B8C58A60036A86C /* TrialPeriod.swift */,
 				5070B9B51B8C50BB0036A86C /* TrialProvider.swift */,
 			);
 			name = Trial;
@@ -504,6 +507,7 @@
 				50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */,
 				50E75DDD1B82275D0092CD19 /* FsprgFileDownload.m in Sources */,
 				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
+				5070B9BA1B8C58A60036A86C /* TrialPeriod.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
 				50E75DA31B81EE090092CD19 /* NSString-Base64Extensions.m in Sources */,
 				50E62FC71B8B6F690047FC6A /* Trial.swift in Sources */,

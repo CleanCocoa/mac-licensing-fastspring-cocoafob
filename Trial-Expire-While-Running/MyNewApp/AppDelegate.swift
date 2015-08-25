@@ -8,7 +8,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
-    lazy var licenseProvider: LicenseProvider = LicenseProvider()
+    lazy var trialProvider: TrialProvider = TrialProvider()
+    lazy var licenseProvider: LicenseProvider = LicenseProvider(trialProvider: self.trialProvider)
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
     // Use Cases / Services

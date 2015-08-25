@@ -4,8 +4,9 @@ import MyNewApp
 
 class LicenseProviderTests: XCTestCase {
 
-    let licenseProvider = LicenseProvider()
+    var licenseProvider: LicenseProvider!
     
+    let trialProviderDouble = TestTrialProvider()
     let userDefaultsDouble: TestUserDefaults = TestUserDefaults()
 
     override func setUp() {
@@ -15,6 +16,8 @@ class LicenseProviderTests: XCTestCase {
         // No need to set the double on licenseProvider because 
         // its property is lazily loaded during test cases later.
         UserDefaults.setSharedInstance(UserDefaults(userDefaults: userDefaultsDouble))
+        
+        licenseProvider = LicenseProvider(trialProvider: trialProviderDouble)
     }
     
     override func tearDown() {
@@ -48,18 +51,31 @@ class LicenseProviderTests: XCTestCase {
         }
     }
 
-    func testObtainingCurrentLicense_WithEmptyDefaults_ReturnsOnTrial() {
+    func testObtainingCurrentLicense_WithEmptyDefaults_NoTrialPeriod_ReturnsTrialUp() {
         
         let licenseInfo = licenseProvider.currentLicense
         
-        let isOnTrial: Bool
+        let trialIsUp: Bool
         
         switch licenseInfo {
-        case .OnTrial(_): isOnTrial = true
-        default: isOnTrial = false
+        case .TrialUp: trialIsUp = true
+        default: trialIsUp = false
         }
         
-        XCTAssert(isOnTrial)
+        XCTAssert(trialIsUp)
+    }
+    
+    func testObtainingCurrentLicense_WithEmptyDefaults_ActiveTrialPeriod_ReturnsOnTrial() {
+        
+        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: NSDate())
+        trialProviderDouble.testTrialPeriod = expectedPeriod
+        
+        let licenseInfo = licenseProvider.currentLicense
+        
+        switch licenseInfo {
+        case let .OnTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
+        default: XCTFail("expected to be OnTrial")
+        }
     }
     
     
@@ -121,6 +137,15 @@ class LicenseProviderTests: XCTestCase {
             didCallStringForKeyWith?.append(defaultName)
             
             return testValues[defaultName]
+        }
+    }
+    
+    class TestTrialProvider: TrialProvider {
+        
+        var testTrialPeriod: TrialPeriod?
+        override var currentTrialPeriod: TrialPeriod? {
+            
+            return testTrialPeriod
         }
     }
 }
