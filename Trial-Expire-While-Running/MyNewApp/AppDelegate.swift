@@ -8,8 +8,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
+    // Use a clock replacement to see how the app start-up changes
+//    let clock = StaticClock(clockDate: NSDate(timeIntervalSinceNow: 10 /* days */ * 24 * 60 * 60))
+    let clock = Clock()
+    
     lazy var trialProvider: TrialProvider = TrialProvider()
-    lazy var licenseProvider: LicenseProvider = LicenseProvider(trialProvider: self.trialProvider)
+    lazy var licenseProvider: LicenseProvider = LicenseProvider(trialProvider: self.trialProvider, clock: self.clock)
     
     // User Interface
     @IBOutlet weak var window: NSWindow!
@@ -36,11 +40,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func prepareTrialOnFirstLaunch() {
         
+        // If someone deletes the values from user defaults,
+        // they will be able to get a new trial period. So
+        // better use a different reader/writer in your app.
+        
         if hasValue(trialProvider.currentTrialPeriod) {
             return
         }
         
-        let trialPeriod = TrialPeriod(numberOfDays: initialTrialDuration, clock: Clock())
+        let trialPeriod = TrialPeriod(numberOfDays: initialTrialDuration, clock: clock)
         TrialWriter().storeTrial(trialPeriod)
     }
     
@@ -65,10 +73,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         switch licenseProvider.currentLicense {
         case .TrialUp:
+            
             showRegisterApp()
             
         case let .OnTrial(trialPeriod):
-            let clock = Clock()
+            
             let trialDaysLeft = trialPeriod.daysLeft(clock)
             displayTrialDaysLeftAlert(trialDaysLeft)
             
@@ -93,22 +102,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    // MARK: Show windows
-    
-    func showRegisterApp() {
-        
-        licenseWindowController.showWindow(self)
-        licenseWindowController.registrationEventHandler = registerApplication
-        licenseWindowController.displayLicenseInformation(licenseProvider.currentLicense)
-    }
-    
-    func unlockApp() {
-        
-        licenseWindowController.close()
-        window.makeKeyAndOrderFront(self)
-    }
-
-    
     // MARK: License changes
     
     func licenseDidChange(notification: NSNotification) {
@@ -120,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 // Change to this state is possible if unregistering while
                 // trial isn't up, yet.
                 return
-
+                
             case .Registered(_):
                 displayThankYouAlert()
                 unlockApp()
@@ -132,6 +125,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 return
             }
         }
+    }
+    
+    
+    // MARK: Show windows
+    
+    func showRegisterApp() {
+        
+        licenseWindowController.showWindow(self)
+        licenseWindowController.registrationEventHandler = registerApplication
+        licenseWindowController.displayLicenseInformation(licenseProvider.currentLicense)
+        
+        if let trial = trialProvider.currentTrialWithClock(clock) where !trial.ended {
+            
+            licenseWindowController.displayTrialDaysLeft(trial.daysLeft)
+        } else {
+            
+            licenseWindowController.displayTrialUp()
+        }
+    }
+    
+    func unlockApp() {
+        
+        licenseWindowController.close()
+        window.makeKeyAndOrderFront(self)
     }
     
     func lockApp() {
@@ -148,10 +165,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Alerts.thankYouAlert()?.runModal()
     }
     
-    
     func displayTrialDaysLeftAlert(daysLeft: Days) {
         
-        let numberOfDaysLeft = Int(daysLeft.amount)
+        let numberOfDaysLeft = daysLeft.userFacingAmount
         Alerts.trialDaysLeftAlert(numberOfDaysLeft)?.runModal()
     }
     

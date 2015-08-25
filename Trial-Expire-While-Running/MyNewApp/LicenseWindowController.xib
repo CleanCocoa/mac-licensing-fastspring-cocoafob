@@ -85,8 +85,8 @@
                             <action selector="register:" target="wB9-IV-BIA" id="nbX-qZ-i77"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWC-pd-zEg">
-                        <rect key="frame" x="143" y="233" width="103" height="17"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GWC-pd-zEg">
+                        <rect key="frame" x="151" y="233" width="88" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="trial days left" id="fze-md-1TR">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
