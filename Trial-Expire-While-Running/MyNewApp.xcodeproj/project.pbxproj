@@ -29,6 +29,7 @@
 		5070B9BE1B8C5AB40036A86C /* TrialWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9BD1B8C5AB40036A86C /* TrialWriterTests.swift */; };
 		5070B9C01B8C606D0036A86C /* TrialPeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9BF1B8C606D0036A86C /* TrialPeriodTests.swift */; };
 		5070B9C21B8C63700036A86C /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C11B8C63700036A86C /* Days.swift */; };
+		5070B9C41B8C6F3E0036A86C /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C31B8C6F3E0036A86C /* Clock.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -107,6 +108,7 @@
 		5070B9BD1B8C5AB40036A86C /* TrialWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialWriterTests.swift; sourceTree = "<group>"; };
 		5070B9BF1B8C606D0036A86C /* TrialPeriodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialPeriodTests.swift; sourceTree = "<group>"; };
 		5070B9C11B8C63700036A86C /* Days.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
+		5070B9C31B8C6F3E0036A86C /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				50E62FC61B8B6F690047FC6A /* Trial.swift */,
+				5070B9C31B8C6F3E0036A86C /* Clock.swift */,
 				5070B9C11B8C63700036A86C /* Days.swift */,
 				5070B9B91B8C58A60036A86C /* TrialPeriod.swift */,
 				5070B9B51B8C50BB0036A86C /* TrialProvider.swift */,
@@ -532,6 +535,7 @@
 				50E75DDF1B82275D0092CD19 /* FsprgLicense.m in Sources */,
 				50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */,
 				506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */,
+				5070B9C41B8C6F3E0036A86C /* Clock.swift in Sources */,
 				50E75D9D1B81EE090092CD19 /* CFobError.m in Sources */,
 				50E75DDA1B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m in Sources */,
 				50E75D9E1B81EE090092CD19 /* CFobLicGenerator.m in Sources */,

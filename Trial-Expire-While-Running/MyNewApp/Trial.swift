@@ -1,19 +1,5 @@
 import Foundation
 
-public protocol KnowsTimeAndDate {
-    
-    func now() -> NSDate
-}
-
-public class Clock: KnowsTimeAndDate {
-    
-    public init() { }
-    
-    public func now() -> NSDate {
-        return NSDate()
-    }
-}
-
 public struct Trial {
     
     public let trialPeriod: TrialPeriod
