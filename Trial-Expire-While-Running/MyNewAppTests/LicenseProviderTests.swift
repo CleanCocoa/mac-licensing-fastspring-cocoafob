@@ -7,6 +7,7 @@ class LicenseProviderTests: XCTestCase {
     var licenseProvider: LicenseProvider!
     
     let trialProviderDouble = TestTrialProvider()
+    let clockDouble = TestClock()
     let userDefaultsDouble: TestUserDefaults = TestUserDefaults()
 
     override func setUp() {
@@ -17,7 +18,7 @@ class LicenseProviderTests: XCTestCase {
         // its property is lazily loaded during test cases later.
         UserDefaults.setSharedInstance(UserDefaults(userDefaults: userDefaultsDouble))
         
-        licenseProvider = LicenseProvider(trialProvider: trialProviderDouble)
+        licenseProvider = LicenseProvider(trialProvider: trialProviderDouble, clock: clockDouble)
     }
     
     override func tearDown() {
@@ -67,7 +68,9 @@ class LicenseProviderTests: XCTestCase {
     
     func testObtainingCurrentLicense_WithEmptyDefaults_ActiveTrialPeriod_ReturnsOnTrial() {
         
+        let endDate = NSDate()
         let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: NSDate())
+        clockDouble.testDate = endDate.dateByAddingTimeInterval(-1000)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
         let licenseInfo = licenseProvider.currentLicense
@@ -76,6 +79,24 @@ class LicenseProviderTests: XCTestCase {
         case let .OnTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
         default: XCTFail("expected to be OnTrial")
         }
+    }
+    
+    func testObtainingCurrentLicense_WithEmptyDefaults_PassedTrialPeriod_ReturnsTrialUp() {
+        
+        let endDate = NSDate()
+        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: NSDate())
+        clockDouble.testDate = endDate.dateByAddingTimeInterval(100)
+        trialProviderDouble.testTrialPeriod = expectedPeriod
+        
+        let licenseInfo = licenseProvider.currentLicense
+        let trialIsUp: Bool
+        
+        switch licenseInfo {
+        case .TrialUp: trialIsUp = true
+        default: trialIsUp = false
+        }
+        
+        XCTAssert(trialIsUp)
     }
     
     
@@ -146,6 +167,15 @@ class LicenseProviderTests: XCTestCase {
         override var currentTrialPeriod: TrialPeriod? {
             
             return testTrialPeriod
+        }
+    }
+    
+    class TestClock: KnowsTimeAndDate {
+        
+        var testDate: NSDate!
+        func now() -> NSDate {
+            
+            return testDate
         }
     }
 }

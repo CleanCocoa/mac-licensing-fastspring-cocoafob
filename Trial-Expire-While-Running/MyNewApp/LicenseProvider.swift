@@ -3,10 +3,12 @@ import Foundation
 public class LicenseProvider {
     
     let trialProvider: TrialProvider
+    let clock: KnowsTimeAndDate
     
-    public init(trialProvider: TrialProvider) {
+    public init(trialProvider: TrialProvider, clock: KnowsTimeAndDate) {
         
         self.trialProvider = trialProvider
+        self.clock = clock
     }
     
     lazy var userDefaults: NSUserDefaults = UserDefaults.standardUserDefaults()
@@ -18,7 +20,7 @@ public class LicenseProvider {
             return .Registered(license)
         }
         
-        if let trial = self.trial() {
+        if let trial = self.trial() where !trial.ended(clock) {
             
             return .OnTrial(trial)
         }
