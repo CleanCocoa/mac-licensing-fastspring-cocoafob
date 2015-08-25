@@ -7,13 +7,24 @@ extension LicenseInformation {
     public func userInfo() -> UserInfo {
         
         switch self {
-        case .Unregistered:
-            return ["registered" : false]
+        case let .OnTrial(trialPeriod):
+            return [
+                "registered" : false,
+                "on_trial" : true,
+                "trial_start_date" : trialPeriod.startDate,
+                "trial_end_date" : trialPeriod.endDate,
+            ]
         case let .Registered(license):
             return [
                 "registered" : true,
+                "on_trial" : false,
                 "name" : license.name,
                 "licenseCode" : license.licenseCode
+            ]
+        case .TrialUp:
+            return [
+                "registered" : false,
+                "on_trial" : false
             ]
         }
     }
@@ -22,8 +33,18 @@ extension LicenseInformation {
         
         if let registered = userInfo["registered"] as? Bool {
             
-            if !registered {
-                return .Unregistered
+            if let onTrial = userInfo["on_trial"] as? Bool where !registered {
+                
+                if !onTrial {
+                    return .TrialUp
+                }
+                
+                if let startDate = userInfo["trial_start_date"] as? NSDate,
+                    endDate = userInfo["trial_end_date"] as? NSDate
+                    where onTrial == true {
+                    
+                    return .OnTrial(TrialPeriod(startDate: startDate, endDate: endDate))
+                }
             }
             
             if let name = userInfo["name"] as? String, licenseCode = userInfo["licenseCode"] as? String {

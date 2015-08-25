@@ -49,8 +49,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func launchAppOrShowLicenseWindow() {
         
         switch licenseProvider.currentLicense {
-        case .Unregistered:
+        case .TrialUp:
             showRegisterApp()
+            
+        case let .OnTrial(trialPeriod):
+            let clock = Clock()
+            let trialDaysLeft = trialPeriod.daysLeft(clock)
+            displayTrialDaysLeftAlert(trialDaysLeft)
+            
+            unlockApp()
+            
         case let .Registered(license):
             
             if licenseIsInvalid(license) {
@@ -67,11 +75,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func licenseIsInvalid(license: License) -> Bool {
         
         return !LicenseVerifier().licenseCodeIsValid(license.licenseCode, forName: license.name)
-    }
-    
-    func displayInvalidLicenseAlert() {
-        
-        Alerts.invalidLicenseCodeAlert()?.runModal()
     }
     
     
@@ -98,21 +101,50 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let userInfo = notification.userInfo, licenseInformation = LicenseInformation.fromUserInfo(userInfo) {
             
             switch licenseInformation {
+            case .OnTrial(_):
+                // Change to this state is possible if unregistering while
+                // trial isn't up, yet.
+                return
+
             case .Registered(_):
                 displayThankYouAlert()
                 unlockApp()
                 
-            case .Unregistered:
-                // If you support un-registering, handle it here
+            case .TrialUp:
+                lockApp()
+                showRegisterApp()
+                
                 return
             }
         }
     }
     
+    func lockApp() {
+        
+        // Disable the main application somehow.
+        window.close()
+    }
+    
+    
+    // MARK: Alerts
+    
     func displayThankYouAlert() {
         
         Alerts.thankYouAlert()?.runModal()
     }
+    
+    
+    func displayTrialDaysLeftAlert(daysLeft: Days) {
+        
+        let numberOfDaysLeft = Int(daysLeft.amount)
+        Alerts.trialDaysLeftAlert(numberOfDaysLeft)?.runModal()
+    }
+    
+    func displayInvalidLicenseAlert() {
+        
+        Alerts.invalidLicenseCodeAlert()?.runModal()
+    }
+    
     
     
     // MARK: UI Interactions

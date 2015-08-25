@@ -23,9 +23,29 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         broadcaster.notificationCenter = notificationCenterDouble
     }
     
-    func testBroadcast_Unregistered_PostsNotification() {
+    func testBroadcast_TrialUp_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.Unregistered
+        let licenseInfo = LicenseInformation.TrialUp
+        
+        broadcaster.broadcast(licenseInfo)
+        
+        let values = notificationCenterDouble.didPostNotificationNameWith
+        XCTAssert(hasValue(values))
+        
+        if let values = values {
+            XCTAssertEqual(values.name, Events.LicenseChanged.rawValue)
+            XCTAssert(values.object === broadcaster)
+            
+            XCTAssert(hasValue(values.userInfo))
+            if let userInfo = values.userInfo {
+                XCTAssert(userInfo == licenseInfo.userInfo())
+            }
+        }
+    }
+    
+    func testBroadcast_OnTrial_PostsNotification() {
+        
+        let licenseInfo = LicenseInformation.OnTrial(TrialPeriod(startDate: NSDate(), endDate: NSDate()))
         
         broadcaster.broadcast(licenseInfo)
         

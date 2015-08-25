@@ -48,18 +48,18 @@ class LicenseProviderTests: XCTestCase {
         }
     }
 
-    func testObtainingCurrentLicense_WithEmptyDefaults_ReturnsUnregistered() {
+    func testObtainingCurrentLicense_WithEmptyDefaults_ReturnsOnTrial() {
         
         let licenseInfo = licenseProvider.currentLicense
         
-        let isUnregistered: Bool
+        let isOnTrial: Bool
         
         switch licenseInfo {
-        case .Unregistered: isUnregistered = true
-        default: isUnregistered = false
+        case .OnTrial(_): isOnTrial = true
+        default: isOnTrial = false
         }
         
-        XCTAssert(isUnregistered)
+        XCTAssert(isOnTrial)
     }
     
     

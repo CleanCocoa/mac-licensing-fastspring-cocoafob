@@ -25,4 +25,16 @@ class Alerts {
         
         return alert
     }
+    
+    static func trialDaysLeftAlert(daysLeft: Int) -> NSAlert? {
+        
+        if isRunningTests { return nil }
+        
+        let alert = NSAlert()
+        alert.alertStyle = .InformationalAlertStyle
+        alert.messageText = "You have \(daysLeft) days left on trial!"
+        alert.addButtonWithTitle("Continue")
+        
+        return alert
+    }
 }

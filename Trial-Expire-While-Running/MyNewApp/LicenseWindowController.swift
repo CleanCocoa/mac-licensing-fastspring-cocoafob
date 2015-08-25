@@ -26,17 +26,19 @@ public class LicenseWindowController: NSWindowController {
     
     public func licenseChanged(licenseInformation: LicenseInformation) {
         
+        // TODO subscribe to events
+        
         switch licenseInformation {
-        case .Unregistered: buyButton.enabled = true
         case .Registered(_): buyButton.enabled = false
+        default: buyButton.enabled = true
         }
     }
     
     public func displayLicenseInformation(licenseInformation: LicenseInformation) {
         
         switch licenseInformation {
-        case .Unregistered: existingLicenseViewController.displayEmptyForm()
         case let .Registered(license): existingLicenseViewController.displayLicense(license)
+        default: existingLicenseViewController.displayEmptyForm()
         }
     }
     

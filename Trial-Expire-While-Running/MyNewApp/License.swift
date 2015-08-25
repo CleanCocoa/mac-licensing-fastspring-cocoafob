@@ -28,6 +28,7 @@ public func ==(lhs: License, rhs: License) -> Bool {
 }
 
 public enum LicenseInformation {
-    case Unregistered
     case Registered(License)
+    case OnTrial(TrialPeriod)
+    case TrialUp
 }

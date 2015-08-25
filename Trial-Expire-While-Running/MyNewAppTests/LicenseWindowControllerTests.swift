@@ -91,9 +91,19 @@ class LicenseWindowControllerTests: XCTestCase {
         XCTAssert(controller.buyButton?.enabled == false)
     }
     
-    func testLicenseChange_ToUnregistered_EnablesBuyButton() {
+    func testLicenseChange_ToTrialUp_EnablesBuyButton() {
         
-        let licenseInfo = LicenseInformation.Unregistered
+        let licenseInfo = LicenseInformation.TrialUp
+        controller.buyButton?.enabled = false
+        
+        controller.licenseChanged(licenseInfo)
+        
+        XCTAssert(controller.buyButton?.enabled == true)
+    }
+    
+    func testLicenseChange_ToOnTrial_EnablesBuyButton() {
+        
+        let licenseInfo = LicenseInformation.OnTrial(TrialPeriod(startDate: NSDate(), endDate: NSDate()))
         controller.buyButton?.enabled = false
         
         controller.licenseChanged(licenseInfo)
@@ -117,11 +127,21 @@ class LicenseWindowControllerTests: XCTestCase {
     
     // MARK: Displaying License Info
     
-    func testDisplayLicenseInfo_Unregistered_DisplaysEmptyForm() {
+    func testDisplayLicenseInfo_TrialUp_DisplaysEmptyForm() {
         
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(.Unregistered)
+        controller.displayLicenseInformation(.TrialUp)
+        
+        XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
+        XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
+    }
+    
+    func testDisplayLicenseInfo_OnTrial_DisplaysEmptyForm() {
+        
+        controller.existingLicenseViewController = existingLicenseVCDouble
+        
+        controller.displayLicenseInformation(.OnTrial(TrialPeriod(startDate: NSDate(), endDate: NSDate())))
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
@@ -148,7 +168,7 @@ class LicenseWindowControllerTests: XCTestCase {
     
     class TestLicenseProvider: LicenseProvider {
         
-        var testCurrentLicense = LicenseInformation.Unregistered
+        var testCurrentLicense = LicenseInformation.TrialUp
         override var currentLicense: LicenseInformation {
             return testCurrentLicense
         }

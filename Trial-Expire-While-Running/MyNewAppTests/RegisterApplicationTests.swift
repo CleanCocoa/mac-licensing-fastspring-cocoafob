@@ -81,10 +81,10 @@ class RegisterApplicationTests: XCTestCase {
         if let licenseInfo = broadcasterDouble.didBroadcastWith {
             
             switch licenseInfo {
-            case .Unregistered: XCTFail("should be registered")
             case let .Registered(license):
                 XCTAssertEqual(license.name, name)
                 XCTAssertEqual(license.licenseCode, licenseCode)
+            default: XCTFail("should be registered")
             }
         }
     }

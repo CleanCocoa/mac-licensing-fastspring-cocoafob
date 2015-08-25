@@ -32,6 +32,7 @@
 		50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */; };
 		50C9B0D51B7F7E3D002C5449 /* LicenseProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */; };
 		50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0CF1B7F7B7C002C5449 /* Optional.swift */; };
+		50E62FC71B8B6F690047FC6A /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E62FC61B8B6F690047FC6A /* Trial.swift */; };
 		50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */; };
 		50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */; };
 		50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7C1B81D9990092CD19 /* Helpers.swift */; };
@@ -106,6 +107,7 @@
 		50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseProviderTests.swift; sourceTree = "<group>"; };
+		50E62FC61B8B6F690047FC6A /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseViewController.swift; sourceTree = "<group>"; };
 		50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWindowControllerTests.swift; sourceTree = "<group>"; };
 		50E75D7C1B81D9990092CD19 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				506DA9371B8340C9007B110F /* Store.swift */,
 				506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */,
 				506AB3FA1B84AEA10072CEC8 /* Me.swift */,
+				50E62FC51B8B6F200047FC6A /* Trial */,
 				50E75DC11B821D590092CD19 /* License */,
 				50E75D801B81E8810092CD19 /* User Interface */,
 				50C9B0A01B7F6DAC002C5449 /* Supporting Files */,
@@ -275,6 +278,14 @@
 			);
 			name = Shared;
 			path = ../Shared;
+			sourceTree = "<group>";
+		};
+		50E62FC51B8B6F200047FC6A /* Trial */ = {
+			isa = PBXGroup;
+			children = (
+				50E62FC61B8B6F690047FC6A /* Trial.swift */,
+			);
+			name = Trial;
 			sourceTree = "<group>";
 		};
 		50E75D801B81E8810092CD19 /* User Interface */ = {
@@ -488,6 +499,7 @@
 				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
 				50E75DA31B81EE090092CD19 /* NSString-Base64Extensions.m in Sources */,
+				50E62FC71B8B6F690047FC6A /* Trial.swift in Sources */,
 				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
 				50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */,
 				50E75DBC1B82119B0092CD19 /* LicenseChangeBroadcaster.swift in Sources */,
