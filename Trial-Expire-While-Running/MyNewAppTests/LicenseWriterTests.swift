@@ -10,7 +10,7 @@ class LicenseWriterTests: XCTestCase {
         
         super.setUp()
         
-        // No need to set the double on licenseProvider because
+        // No need to set the double on LicenseWriter because
         // its property is lazily loaded during test cases later.
         UserDefaults.setSharedInstance(UserDefaults(userDefaults: userDefaultsDouble))
     }

@@ -1,15 +1,18 @@
 import Cocoa
 
 let isRunningTests = NSClassFromString("XCTestCase") != nil
+let initialTrialDuration = Days(5)
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
     lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
     lazy var trialProvider: TrialProvider = TrialProvider()
     lazy var licenseProvider: LicenseProvider = LicenseProvider(trialProvider: self.trialProvider)
+    
+    // User Interface
+    @IBOutlet weak var window: NSWindow!
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
     // Use Cases / Services
@@ -25,9 +28,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
+        prepareTrialOnFirstLaunch()
         observeLicenseChanges()
         prepareLicenseWindowController()
         launchAppOrShowLicenseWindow()
+    }
+    
+    func prepareTrialOnFirstLaunch() {
+        
+        if hasValue(trialProvider.currentTrialPeriod) {
+            return
+        }
+        
+        let trialPeriod = TrialPeriod(numberOfDays: initialTrialDuration, clock: Clock())
+        TrialWriter().storeTrial(trialPeriod)
     }
     
     func observeLicenseChanges() {

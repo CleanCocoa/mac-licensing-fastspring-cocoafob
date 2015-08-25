@@ -25,6 +25,8 @@
 		5070B9B61B8C50BB0036A86C /* TrialProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B51B8C50BB0036A86C /* TrialProvider.swift */; };
 		5070B9B81B8C50C90036A86C /* TrialProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B71B8C50C90036A86C /* TrialProviderTests.swift */; };
 		5070B9BA1B8C58A60036A86C /* TrialPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B91B8C58A60036A86C /* TrialPeriod.swift */; };
+		5070B9BC1B8C5A2C0036A86C /* TrialWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9BB1B8C5A2C0036A86C /* TrialWriter.swift */; };
+		5070B9BE1B8C5AB40036A86C /* TrialWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9BD1B8C5AB40036A86C /* TrialWriterTests.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -99,6 +101,8 @@
 		5070B9B51B8C50BB0036A86C /* TrialProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialProvider.swift; sourceTree = "<group>"; };
 		5070B9B71B8C50C90036A86C /* TrialProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialProviderTests.swift; sourceTree = "<group>"; };
 		5070B9B91B8C58A60036A86C /* TrialPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialPeriod.swift; sourceTree = "<group>"; };
+		5070B9BB1B8C5A2C0036A86C /* TrialWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialWriter.swift; sourceTree = "<group>"; };
+		5070B9BD1B8C5AB40036A86C /* TrialWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialWriterTests.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 				50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */,
 				50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */,
 				5070B9B71B8C50C90036A86C /* TrialProviderTests.swift */,
+				5070B9BD1B8C5AB40036A86C /* TrialWriterTests.swift */,
 				50E75D7C1B81D9990092CD19 /* Helpers.swift */,
 				50337B951B85B4490056FC3B /* Fixtures */,
 				50C9B0B11B7F6DAC002C5449 /* Supporting Files */,
@@ -293,6 +298,7 @@
 				50E62FC61B8B6F690047FC6A /* Trial.swift */,
 				5070B9B91B8C58A60036A86C /* TrialPeriod.swift */,
 				5070B9B51B8C50BB0036A86C /* TrialProvider.swift */,
+				5070B9BB1B8C5A2C0036A86C /* TrialWriter.swift */,
 			);
 			name = Trial;
 			sourceTree = "<group>";
@@ -502,6 +508,7 @@
 				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
 				50E75DA11B81EE090092CD19 /* encoder.c in Sources */,
 				506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */,
+				5070B9BC1B8C5A2C0036A86C /* TrialWriter.swift in Sources */,
 				505D9DEE1B89E47600D412F1 /* License.swift in Sources */,
 				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
 				50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */,
@@ -548,6 +555,7 @@
 				50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */,
 				50E75DC01B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift in Sources */,
 				50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */,
+				5070B9BE1B8C5AB40036A86C /* TrialWriterTests.swift in Sources */,
 				5070B9B81B8C50C90036A86C /* TrialProviderTests.swift in Sources */,
 				506AB4011B84B0790072CEC8 /* StoreTests.swift in Sources */,
 			);

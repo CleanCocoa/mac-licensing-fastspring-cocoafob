@@ -40,6 +40,8 @@ public protocol KnowsTimeAndDate {
 
 public class Clock: KnowsTimeAndDate {
     
+    public init() { }
+    
     public func now() -> NSDate {
         return NSDate()
     }
@@ -50,11 +52,17 @@ public struct Trial {
     public let trialPeriod: TrialPeriod
     public let clock: KnowsTimeAndDate
     
-    var daysLeft: Int {
+    public init(trialPeriod: TrialPeriod, clock: KnowsTimeAndDate) {
+        
+        self.trialPeriod = trialPeriod
+        self.clock = clock
+    }
+    
+    public var daysLeft: Int {
         return Int(trialPeriod.daysLeft(clock).amount)
     }
     
-    var ended: Bool {
+    public var ended: Bool {
         return trialPeriod.ended(clock)
     }
 }
