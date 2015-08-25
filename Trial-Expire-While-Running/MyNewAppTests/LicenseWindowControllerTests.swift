@@ -39,6 +39,16 @@ class LicenseWindowControllerTests: XCTestCase {
         
         XCTAssert(controller.buyButton?.enabled == true)
     }
+    
+    func testTrialDurationLabel_IsConnected() {
+        
+        XCTAssert(hasValue(controller.trialDaysLeftTextField))
+    }
+    
+    func testTrialIsUpLabel_IsConnected() {
+        
+        XCTAssert(hasValue(controller.trialUpTextField))
+    }
 
     func testExistingLicenseVC_IsConnected() {
     
@@ -161,6 +171,44 @@ class LicenseWindowControllerTests: XCTestCase {
             
             XCTAssertEqual(displayedLicense, license)
         }
+    }
+    
+    
+    // MARK: Displaying trial
+    
+    func testDisplayTrialUp_HidesDaysLeftLabel() {
+        
+        controller.displayTrialUp()
+        
+        XCTAssert(controller.trialDaysLeftTextField.hidden)
+    }
+    
+    func testDisplayTrialUp_ShowsTrialUpLabel() {
+        
+        controller.displayTrialUp()
+        
+        XCTAssertFalse(controller.trialUpTextField.hidden)
+    }
+    
+    func testDisplayTrialDays_To5_ChangesLabelText() {
+        
+        controller.displayTrialDaysLeft(5)
+        
+        XCTAssert(controller.trialDaysLeftTextField.stringValue.hasPrefix("5 "))
+    }
+    
+    func testDisplayTrialDays_ShowsDaysLeftLabel() {
+        
+        controller.displayTrialDaysLeft(1)
+        
+        XCTAssertFalse(controller.trialDaysLeftTextField.hidden)
+    }
+    
+    func testDisplayTrialDays_HidesTrialUpLabel() {
+        
+        controller.displayTrialDaysLeft(9)
+        
+        XCTAssert(controller.trialUpTextField.hidden)
     }
     
     

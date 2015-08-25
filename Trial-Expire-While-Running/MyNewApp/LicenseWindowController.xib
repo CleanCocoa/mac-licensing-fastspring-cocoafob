@@ -8,6 +8,8 @@
             <connections>
                 <outlet property="buyButton" destination="j6x-P8-587" id="Vk4-Fo-4sl"/>
                 <outlet property="existingLicenseViewController" destination="wB9-IV-BIA" id="TBk-82-3ub"/>
+                <outlet property="trialDaysLeftTextField" destination="GWC-pd-zEg" id="3Oo-H3-Ouw"/>
+                <outlet property="trialUpTextField" destination="Bcy-fb-YXR" id="t91-2k-tFZ"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -17,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="388" height="265"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="388" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -83,8 +85,25 @@
                             <action selector="register:" target="wB9-IV-BIA" id="nbX-qZ-i77"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWC-pd-zEg">
+                        <rect key="frame" x="143" y="233" width="103" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="trial days left" id="fze-md-1TR">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bcy-fb-YXR">
+                        <rect key="frame" x="143" y="233" width="109" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Trial has expired" id="CQg-oU-9E0">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="centerX" secondItem="GWC-pd-zEg" secondAttribute="centerX" constant="-0.5" id="6ds-os-5nY"/>
                     <constraint firstAttribute="trailing" secondItem="u1l-UB-a2p" secondAttribute="trailing" constant="40" id="7BE-H2-OWK"/>
                     <constraint firstItem="g5f-4D-yNK" firstAttribute="leading" secondItem="Cxa-4Y-4Tu" secondAttribute="trailing" constant="8" id="7nv-NH-ZSY"/>
                     <constraint firstItem="mOE-Ed-uYF" firstAttribute="top" secondItem="g5f-4D-yNK" secondAttribute="bottom" constant="10" id="8sC-eY-LJd"/>
@@ -95,6 +114,8 @@
                     <constraint firstItem="g5f-4D-yNK" firstAttribute="baseline" secondItem="Cxa-4Y-4Tu" secondAttribute="baseline" id="L3N-6T-RZD"/>
                     <constraint firstItem="Cxa-4Y-4Tu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Leb-tz-UeC"/>
                     <constraint firstItem="pbM-Kg-vbe" firstAttribute="trailing" secondItem="Cxa-4Y-4Tu" secondAttribute="trailing" id="Pl2-7m-haX"/>
+                    <constraint firstAttribute="centerX" secondItem="Bcy-fb-YXR" secondAttribute="centerX" constant="-3.5" id="RRm-7E-Zu9"/>
+                    <constraint firstItem="j6x-P8-587" firstAttribute="top" secondItem="GWC-pd-zEg" secondAttribute="bottom" constant="8" id="ScE-kA-mTI"/>
                     <constraint firstItem="mOE-Ed-uYF" firstAttribute="leading" secondItem="pbM-Kg-vbe" secondAttribute="trailing" constant="8" id="WcI-EJ-HAC"/>
                     <constraint firstItem="pbM-Kg-vbe" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" priority="800" constant="20" id="XAA-QK-mrn"/>
                     <constraint firstItem="pbM-Kg-vbe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="cmb-C9-GiH"/>
@@ -102,6 +123,7 @@
                     <constraint firstAttribute="centerX" secondItem="j6x-P8-587" secondAttribute="centerX" constant="-1" id="gyQ-OY-Cbc"/>
                     <constraint firstAttribute="bottom" secondItem="GVD-Bh-qbk" secondAttribute="bottom" constant="20" id="hzp-KQ-BjD"/>
                     <constraint firstItem="g5f-4D-yNK" firstAttribute="top" secondItem="u1l-UB-a2p" secondAttribute="bottom" constant="16" id="knf-Rt-2qE"/>
+                    <constraint firstItem="j6x-P8-587" firstAttribute="top" secondItem="Bcy-fb-YXR" secondAttribute="bottom" constant="8" id="lJk-IH-nLD"/>
                     <constraint firstItem="pbM-Kg-vbe" firstAttribute="top" secondItem="Cxa-4Y-4Tu" secondAttribute="bottom" constant="15" id="nwA-rW-EZc"/>
                     <constraint firstItem="mOE-Ed-uYF" firstAttribute="trailing" secondItem="GVD-Bh-qbk" secondAttribute="trailing" id="q6v-UT-TkE"/>
                     <constraint firstItem="u1l-UB-a2p" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="40" id="qoY-IT-dpT"/>
