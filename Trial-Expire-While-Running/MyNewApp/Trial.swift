@@ -63,6 +63,14 @@ public struct TrialPeriod {
         
         return Days(daysUntil)
     }
+    
+    public enum UserDefaultsKeys: String, Printable {
+        
+        case StartDate = "trial_starting"
+        case EndDate = "trial_ending"
+        
+        public var description: String { return rawValue }
+    }
 }
 
 public protocol KnowsTimeAndDate {

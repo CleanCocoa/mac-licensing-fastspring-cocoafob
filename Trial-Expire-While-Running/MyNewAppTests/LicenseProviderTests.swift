@@ -24,10 +24,10 @@ class LicenseProviderTests: XCTestCase {
         super.tearDown()
     }
 
-    func provideLicenseDefaults(name: String, key: String) {
+    func provideLicenseDefaults(name: String, licenseCode: String) {
         userDefaultsDouble.testValues = [
             License.UserDefaultsKeys.Name.rawValue : name,
-            License.UserDefaultsKeys.LicenseCode.rawValue : key
+            License.UserDefaultsKeys.LicenseCode.rawValue : licenseCode
         ]
     }
     
@@ -67,7 +67,7 @@ class LicenseProviderTests: XCTestCase {
     
     func testObtainingCurrentLicense_WithDefaultsValues_QueriesDefaultsForNameAndKey() {
         
-        provideLicenseDefaults("irrelevant name", key: "irrelevant key")
+        provideLicenseDefaults("irrelevant name", licenseCode: "irrelevant key")
         
         _ = licenseProvider.currentLicense
         
@@ -85,7 +85,7 @@ class LicenseProviderTests: XCTestCase {
 
         let name = "a name"
         let key = "a license key"
-        provideLicenseDefaults(name, key: key)
+        provideLicenseDefaults(name, licenseCode: key)
         
         let licenseInfo = licenseProvider.currentLicense
         
