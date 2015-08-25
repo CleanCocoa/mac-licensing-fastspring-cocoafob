@@ -26,7 +26,7 @@ public struct Trial {
     }
     
     public var daysLeft: Int {
-        return Int(trialPeriod.daysLeft(clock).amount)
+        return trialPeriod.daysLeft(clock).userFacingAmount
     }
     
     public var ended: Bool {

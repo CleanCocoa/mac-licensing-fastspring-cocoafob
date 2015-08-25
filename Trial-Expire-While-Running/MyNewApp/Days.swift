@@ -12,6 +12,12 @@ public struct Days {
     
     public let amount: Double
     
+    /// Rounded to the next integer.
+    public var userFacingAmount: Int {
+        
+        return Int(ceil(amount))
+    }
+    
     public init(_ anAmount: Double) {
         amount = anAmount
     }
