@@ -214,14 +214,6 @@ class LicenseWindowControllerTests: XCTestCase {
     
     // MARK: -
     
-    class TestLicenseProvider: LicenseProvider {
-        
-        var testCurrentLicense = LicenseInformation.TrialUp
-        override var currentLicense: LicenseInformation {
-            return testCurrentLicense
-        }
-    }
-    
     class TestHandler: HandlesRegistering {
         
         func register(name: String, licenseCode: String) {
