@@ -1,3 +1,7 @@
+// Copyright (c) 2015 Christian Tietze
+// 
+// See the file LICENSE for copying permission.
+
 import Foundation
 
 public class StoreInfoReader {
