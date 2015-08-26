@@ -8,9 +8,11 @@ typealias CancelableDispatchBlock = (cancel: Bool) -> Void
 
 func dispatchCancelableBlockAtDate(date: NSDate, block: dispatch_block_t) -> CancelableDispatchBlock? {
     
+    // Use two pointers for the same block handle to make 
+    // the block reference itself.
     var cancelableBlock: CancelableDispatchBlock? = nil
     
-    var delayBlock: CancelableDispatchBlock = { cancel in
+    let delayBlock: CancelableDispatchBlock = { cancel in
         
         if !cancel {
             dispatch_async(dispatch_get_main_queue(), block)

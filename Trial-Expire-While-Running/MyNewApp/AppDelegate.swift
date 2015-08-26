@@ -157,8 +157,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 displayTrialUpAlert()
                 lockApp()
                 showRegisterApp()
-                
-                return
             }
         }
     }
