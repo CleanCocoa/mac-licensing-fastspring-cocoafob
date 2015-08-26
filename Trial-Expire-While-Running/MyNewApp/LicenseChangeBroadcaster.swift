@@ -71,11 +71,6 @@ public class LicenseChangeBroadcaster {
         self.notificationCenter = notificationCenter
     }
     
-    public convenience init() {
-        
-        self.init(notificationCenter: NSNotificationCenter.defaultCenter())
-    }
-    
     public func broadcast(licenseInformation: LicenseInformation) {
         
         notificationCenter.postNotificationName(Events.LicenseChanged.rawValue, object: self, userInfo: licenseInformation.userInfo())

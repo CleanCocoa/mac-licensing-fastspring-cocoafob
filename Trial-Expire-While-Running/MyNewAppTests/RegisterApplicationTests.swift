@@ -119,6 +119,11 @@ class RegisterApplicationTests: XCTestCase {
     
     class TestBroadcaster: LicenseChangeBroadcaster {
         
+        convenience init() {
+            
+            self.init(notificationCenter: NullNotificationCenter())
+        }
+        
         var didBroadcastWith: LicenseInformation?
         override func broadcast(licenseInformation: LicenseInformation) {
             
