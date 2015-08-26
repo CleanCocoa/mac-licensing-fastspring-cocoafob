@@ -7,6 +7,7 @@ let initialTrialDuration = Days(5)
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+    lazy var licenseChangeBroadcaster: LicenseChangeBroadcaster = LicenseChangeBroadcaster(notificationCenter: self.notificationCenter)
     
     // Use a clock replacement to see how the app start-up changes
 //    let clock = StaticClock(clockDate: NSDate(timeIntervalSinceNow: 10 /* days */ * 24 * 60 * 60))
@@ -20,8 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
     // Use Cases / Services
+    lazy var registerApplication: RegisterApplication = RegisterApplication(licenseVerifier: LicenseVerifier(), licenseWriter: LicenseWriter(), changeBroadcaster: self.licenseChangeBroadcaster)
     var purchaseLicense: PurchaseLicense!
-    var registerApplication = RegisterApplication()
     
     
     // MARK: Startup

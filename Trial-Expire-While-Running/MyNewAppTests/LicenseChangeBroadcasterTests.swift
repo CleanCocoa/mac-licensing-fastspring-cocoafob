@@ -13,14 +13,14 @@ private func ==(lhs: UserInfo, rhs: UserInfo) -> Bool {
 
 class LicenseChangeBroadcasterTests: XCTestCase {
 
-    let broadcaster = LicenseChangeBroadcaster()
+    var broadcaster: LicenseChangeBroadcaster!
     let notificationCenterDouble = TestNotificationCenter()
     
     override func setUp() {
         
         super.setUp()
         
-        broadcaster.notificationCenter = notificationCenterDouble
+        broadcaster = LicenseChangeBroadcaster(notificationCenter: notificationCenterDouble)
     }
     
     func testBroadcast_TrialUp_PostsNotification() {

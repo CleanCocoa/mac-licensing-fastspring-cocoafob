@@ -64,9 +64,17 @@ public enum Events: String {
 
 public class LicenseChangeBroadcaster {
     
-    public lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+    let notificationCenter: NSNotificationCenter
     
-    public init() { }
+    public init(notificationCenter: NSNotificationCenter) {
+        
+        self.notificationCenter = notificationCenter
+    }
+    
+    public convenience init() {
+        
+        self.init(notificationCenter: NSNotificationCenter.defaultCenter())
+    }
     
     public func broadcast(licenseInformation: LicenseInformation) {
         

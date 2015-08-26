@@ -6,11 +6,6 @@ public class RegisterApplication: HandlesRegistering {
     let licenseWriter: LicenseWriter
     let changeBroadcaster: LicenseChangeBroadcaster
     
-    public convenience init() {
-        
-        self.init(licenseVerifier: LicenseVerifier(), licenseWriter: LicenseWriter(), changeBroadcaster: LicenseChangeBroadcaster())
-    }
-    
     public init(licenseVerifier: LicenseVerifier, licenseWriter: LicenseWriter, changeBroadcaster: LicenseChangeBroadcaster) {
         
         self.licenseVerifier = licenseVerifier
