@@ -12,6 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Use a clock replacement to see how the app start-up changes
 //    let clock = StaticClock(clockDate: NSDate(timeIntervalSinceNow: 10 /* days */ * 24 * 60 * 60))
     let clock = Clock()
+    var trialTimer: TrialTimer?
     
     lazy var trialProvider: TrialProvider = TrialProvider()
     lazy var licenseProvider: LicenseProvider = LicenseProvider(trialProvider: self.trialProvider, clock: self.clock)
@@ -34,6 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         prepareTrialOnFirstLaunch()
+        startTrialTimer()
         observeLicenseChanges()
         prepareLicenseWindowController()
         launchAppOrShowLicenseWindow()
@@ -51,6 +53,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let trialPeriod = TrialPeriod(numberOfDays: initialTrialDuration, clock: clock)
         TrialWriter().storeTrial(trialPeriod)
+    }
+    
+    func startTrialTimer() {
+        
+        stopTrialTimer()
+        
+        if let trialPeriod = trialProvider.currentTrialPeriod {
+            
+            trialTimer = TrialTimer(trialEndDate: trialPeriod.endDate, licenseChangeBroadcaster: licenseChangeBroadcaster)
+            trialTimer!.start()
+        }
+    }
+    
+    func stopTrialTimer() {
+        
+        if let trialTimer = trialTimer where trialTimer.isRunning {
+            
+            trialTimer.stop()
+        }
+        
+        trialTimer = nil
     }
     
     func observeLicenseChanges() {
@@ -117,6 +140,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
             case .Registered(_):
                 displayThankYouAlert()
+                stopTrialTimer()
                 unlockApp()
                 
             case .TrialUp:

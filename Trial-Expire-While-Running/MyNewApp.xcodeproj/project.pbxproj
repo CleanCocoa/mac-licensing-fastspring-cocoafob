@@ -30,6 +30,7 @@
 		5070B9C01B8C606D0036A86C /* TrialPeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9BF1B8C606D0036A86C /* TrialPeriodTests.swift */; };
 		5070B9C21B8C63700036A86C /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C11B8C63700036A86C /* Days.swift */; };
 		5070B9C41B8C6F3E0036A86C /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C31B8C6F3E0036A86C /* Clock.swift */; };
+		5070B9C61B8C7E560036A86C /* TrialTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C51B8C7E560036A86C /* TrialTimer.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -109,6 +110,7 @@
 		5070B9BF1B8C606D0036A86C /* TrialPeriodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialPeriodTests.swift; sourceTree = "<group>"; };
 		5070B9C11B8C63700036A86C /* Days.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
 		5070B9C31B8C6F3E0036A86C /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		5070B9C51B8C7E560036A86C /* TrialTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialTimer.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				5070B9B91B8C58A60036A86C /* TrialPeriod.swift */,
 				5070B9B51B8C50BB0036A86C /* TrialProvider.swift */,
 				5070B9BB1B8C5A2C0036A86C /* TrialWriter.swift */,
+				5070B9C51B8C7E560036A86C /* TrialTimer.swift */,
 			);
 			name = Trial;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
 				50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */,
 				50E75DDD1B82275D0092CD19 /* FsprgFileDownload.m in Sources */,
+				5070B9C61B8C7E560036A86C /* TrialTimer.swift in Sources */,
 				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
 				5070B9BA1B8C58A60036A86C /* TrialPeriod.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
