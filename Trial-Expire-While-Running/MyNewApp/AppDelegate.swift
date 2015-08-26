@@ -9,7 +9,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     lazy var licenseChangeBroadcaster: LicenseChangeBroadcaster = LicenseChangeBroadcaster(notificationCenter: self.notificationCenter)
     
-    // Use a clock replacement to see how the app start-up changes
+    // Use a clock replacement to see how the app start-up changes.
 //    let clock = StaticClock(clockDate: NSDate(timeIntervalSinceNow: 10 /* days */ * 24 * 60 * 60))
     let clock = Clock()
     var trialTimer: TrialTimer?
@@ -144,6 +144,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 unlockApp()
                 
             case .TrialUp:
+                displayTrialUpAlert()
                 lockApp()
                 showRegisterApp()
                 
@@ -194,6 +195,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let numberOfDaysLeft = daysLeft.userFacingAmount
         Alerts.trialDaysLeftAlert(numberOfDaysLeft)?.runModal()
+    }
+    
+    func displayTrialUpAlert() {
+        
+        Alerts.trialUpAlert()?.runModal()
     }
     
     func displayInvalidLicenseAlert() {

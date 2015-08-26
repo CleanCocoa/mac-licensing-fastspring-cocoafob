@@ -37,4 +37,16 @@ class Alerts {
         
         return alert
     }
+    
+    static func trialUpAlert() -> NSAlert? {
+        
+        if isRunningTests { return nil }
+        
+        let alert = NSAlert()
+        alert.alertStyle = .InformationalAlertStyle
+        alert.messageText = "Your trial has expired."
+        alert.addButtonWithTitle("Register")
+        
+        return alert
+    }
 }
