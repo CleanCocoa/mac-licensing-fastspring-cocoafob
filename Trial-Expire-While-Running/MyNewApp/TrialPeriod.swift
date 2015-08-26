@@ -16,7 +16,10 @@ public struct TrialPeriod {
         startDate = clock.now()
         endDate = startDate.dateByAddingTimeInterval(daysLeft.timeInterval)
     }
-    
+}
+
+extension TrialPeriod {
+
     public func ended(clock: KnowsTimeAndDate) -> Bool {
         
         let now = clock.now()
@@ -31,6 +34,9 @@ public struct TrialPeriod {
         
         return Days(daysUntil)
     }
+}
+
+extension TrialPeriod {
     
     public enum UserDefaultsKeys: String, Printable {
         

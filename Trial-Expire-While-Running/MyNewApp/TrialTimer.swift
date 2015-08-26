@@ -6,7 +6,7 @@ func dispatchCancelableBlockAtDate(date: NSDate, block: dispatch_block_t) -> Can
     
     var cancelableBlock: CancelableDispatchBlock? = nil
     
-    var delayBlock: CancelableDispatchBlock = { (cancel: Bool) -> Void in
+    var delayBlock: CancelableDispatchBlock = { cancel in
         
         if !cancel {
             dispatch_async(dispatch_get_main_queue(), block)

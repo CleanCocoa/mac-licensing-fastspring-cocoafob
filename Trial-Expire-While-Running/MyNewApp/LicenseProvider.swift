@@ -20,9 +20,9 @@ public class LicenseProvider {
             return .Registered(license)
         }
         
-        if let trial = self.trial() where !trial.ended(clock) {
+        if let trial = self.trial() where !trial.ended {
             
-            return .OnTrial(trial)
+            return .OnTrial(trial.trialPeriod)
         }
         
         return .TrialUp
@@ -39,8 +39,13 @@ public class LicenseProvider {
         return .None
     }
 
-    func trial() -> TrialPeriod? {
+    func trial() -> Trial? {
         
-        return trialProvider.currentTrialPeriod
+        if let trialPeriod = trialProvider.currentTrialPeriod {
+            
+            return Trial(trialPeriod: trialPeriod, clock: clock)
+        }
+        
+        return .None
     }
 }
