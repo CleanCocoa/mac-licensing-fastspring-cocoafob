@@ -14,8 +14,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let clock = Clock()
     var trialTimer: TrialTimer?
     
-    lazy var trialProvider: TrialProvider = TrialProvider()
-    lazy var licenseProvider: LicenseProvider = LicenseProvider(trialProvider: self.trialProvider, clock: self.clock)
+    var trialProvider = TrialProvider()
+    var licenseProvider = LicenseProvider()
+    lazy var licenseInfoProvider: LicenseInformationProvider = LicenseInformationProvider(trialProvider: self.trialProvider, licenseProvider: self.licenseProvider, clock: self.clock)
     
     // User Interface
     @IBOutlet weak var window: NSWindow!
@@ -93,9 +94,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         licenseWindowController.purchasingEventHandler = purchaseLicense
     }
     
+    var currentLicenseInformation: LicenseInformation {
+        
+        return licenseInfoProvider.currentLicenseInformation
+    }
+    
     func launchAppOrShowLicenseWindow() {
         
-        switch licenseProvider.currentLicense {
+        switch currentLicenseInformation {
         case .TrialUp:
             
             showRegisterApp()
@@ -160,7 +166,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         licenseWindowController.showWindow(self)
         licenseWindowController.registrationEventHandler = registerApplication
-        licenseWindowController.displayLicenseInformation(licenseProvider.currentLicense)
+        licenseWindowController.displayLicenseInformation(currentLicenseInformation)
         
         if let trial = trialProvider.currentTrialWithClock(clock) where !trial.ended {
             

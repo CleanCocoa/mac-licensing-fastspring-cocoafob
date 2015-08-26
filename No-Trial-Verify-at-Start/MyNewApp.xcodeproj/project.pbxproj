@@ -19,6 +19,8 @@
 		506AB4011B84B0790072CEC8 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB4001B84B0790072CEC8 /* StoreTests.swift */; };
 		506AB4031B84B5A00072CEC8 /* StoreWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */; };
 		506AB4071B84CC310072CEC8 /* FastSpringCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */; };
+		506D9FF51B8DF123005F5109 /* LicenseInformationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D9FF41B8DF123005F5109 /* LicenseInformationProvider.swift */; };
+		506D9FF71B8DF1E4005F5109 /* LicenseInformationProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D9FF61B8DF1E4005F5109 /* LicenseInformationProviderTests.swift */; };
 		506DA9381B8340C9007B110F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9371B8340C9007B110F /* Store.swift */; };
 		506DA9451B835784007B110F /* StoreWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9431B835784007B110F /* StoreWindowController.swift */; };
 		506DA9461B835784007B110F /* StoreWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506DA9441B835784007B110F /* StoreWindowController.xib */; };
@@ -89,6 +91,8 @@
 		506AB4001B84B0790072CEC8 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
 		506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowControllerTests.swift; sourceTree = "<group>"; };
 		506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FastSpringCredentials.plist; path = ../FastSpringCredentials.plist; sourceTree = "<group>"; };
+		506D9FF41B8DF123005F5109 /* LicenseInformationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInformationProvider.swift; sourceTree = "<group>"; };
+		506D9FF61B8DF1E4005F5109 /* LicenseInformationProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInformationProviderTests.swift; sourceTree = "<group>"; };
 		506DA9371B8340C9007B110F /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		506DA9431B835784007B110F /* StoreWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowController.swift; sourceTree = "<group>"; };
 		506DA9441B835784007B110F /* StoreWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWindowController.xib; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */,
+				506D9FF61B8DF1E4005F5109 /* LicenseInformationProviderTests.swift */,
 				50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */,
 				50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */,
 				50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */,
@@ -321,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				505D9DED1B89E47600D412F1 /* License.swift */,
+				506D9FF41B8DF123005F5109 /* LicenseInformationProvider.swift */,
 				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
 				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
 				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
@@ -474,6 +480,7 @@
 				50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */,
 				50E75D9F1B81EE090092CD19 /* CFobLicVerifier.m in Sources */,
 				50E75DE11B82275D0092CD19 /* FsprgOrderItem.m in Sources */,
+				506D9FF51B8DF123005F5109 /* LicenseInformationProvider.swift in Sources */,
 				50E75DDC1B82275D0092CD19 /* FsprgStoreParameters.m in Sources */,
 				50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */,
 				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
@@ -517,6 +524,7 @@
 				50E75DB41B82084E0092CD19 /* LicenseWriterTests.swift in Sources */,
 				506AB4031B84B5A00072CEC8 /* StoreWindowControllerTests.swift in Sources */,
 				50E75DBE1B8211BA0092CD19 /* LicenseInformationTests.swift in Sources */,
+				506D9FF71B8DF1E4005F5109 /* LicenseInformationProviderTests.swift in Sources */,
 				50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */,
 				50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */,
 				50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */,

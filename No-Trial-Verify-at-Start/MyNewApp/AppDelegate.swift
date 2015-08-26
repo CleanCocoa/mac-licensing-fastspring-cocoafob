@@ -8,7 +8,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
-    lazy var licenseProvider: LicenseProvider = LicenseProvider()
+    var licenseProvider = LicenseProvider()
+    lazy var licenseInfoProvider: LicenseInformationProvider = LicenseInformationProvider(licenseProvider: self.licenseProvider)
+    
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
     // Use Cases / Services
@@ -46,9 +48,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         licenseWindowController.purchasingEventHandler = purchaseLicense
     }
     
+    var currentLicenseInformation: LicenseInformation {
+        
+        return licenseInfoProvider.currentLicenseInformation
+    }
+    
     func launchAppOrShowLicenseWindow() {
         
-        switch licenseProvider.currentLicense {
+        switch currentLicenseInformation {
         case .Unregistered:
             showRegisterApp()
         case let .Registered(license):
@@ -81,7 +88,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         licenseWindowController.showWindow(self)
         licenseWindowController.registrationEventHandler = registerApplication
-        licenseWindowController.displayLicenseInformation(licenseProvider.currentLicense)
+        licenseWindowController.displayLicenseInformation(currentLicenseInformation)
     }
     
     func unlockApp() {
