@@ -30,11 +30,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
+        registerForURLScheme()
         observeLicenseChanges()
         prepareLicenseWindowController()
         launchAppOrShowLicenseWindow()
     }
     
+    func registerForURLScheme() {
+        
+        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector: Selector("handleGetUrlEvent:withReplyEvent:"), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+    }
+    
+    func handleGetUrlEvent(event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
+        
+        if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) {
+            
+            // If you support multiple actions, here'd be the place to 
+            // delegate to a router object instead.
+            
+            URLQueryRegistration(registrationHandler: registerApplication)
+                .registerFromURL(url)
+        }
+    }
+
     func observeLicenseChanges() {
         
         notificationCenter.addObserver(self, selector: Selector("licenseDidChange:"), name: Events.LicenseChanged.rawValue, object: nil)

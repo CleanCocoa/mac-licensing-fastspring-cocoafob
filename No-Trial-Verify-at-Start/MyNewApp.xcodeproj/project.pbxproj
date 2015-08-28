@@ -24,6 +24,9 @@
 		506DA9381B8340C9007B110F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9371B8340C9007B110F /* Store.swift */; };
 		506DA9451B835784007B110F /* StoreWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9431B835784007B110F /* StoreWindowController.swift */; };
 		506DA9461B835784007B110F /* StoreWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506DA9441B835784007B110F /* StoreWindowController.xib */; };
+		5098EA231B9082F8001FBC3C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA221B9082F8001FBC3C /* Array.swift */; };
+		5098EA251B90A235001FBC3C /* URLQueryRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA241B90A235001FBC3C /* URLQueryRegistrationTests.swift */; };
+		5098EA271B90A251001FBC3C /* URLQueryRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -96,6 +99,9 @@
 		506DA9371B8340C9007B110F /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		506DA9431B835784007B110F /* StoreWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowController.swift; sourceTree = "<group>"; };
 		506DA9441B835784007B110F /* StoreWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWindowController.xib; sourceTree = "<group>"; };
+		5098EA221B9082F8001FBC3C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		5098EA241B90A235001FBC3C /* URLQueryRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistrationTests.swift; sourceTree = "<group>"; };
+		5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistration.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
 				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
 				50E75DC21B8225230092CD19 /* Alerts.swift */,
+				5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */,
 				50E75DB71B820A730092CD19 /* RegisterApplication.swift */,
 				50455FA01B8313E700727FBA /* PurchaseLicense.swift */,
 				506DA9371B8340C9007B110F /* Store.swift */,
@@ -250,6 +257,7 @@
 				50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */,
 				50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */,
 				50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */,
+				5098EA241B90A235001FBC3C /* URLQueryRegistrationTests.swift */,
 				50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */,
 				506AB4001B84B0790072CEC8 /* StoreTests.swift */,
 				506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */,
@@ -275,6 +283,7 @@
 		50C9B0CE1B7F7B7C002C5449 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5098EA221B9082F8001FBC3C /* Array.swift */,
 				50C9B0CF1B7F7B7C002C5449 /* Optional.swift */,
 				50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */,
 			);
@@ -483,6 +492,8 @@
 				506D9FF51B8DF123005F5109 /* LicenseInformationProvider.swift in Sources */,
 				50E75DDC1B82275D0092CD19 /* FsprgStoreParameters.m in Sources */,
 				50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */,
+				5098EA271B90A251001FBC3C /* URLQueryRegistration.swift in Sources */,
+				5098EA231B9082F8001FBC3C /* Array.swift in Sources */,
 				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
 				50E75DC31B8225230092CD19 /* Alerts.swift in Sources */,
 				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
@@ -528,6 +539,7 @@
 				50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */,
 				50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */,
 				50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */,
+				5098EA251B90A235001FBC3C /* URLQueryRegistrationTests.swift in Sources */,
 				50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */,
 				50E75DBA1B820A880092CD19 /* RegisterApplicationTests.swift in Sources */,
 				50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */,
