@@ -16,9 +16,16 @@ If that doesn't work, do it manually:
 2. Initialize all submodules:
     
         $ git submodule update --init --recursive
-3. Change `FastSpringCredentials.plist` file to your store settings.
+
+### Project Configuration
+
+Make sure to change `FastSpringCredentials.plist` file to your store settings to make the embedded store work.
 
 ## Dependencies
 
 * [CocoaFob](https://github.com/glebd/cocoafob)
+* [FastSpring Embedded Store SDK for Mac](https://github.com/DivineDominion/FsprgEmbeddedStoreMac) -- I forked the base repo for Swift support.
 
+## License
+
+See the LICENSE file for copy permissions.
