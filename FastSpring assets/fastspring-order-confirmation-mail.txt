@@ -1,0 +1,14 @@
+#{order.customer.fullName},
+
+thanks so much for buying #{orderItem.display}!
+
+Here you find your license information for later reference:
+
+License Name: #{orderItem.fulfillment.license.licenseName}
+License Key: #{orderItem.fulfillment.license.licenses.list}
+
+To activate the app automatically, run it and simply click this link: mynewapp://activate?name=#{util.string.base64(orderItem.fulfillment.license.outcome.licenseName)}&licenseCode=#{orderItem.fulfillment.license.outcome.licenses[0]}
+
+Thanks again for your support. Please drop me a line and tell me what you think of the application.
+
+-- <<Your Name Here>>
