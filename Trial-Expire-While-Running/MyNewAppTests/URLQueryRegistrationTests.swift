@@ -7,55 +7,83 @@ import XCTest
 import MyNewApp
 
 class URLQueryRegistrationTests: XCTestCase {
-
+    
     var service: URLQueryRegistration!
     
     let regHandlerDouble = TestRegistrationHandler()
+    let parserDouble = TestQueryParser()
     
     override func setUp() {
         
         super.setUp()
         
         service = URLQueryRegistration(registrationHandler: regHandlerDouble)
+        service.queryParser = parserDouble
     }
     
-    func testRegister_URLWithoutHost_DoesNotDelegateToHandler() {
+    func testRegister_URLWithoutHost_DoesNotDelegate() {
         
         let url = NSURL(string: "xyz://")!
         
         service.registerFromURL(url)
         
+        XCTAssertFalse(hasValue(parserDouble.didParseWith))
         XCTAssertFalse(hasValue(regHandlerDouble.didRegisterWith))
     }
     
-    func testRegister_URLWithBogusHost_DoesNotDelegateToHandler() {
+    func testRegister_URLWithBogusHost_DoesNotDelegate() {
         
         let url = NSURL(string: "xyz://bogus")!
         
         service.registerFromURL(url)
         
+        XCTAssertFalse(hasValue(parserDouble.didParseWith))
         XCTAssertFalse(hasValue(regHandlerDouble.didRegisterWith))
     }
     
-    func testRegister_ActivationURLWithoutQuery_DoesNotDelegateToHandler() {
+    func testRegister_ActivationURLWithoutQuery_DoesNotDelegate() {
         
         let url = NSURL(string: "xyz://activate")!
         
         service.registerFromURL(url)
         
+        XCTAssertFalse(hasValue(parserDouble.didParseWith))
         XCTAssertFalse(hasValue(regHandlerDouble.didRegisterWith))
     }
     
-    func testRegister_ActivationURLWithCompleteQuery_DelegatesToHandler() {
+    func testRegister_ActivationURLWithQuery_DelegatesToQueryParser() {
         
-        let url = NSURL(string: "xyz://activate?name=foo&licenseCode=the-license-code")!
+        let query = "query=is-here"
+        let url = NSURL(string: "xyz://activate?\(query)")!
+        
+        service.registerFromURL(url)
+        
+        XCTAssert(parserDouble.didParseWith == query)
+    }
+    
+    func testRegister_ActivationURLWithQuery_NilQueryParserResult_DoesNotDelegateToRegHandler() {
+        
+        parserDouble.testParsedLicense = nil
+        let url = NSURL(string: "xyz://activate?irrelevant=query")!
+        
+        service.registerFromURL(url)
+        
+        XCTAssertFalse(hasValue(regHandlerDouble.didRegisterWith))
+    }
+    
+    func testRegister_ActivationURLWithQuery_LicenseQueryParserResult_DelegatesToRegHandler() {
+        
+        let name = "a name"
+        let licenseCode = "a license code"
+        parserDouble.testParsedLicense = License(name: name, licenseCode: licenseCode)
+        let url = NSURL(string: "xyz://activate?irrelevant=query")!
         
         service.registerFromURL(url)
         
         XCTAssert(hasValue(regHandlerDouble.didRegisterWith))
-        if let licenseInfo = regHandlerDouble.didRegisterWith {
-            XCTAssertEqual(licenseInfo.name, "foo")
-            XCTAssertEqual(licenseInfo.licenseCode, "the-license-code")
+        if let licenseData = regHandlerDouble.didRegisterWith {
+            XCTAssertEqual(licenseData.name, name)
+            XCTAssertEqual(licenseData.licenseCode, licenseCode)
         }
     }
     
@@ -68,6 +96,18 @@ class URLQueryRegistrationTests: XCTestCase {
         func register(name: String, licenseCode: String) {
             
             didRegisterWith = (name, licenseCode)
+        }
+    }
+    
+    class TestQueryParser: URLQueryLicenseParser {
+        
+        var testParsedLicense: License?
+        var didParseWith: String?
+        override func parseQuery(query: String) -> License? {
+            
+            didParseWith = query
+            
+            return testParsedLicense
         }
     }
 }

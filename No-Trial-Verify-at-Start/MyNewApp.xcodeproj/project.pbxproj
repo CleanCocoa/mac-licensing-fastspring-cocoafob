@@ -27,6 +27,9 @@
 		5098EA231B9082F8001FBC3C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA221B9082F8001FBC3C /* Array.swift */; };
 		5098EA251B90A235001FBC3C /* URLQueryRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA241B90A235001FBC3C /* URLQueryRegistrationTests.swift */; };
 		5098EA271B90A251001FBC3C /* URLQueryRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */; };
+		50C06EEB1B91C84F00A7DBBE /* URLQueryLicenseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EEA1B91C84F00A7DBBE /* URLQueryLicenseParserTests.swift */; };
+		50C06EED1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EEC1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift */; };
+		50C06EEF1B91DA0400A7DBBE /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EEE1B91DA0400A7DBBE /* URLComponents.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -102,6 +105,9 @@
 		5098EA221B9082F8001FBC3C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		5098EA241B90A235001FBC3C /* URLQueryRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistrationTests.swift; sourceTree = "<group>"; };
 		5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistration.swift; sourceTree = "<group>"; };
+		50C06EEA1B91C84F00A7DBBE /* URLQueryLicenseParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryLicenseParserTests.swift; sourceTree = "<group>"; };
+		50C06EEC1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryLicenseParser.swift; sourceTree = "<group>"; };
+		50C06EEE1B91DA0400A7DBBE /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +203,27 @@
 			name = Fixtures;
 			sourceTree = "<group>";
 		};
+		50C06EF01B91DA1200A7DBBE /* License Parsing from URL Scheme */ = {
+			isa = PBXGroup;
+			children = (
+				5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */,
+				50C06EEC1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift */,
+				50C06EEE1B91DA0400A7DBBE /* URLComponents.swift */,
+			);
+			name = "License Parsing from URL Scheme";
+			sourceTree = "<group>";
+		};
+		50C06EF11B91DA3D00A7DBBE /* FastSpring Store Integration */ = {
+			isa = PBXGroup;
+			children = (
+				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
+				506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */,
+				506DA9371B8340C9007B110F /* Store.swift */,
+				506AB3FA1B84AEA10072CEC8 /* Me.swift */,
+			);
+			name = "FastSpring Store Integration";
+			sourceTree = "<group>";
+		};
 		50C9B0941B7F6DAC002C5449 = {
 			isa = PBXGroup;
 			children = (
@@ -223,15 +250,12 @@
 			isa = PBXGroup;
 			children = (
 				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
-				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
 				50E75DC21B8225230092CD19 /* Alerts.swift */,
-				5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */,
 				50E75DB71B820A730092CD19 /* RegisterApplication.swift */,
 				50455FA01B8313E700727FBA /* PurchaseLicense.swift */,
-				506DA9371B8340C9007B110F /* Store.swift */,
-				506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */,
-				506AB3FA1B84AEA10072CEC8 /* Me.swift */,
 				50E75DC11B821D590092CD19 /* License */,
+				50C06EF01B91DA1200A7DBBE /* License Parsing from URL Scheme */,
+				50C06EF11B91DA3D00A7DBBE /* FastSpring Store Integration */,
 				50E75D801B81E8810092CD19 /* User Interface */,
 				50C9B0A01B7F6DAC002C5449 /* Supporting Files */,
 				50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */,
@@ -258,6 +282,7 @@
 				50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */,
 				50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */,
 				5098EA241B90A235001FBC3C /* URLQueryRegistrationTests.swift */,
+				50C06EEA1B91C84F00A7DBBE /* URLQueryLicenseParserTests.swift */,
 				50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */,
 				506AB4001B84B0790072CEC8 /* StoreTests.swift */,
 				506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */,
@@ -496,6 +521,7 @@
 				5098EA231B9082F8001FBC3C /* Array.swift in Sources */,
 				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
 				50E75DC31B8225230092CD19 /* Alerts.swift in Sources */,
+				50C06EED1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift in Sources */,
 				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
 				50E75DA11B81EE090092CD19 /* encoder.c in Sources */,
 				506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */,
@@ -503,6 +529,7 @@
 				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
 				50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */,
 				50E75DDD1B82275D0092CD19 /* FsprgFileDownload.m in Sources */,
+				50C06EEF1B91DA0400A7DBBE /* URLComponents.swift in Sources */,
 				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
 				50E75DA31B81EE090092CD19 /* NSString-Base64Extensions.m in Sources */,
@@ -545,6 +572,7 @@
 				50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */,
 				50E75DC01B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift in Sources */,
 				50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */,
+				50C06EEB1B91C84F00A7DBBE /* URLQueryLicenseParserTests.swift in Sources */,
 				506AB4011B84B0790072CEC8 /* StoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

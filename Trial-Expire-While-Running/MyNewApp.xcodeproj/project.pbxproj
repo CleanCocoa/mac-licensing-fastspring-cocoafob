@@ -36,6 +36,9 @@
 		5098EA291B90A775001FBC3C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA281B90A775001FBC3C /* Array.swift */; };
 		5098EA2B1B90A7B8001FBC3C /* URLQueryRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA2A1B90A7B8001FBC3C /* URLQueryRegistration.swift */; };
 		5098EA2D1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA2C1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift */; };
+		50C06EF41B91DA9A00A7DBBE /* URLQueryLicenseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EF21B91DA9A00A7DBBE /* URLQueryLicenseParser.swift */; };
+		50C06EF51B91DA9A00A7DBBE /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EF31B91DA9A00A7DBBE /* URLComponents.swift */; };
+		50C06EF91B91DACA00A7DBBE /* URLQueryLicenseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EF81B91DACA00A7DBBE /* URLQueryLicenseParserTests.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -121,6 +124,9 @@
 		5098EA281B90A775001FBC3C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		5098EA2A1B90A7B8001FBC3C /* URLQueryRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistration.swift; sourceTree = "<group>"; };
 		5098EA2C1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistrationTests.swift; sourceTree = "<group>"; };
+		50C06EF21B91DA9A00A7DBBE /* URLQueryLicenseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryLicenseParser.swift; sourceTree = "<group>"; };
+		50C06EF31B91DA9A00A7DBBE /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
+		50C06EF81B91DACA00A7DBBE /* URLQueryLicenseParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryLicenseParserTests.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +223,27 @@
 			name = Fixtures;
 			sourceTree = "<group>";
 		};
+		50C06EF61B91DAA400A7DBBE /* License Parsing from URL Scheme */ = {
+			isa = PBXGroup;
+			children = (
+				5098EA2A1B90A7B8001FBC3C /* URLQueryRegistration.swift */,
+				50C06EF21B91DA9A00A7DBBE /* URLQueryLicenseParser.swift */,
+				50C06EF31B91DA9A00A7DBBE /* URLComponents.swift */,
+			);
+			name = "License Parsing from URL Scheme";
+			sourceTree = "<group>";
+		};
+		50C06EF71B91DAB300A7DBBE /* FastSpring Store Integration */ = {
+			isa = PBXGroup;
+			children = (
+				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
+				506DA9371B8340C9007B110F /* Store.swift */,
+				506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */,
+				506AB3FA1B84AEA10072CEC8 /* Me.swift */,
+			);
+			name = "FastSpring Store Integration";
+			sourceTree = "<group>";
+		};
 		50C9B0941B7F6DAC002C5449 = {
 			isa = PBXGroup;
 			children = (
@@ -243,16 +270,13 @@
 			isa = PBXGroup;
 			children = (
 				50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */,
-				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
 				50E75DC21B8225230092CD19 /* Alerts.swift */,
-				5098EA2A1B90A7B8001FBC3C /* URLQueryRegistration.swift */,
 				50E75DB71B820A730092CD19 /* RegisterApplication.swift */,
 				50455FA01B8313E700727FBA /* PurchaseLicense.swift */,
-				506DA9371B8340C9007B110F /* Store.swift */,
-				506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */,
-				506AB3FA1B84AEA10072CEC8 /* Me.swift */,
 				50E62FC51B8B6F200047FC6A /* Trial */,
 				50E75DC11B821D590092CD19 /* License */,
+				50C06EF61B91DAA400A7DBBE /* License Parsing from URL Scheme */,
+				50C06EF71B91DAB300A7DBBE /* FastSpring Store Integration */,
 				50E75D801B81E8810092CD19 /* User Interface */,
 				50C9B0A01B7F6DAC002C5449 /* Supporting Files */,
 				50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */,
@@ -279,6 +303,7 @@
 				50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */,
 				50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */,
 				5098EA2C1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift */,
+				50C06EF81B91DACA00A7DBBE /* URLQueryLicenseParserTests.swift */,
 				50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */,
 				506AB4001B84B0790072CEC8 /* StoreTests.swift */,
 				506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */,
@@ -536,6 +561,7 @@
 				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
 				50E75DC31B8225230092CD19 /* Alerts.swift in Sources */,
 				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
+				50C06EF41B91DA9A00A7DBBE /* URLQueryLicenseParser.swift in Sources */,
 				50E75DA11B81EE090092CD19 /* encoder.c in Sources */,
 				506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */,
 				5070B9BC1B8C5A2C0036A86C /* TrialWriter.swift in Sources */,
@@ -562,6 +588,7 @@
 				50E75DDA1B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m in Sources */,
 				50E75D9E1B81EE090092CD19 /* CFobLicGenerator.m in Sources */,
 				506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */,
+				50C06EF51B91DA9A00A7DBBE /* URLComponents.swift in Sources */,
 				50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */,
 				506DA9381B8340C9007B110F /* Store.swift in Sources */,
 				50E75DE01B82275D0092CD19 /* FsprgOrder.m in Sources */,
@@ -589,6 +616,7 @@
 				50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */,
 				50E75DC01B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift in Sources */,
 				50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */,
+				50C06EF91B91DACA00A7DBBE /* URLQueryLicenseParserTests.swift in Sources */,
 				5070B9BE1B8C5AB40036A86C /* TrialWriterTests.swift in Sources */,
 				5070B9C01B8C606D0036A86C /* TrialPeriodTests.swift in Sources */,
 				5070B9B81B8C50C90036A86C /* TrialProviderTests.swift in Sources */,
