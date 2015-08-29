@@ -1,8 +1,10 @@
 # Sample Applications
 
-These are sample applications for the book "[Release a Mac App Outside the App Store with FastSpring and CocoaFob][book]".
+## Make Money Outside the Mac App Store: How to Sell Your Mac App with FastSpring, Secure It With License Codes Against Piracy, and Offer Time-Based Trial Downloads
 
-[book]: https://leanpub.com/mac-app-licensing-fastspring-cocoafob/
+This is the manuscript of the book "[Make Money Outside the Mac App Store (With FastSpring)][book]".
+
+[book]: https://leanpub.com/sell-mac-app-fastspring-cocoafob-license-trial
 
 ## Installation / Set Up
 
