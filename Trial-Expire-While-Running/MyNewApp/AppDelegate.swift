@@ -126,10 +126,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         switch currentLicenseInformation {
         case .TrialUp:
+            if licenseIsInvalid() {
+                displayInvalidLicenseAlert()
+            }
             
             showRegisterApp()
             
         case let .OnTrial(trialPeriod):
+            if licenseIsInvalid() {
+                displayInvalidLicenseAlert()
+            }
             
             let trialDaysLeft = trialPeriod.daysLeft(clock)
             displayTrialDaysLeftAlert(trialDaysLeft)
@@ -143,9 +149,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func licenseIsInvalid(license: License) -> Bool {
+    func licenseIsInvalid() -> Bool {
         
-        return !LicenseVerifier().licenseCodeIsValid(license.licenseCode, forName: license.name)
+        if let license = licenseProvider.currentLicense {
+            
+            return !LicenseVerifier().licenseCodeIsValid(license.licenseCode, forName: license.name)
+        }
+        
+        return false
     }
     
     
@@ -213,6 +224,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func displayTrialUpAlert() {
         
         Alerts.trialUpAlert()?.runModal()
+    }
+    
+    func displayInvalidLicenseAlert() {
+        
+        Alerts.invalidLicenseCodeAlert()?.runModal()
     }
     
     

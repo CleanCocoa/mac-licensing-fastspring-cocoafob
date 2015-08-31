@@ -79,23 +79,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         switch currentLicenseInformation {
         case .Unregistered:
+            if licenseIsInvalid() {
+                displayInvalidLicenseAlert()
+            }
+            
             showRegisterApp()
         case let .Registered(license):
-            
-            if licenseIsInvalid(license) {
-                
-                displayInvalidLicenseAlert()
-                showRegisterApp()
-                return
-            }
             
             unlockApp()
         }
     }
     
-    func licenseIsInvalid(license: License) -> Bool {
+    func licenseIsInvalid() -> Bool {
         
-        return !LicenseVerifier().licenseCodeIsValid(license.licenseCode, forName: license.name)
+        if let license = licenseProvider.currentLicense {
+            
+            return !LicenseVerifier().licenseCodeIsValid(license.licenseCode, forName: license.name)
+        }
+        
+        return false
     }
     
     func displayInvalidLicenseAlert() {

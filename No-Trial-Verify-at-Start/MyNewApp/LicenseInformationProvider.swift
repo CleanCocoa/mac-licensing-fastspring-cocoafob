@@ -4,6 +4,14 @@
 
 import Foundation
 
+extension License {
+    
+    func isValid(licenseVerifier: LicenseVerifier) -> Bool {
+        
+        return licenseVerifier.licenseCodeIsValid(licenseCode, forName: name)
+    }
+}
+
 public class LicenseInformationProvider {
     
     let licenseProvider: LicenseProvider
@@ -12,10 +20,12 @@ public class LicenseInformationProvider {
         
         self.licenseProvider = licenseProvider
     }
+
+    public lazy var licenseVerifier: LicenseVerifier = LicenseVerifier()
     
     public var currentLicenseInformation: LicenseInformation {
         
-        if let license = self.license() {
+        if let license = self.license() where license.isValid(licenseVerifier) {
             
             return .Registered(license)
         }
