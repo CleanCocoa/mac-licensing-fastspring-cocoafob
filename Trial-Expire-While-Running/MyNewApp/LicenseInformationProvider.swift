@@ -27,6 +27,15 @@ public class LicenseInformationProvider {
     
     public lazy var licenseVerifier: LicenseVerifier = LicenseVerifier()
     
+    public var licenseIsInvalid: Bool {
+        
+        if let license = self.license() where !license.isValid(licenseVerifier) {
+            return true
+        }
+        
+        return false
+    }
+    
     public var currentLicenseInformation: LicenseInformation {
         
         if let license = self.license() where license.isValid(licenseVerifier) {

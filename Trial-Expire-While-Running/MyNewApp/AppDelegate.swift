@@ -151,12 +151,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func licenseIsInvalid() -> Bool {
         
-        if let license = licenseProvider.currentLicense {
-            
-            return !LicenseVerifier().licenseCodeIsValid(license.licenseCode, forName: license.name)
-        }
-        
-        return false
+        return licenseInfoProvider.licenseIsInvalid
     }
     
     

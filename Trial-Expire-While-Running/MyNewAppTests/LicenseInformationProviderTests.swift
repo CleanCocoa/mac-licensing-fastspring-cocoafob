@@ -22,7 +22,30 @@ class LicenseInformationProviderTests: XCTestCase {
         licenseInfoProvider = LicenseInformationProvider(trialProvider: trialProviderDouble, licenseProvider: licenseProviderDouble, clock: clockDouble)
         licenseInfoProvider.licenseVerifier = verifierDouble
     }
+    
+    let irrelevantLicense = License(name: "", licenseCode: "")
 
+    func testLicenceInvalidity_NoLicense_ReturnsFalse() {
+        
+        XCTAssertFalse(licenseInfoProvider.licenseIsInvalid)
+    }
+    
+    func testLicenceInvalidity_ValidLicense_ReturnsFalse() {
+        
+        verifierDouble.testValidity = true
+        licenseProviderDouble.testLicense = irrelevantLicense
+        
+        XCTAssertFalse(licenseInfoProvider.licenseIsInvalid)
+    }
+    
+    func testLicenceInvalidity_InvalidLicense_ReturnsFalse() {
+        
+        verifierDouble.testValidity = false
+        licenseProviderDouble.testLicense = irrelevantLicense
+        
+        XCTAssert(licenseInfoProvider.licenseIsInvalid)
+    }
+    
     func testCurrentInfo_NoLicense_NoTrialPeriod_ReturnsTrialUp() {
         
         let licenseInfo = licenseInfoProvider.currentLicenseInformation
@@ -73,7 +96,7 @@ class LicenseInformationProviderTests: XCTestCase {
     func testCurrentInfo_WithInvalidLicense_NoTrial_ReturnsTrialUp() {
         
         verifierDouble.testValidity = false
-        licenseProviderDouble.testLicense = License(name: "", licenseCode: "")
+        licenseProviderDouble.testLicense = irrelevantLicense
         
         let licenseInfo = licenseInfoProvider.currentLicenseInformation
         
@@ -90,7 +113,7 @@ class LicenseInformationProviderTests: XCTestCase {
         
         // Given
         verifierDouble.testValidity = false
-        licenseProviderDouble.testLicense = License(name: "", licenseCode: "")
+        licenseProviderDouble.testLicense = irrelevantLicense
         
         let endDate = NSDate()
         let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: endDate)
