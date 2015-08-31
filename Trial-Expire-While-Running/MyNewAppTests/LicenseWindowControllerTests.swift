@@ -182,6 +182,20 @@ class LicenseWindowControllerTests: XCTestCase {
         XCTAssert(controller.trialUpTextField.hidden)
     }
     
+    func testDisplayBought_HidesDaysLeftLabel() {
+        
+        controller.displayBought()
+        
+        XCTAssert(controller.trialDaysLeftTextField.hidden)
+    }
+    
+    func testDisplayBought_HidesTrialUpLabel() {
+        
+        controller.displayBought()
+        
+        XCTAssert(controller.trialUpTextField.hidden)
+    }
+    
     
     // MARK: -
     

@@ -187,15 +187,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         licenseWindowController.showWindow(self)
         licenseWindowController.registrationEventHandler = registerApplication
-        licenseWindowController.displayLicenseInformation(currentLicenseInformation)
-        
-        if let trial = trialProvider.currentTrialWithClock(clock) where !trial.ended {
-            
-            licenseWindowController.displayTrialDaysLeft(trial.daysLeft)
-        } else {
-            
-            licenseWindowController.displayTrialUp()
-        }
+        licenseWindowController.displayLicenseInformation(currentLicenseInformation, clock: clock)
     }
     
     func unlockApp() {

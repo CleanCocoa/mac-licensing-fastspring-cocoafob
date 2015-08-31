@@ -41,13 +41,21 @@ public class LicenseWindowController: NSWindowController {
         purchasingEventHandler?.purchase()
     }
     
-    public func licenseChanged(licenseInformation: LicenseInformation) {
-        
-        // TODO subscribe to events
+    public func displayLicenseInformation(licenseInformation: LicenseInformation, clock: KnowsTimeAndDate = Clock()) {
         
         switch licenseInformation {
-        case .Registered(_): buyButton.enabled = false
-        default: buyButton.enabled = true
+        case let .OnTrial(trialPeriod):
+            let trial = Trial(trialPeriod: trialPeriod, clock: clock)
+            displayTrialDaysLeft(trial.daysLeft)
+            existingLicenseViewController.displayEmptyForm()
+            
+        case .TrialUp:
+            displayTrialUp()
+            existingLicenseViewController.displayEmptyForm()
+            
+        case let .Registered(license):
+            displayBought()
+            existingLicenseViewController.displayLicense(license)
         }
     }
     
@@ -65,12 +73,10 @@ public class LicenseWindowController: NSWindowController {
         trialUpTextField.hidden = false
     }
     
-    public func displayLicenseInformation(licenseInformation: LicenseInformation) {
+    public func displayBought() {
         
-        switch licenseInformation {
-        case let .Registered(license): existingLicenseViewController.displayLicense(license)
-        default: existingLicenseViewController.displayEmptyForm()
-        }
+        trialDaysLeftTextField.hidden = true
+        trialUpTextField.hidden = true
     }
     
     public var registrationEventHandler: HandlesRegistering? {
