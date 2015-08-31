@@ -13,12 +13,14 @@ class LicenseInformationProviderTests: XCTestCase {
     let trialProviderDouble = TestTrialProvider()
     let licenseProviderDouble = TestLicenseProvider()
     let clockDouble = TestClock()
+    let verifierDouble = TestVerifier()
     
     override func setUp() {
         
         super.setUp()
         
         licenseInfoProvider = LicenseInformationProvider(trialProvider: trialProviderDouble, licenseProvider: licenseProviderDouble, clock: clockDouble)
+        licenseInfoProvider.licenseVerifier = verifierDouble
     }
 
     func testCurrentInfo_NoLicense_NoTrialPeriod_ReturnsTrialUp() {
@@ -68,8 +70,46 @@ class LicenseInformationProviderTests: XCTestCase {
         XCTAssert(trialIsUp)
     }
 
-    func testCurrentInfo_WithLicense_NoTrial_ReturnsRegisteredWithInfo() {
+    func testCurrentInfo_WithInvalidLicense_NoTrial_ReturnsTrialUp() {
         
+        verifierDouble.testValidity = false
+        licenseProviderDouble.testLicense = License(name: "", licenseCode: "")
+        
+        let licenseInfo = licenseInfoProvider.currentLicenseInformation
+        
+        let trialIsUp: Bool
+        switch licenseInfo {
+        case .TrialUp: trialIsUp = true
+        default: trialIsUp = false
+        }
+        
+        XCTAssert(trialIsUp)
+    }
+    
+    func testCurrentInfo_WithInvalidLicense_OnTrial_ReturnsTrial() {
+        
+        // Given
+        verifierDouble.testValidity = false
+        licenseProviderDouble.testLicense = License(name: "", licenseCode: "")
+        
+        let endDate = NSDate()
+        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: endDate)
+        clockDouble.testDate = endDate.dateByAddingTimeInterval(-1000)
+        trialProviderDouble.testTrialPeriod = expectedPeriod
+        
+        // When
+        let licenseInfo = licenseInfoProvider.currentLicenseInformation
+        
+        // Then
+        switch licenseInfo {
+        case let .OnTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
+        default: XCTFail("expected to be OnTrial")
+        }
+    }
+    
+    func testCurrentInfo_WithValidLicense_NoTrial_ReturnsRegisteredWithInfo() {
+        
+        verifierDouble.testValidity = true
         let name = "a name"
         let licenseCode = "a license code"
         let license = License(name: name, licenseCode: licenseCode)
@@ -83,11 +123,13 @@ class LicenseInformationProviderTests: XCTestCase {
         }
     }
     
-    func testCurrentInfo_WithLicense_OnTrial_ReturnsRegistered() {
+    func testCurrentInfo_WithValidLicense_OnTrial_ReturnsRegistered() {
         
         // Given
+        verifierDouble.testValidity = true
+        
         let endDate = NSDate()
-        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: NSDate())
+        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: endDate)
         clockDouble.testDate = endDate.dateByAddingTimeInterval(-1000)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
@@ -106,11 +148,12 @@ class LicenseInformationProviderTests: XCTestCase {
         }
     }
     
-    func testCurrentInfo_WithLicense_PassedTrial_ReturnsRegistered() {
+    func testCurrentInfo_WithValidLicense_PassedTrial_ReturnsRegistered() {
         
         // Given
+        verifierDouble.testValidity = true
         let endDate = NSDate()
-        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: NSDate())
+        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: endDate)
         clockDouble.testDate = endDate.dateByAddingTimeInterval(+9999)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
@@ -156,6 +199,22 @@ class LicenseInformationProviderTests: XCTestCase {
         func now() -> NSDate {
             
             return testDate
+        }
+    }
+    
+    class TestVerifier: LicenseVerifier {
+        
+        init() {
+            super.init(appName: "irrelevant app name")
+        }
+        
+        var testValidity = false
+        var didCallIsValidWith: (licenseCode: String, name: String)?
+        override func licenseCodeIsValid(licenseCode: String, forName name: String) -> Bool {
+            
+            didCallIsValidWith = (licenseCode, name)
+            
+            return testValidity
         }
     }
 }

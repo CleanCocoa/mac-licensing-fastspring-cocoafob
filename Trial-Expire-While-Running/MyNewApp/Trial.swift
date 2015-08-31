@@ -1,5 +1,5 @@
 // Copyright (c) 2015 Christian Tietze
-// 
+//
 // See the file LICENSE for copying permission.
 
 import Foundation
@@ -21,5 +21,9 @@ public struct Trial {
     
     public var ended: Bool {
         return trialPeriod.ended(clock)
+    }
+    
+    public var isActive: Bool {
+        return !ended
     }
 }

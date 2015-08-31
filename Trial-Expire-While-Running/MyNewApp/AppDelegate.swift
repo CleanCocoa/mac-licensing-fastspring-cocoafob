@@ -138,13 +138,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
         case let .Registered(license):
             
-            if licenseIsInvalid(license) {
-                
-                displayInvalidLicenseAlert()
-                showRegisterApp()
-                return
-            }
-            
+            stopTrialTimer()
             unlockApp()
         }
     }
@@ -220,12 +214,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         Alerts.trialUpAlert()?.runModal()
     }
-    
-    func displayInvalidLicenseAlert() {
-        
-        Alerts.invalidLicenseCodeAlert()?.runModal()
-    }
-    
     
     
     // MARK: UI Interactions

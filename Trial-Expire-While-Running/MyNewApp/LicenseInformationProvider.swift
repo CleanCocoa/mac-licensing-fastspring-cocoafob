@@ -1,8 +1,16 @@
 // Copyright (c) 2015 Christian Tietze
-// 
+//
 // See the file LICENSE for copying permission.
 
 import Foundation
+
+extension License {
+    
+    func isValid(licenseVerifier: LicenseVerifier) -> Bool {
+        
+        return licenseVerifier.licenseCodeIsValid(licenseCode, forName: name)
+    }
+}
 
 public class LicenseInformationProvider {
     
@@ -17,14 +25,16 @@ public class LicenseInformationProvider {
         self.clock = clock
     }
     
+    public lazy var licenseVerifier: LicenseVerifier = LicenseVerifier()
+    
     public var currentLicenseInformation: LicenseInformation {
         
-        if let license = self.license() {
+        if let license = self.license() where license.isValid(licenseVerifier) {
             
             return .Registered(license)
         }
         
-        if let trial = self.trial() where !trial.ended {
+        if let trial = self.trial() where trial.isActive {
             
             return .OnTrial(trial.trialPeriod)
         }
@@ -32,13 +42,13 @@ public class LicenseInformationProvider {
         return .TrialUp
     }
     
-    func trial() -> Trial? {
-        
-        return trialProvider.currentTrialWithClock(clock)
-    }
-    
     func license() -> License? {
         
         return licenseProvider.currentLicense
+    }
+    
+    func trial() -> Trial? {
+        
+        return trialProvider.currentTrialWithClock(clock)
     }
 }
