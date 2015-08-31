@@ -27,15 +27,7 @@ public class LicenseWindowController: NSWindowController {
         
         purchasingEventHandler?.purchase()
     }
-    
-    public func licenseChanged(licenseInformation: LicenseInformation) {
         
-        switch licenseInformation {
-        case .Unregistered: buyButton.enabled = true
-        case .Registered(_): buyButton.enabled = false
-        }
-    }
-    
     public func displayLicenseInformation(licenseInformation: LicenseInformation) {
         
         switch licenseInformation {

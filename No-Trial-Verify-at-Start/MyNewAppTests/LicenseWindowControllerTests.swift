@@ -83,29 +83,6 @@ class LicenseWindowControllerTests: XCTestCase {
     }
     
     
-    // MARK: License Changes
-    
-    func testLicenseChange_ToRegistered_DisabledBuyButton() {
-        
-        let irrelevantLicense = License(name: "", licenseCode: "")
-        let licenseInfo = LicenseInformation.Registered(irrelevantLicense)
-        
-        controller.licenseChanged(licenseInfo)
-        
-        XCTAssert(controller.buyButton?.enabled == false)
-    }
-    
-    func testLicenseChange_ToUnregistered_EnablesBuyButton() {
-        
-        let licenseInfo = LicenseInformation.Unregistered
-        controller.buyButton?.enabled = false
-        
-        controller.licenseChanged(licenseInfo)
-        
-        XCTAssert(controller.buyButton?.enabled == true)
-    }
-    
-    
     // MARK: Buying
     
     func testBuying_DelegatesToPurchaseEventHandler() {
