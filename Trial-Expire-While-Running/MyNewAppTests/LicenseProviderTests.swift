@@ -48,7 +48,7 @@ class LicenseProviderTests: XCTestCase {
         
         if let usedDefaultNames = usedDefaultNames {
             
-            XCTAssert(contains(usedDefaultNames, License.UserDefaultsKeys.Name.rawValue))
+            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.Name.rawValue))
         }
     }
 
@@ -71,8 +71,8 @@ class LicenseProviderTests: XCTestCase {
         
         if let usedDefaultNames = usedDefaultNames {
             
-            XCTAssert(contains(usedDefaultNames, License.UserDefaultsKeys.Name.rawValue))
-            XCTAssert(contains(usedDefaultNames, License.UserDefaultsKeys.LicenseCode.rawValue))
+            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.Name.rawValue))
+            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.LicenseCode.rawValue))
         }
     }
 

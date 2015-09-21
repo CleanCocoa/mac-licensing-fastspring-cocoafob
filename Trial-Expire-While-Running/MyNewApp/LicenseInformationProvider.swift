@@ -29,11 +29,11 @@ public class LicenseInformationProvider {
     
     public var licenseIsInvalid: Bool {
         
-        if let license = self.license() where !license.isValid(licenseVerifier) {
-            return true
+        guard let license = self.license() else {
+            return false
         }
         
-        return false
+        return !license.isValid(licenseVerifier)
     }
     
     public var currentLicenseInformation: LicenseInformation {

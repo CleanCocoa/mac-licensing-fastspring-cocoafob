@@ -25,40 +25,24 @@ public class LicenseVerifier {
         let registrationName = "\(appName),\(name)"
         let publicKey = self.publicKey()
         
-        var error: NSError?
-        if let verifier = verifierWithPublicKey(publicKey, error: &error) {
-            
-            error = nil
-            let verified = verifier.verifyRegCode(licenseCode, forName: registrationName, error: &error)
-            
-            if hasValue(error) {
-                // handle error
-            }
-            
-            return verified
-        } else {
-            // handle optional public key error (programmer error)
-            assertionFailure("CFobLicVerifier could not be constructed")
+        guard let verifier = verifierWithPublicKey(publicKey) else {
+            assertionFailure("CocoaFobLicenseVerifier cannot be constructed")
+            return false
         }
         
-        return false
+        return verifier.verify(licenseCode, forName: registrationName)
     }
     
-    private func verifierWithPublicKey(publicKey: String, error errorPointer: NSErrorPointer) -> CFobLicVerifier? {
-        
-        let verifier = CFobLicVerifier()
-        let success = verifier.setPublicKey(publicKey, error: errorPointer)
-        
-        if !success {
-            return nil
-        }
-        
-        return verifier
+    private func verifierWithPublicKey(publicKey: String) -> CocoaFobLicVerifier? {
+
+        return CocoaFobLicVerifier(publicKeyPEM: publicKey)
     }
     
     private func publicKey() -> String {
         
         var parts = [String]()
+        
+        parts.append("-----BEGIN DSA PUBLIC KEY-----\n")
         parts.append("MIHwMIGoBgcqhkjOOAQBMIGcAkEAoKLaPXkgAPng5YtV")
         parts.append("G14BUE1I5Q")
         parts.append("aGesaf9PTC\nnmUlYMp4m7M")
@@ -75,9 +59,10 @@ public class LicenseVerifier {
         parts.append("xonpPlBrFJTJeyvZInHIKrd0N8Du")
         parts.append("i3XKDtqrLWPIQcM0mWOj")
         parts.append("YHUlf\nUpIg\n")
+        parts.append("-----END DSA PUBLIC KEY-----\n")
         
-        let partialPublicKey = "".join(parts)
+        let publicKey = parts.joinWithSeparator("")
         
-        return CFobLicVerifier.completePublicKeyPEM(partialPublicKey)
+        return publicKey
     }
 }

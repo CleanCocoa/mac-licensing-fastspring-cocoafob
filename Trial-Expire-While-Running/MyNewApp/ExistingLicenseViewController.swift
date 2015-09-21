@@ -19,12 +19,14 @@ public class ExistingLicenseViewController: NSViewController {
     
     @IBAction public func register(sender: AnyObject) {
         
-        if let eventHandler = eventHandler {
-            let name = licenseeTextField.stringValue
-            let licenseCode = licenseCodeTextField.stringValue
-            
-            eventHandler.register(name, licenseCode: licenseCode)
+        guard let eventHandler = eventHandler else {
+            return
         }
+        
+        let name = licenseeTextField.stringValue
+        let licenseCode = licenseCodeTextField.stringValue
+        
+        eventHandler.register(name, licenseCode: licenseCode)
     }
     
     public func displayEmptyForm() {

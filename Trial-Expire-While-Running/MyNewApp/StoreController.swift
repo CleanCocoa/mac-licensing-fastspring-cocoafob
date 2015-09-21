@@ -29,7 +29,7 @@ public class StoreController: NSObject {
     
     var storeParameters: FsprgStoreParameters {
         
-        var storeParameters = FsprgStoreParameters()
+        let storeParameters = FsprgStoreParameters()
         
         // Set up store to display the correct product
         storeParameters.setOrderProcessType(kFsprgOrderProcessDetail)
@@ -60,6 +60,12 @@ public class StoreController: NSObject {
 }
 
 extension StoreController: FsprgEmbeddedStoreDelegate {
+    
+    public func webView(sender: WebView!, didFailProvisionalLoadWithError error: NSError!, forFrame frame: WebFrame!) {
+    }
+    
+    public func webView(sender: WebView!, didFailLoadWithError error: NSError!, forFrame frame: WebFrame!) {
+    }
     
     public func didLoadStore(url: NSURL!) {
     }

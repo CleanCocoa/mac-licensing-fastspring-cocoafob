@@ -15,7 +15,7 @@ public struct License {
         self.licenseCode = licenseCode
     }
     
-    public enum UserDefaultsKeys: String, Printable {
+    public enum UserDefaultsKeys: String, CustomStringConvertible {
         
         case Name = "licensee"
         case LicenseCode = "license_code"

@@ -35,29 +35,29 @@ extension LicenseInformation {
     
     public static func fromUserInfo(userInfo: UserInfo) -> LicenseInformation? {
         
-        if let registered = userInfo["registered"] as? Bool {
+        guard let registered = userInfo["registered"] as? Bool else {
+            return nil
+        }
+        
+        if let onTrial = userInfo["on_trial"] as? Bool where !registered {
             
-            if let onTrial = userInfo["on_trial"] as? Bool where !registered {
-                
-                if !onTrial {
-                    return .TrialUp
-                }
-                
-                if let startDate = userInfo["trial_start_date"] as? NSDate,
-                    endDate = userInfo["trial_end_date"] as? NSDate
-                    where onTrial == true {
-                    
-                    return .OnTrial(TrialPeriod(startDate: startDate, endDate: endDate))
-                }
+            if !onTrial {
+                return .TrialUp
             }
             
-            if let name = userInfo["name"] as? String, licenseCode = userInfo["licenseCode"] as? String {
-                
-                return .Registered(License(name: name, licenseCode: licenseCode))
+            if let startDate = userInfo["trial_start_date"] as? NSDate,
+                endDate = userInfo["trial_end_date"] as? NSDate
+                where onTrial == true {
+                    
+                return .OnTrial(TrialPeriod(startDate: startDate, endDate: endDate))
             }
         }
         
-        return nil
+        guard let name = userInfo["name"] as? String, licenseCode = userInfo["licenseCode"] as? String else {
+            return nil
+        }
+        
+        return .Registered(License(name: name, licenseCode: licenseCode))
     }
 }
 

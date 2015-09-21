@@ -48,7 +48,7 @@ class TrialProviderTests: XCTestCase {
         
         if let usedDefaultNames = usedDefaultNames {
             
-            XCTAssert(contains(usedDefaultNames, TrialPeriod.UserDefaultsKeys.StartDate.rawValue))
+            XCTAssert(usedDefaultNames.contains(TrialPeriod.UserDefaultsKeys.StartDate.rawValue))
         }
     }
     
@@ -73,7 +73,7 @@ class TrialProviderTests: XCTestCase {
         
         if let usedDefaultNames = usedDefaultNames {
             
-            XCTAssert(contains(usedDefaultNames, TrialPeriod.UserDefaultsKeys.StartDate.rawValue))
+            XCTAssert(usedDefaultNames.contains(TrialPeriod.UserDefaultsKeys.StartDate.rawValue))
         }
     }
     

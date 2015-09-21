@@ -66,11 +66,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         stopTrialTimer()
         
-        if let trialPeriod = trialProvider.currentTrialPeriod {
-            
-            trialTimer = TrialTimer(trialEndDate: trialPeriod.endDate, licenseChangeBroadcaster: licenseChangeBroadcaster)
-            trialTimer!.start()
+        guard let trialPeriod = trialProvider.currentTrialPeriod else {
+            return
         }
+        
+        trialTimer = TrialTimer(trialEndDate: trialPeriod.endDate, licenseChangeBroadcaster: licenseChangeBroadcaster)
+        trialTimer!.start()
     }
     
     func stopTrialTimer() {
@@ -142,7 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             unlockApp()
             
-        case let .Registered(license):
+        case .Registered(_):
             
             stopTrialTimer()
             unlockApp()
@@ -159,24 +160,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func licenseDidChange(notification: NSNotification) {
         
-        if let userInfo = notification.userInfo, licenseInformation = LicenseInformation.fromUserInfo(userInfo) {
+        guard let userInfo = notification.userInfo, licenseInformation = LicenseInformation.fromUserInfo(userInfo) else {
             
-            switch licenseInformation {
-            case .OnTrial(_):
-                // Change to this state is possible if unregistering while
-                // trial isn't up, yet.
-                return
-                
-            case .Registered(_):
-                displayThankYouAlert()
-                stopTrialTimer()
-                unlockApp()
-                
-            case .TrialUp:
-                displayTrialUpAlert()
-                lockApp()
-                showRegisterApp()
-            }
+            return
+        }
+        
+        switch licenseInformation {
+        case .OnTrial(_):
+            // Change to this state is possible if unregistering while
+            // trial isn't up, yet.
+            return
+            
+        case .Registered(_):
+            displayThankYouAlert()
+            stopTrialTimer()
+            unlockApp()
+            
+        case .TrialUp:
+            displayTrialUpAlert()
+            lockApp()
+            showRegisterApp()
         }
     }
     

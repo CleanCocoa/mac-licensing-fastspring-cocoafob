@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum URLComponents: String, Printable {
+enum URLComponents: String, CustomStringConvertible {
     
     case Host = "activate"
     case Licensee = "name"

@@ -42,7 +42,7 @@ extension TrialPeriod {
 
 extension TrialPeriod {
     
-    public enum UserDefaultsKeys: String, Printable {
+    public enum UserDefaultsKeys: String, CustomStringConvertible {
         
         case StartDate = "trial_starting"
         case EndDate = "trial_ending"

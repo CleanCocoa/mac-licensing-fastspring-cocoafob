@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6F0C809C940CD85BEC2C6CABED20A66B2CD2F14B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "ECD9FA0CCDC4DEE088D281486C1095F3D525E37F" : 0,
+    "521D530540E95051BE8744F1BF1A3BFB34232F53" : 0,
+    "6F0C809C940CD85BEC2C6CABED20A66B2CD2F14B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AC28514D-BE86-4809-922E-E6CBA25CD6C4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "ECD9FA0CCDC4DEE088D281486C1095F3D525E37F" : "mac-fastspring-bookExternal\/FsprgEmbeddedStoreMac",
+    "521D530540E95051BE8744F1BF1A3BFB34232F53" : "mac-fastspring-bookExternal\/cocoafob",
+    "6F0C809C940CD85BEC2C6CABED20A66B2CD2F14B" : "mac-fastspring-book"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MyNewApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Trial-Expire-While-Running\/MyNewApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:glebd\/cocoafob.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "521D530540E95051BE8744F1BF1A3BFB34232F53"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:DivineDominion\/mac-licensing-fastspring-cocoafob.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6F0C809C940CD85BEC2C6CABED20A66B2CD2F14B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:DivineDominion\/FsprgEmbeddedStoreMac.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ECD9FA0CCDC4DEE088D281486C1095F3D525E37F"
+    }
+  ]
+}

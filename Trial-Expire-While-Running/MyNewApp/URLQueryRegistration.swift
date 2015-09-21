@@ -17,10 +17,11 @@ public class URLQueryRegistration {
     
     public func registerFromURL(url: NSURL) {
         
-        if let query = queryFromURL(url), license = queryParser.parseQuery(query) {
-            
-            registrationHandler.register(license.name, licenseCode: license.licenseCode)
+        guard let query = queryFromURL(url), license = queryParser.parseQuery(query) else {
+            return
         }
+        
+        registrationHandler.register(license.name, licenseCode: license.licenseCode)
     }
     
     func queryFromURL(url: NSURL) -> String? {

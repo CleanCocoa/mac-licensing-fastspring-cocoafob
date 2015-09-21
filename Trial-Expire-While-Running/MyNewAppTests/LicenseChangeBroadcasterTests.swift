@@ -106,7 +106,7 @@ class NullNotificationCenter: NSNotificationCenter {
         return NullNotificationCenter()
     }
     
-    override func addObserverForName(name: String?, object obj: AnyObject?, queue: NSOperationQueue?, usingBlock block: (NSNotification!) -> Void) -> NSObjectProtocol {
+    override func addObserverForName(name: String?, object obj: AnyObject?, queue: NSOperationQueue?, usingBlock block: (NSNotification) -> Void) -> NSObjectProtocol {
         
         return NSObject()
     }

@@ -68,7 +68,7 @@ public class TrialTimer {
             return
         }
         
-        if let delayedBlock = dispatchCancelableBlockAtDate(trialEndDate, timerDidFire) {
+        if let delayedBlock = dispatchCancelableBlockAtDate(trialEndDate, block: timerDidFire) {
             
             NSLog("Starting trial timer for: \(trialEndDate)")
             self.delayedBlock = delayedBlock

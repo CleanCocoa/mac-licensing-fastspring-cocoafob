@@ -35,7 +35,7 @@ public struct Days {
     }
 }
 
-extension Days: Printable {
+extension Days: CustomStringConvertible {
     
     public var description: String {
         return "\(amount)"
