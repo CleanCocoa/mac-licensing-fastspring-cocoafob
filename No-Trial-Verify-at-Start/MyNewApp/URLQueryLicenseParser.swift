@@ -53,7 +53,7 @@ public class URLQueryLicenseParser {
         
         return queryValue
             .stringByReplacingOccurrencesOfString("+", withString: " ")
-            .stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+            .stringByRemovingPercentEncoding
     }
     
     func escapedQueryValueFromParameter(parameter: String) -> String? {
@@ -61,12 +61,12 @@ public class URLQueryLicenseParser {
         // Assume only one `=` is the separator and concatenate 
         // the rest back into the value.
         // (base64-encoded Strings often end with `=`.)
-        return join("=", dropFirst(parameter.componentsSeparatedByString("=")))
+        return parameter.componentsSeparatedByString("=").dropFirst().joinWithSeparator("=")
     }
     
     func decode(string: String?) -> String? {
         
-        if let string = string, decodedData = NSData(base64EncodedString: string, options: nil) {
+        if let string = string, decodedData = NSData(base64EncodedString: string, options: []) {
             
             return NSString(data: decodedData, encoding: NSUTF8StringEncoding) as? String
         }

@@ -22,7 +22,7 @@ func forceInitialize(view: NSWindow?) {
 
 class NullUserDefaults: NSUserDefaults {
     
-    override func registerDefaults(registrationDictionary: [NSObject : AnyObject]) {  }
+    override func registerDefaults(registrationDictionary: [String : AnyObject]) {  }
     override func valueForKey(key: String) -> AnyObject? { return nil }
     override func setValue(value: AnyObject?, forKey key: String) {  }
 }

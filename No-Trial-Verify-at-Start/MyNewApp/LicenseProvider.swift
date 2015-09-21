@@ -12,12 +12,12 @@ public class LicenseProvider {
     
     public var currentLicense: License? {
         
-        if let name = userDefaults.stringForKey("\(License.UserDefaultsKeys.Name)"),
-            licenseCode = userDefaults.stringForKey("\(License.UserDefaultsKeys.LicenseCode)") {
+        guard let name = userDefaults.stringForKey("\(License.UserDefaultsKeys.Name)"),
+            licenseCode = userDefaults.stringForKey("\(License.UserDefaultsKeys.LicenseCode)") else {
                 
-                return License(name: name, licenseCode: licenseCode)
+            return .None
         }
         
-        return .None
+        return License(name: name, licenseCode: licenseCode)
     }
 }

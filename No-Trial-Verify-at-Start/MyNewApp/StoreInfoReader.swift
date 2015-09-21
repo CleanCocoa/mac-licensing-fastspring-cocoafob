@@ -28,21 +28,21 @@ public class StoreInfoReader {
     
     public static func storeInfoFromDictionary(info: [String : String]) -> StoreInfo? {
         
-        if let storeId = info["storeId"],
+        guard let storeId = info["storeId"],
             productName = info["productName"] ,
-            productId = info["productId"] {
+            productId = info["productId"] else {
                 
-            #if DEBUG
-                NSLog("Test Store Mode")
-                let storeMode = kFsprgModeTest
-            #else
-                NSLog("Active Store Mode")
-                let storeMode = kFsprgModeActive
-            #endif
-            
-            return StoreInfo(storeId: storeId, productName: productName, productId: productId, storeMode: storeMode)
+            return .None
         }
         
-        return .None
+        #if DEBUG
+            NSLog("Test Store Mode")
+            let storeMode = kFsprgModeTest
+            #else
+            NSLog("Active Store Mode")
+            let storeMode = kFsprgModeActive
+        #endif
+        
+        return StoreInfo(storeId: storeId, productName: productName, productId: productId, storeMode: storeMode)
     }
 }

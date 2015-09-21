@@ -31,5 +31,5 @@ infix operator >>= {  associativity left precedence 150 }
 
 func >>=<T, U>(optional: T?, f: T -> U?) -> U? {
     
-    return bind(optional, f)
+    return bind(optional, f: f)
 }

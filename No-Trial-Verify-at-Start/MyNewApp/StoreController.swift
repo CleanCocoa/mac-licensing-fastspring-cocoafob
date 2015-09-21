@@ -29,7 +29,7 @@ public class StoreController: NSObject {
     
     var storeParameters: FsprgStoreParameters {
         
-        var storeParameters = FsprgStoreParameters()
+        let storeParameters = FsprgStoreParameters()
         
         // Set up store to display the correct product
         storeParameters.setOrderProcessType(kFsprgOrderProcessDetail)
@@ -61,6 +61,12 @@ public class StoreController: NSObject {
 
 extension StoreController: FsprgEmbeddedStoreDelegate {
     
+    public func webView(sender: WebView!, didFailProvisionalLoadWithError error: NSError!, forFrame frame: WebFrame!) {
+    }
+    
+    public func webView(sender: WebView!, didFailLoadWithError error: NSError!, forFrame frame: WebFrame!) {
+    }
+    
     public func didLoadStore(url: NSURL!) {
     }
     
@@ -77,48 +83,50 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
             return
         }
         
-        if let license = licenseFromOrder(order) {
-            storeDelegate?.didPurchaseLicense(license)
+        guard let license = licenseFromOrder(order) else {
+            return
         }
+        
+        storeDelegate?.didPurchaseLicense(license)
     }
     
     private func licenseFromOrder(order: FsprgOrder) -> License? {
         
-        if let items = order.orderItems() as? [FsprgOrderItem],
+        guard  let items = order.orderItems() as? [FsprgOrderItem],
             license = items
                 .filter(orderItemIsForThisApp)
                 .map(licenseFromOrderItem) // -> [License?]
                 .filter(hasValue)          // keep non-nil
                 .map({ $0! })              // -> [License]
-                .first {
+                .first else {
             
-            return license
+            return nil
         }
         
-        return nil
+        return license
     }
     
     private func orderItemIsForThisApp(orderItem: FsprgOrderItem) -> Bool {
         
         let appName = storeInfo.productName
         
-        if let productName = orderItem.productName() {
-            return productName.hasPrefix(appName)
+        guard let productName = orderItem.productName() else {
+            return false
         }
         
-        return false
+        return productName.hasPrefix(appName)
     }
     
     private func licenseFromOrderItem(orderItem: FsprgOrderItem) -> License? {
         
-        if let orderLicense = orderItem.license(),
+        guard let orderLicense = orderItem.license(),
             name = orderLicense.licenseName(),
-            licenseCode = orderLicense.firstLicenseCode() {
-                
-            return License(name: name, licenseCode: licenseCode)
+            licenseCode = orderLicense.firstLicenseCode() else {
+            
+            return nil
         }
         
-        return nil
+        return License(name: name, licenseCode: licenseCode)
     }
     
     
@@ -126,14 +134,14 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
     
     public func viewWithFrame(frame: NSRect, forOrder order: FsprgOrder!) -> NSView! {
         
-        if let orderConfirmationView = orderConfirmationView,
-            license = licenseFromOrder(order) {
+        guard  let orderConfirmationView = orderConfirmationView,
+            license = licenseFromOrder(order) else {
             
-            orderConfirmationView.displayLicenseCode(license.licenseCode)
-            
-            return orderConfirmationView
+            return nil
         }
         
-        return nil
+        orderConfirmationView.displayLicenseCode(license.licenseCode)
+        
+        return orderConfirmationView
     }
 }

@@ -7,20 +7,8 @@ import XCTest
 import MyNewApp
 
 class StoreInfoReaderTests: XCTestCase {
-
-//    enum StoreInfoURLs: String {
-//        case MissingStoreId = "TestCredentialsMissingStoreId"
-//        case MissingProductId = "TestCredentialsMissingProductId"
-//        case MissingProductName = "TestCredentialsMissingProductName"
-//        case Complete = "TestCredentialsComplete"
-//        
-//        var URL: NSURL {
-//            return NSBundle(forClass: StoreInfoReaderTests.self).URLForResource(rawValue, withExtension: "plist")!
-//        }
-//    }
     
     let validURL = NSBundle(forClass: StoreInfoReaderTests.self).URLForResource("TestCredentialsComplete", withExtension: "plist")!
-    
 
     func testReadingValidData_ReturnsStoreInfoWithData() {
         

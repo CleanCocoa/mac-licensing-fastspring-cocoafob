@@ -24,19 +24,19 @@ extension LicenseInformation {
     
     public static func fromUserInfo(userInfo: UserInfo) -> LicenseInformation? {
         
-        if let registered = userInfo["registered"] as? Bool {
-            
-            if !registered {
-                return .Unregistered
-            }
-            
-            if let name = userInfo["name"] as? String, licenseCode = userInfo["licenseCode"] as? String {
-                
-                return .Registered(License(name: name, licenseCode: licenseCode))
-            }
+        guard let registered = userInfo["registered"] as? Bool else {
+            return nil
         }
         
-        return nil
+        if !registered {
+            return .Unregistered
+        }
+        
+        guard let name = userInfo["name"] as? String, licenseCode = userInfo["licenseCode"] as? String else {
+            return nil
+        }
+        
+        return .Registered(License(name: name, licenseCode: licenseCode))
     }
 }
 

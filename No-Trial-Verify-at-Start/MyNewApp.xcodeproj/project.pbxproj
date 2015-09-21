@@ -10,6 +10,10 @@
 		50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */; };
 		50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */; };
 		50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */; };
+		50397A9C1BAFF69600780815 /* CFUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A981BAFF69600780815 /* CFUtil.swift */; settings = {ASSET_TAGS = (); }; };
+		50397A9D1BAFF69600780815 /* CocoaFobError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A991BAFF69600780815 /* CocoaFobError.swift */; settings = {ASSET_TAGS = (); }; };
+		50397A9E1BAFF69600780815 /* CocoaFobLicVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */; settings = {ASSET_TAGS = (); }; };
+		50397A9F1BAFF69600780815 /* CocoaFobStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */; settings = {ASSET_TAGS = (); }; };
 		50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA01B8313E700727FBA /* PurchaseLicense.swift */; };
 		50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */; };
 		505D9DEE1B89E47600D412F1 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D9DED1B89E47600D412F1 /* License.swift */; };
@@ -44,15 +48,6 @@
 		50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */; };
 		50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7C1B81D9990092CD19 /* Helpers.swift */; };
 		50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */; };
-		50E75D9D1B81EE090092CD19 /* CFobError.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D8C1B81EE090092CD19 /* CFobError.m */; };
-		50E75D9E1B81EE090092CD19 /* CFobLicGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D8E1B81EE090092CD19 /* CFobLicGenerator.m */; };
-		50E75D9F1B81EE090092CD19 /* CFobLicVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D901B81EE090092CD19 /* CFobLicVerifier.m */; };
-		50E75DA01B81EE090092CD19 /* decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D911B81EE090092CD19 /* decoder.c */; };
-		50E75DA11B81EE090092CD19 /* encoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D931B81EE090092CD19 /* encoder.c */; };
-		50E75DA21B81EE090092CD19 /* NSData+PECrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D961B81EE090092CD19 /* NSData+PECrypt.m */; };
-		50E75DA31B81EE090092CD19 /* NSString-Base64Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D981B81EE090092CD19 /* NSString-Base64Extensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		50E75DA41B81EE090092CD19 /* NSString+PECrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D9A1B81EE090092CD19 /* NSString+PECrypt.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D9C1B81EE090092CD19 /* URLCommand.m */; };
 		50E75DAA1B81FB4F0092CD19 /* LicenseVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */; };
 		50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */; };
 		50E75DB41B82084E0092CD19 /* LicenseWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */; };
@@ -88,6 +83,10 @@
 		50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReader.swift; sourceTree = "<group>"; };
 		50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReaderTests.swift; sourceTree = "<group>"; };
 		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
+		50397A981BAFF69600780815 /* CFUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CFUtil.swift; path = ../External/cocoafob/swift/CocoaFob/CFUtil.swift; sourceTree = "<group>"; };
+		50397A991BAFF69600780815 /* CocoaFobError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocoaFobError.swift; path = ../External/cocoafob/swift/CocoaFob/CocoaFobError.swift; sourceTree = "<group>"; };
+		50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocoaFobLicVerifier.swift; path = ../External/cocoafob/swift/CocoaFob/CocoaFobLicVerifier.swift; sourceTree = "<group>"; };
+		50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocoaFobStringExt.swift; path = ../External/cocoafob/swift/CocoaFob/CocoaFobStringExt.swift; sourceTree = "<group>"; };
 		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
 		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; };
 		505D9DED1B89E47600D412F1 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -127,24 +126,6 @@
 		50E75D7C1B81D9990092CD19 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseWindowControllerTests.swift; sourceTree = "<group>"; };
 		50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		50E75D8B1B81EE090092CD19 /* CFobError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobError.h; path = ../External/cocoafob/objc/CFobError.h; sourceTree = "<group>"; };
-		50E75D8C1B81EE090092CD19 /* CFobError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobError.m; path = ../External/cocoafob/objc/CFobError.m; sourceTree = "<group>"; };
-		50E75D8D1B81EE090092CD19 /* CFobLicGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobLicGenerator.h; path = ../External/cocoafob/objc/CFobLicGenerator.h; sourceTree = "<group>"; };
-		50E75D8E1B81EE090092CD19 /* CFobLicGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobLicGenerator.m; path = ../External/cocoafob/objc/CFobLicGenerator.m; sourceTree = "<group>"; };
-		50E75D8F1B81EE090092CD19 /* CFobLicVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobLicVerifier.h; path = ../External/cocoafob/objc/CFobLicVerifier.h; sourceTree = "<group>"; };
-		50E75D901B81EE090092CD19 /* CFobLicVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobLicVerifier.m; path = ../External/cocoafob/objc/CFobLicVerifier.m; sourceTree = "<group>"; };
-		50E75D911B81EE090092CD19 /* decoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = decoder.c; path = ../External/cocoafob/objc/decoder.c; sourceTree = "<group>"; };
-		50E75D921B81EE090092CD19 /* decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = decoder.h; path = ../External/cocoafob/objc/decoder.h; sourceTree = "<group>"; };
-		50E75D931B81EE090092CD19 /* encoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = encoder.c; path = ../External/cocoafob/objc/encoder.c; sourceTree = "<group>"; };
-		50E75D941B81EE090092CD19 /* encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = encoder.h; path = ../External/cocoafob/objc/encoder.h; sourceTree = "<group>"; };
-		50E75D951B81EE090092CD19 /* NSData+PECrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+PECrypt.h"; path = "../External/cocoafob/objc/NSData+PECrypt.h"; sourceTree = "<group>"; };
-		50E75D961B81EE090092CD19 /* NSData+PECrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+PECrypt.m"; path = "../External/cocoafob/objc/NSData+PECrypt.m"; sourceTree = "<group>"; };
-		50E75D971B81EE090092CD19 /* NSString-Base64Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString-Base64Extensions.h"; path = "../External/cocoafob/objc/NSString-Base64Extensions.h"; sourceTree = "<group>"; };
-		50E75D981B81EE090092CD19 /* NSString-Base64Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString-Base64Extensions.m"; path = "../External/cocoafob/objc/NSString-Base64Extensions.m"; sourceTree = "<group>"; };
-		50E75D991B81EE090092CD19 /* NSString+PECrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PECrypt.h"; path = "../External/cocoafob/objc/NSString+PECrypt.h"; sourceTree = "<group>"; };
-		50E75D9A1B81EE090092CD19 /* NSString+PECrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PECrypt.m"; path = "../External/cocoafob/objc/NSString+PECrypt.m"; sourceTree = "<group>"; };
-		50E75D9B1B81EE090092CD19 /* URLCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLCommand.h; path = ../External/cocoafob/objc/URLCommand.h; sourceTree = "<group>"; };
-		50E75D9C1B81EE090092CD19 /* URLCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLCommand.m; path = ../External/cocoafob/objc/URLCommand.m; sourceTree = "<group>"; };
 		50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifierTests.swift; sourceTree = "<group>"; };
 		50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifier.swift; sourceTree = "<group>"; };
 		50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriterTests.swift; sourceTree = "<group>"; };
@@ -334,24 +315,10 @@
 		50E75D891B81EB680092CD19 /* CocoaFob */ = {
 			isa = PBXGroup;
 			children = (
-				50E75D8B1B81EE090092CD19 /* CFobError.h */,
-				50E75D8C1B81EE090092CD19 /* CFobError.m */,
-				50E75D8D1B81EE090092CD19 /* CFobLicGenerator.h */,
-				50E75D8E1B81EE090092CD19 /* CFobLicGenerator.m */,
-				50E75D8F1B81EE090092CD19 /* CFobLicVerifier.h */,
-				50E75D901B81EE090092CD19 /* CFobLicVerifier.m */,
-				50E75D911B81EE090092CD19 /* decoder.c */,
-				50E75D921B81EE090092CD19 /* decoder.h */,
-				50E75D931B81EE090092CD19 /* encoder.c */,
-				50E75D941B81EE090092CD19 /* encoder.h */,
-				50E75D951B81EE090092CD19 /* NSData+PECrypt.h */,
-				50E75D961B81EE090092CD19 /* NSData+PECrypt.m */,
-				50E75D971B81EE090092CD19 /* NSString-Base64Extensions.h */,
-				50E75D981B81EE090092CD19 /* NSString-Base64Extensions.m */,
-				50E75D991B81EE090092CD19 /* NSString+PECrypt.h */,
-				50E75D9A1B81EE090092CD19 /* NSString+PECrypt.m */,
-				50E75D9B1B81EE090092CD19 /* URLCommand.h */,
-				50E75D9C1B81EE090092CD19 /* URLCommand.m */,
+				50397A981BAFF69600780815 /* CFUtil.swift */,
+				50397A991BAFF69600780815 /* CocoaFobError.swift */,
+				50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */,
+				50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */,
 			);
 			name = CocoaFob;
 			sourceTree = "<group>";
@@ -449,7 +416,9 @@
 		50C9B0951B7F6DAC002C5449 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Christian Tietze";
 				TargetAttributes = {
 					50C9B09C1B7F6DAC002C5449 = {
@@ -508,22 +477,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50397A9C1BAFF69600780815 /* CFUtil.swift in Sources */,
 				50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */,
-				50E75DA01B81EE090092CD19 /* decoder.c in Sources */,
 				50E75DB81B820A730092CD19 /* RegisterApplication.swift in Sources */,
 				50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */,
-				50E75D9F1B81EE090092CD19 /* CFobLicVerifier.m in Sources */,
 				50E75DE11B82275D0092CD19 /* FsprgOrderItem.m in Sources */,
 				506D9FF51B8DF123005F5109 /* LicenseInformationProvider.swift in Sources */,
 				50E75DDC1B82275D0092CD19 /* FsprgStoreParameters.m in Sources */,
-				50E75DA51B81EE090092CD19 /* URLCommand.m in Sources */,
 				5098EA271B90A251001FBC3C /* URLQueryRegistration.swift in Sources */,
 				5098EA231B9082F8001FBC3C /* Array.swift in Sources */,
 				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
+				50397A9D1BAFF69600780815 /* CocoaFobError.swift in Sources */,
 				50E75DC31B8225230092CD19 /* Alerts.swift in Sources */,
 				50C06EED1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift in Sources */,
 				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
-				50E75DA11B81EE090092CD19 /* encoder.c in Sources */,
 				506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */,
 				505D9DEE1B89E47600D412F1 /* License.swift in Sources */,
 				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
@@ -532,22 +499,19 @@
 				50C06EEF1B91DA0400A7DBBE /* URLComponents.swift in Sources */,
 				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
-				50E75DA31B81EE090092CD19 /* NSString-Base64Extensions.m in Sources */,
 				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
 				50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */,
+				50397A9E1BAFF69600780815 /* CocoaFobLicVerifier.swift in Sources */,
 				50E75DBC1B82119B0092CD19 /* LicenseChangeBroadcaster.swift in Sources */,
-				50E75DA21B81EE090092CD19 /* NSData+PECrypt.m in Sources */,
 				50E75DDF1B82275D0092CD19 /* FsprgLicense.m in Sources */,
 				50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */,
 				506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */,
-				50E75D9D1B81EE090092CD19 /* CFobError.m in Sources */,
 				50E75DDA1B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m in Sources */,
-				50E75D9E1B81EE090092CD19 /* CFobLicGenerator.m in Sources */,
 				506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */,
+				50397A9F1BAFF69600780815 /* CocoaFobStringExt.swift in Sources */,
 				50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */,
 				506DA9381B8340C9007B110F /* Store.swift in Sources */,
 				50E75DE01B82275D0092CD19 /* FsprgOrder.m in Sources */,
-				50E75DA41B81EE090092CD19 /* NSString+PECrypt.m in Sources */,
 				50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */,
 				506DA9451B835784007B110F /* StoreWindowController.swift in Sources */,
 			);
@@ -620,6 +584,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -688,6 +653,7 @@
 				INFOPLIST_FILE = MyNewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -703,6 +669,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = MyNewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -725,6 +692,7 @@
 				);
 				INFOPLIST_FILE = MyNewAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewAppTests/MyNewAppTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -745,6 +713,7 @@
 				);
 				INFOPLIST_FILE = MyNewAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewAppTests/MyNewAppTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNewApp.app/Contents/MacOS/MyNewApp";

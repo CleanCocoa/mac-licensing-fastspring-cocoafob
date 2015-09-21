@@ -5,7 +5,7 @@ extension Array {
     /// Transforms each element in the array into a Key-Value tuple.
     ///
     /// :return: New Dictionary of transformed elements.
-    func mapDictionary<K, V>(transform: T -> (K, V)) -> [K : V] {
+    func mapDictionary<K, V>(transform: Element -> (K, V)) -> [K : V] {
         
         var result = [K : V]()
         
@@ -17,7 +17,7 @@ extension Array {
         return result
     }
     
-    func mapDictionary<K, V>(transform: T -> (K, V)?) -> [K : V] {
+    func mapDictionary<K, V>(transform: Element -> (K, V)?) -> [K : V] {
         
         var result = [K : V]()
         

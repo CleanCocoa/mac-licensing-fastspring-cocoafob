@@ -43,14 +43,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func handleGetUrlEvent(event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
         
-        if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) {
-            
-            // If you support multiple actions, here'd be the place to 
-            // delegate to a router object instead.
-            
-            URLQueryRegistration(registrationHandler: registerApplication)
-                .registerFromURL(url)
+        guard let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) else {
+            return
         }
+        
+        // If you support multiple actions, here'd be the place to 
+        // delegate to a router object instead.
+        
+        URLQueryRegistration(registrationHandler: registerApplication)
+            .registerFromURL(url)
     }
 
     func observeLicenseChanges() {
@@ -84,7 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             showRegisterApp()
-        case let .Registered(license):
+        case .Registered(_):
             
             unlockApp()
         }
@@ -121,17 +122,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func licenseDidChange(notification: NSNotification) {
         
-        if let userInfo = notification.userInfo, licenseInformation = LicenseInformation.fromUserInfo(userInfo) {
+        guard let userInfo = notification.userInfo, licenseInformation = LicenseInformation.fromUserInfo(userInfo) else {
+            return
+        }
+        
+        switch licenseInformation {
+        case .Registered(_):
+            displayThankYouAlert()
+            unlockApp()
             
-            switch licenseInformation {
-            case .Registered(_):
-                displayThankYouAlert()
-                unlockApp()
-                
-            case .Unregistered:
-                // If you support un-registering, handle it here
-                return
-            }
+        case .Unregistered:
+            // If you support un-registering, handle it here
+            return
         }
     }
     
