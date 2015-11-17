@@ -34,9 +34,8 @@ extension TrialPeriod {
         
         let now = clock.now()
         let timeUntil = now.timeIntervalSinceDate(endDate)
-        let daysUntil: Double = fabs(Days.amountFromTimeInterval(timeUntil))
         
-        return Days(daysUntil)
+        return Days(timeInterval: timeUntil)
     }
 }
 

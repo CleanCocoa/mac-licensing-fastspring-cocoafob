@@ -22,6 +22,10 @@ public struct Days {
         return Int(ceil(amount))
     }
     
+    public init(timeInterval: NSTimeInterval) {
+        amount = fabs(Days.amountFromTimeInterval(timeInterval))
+    }
+    
     public init(_ anAmount: Double) {
         amount = anAmount
     }
