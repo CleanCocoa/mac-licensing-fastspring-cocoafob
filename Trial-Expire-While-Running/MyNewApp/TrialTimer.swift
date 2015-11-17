@@ -1,14 +1,14 @@
 // Copyright (c) 2015 Christian Tietze
-// 
+//
 // See the file LICENSE for copying permission.
 
 import Foundation
 
 typealias CancelableDispatchBlock = (cancel: Bool) -> Void
 
-func dispatchCancelableBlockAtDate(date: NSDate, block: dispatch_block_t) -> CancelableDispatchBlock? {
+func dispatch(cancelableBlock block: dispatch_block_t, atDate date: NSDate) -> CancelableDispatchBlock? {
     
-    // Use two pointers for the same block handle to make 
+    // Use two pointers for the same block handle to make
     // the block reference itself.
     var cancelableBlock: CancelableDispatchBlock? = nil
     
@@ -25,9 +25,9 @@ func dispatchCancelableBlockAtDate(date: NSDate, block: dispatch_block_t) -> Can
     
     let interval = Int64(date.timeIntervalSinceNow)
     let delay = interval * Int64(NSEC_PER_SEC)
-
-    dispatch_after(dispatch_walltime(nil, delay), dispatch_get_main_queue()) {
     
+    dispatch_after(dispatch_walltime(nil, delay), dispatch_get_main_queue()) {
+        
         if hasValue(cancelableBlock) {
             cancelableBlock!(cancel: false)
         }
@@ -63,16 +63,17 @@ public class TrialTimer {
     
     public func start() {
         
-        if isRunning {
+        guard !isRunning else {
             NSLog("invalid re-starting of a running timer")
             return
         }
         
-        if let delayedBlock = dispatchCancelableBlockAtDate(trialEndDate, block: timerDidFire) {
-            
-            NSLog("Starting trial timer for: \(trialEndDate)")
-            self.delayedBlock = delayedBlock
+        guard let delayedBlock = dispatch(cancelableBlock: timerDidFire, atDate: trialEndDate) else {
+            fatalError("Cannot create a cancellable timer.")
         }
+        
+        NSLog("Starting trial timer for: \(trialEndDate)")
+        self.delayedBlock = delayedBlock
     }
     
     private func timerDidFire() {
@@ -82,7 +83,7 @@ public class TrialTimer {
     
     public func stop() {
         
-        if !isRunning {
+        guard isRunning else {
             NSLog("attempting to stop non-running timer")
             return
         }
