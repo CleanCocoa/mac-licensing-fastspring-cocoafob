@@ -35,3 +35,14 @@ public enum LicenseInformation {
     case Unregistered
     case Registered(License)
 }
+
+extension LicenseInformation: Equatable { }
+
+public func ==(lhs: LicenseInformation, rhs: LicenseInformation) -> Bool {
+    
+    switch (lhs, rhs) {
+    case (.Unregistered, .Unregistered): return true
+    case let (.Registered(lLicense), .Registered(rLicense)): return lLicense == rLicense
+    default: return false
+    }
+}

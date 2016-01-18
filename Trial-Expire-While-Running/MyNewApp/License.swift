@@ -32,7 +32,20 @@ public func ==(lhs: License, rhs: License) -> Bool {
 }
 
 public enum LicenseInformation {
+    
     case Registered(License)
     case OnTrial(TrialPeriod)
     case TrialUp
+}
+
+extension LicenseInformation: Equatable { }
+
+public func ==(lhs: LicenseInformation, rhs: LicenseInformation) -> Bool {
+    
+    switch (lhs, rhs) {
+    case (.TrialUp, .TrialUp): return true
+    case let (.OnTrial(lPeriod), .OnTrial(rPeriod)): return lPeriod == rPeriod
+    case let (.Registered(lLicense), .Registered(rLicense)): return lLicense == rLicense
+    default: return false
+    }
 }
