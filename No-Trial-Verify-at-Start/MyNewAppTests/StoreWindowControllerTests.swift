@@ -51,7 +51,7 @@ class StoreWindowControllerTests: XCTestCase {
     
     func testBackButton_IsWiredToAction() {
         
-        XCTAssertEqual(controller.backButton.action, Selector("goBack:"))
+        XCTAssertEqual(controller.backButton.action, #selector(WKWebView.goBack(_:)))
         XCTAssert(button(controller.backButton, isWiredTo: controller.webView))
     }
     
@@ -62,7 +62,7 @@ class StoreWindowControllerTests: XCTestCase {
     
     func testForwardButton_IsWiredToAction() {
         
-        XCTAssertEqual(controller.forwardButton.action, Selector("goForward:"))
+        XCTAssertEqual(controller.forwardButton.action, #selector(WKWebView.goForward(_:)))
         XCTAssert(button(controller.forwardButton, isWiredTo: controller.webView))
     }
     
@@ -73,7 +73,7 @@ class StoreWindowControllerTests: XCTestCase {
     
     func testReloadButton_IsWiredToAction() {
         
-        XCTAssertEqual(controller.reloadButton.action, Selector("reloadStore:"))
+        XCTAssertEqual(controller.reloadButton.action, #selector(StoreWindowController.reloadStore(_:)))
     }
     
     func testAfterAwaking_ForwardsWebViewToStoreController() {

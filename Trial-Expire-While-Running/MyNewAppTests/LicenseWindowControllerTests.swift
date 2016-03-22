@@ -36,7 +36,7 @@ class LicenseWindowControllerTests: XCTestCase {
     
     func testBuyButton_IsWiredToAction() {
         
-        XCTAssert(controller.buyButton?.action == Selector("buy:"))
+        XCTAssert(controller.buyButton?.action == #selector(LicenseWindowController.buy(_:)))
     }
     
     func testBuyButton_Initially_IsEnabled() {

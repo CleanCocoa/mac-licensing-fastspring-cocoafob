@@ -86,7 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func registerForURLScheme() {
         
-        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector: Selector("handleGetUrlEvent:withReplyEvent:"), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector: #selector(AppDelegate.handleGetUrlEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
     }
     
     func handleGetUrlEvent(event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
@@ -103,7 +103,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func observeLicenseChanges() {
         
-        notificationCenter.addObserver(self, selector: Selector("licenseDidChange:"), name: Events.LicenseChanged.rawValue, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(_:)), name: Events.LicenseChanged.rawValue, object: nil)
     }
     
     func prepareLicenseWindowController() {

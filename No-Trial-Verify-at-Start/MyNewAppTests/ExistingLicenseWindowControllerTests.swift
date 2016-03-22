@@ -40,7 +40,7 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
 
     func testRegisterButton_IsWiredToAction() {
         
-        XCTAssert(controller.registerButton?.action == Selector("register:"))
+        XCTAssert(controller.registerButton?.action == #selector(ExistingLicenseViewController.register(_:)))
     }
     
     
