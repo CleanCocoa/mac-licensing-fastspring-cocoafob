@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Startup
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         if isRunningTests {
             return
