@@ -10,10 +10,10 @@
 		50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */; };
 		50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */; };
 		50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */; };
-		50397A9C1BAFF69600780815 /* CFUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A981BAFF69600780815 /* CFUtil.swift */; settings = {ASSET_TAGS = (); }; };
-		50397A9D1BAFF69600780815 /* CocoaFobError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A991BAFF69600780815 /* CocoaFobError.swift */; settings = {ASSET_TAGS = (); }; };
-		50397A9E1BAFF69600780815 /* CocoaFobLicVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */; settings = {ASSET_TAGS = (); }; };
-		50397A9F1BAFF69600780815 /* CocoaFobStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */; settings = {ASSET_TAGS = (); }; };
+		50397A9C1BAFF69600780815 /* CFUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A981BAFF69600780815 /* CFUtil.swift */; };
+		50397A9D1BAFF69600780815 /* CocoaFobError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A991BAFF69600780815 /* CocoaFobError.swift */; };
+		50397A9E1BAFF69600780815 /* CocoaFobLicVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */; };
+		50397A9F1BAFF69600780815 /* CocoaFobStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */; };
 		50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA01B8313E700727FBA /* PurchaseLicense.swift */; };
 		50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */; };
 		505D9DEE1B89E47600D412F1 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D9DED1B89E47600D412F1 /* License.swift */; };
@@ -83,10 +83,10 @@
 		50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReader.swift; sourceTree = "<group>"; };
 		50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReaderTests.swift; sourceTree = "<group>"; };
 		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
-		50397A981BAFF69600780815 /* CFUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CFUtil.swift; path = ../External/cocoafob/swift/CocoaFob/CFUtil.swift; sourceTree = "<group>"; };
-		50397A991BAFF69600780815 /* CocoaFobError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocoaFobError.swift; path = ../External/cocoafob/swift/CocoaFob/CocoaFobError.swift; sourceTree = "<group>"; };
-		50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocoaFobLicVerifier.swift; path = ../External/cocoafob/swift/CocoaFob/CocoaFobLicVerifier.swift; sourceTree = "<group>"; };
-		50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocoaFobStringExt.swift; path = ../External/cocoafob/swift/CocoaFob/CocoaFobStringExt.swift; sourceTree = "<group>"; };
+		50397A981BAFF69600780815 /* CFUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUtil.swift; sourceTree = "<group>"; };
+		50397A991BAFF69600780815 /* CocoaFobError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobError.swift; sourceTree = "<group>"; };
+		50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobLicVerifier.swift; sourceTree = "<group>"; };
+		50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobStringExt.swift; sourceTree = "<group>"; };
 		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
 		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; };
 		505D9DED1B89E47600D412F1 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -321,6 +321,7 @@
 				50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */,
 			);
 			name = CocoaFob;
+			path = ../External/cocoafob/swift3/CocoaFob;
 			sourceTree = "<group>";
 		};
 		50E75DC11B821D590092CD19 /* License */ = {
@@ -418,14 +419,16 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Christian Tietze";
 				TargetAttributes = {
 					50C9B09C1B7F6DAC002C5449 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 					};
 					50C9B0AC1B7F6DAC002C5449 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 						TestTargetID = 50C9B09C1B7F6DAC002C5449;
 					};
 				};
@@ -576,8 +579,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -621,8 +626,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -641,6 +648,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -657,6 +665,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -672,6 +681,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
@@ -696,6 +706,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewAppTests/MyNewAppTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNewApp.app/Contents/MacOS/MyNewApp";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore\"/**";
 			};
@@ -716,6 +727,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewAppTests/MyNewAppTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNewApp.app/Contents/MacOS/MyNewApp";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore\"/**";
 			};
