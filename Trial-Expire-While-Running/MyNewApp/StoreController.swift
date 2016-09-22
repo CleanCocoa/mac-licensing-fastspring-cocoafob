@@ -88,7 +88,7 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         }
     }
     
-    private func license(fromOrder order: FsprgOrder) -> License? {
+    fileprivate func license(fromOrder order: FsprgOrder) -> License? {
         
         if let items = order.orderItems() as? [FsprgOrderItem],
             let license = items
@@ -104,7 +104,7 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         return nil
     }
     
-    private func orderItemIsForThisApp(orderItem: FsprgOrderItem) -> Bool {
+    fileprivate func orderItemIsForThisApp(orderItem: FsprgOrderItem) -> Bool {
         
         let appName = storeInfo.productName
         
@@ -115,7 +115,7 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         return false
     }
     
-    private func license(fromOrderItem orderItem: FsprgOrderItem) -> License? {
+    fileprivate func license(fromOrderItem orderItem: FsprgOrderItem) -> License? {
         
         if let orderLicense = orderItem.license(),
             let name = orderLicense.licenseName(),

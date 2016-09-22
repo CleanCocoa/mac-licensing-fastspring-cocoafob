@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 //
 // See the file LICENSE for copying permission.
 
@@ -12,8 +12,8 @@ open class URLQueryLicenseParser {
         
         let queryDictionary = dictionaryFromQuery(query)
         
-        if let name = decode(queryDictionary["\(URLComponents.Licensee)"]),
-            let licenseCode = queryDictionary["\(URLComponents.LicenseCode)"] {
+        if let name = decode(queryDictionary["\(URLComponents.licensee)"]),
+            let licenseCode = queryDictionary["\(URLComponents.licenseCode)"] {
                 
             return License(name: name, licenseCode: licenseCode)
         }

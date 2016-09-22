@@ -12,8 +12,8 @@ public class TrialProvider {
 
     public var currentTrialPeriod: TrialPeriod? {
         
-        if let startDate = userDefaults.object(forKey: "\(TrialPeriod.UserDefaultsKeys.StartDate)") as? Date,
-            let endDate = userDefaults.object(forKey: "\(TrialPeriod.UserDefaultsKeys.EndDate)") as? Date {
+        if let startDate = userDefaults.object(forKey: "\(TrialPeriod.UserDefaultsKeys.startDate)") as? Date,
+            let endDate = userDefaults.object(forKey: "\(TrialPeriod.UserDefaultsKeys.endDate)") as? Date {
                 
             return TrialPeriod(startDate: startDate, endDate: endDate)
         }

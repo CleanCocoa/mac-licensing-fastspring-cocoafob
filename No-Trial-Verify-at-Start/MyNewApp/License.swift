@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -15,10 +15,10 @@ public struct License {
         self.licenseCode = licenseCode
     }
     
-    public enum UserDefaultsKeys: String, CustomStringConvertible {
-        
-        case Name = "licensee"
-        case LicenseCode = "license_code"
+    enum UserDefaultsKeys: String, CustomStringConvertible {
+
+        case name = "licensee"
+        case licenseCode = "license_code"
         
         public var description: String { return rawValue }
     }

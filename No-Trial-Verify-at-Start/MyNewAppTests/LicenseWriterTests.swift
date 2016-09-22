@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -37,7 +37,7 @@ class LicenseWriterTests: XCTestCase {
         let name = "a name"
         
         // When
-        writer.storeLicenseCode(licenseCode, forName: name)
+        writer.store(licenseCode: licenseCode, forName: name)
         
         // Then
         let changedDefaults = userDefaultsDouble.didSetValuesForKeys
@@ -45,8 +45,8 @@ class LicenseWriterTests: XCTestCase {
         
         if let changedDefaults = changedDefaults {
             
-            XCTAssert(changedDefaults[License.UserDefaultsKeys.Name.rawValue] == name)
-            XCTAssert(changedDefaults[License.UserDefaultsKeys.LicenseCode.rawValue] == licenseCode)
+            XCTAssert(changedDefaults[License.UserDefaultsKeys.name.rawValue] == name)
+            XCTAssert(changedDefaults[License.UserDefaultsKeys.licenseCode.rawValue] == licenseCode)
         }
     }
 

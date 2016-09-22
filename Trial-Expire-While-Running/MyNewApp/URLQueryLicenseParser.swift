@@ -12,8 +12,8 @@ public class URLQueryLicenseParser {
         
         let queryDictionary = dictionary(fromQuery: query)
         
-        if let name = decode(string: queryDictionary["\(URLComponents.Licensee)"]),
-            let licenseCode = queryDictionary["\(URLComponents.LicenseCode)"] {
+        if let name = decode(string: queryDictionary["\(URLComponents.licensee)"]),
+            let licenseCode = queryDictionary["\(URLComponents.licenseCode)"] {
                 
             return License(name: name, licenseCode: licenseCode)
         }
@@ -38,25 +38,25 @@ public class URLQueryLicenseParser {
         }
     }
     
-    private func queryKey(fromParameter parameter: String) -> String? {
+    fileprivate func queryKey(fromParameter parameter: String) -> String? {
         
         return parameter.components(separatedBy: "=")[safe:0]
     }
     
-    private func queryValue(fromParameter parameter: String) -> String? {
+    fileprivate func queryValue(fromParameter parameter: String) -> String? {
         
         return escapedQueryValue(parameter: parameter)
             >>- unescapeQueryValue
     }
     
-    func unescapeQueryValue(queryValue: String) -> String? {
+    fileprivate func unescapeQueryValue(queryValue: String) -> String? {
         
         return queryValue
             .replacingOccurrences(of: "+", with: " ")
             .removingPercentEncoding
     }
     
-    func escapedQueryValue(parameter: String) -> String? {
+    fileprivate func escapedQueryValue(parameter: String) -> String? {
         
         // Assume only one `=` is the separator and concatenate 
         // the rest back into the value.
@@ -66,7 +66,7 @@ public class URLQueryLicenseParser {
             .joined(separator: "=")
     }
     
-    func decode(string: String?) -> String? {
+    fileprivate func decode(string: String?) -> String? {
         
         if let string = string, let decodedData = NSData(base64Encoded: string, options: []) {
             

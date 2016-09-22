@@ -15,10 +15,10 @@ public struct License {
         self.licenseCode = licenseCode
     }
     
-    public enum UserDefaultsKeys: String, CustomStringConvertible {
+    enum UserDefaultsKeys: String, CustomStringConvertible {
         
-        case Name = "licensee"
-        case LicenseCode = "license_code"
+        case name = "licensee"
+        case licenseCode = "license_code"
         
         public var description: String { return rawValue }
     }
@@ -33,9 +33,9 @@ public func ==(lhs: License, rhs: License) -> Bool {
 
 public enum LicenseInformation {
     
-    case Registered(License)
-    case OnTrial(TrialPeriod)
-    case TrialUp
+    case registered(License)
+    case onTrial(TrialPeriod)
+    case trialUp
 }
 
 extension LicenseInformation: Equatable { }
@@ -43,9 +43,9 @@ extension LicenseInformation: Equatable { }
 public func ==(lhs: LicenseInformation, rhs: LicenseInformation) -> Bool {
     
     switch (lhs, rhs) {
-    case (.TrialUp, .TrialUp): return true
-    case let (.OnTrial(lPeriod), .OnTrial(rPeriod)): return lPeriod == rPeriod
-    case let (.Registered(lLicense), .Registered(rLicense)): return lLicense == rLicense
+    case (.trialUp, .trialUp): return true
+    case let (.onTrial(lPeriod), .onTrial(rPeriod)): return lPeriod == rPeriod
+    case let (.registered(lLicense), .registered(rLicense)): return lLicense == rLicense
     default: return false
     }
 }

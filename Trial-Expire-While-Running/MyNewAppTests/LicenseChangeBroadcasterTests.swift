@@ -29,7 +29,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
     
     func testBroadcast_TrialUp_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.TrialUp
+        let licenseInfo = LicenseInformation.trialUp
         
         broadcaster.broadcast(licenseInfo)
         
@@ -37,7 +37,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         XCTAssert(hasValue(values))
         
         if let values = values {
-            XCTAssertEqual(values.name, Events.LicenseChanged.notificationName)
+            XCTAssertEqual(values.name, Events.licenseChanged.notificationName)
             XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
             
             XCTAssert(hasValue(values.userInfo))
@@ -49,7 +49,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
     
     func testBroadcast_OnTrial_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.OnTrial(TrialPeriod(startDate: Date(), endDate: Date()))
+        let licenseInfo = LicenseInformation.onTrial(TrialPeriod(startDate: Date(), endDate: Date()))
         
         broadcaster.broadcast(licenseInfo)
         
@@ -57,7 +57,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         XCTAssert(hasValue(values))
         
         if let values = values {
-            XCTAssertEqual(values.name, Events.LicenseChanged.notificationName)
+            XCTAssertEqual(values.name, Events.licenseChanged.notificationName)
             XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
             
             XCTAssert(hasValue(values.userInfo))
@@ -69,7 +69,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
 
     func testBroadcast_Registered_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.Registered(License(name: "the name", licenseCode: "a license"))
+        let licenseInfo = LicenseInformation.registered(License(name: "the name", licenseCode: "a license"))
         
         broadcaster.broadcast(licenseInfo)
         
@@ -77,7 +77,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         XCTAssert(hasValue(values))
         
         if let values = values {
-            XCTAssertEqual(values.name, Events.LicenseChanged.notificationName)
+            XCTAssertEqual(values.name, Events.licenseChanged.notificationName)
             XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
             
             XCTAssert(hasValue(values.userInfo))

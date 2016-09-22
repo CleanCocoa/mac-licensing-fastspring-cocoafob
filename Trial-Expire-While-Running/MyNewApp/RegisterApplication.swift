@@ -25,7 +25,7 @@ public class RegisterApplication: HandlesRegistering {
             return
         }
         
-        let licenseInformation = LicenseInformation.Registered(License(name: name, licenseCode: licenseCode))
+        let licenseInformation = LicenseInformation.registered(License(name: name, licenseCode: licenseCode))
         
         licenseWriter.store(licenseCode: licenseCode, forName: name)
         changeBroadcaster.broadcast(licenseInformation)

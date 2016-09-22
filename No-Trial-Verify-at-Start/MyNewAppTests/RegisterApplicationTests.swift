@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -99,7 +99,7 @@ class RegisterApplicationTests: XCTestCase {
     class TestWriter: LicenseWriter {
         
         var didStoreWith: (licenseCode: String, name: String)?
-        override func storeLicenseCode(_ licenseCode: String, forName name: String) {
+        override func store(licenseCode: String, forName name: String) {
             
             didStoreWith = (licenseCode, name)
         }

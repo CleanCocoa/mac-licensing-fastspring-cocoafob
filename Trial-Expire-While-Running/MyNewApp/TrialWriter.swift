@@ -12,7 +12,7 @@ public class TrialWriter {
     
     public func store(trialPeriod: TrialPeriod) {
         
-        userDefaults.set(trialPeriod.startDate, forKey: TrialPeriod.UserDefaultsKeys.StartDate.rawValue)
-        userDefaults.set(trialPeriod.endDate, forKey: TrialPeriod.UserDefaultsKeys.EndDate.rawValue)
+        userDefaults.set(trialPeriod.startDate, forKey: TrialPeriod.UserDefaultsKeys.startDate.rawValue)
+        userDefaults.set(trialPeriod.endDate, forKey: TrialPeriod.UserDefaultsKeys.endDate.rawValue)
     }
 }

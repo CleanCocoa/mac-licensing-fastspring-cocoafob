@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func observeLicenseChanges() {
         
-        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(_:)), name: NSNotification.Name(rawValue: Events.LicenseChanged.rawValue), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(_:)), name: NSNotification.Name(rawValue: Events.licenseChanged.rawValue), object: nil)
     }
     
     func prepareLicenseWindowController() {

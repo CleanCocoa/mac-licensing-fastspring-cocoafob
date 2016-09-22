@@ -44,16 +44,16 @@ public class LicenseWindowController: NSWindowController {
     public func displayLicenseInformation(licenseInformation: LicenseInformation, clock: KnowsTimeAndDate = Clock()) {
         
         switch licenseInformation {
-        case let .OnTrial(trialPeriod):
+        case let .onTrial(trialPeriod):
             let trial = Trial(trialPeriod: trialPeriod, clock: clock)
             display(trialDaysLeft: trial.daysLeft)
             existingLicenseViewController.displayEmptyForm()
             
-        case .TrialUp:
+        case .trialUp:
             displayTrialUp()
             existingLicenseViewController.displayEmptyForm()
             
-        case let .Registered(license):
+        case let .registered(license):
             displayBought()
             existingLicenseViewController.display(license: license)
         }

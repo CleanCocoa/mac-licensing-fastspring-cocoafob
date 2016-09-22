@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -32,7 +32,7 @@ open class RegisterApplication: HandlesRegistering {
         
         let licenseInformation = LicenseInformation.registered(License(name: name, licenseCode: licenseCode))
         
-        licenseWriter.storeLicenseCode(licenseCode, forName: name)
+        licenseWriter.store(licenseCode: licenseCode, forName: name)
         changeBroadcaster.broadcast(licenseInformation)
     }
     

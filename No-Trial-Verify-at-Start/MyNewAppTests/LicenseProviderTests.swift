@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -30,8 +30,8 @@ class LicenseProviderTests: XCTestCase {
     
     func provideLicenseDefaults(_ name: String, licenseCode: String) {
         userDefaultsDouble.testValues = [
-            License.UserDefaultsKeys.Name.rawValue : name,
-            License.UserDefaultsKeys.LicenseCode.rawValue : licenseCode
+            License.UserDefaultsKeys.name.rawValue : name,
+            License.UserDefaultsKeys.licenseCode.rawValue : licenseCode
         ]
     }
     
@@ -48,7 +48,7 @@ class LicenseProviderTests: XCTestCase {
         
         if let usedDefaultNames = usedDefaultNames {
             
-            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.Name.rawValue))
+            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.name.rawValue))
         }
     }
     
@@ -71,8 +71,8 @@ class LicenseProviderTests: XCTestCase {
         
         if let usedDefaultNames = usedDefaultNames {
             
-            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.Name.rawValue))
-            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.LicenseCode.rawValue))
+            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.name.rawValue))
+            XCTAssert(usedDefaultNames.contains(License.UserDefaultsKeys.licenseCode.rawValue))
         }
     }
     

@@ -33,12 +33,12 @@ public class LicenseVerifier {
         return verifier.verify(licenseCode, forName: registrationName)
     }
     
-    private func verifier(publicKey: String) -> CocoaFobLicVerifier? {
+    fileprivate func verifier(publicKey: String) -> CocoaFobLicVerifier? {
 
         return CocoaFobLicVerifier(publicKeyPEM: publicKey)
     }
     
-    private func publicKey() -> String {
+    fileprivate func publicKey() -> String {
         
         var parts = [String]()
         

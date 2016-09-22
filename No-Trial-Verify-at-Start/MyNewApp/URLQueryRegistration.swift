@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 //
 // See the file LICENSE for copying permission.
 
@@ -26,7 +26,7 @@ open class URLQueryRegistration {
     
     func queryFromURL(_ url: URL) -> String? {
         
-        if let host = url.host, let query = url.query , host == URLComponents.Host {
+        if let host = url.host, let query = url.query , host == URLComponents.host {
             
             return query
         }

@@ -12,8 +12,8 @@ public class LicenseProvider {
     
     public var currentLicense: License? {
         
-        if let name = userDefaults.string(forKey: "\(License.UserDefaultsKeys.Name)"),
-            let licenseCode = userDefaults.string(forKey: "\(License.UserDefaultsKeys.LicenseCode)") {
+        if let name = userDefaults.string(forKey: "\(License.UserDefaultsKeys.name)"),
+            let licenseCode = userDefaults.string(forKey: "\(License.UserDefaultsKeys.licenseCode)") {
                 
                 return License(name: name, licenseCode: licenseCode)
         }

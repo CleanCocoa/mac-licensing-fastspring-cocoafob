@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -42,7 +42,7 @@ extension LicenseInformation {
 
 public enum Events: String {
     
-    case LicenseChanged = "License Changed"
+    case licenseChanged = "License Changed"
 
     var notificationName: NSNotification.Name {
         return NSNotification.Name(self.rawValue)
@@ -57,6 +57,6 @@ open class LicenseChangeBroadcaster {
     
     open func broadcast(_ licenseInformation: LicenseInformation) {
         
-        notificationCenter.post(name: Notification.Name(rawValue: Events.LicenseChanged.rawValue), object: self, userInfo: licenseInformation.userInfo())
+        notificationCenter.post(name: Notification.Name(rawValue: Events.licenseChanged.rawValue), object: self, userInfo: licenseInformation.userInfo())
     }
 }

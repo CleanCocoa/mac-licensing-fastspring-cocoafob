@@ -41,16 +41,16 @@ public class LicenseInformationProvider {
         if let license = self.license(),
             license.isValid(licenseVerifier: licenseVerifier) {
             
-            return .Registered(license)
+            return .registered(license)
         }
         
         if let trial = self.trial(),
             trial.isActive {
             
-            return .OnTrial(trial.trialPeriod)
+            return .onTrial(trial.trialPeriod)
         }
         
-        return .TrialUp
+        return .trialUp
     }
     
     func license() -> License? {

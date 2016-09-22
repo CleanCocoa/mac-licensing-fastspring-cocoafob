@@ -74,9 +74,9 @@ public class TrialTimer {
         self.delayedBlock = delayedBlock
     }
     
-    private func timerDidFire() {
+    fileprivate func timerDidFire() {
         
-        licenseChangeBroadcaster.broadcast(.TrialUp)
+        licenseChangeBroadcaster.broadcast(.trialUp)
     }
     
     public func stop() {

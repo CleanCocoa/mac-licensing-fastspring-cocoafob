@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -37,7 +37,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         XCTAssert(hasValue(values))
         
         if let values = values {
-            XCTAssertEqual(values.name, Events.LicenseChanged.notificationName)
+            XCTAssertEqual(values.name, Events.licenseChanged.notificationName)
             XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
             
             XCTAssert(hasValue(values.userInfo))
@@ -57,7 +57,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         XCTAssert(hasValue(values))
         
         if let values = values {
-            XCTAssertEqual(values.name, Events.LicenseChanged.notificationName)
+            XCTAssertEqual(values.name, Events.licenseChanged.notificationName)
             XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
             
             XCTAssert(hasValue(values.userInfo))

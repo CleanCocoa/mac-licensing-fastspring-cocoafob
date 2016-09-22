@@ -109,7 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func observeLicenseChanges() {
         
-        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(notification:)), name: Events.LicenseChanged.notificationName, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(notification:)), name: Events.licenseChanged.notificationName, object: nil)
     }
     
     func prepareLicenseWindowController() {
@@ -132,14 +132,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func launchAppOrShowLicenseWindow() {
         
         switch currentLicenseInformation {
-        case .TrialUp:
+        case .trialUp:
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
             
             showRegisterApp()
             
-        case let .OnTrial(trialPeriod):
+        case let .onTrial(trialPeriod):
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
@@ -149,7 +149,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             unlockApp()
             
-        case .Registered(_):
+        case .registered(_):
             
             stopTrialTimer()
             unlockApp()
@@ -172,17 +172,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         switch licenseInformation {
-        case .OnTrial(_):
+        case .onTrial(_):
             // Change to this state is possible if unregistering while
             // trial isn't up, yet.
             return
             
-        case .Registered(_):
+        case .registered(_):
             displayThankYouAlert()
             stopTrialTimer()
             unlockApp()
             
-        case .TrialUp:
+        case .trialUp:
             displayTrialUpAlert()
             lockApp()
             showRegisterApp()

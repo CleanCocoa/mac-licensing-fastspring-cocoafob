@@ -53,7 +53,7 @@ class LicenseInformationProviderTests: XCTestCase {
         let trialIsUp: Bool
         
         switch licenseInfo {
-        case .TrialUp: trialIsUp = true
+        case .trialUp: trialIsUp = true
         default: trialIsUp = false
         }
         
@@ -70,7 +70,7 @@ class LicenseInformationProviderTests: XCTestCase {
         let licenseInfo = licenseInfoProvider.currentLicenseInformation
         
         switch licenseInfo {
-        case let .OnTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
+        case let .onTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
         default: XCTFail("expected to be OnTrial")
         }
     }
@@ -86,7 +86,7 @@ class LicenseInformationProviderTests: XCTestCase {
         
         let trialIsUp: Bool
         switch licenseInfo {
-        case .TrialUp: trialIsUp = true
+        case .trialUp: trialIsUp = true
         default: trialIsUp = false
         }
         
@@ -102,7 +102,7 @@ class LicenseInformationProviderTests: XCTestCase {
         
         let trialIsUp: Bool
         switch licenseInfo {
-        case .TrialUp: trialIsUp = true
+        case .trialUp: trialIsUp = true
         default: trialIsUp = false
         }
         
@@ -125,7 +125,7 @@ class LicenseInformationProviderTests: XCTestCase {
         
         // Then
         switch licenseInfo {
-        case let .OnTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
+        case let .onTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
         default: XCTFail("expected to be OnTrial")
         }
     }
@@ -141,8 +141,8 @@ class LicenseInformationProviderTests: XCTestCase {
         let licenseInfo = licenseInfoProvider.currentLicenseInformation
         
         switch licenseInfo {
-        case let .Registered(foundLicense): XCTAssertEqual(foundLicense, license)
-        default: XCTFail("expected .Registered(_)")
+        case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)
+        default: XCTFail("expected .registered(_)")
         }
     }
     
@@ -166,8 +166,8 @@ class LicenseInformationProviderTests: XCTestCase {
         
         // Then
         switch licenseInfo {
-        case let .Registered(foundLicense): XCTAssertEqual(foundLicense, license)
-        default: XCTFail("expected .Registered(_)")
+        case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)
+        default: XCTFail("expected .registered(_)")
         }
     }
     
@@ -190,8 +190,8 @@ class LicenseInformationProviderTests: XCTestCase {
         
         // Then
         switch licenseInfo {
-        case let .Registered(foundLicense): XCTAssertEqual(foundLicense, license)
-        default: XCTFail("expected .Registered(_)")
+        case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)
+        default: XCTFail("expected .registered(_)")
         }
     }
     

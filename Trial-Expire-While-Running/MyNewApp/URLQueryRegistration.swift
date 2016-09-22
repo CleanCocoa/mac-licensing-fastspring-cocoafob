@@ -25,9 +25,9 @@ public class URLQueryRegistration {
         registrationHandler.register(name: license.name, licenseCode: license.licenseCode)
     }
     
-    private func query(url: URL) -> String? {
+    fileprivate func query(url: URL) -> String? {
         
-        if let host = url.host, let query = url.query , host == URLComponents.Host {
+        if let host = url.host, let query = url.query , host == URLComponents.host {
             
             return query
         }

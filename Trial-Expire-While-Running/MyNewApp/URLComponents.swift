@@ -6,9 +6,9 @@ import Foundation
 
 enum URLComponents: String, CustomStringConvertible {
     
-    case Host = "activate"
-    case Licensee = "name"
-    case LicenseCode = "licenseCode"
+    case host = "activate"
+    case licensee = "name"
+    case licenseCode = "licenseCode"
     
     var description: String { return rawValue }
 }
