@@ -4,7 +4,7 @@
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class URLQueryLicenseParserTests: XCTestCase {
 

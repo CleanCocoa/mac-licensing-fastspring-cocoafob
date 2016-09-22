@@ -11,9 +11,9 @@ class Alerts {
         if isRunningTests { return nil }
         
         let alert = NSAlert()
-        alert.alertStyle = .InformationalAlertStyle
+        alert.alertStyle = .informational
         alert.messageText = "Thank You for Purchasing!"
-        alert.addButtonWithTitle("Continue")
+        alert.addButton(withTitle: "Continue")
         
         return alert
     }
@@ -23,9 +23,9 @@ class Alerts {
         if isRunningTests { return nil }
         
         let alert = NSAlert()
-        alert.alertStyle = .CriticalAlertStyle
+        alert.alertStyle = .critical
         alert.messageText = "Invalid combination of name and license code."
-        alert.addButtonWithTitle("Close")
+        alert.addButton(withTitle: "Close")
         
         return alert
     }

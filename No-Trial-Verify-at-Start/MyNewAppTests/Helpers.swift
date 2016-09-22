@@ -4,25 +4,25 @@
 
 import AppKit
 
-func loadWindow(controller: NSWindowController) {
+func loadWindow(_ controller: NSWindowController) {
     forceInitialize(controller.window)
 }
 
-func loadView(controller: NSViewController) {
+func loadView(_ controller: NSViewController) {
     forceInitialize(controller.view)
 }
 
-func forceInitialize(view: NSView) {
+func forceInitialize(_ view: NSView) {
     // no op
 }
 
-func forceInitialize(view: NSWindow?) {
+func forceInitialize(_ view: NSWindow?) {
     // no op
 }
 
-class NullUserDefaults: NSUserDefaults {
+class NullUserDefaults: UserDefaults {
     
-    override func registerDefaults(registrationDictionary: [String : AnyObject]) {  }
-    override func valueForKey(key: String) -> AnyObject? { return nil }
-    override func setValue(value: AnyObject?, forKey key: String) {  }
+    override func register(defaults registrationDictionary: [String : Any]) {  }
+    override func value(forKey key: String) -> Any? { return nil }
+    override func setValue(_ value: Any?, forKey key: String) {  }
 }

@@ -6,13 +6,13 @@ import Foundation
 
 extension License {
     
-    func isValid(licenseVerifier: LicenseVerifier) -> Bool {
+    func isValid(_ licenseVerifier: LicenseVerifier) -> Bool {
         
         return licenseVerifier.licenseCodeIsValid(licenseCode, forName: name)
     }
 }
 
-public class LicenseInformationProvider {
+open class LicenseInformationProvider {
     
     let licenseProvider: LicenseProvider
     
@@ -21,9 +21,9 @@ public class LicenseInformationProvider {
         self.licenseProvider = licenseProvider
     }
 
-    public lazy var licenseVerifier: LicenseVerifier = LicenseVerifier()
+    open lazy var licenseVerifier: LicenseVerifier = LicenseVerifier()
     
-    public var licenseIsInvalid: Bool {
+    open var licenseIsInvalid: Bool {
         
         guard let license = self.license() else {
             return false
@@ -32,14 +32,14 @@ public class LicenseInformationProvider {
         return !license.isValid(licenseVerifier)
     }
     
-    public var currentLicenseInformation: LicenseInformation {
+    open var currentLicenseInformation: LicenseInformation {
         
-        if let license = self.license() where license.isValid(licenseVerifier) {
+        if let license = self.license() , license.isValid(licenseVerifier) {
             
-            return .Registered(license)
+            return .registered(license)
         }
         
-        return .Unregistered
+        return .unregistered
     }
     
     func license() -> License? {

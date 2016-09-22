@@ -4,7 +4,7 @@
 
 import Foundation
 
-public class RegisterApplication: HandlesRegistering {
+open class RegisterApplication: HandlesRegistering {
     
     let licenseVerifier: LicenseVerifier
     let licenseWriter: LicenseWriter
@@ -22,7 +22,7 @@ public class RegisterApplication: HandlesRegistering {
         self.changeBroadcaster = changeBroadcaster
     }
     
-    public func register(name: String, licenseCode: String) {
+    open func register(_ name: String, licenseCode: String) {
         
         if !licenseVerifier.licenseCodeIsValid(licenseCode, forName: name) {
             
@@ -30,7 +30,7 @@ public class RegisterApplication: HandlesRegistering {
             return
         }
         
-        let licenseInformation = LicenseInformation.Registered(License(name: name, licenseCode: licenseCode))
+        let licenseInformation = LicenseInformation.registered(License(name: name, licenseCode: licenseCode))
         
         licenseWriter.storeLicenseCode(licenseCode, forName: name)
         changeBroadcaster.broadcast(licenseInformation)

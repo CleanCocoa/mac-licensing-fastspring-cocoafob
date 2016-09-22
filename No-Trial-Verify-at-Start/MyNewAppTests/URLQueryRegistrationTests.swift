@@ -4,7 +4,7 @@
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class URLQueryRegistrationTests: XCTestCase {
 
@@ -23,7 +23,7 @@ class URLQueryRegistrationTests: XCTestCase {
     
     func testRegister_URLWithoutHost_DoesNotDelegate() {
         
-        let url = NSURL(string: "xyz://")!
+        let url = URL(string: "xyz://")!
         
         service.registerFromURL(url)
         
@@ -33,7 +33,7 @@ class URLQueryRegistrationTests: XCTestCase {
     
     func testRegister_URLWithBogusHost_DoesNotDelegate() {
         
-        let url = NSURL(string: "xyz://bogus")!
+        let url = URL(string: "xyz://bogus")!
         
         service.registerFromURL(url)
         
@@ -43,7 +43,7 @@ class URLQueryRegistrationTests: XCTestCase {
     
     func testRegister_ActivationURLWithoutQuery_DoesNotDelegate() {
         
-        let url = NSURL(string: "xyz://activate")!
+        let url = URL(string: "xyz://activate")!
         
         service.registerFromURL(url)
         
@@ -54,7 +54,7 @@ class URLQueryRegistrationTests: XCTestCase {
     func testRegister_ActivationURLWithQuery_DelegatesToQueryParser() {
         
         let query = "query=is-here"
-        let url = NSURL(string: "xyz://activate?\(query)")!
+        let url = URL(string: "xyz://activate?\(query)")!
         
         service.registerFromURL(url)
         
@@ -64,7 +64,7 @@ class URLQueryRegistrationTests: XCTestCase {
     func testRegister_ActivationURLWithQuery_NilQueryParserResult_DoesNotDelegateToRegHandler() {
         
         parserDouble.testParsedLicense = nil
-        let url = NSURL(string: "xyz://activate?irrelevant=query")!
+        let url = URL(string: "xyz://activate?irrelevant=query")!
         
         service.registerFromURL(url)
         
@@ -76,7 +76,7 @@ class URLQueryRegistrationTests: XCTestCase {
         let name = "a name"
         let licenseCode = "a license code"
         parserDouble.testParsedLicense = License(name: name, licenseCode: licenseCode)
-        let url = NSURL(string: "xyz://activate?irrelevant=query")!
+        let url = URL(string: "xyz://activate?irrelevant=query")!
         
         service.registerFromURL(url)
         
@@ -93,7 +93,7 @@ class URLQueryRegistrationTests: XCTestCase {
     class TestRegistrationHandler: HandlesRegistering {
         
         var didRegisterWith: (name: String, licenseCode: String)?
-        func register(name: String, licenseCode: String) {
+        func register(_ name: String, licenseCode: String) {
             
             didRegisterWith = (name, licenseCode)
         }
@@ -103,7 +103,7 @@ class URLQueryRegistrationTests: XCTestCase {
         
         var testParsedLicense: License?
         var didParseWith: String?
-        override func parseQuery(query: String) -> License? {
+        override func parseQuery(_ query: String) -> License? {
             
             didParseWith = query
             

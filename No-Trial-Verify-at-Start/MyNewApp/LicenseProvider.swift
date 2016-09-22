@@ -4,18 +4,18 @@
 
 import Foundation
 
-public class LicenseProvider {
+open class LicenseProvider {
     
     public init() { }
     
-    lazy var userDefaults: NSUserDefaults = UserDefaults.standardUserDefaults()
+    lazy var userDefaults: Foundation.UserDefaults = UserDefaults.standardUserDefaults()
     
-    public var currentLicense: License? {
+    open var currentLicense: License? {
         
-        guard let name = userDefaults.stringForKey("\(License.UserDefaultsKeys.Name)"),
-            licenseCode = userDefaults.stringForKey("\(License.UserDefaultsKeys.LicenseCode)") else {
+        guard let name = userDefaults.string(forKey: "\(License.UserDefaultsKeys.Name)"),
+            let licenseCode = userDefaults.string(forKey: "\(License.UserDefaultsKeys.LicenseCode)") else {
                 
-            return .None
+            return .none
         }
         
         return License(name: name, licenseCode: licenseCode)

@@ -6,18 +6,18 @@ import Cocoa
 
 public protocol HandlesRegistering: class {
     
-    func register(name: String, licenseCode: String)
+    func register(_ name: String, licenseCode: String)
 }
 
-public class ExistingLicenseViewController: NSViewController {
+open class ExistingLicenseViewController: NSViewController {
    
-    @IBOutlet public weak var licenseeTextField: NSTextField!
-    @IBOutlet public weak var licenseCodeTextField: NSTextField!
-    @IBOutlet public weak var registerButton: NSButton!
+    @IBOutlet open weak var licenseeTextField: NSTextField!
+    @IBOutlet open weak var licenseCodeTextField: NSTextField!
+    @IBOutlet open weak var registerButton: NSButton!
     
-    public var eventHandler: HandlesRegistering?
+    open var eventHandler: HandlesRegistering?
     
-    @IBAction public func register(sender: AnyObject) {
+    @IBAction open func register(_ sender: AnyObject) {
         
         guard let eventHandler = eventHandler else {
             return
@@ -29,13 +29,13 @@ public class ExistingLicenseViewController: NSViewController {
         eventHandler.register(name, licenseCode: licenseCode)
     }
     
-    public func displayEmptyForm() {
+    open func displayEmptyForm() {
         
         licenseeTextField.stringValue = ""
         licenseCodeTextField.stringValue = ""
     }
     
-    public func displayLicense(license: License) {
+    open func displayLicense(_ license: License) {
         
         licenseeTextField.stringValue = license.name
         licenseCodeTextField.stringValue = license.licenseCode

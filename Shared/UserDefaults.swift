@@ -4,43 +4,25 @@
 
 import Foundation
 
-private struct UserDefaultsStatic {
-    static var singleton: UserDefaults? = nil
-    static var onceToken: dispatch_once_t = 0
-}
+open class UserDefaults {
 
-public class UserDefaults {
-    public static var sharedInstance: UserDefaults {
-        
-        if UserDefaultsStatic.singleton == nil {
-            dispatch_once(&UserDefaultsStatic.onceToken) {
-                self.setSharedInstance(UserDefaults())
-            }
-        }
-        
-        return UserDefaultsStatic.singleton!
-    }
+    public static var sharedInstance: UserDefaults = UserDefaults()
     
-    public static func resetSharedInstance() {
-        UserDefaultsStatic.singleton = nil
-        UserDefaultsStatic.onceToken = 0
+    static func resetSharedInstance() {
+        UserDefaults.sharedInstance = UserDefaults()
     }
-    
-    public static func setSharedInstance(instance: UserDefaults) {
-        UserDefaultsStatic.singleton = instance
-    }
-    
-    let userDefaults: NSUserDefaults
+
+    let userDefaults: Foundation.UserDefaults
     
     public convenience init() {
-        self.init(userDefaults: NSUserDefaults.standardUserDefaults())
+        self.init(userDefaults: Foundation.UserDefaults.standard)
     }
     
-    public init(userDefaults aUserDefaults: NSUserDefaults) {
+    public init(userDefaults aUserDefaults: Foundation.UserDefaults) {
         userDefaults = aUserDefaults
     }
     
-    public static func standardUserDefaults() -> NSUserDefaults {
+    open static func standardUserDefaults() -> Foundation.UserDefaults {
         return sharedInstance.userDefaults
     }
 }

@@ -4,11 +4,11 @@
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class StoreInfoReaderTests: XCTestCase {
     
-    let validURL = NSBundle(forClass: StoreInfoReaderTests.self).URLForResource("TestCredentialsComplete", withExtension: "plist")!
+    let validURL = Bundle(for: StoreInfoReaderTests.self).url(forResource: "TestCredentialsComplete", withExtension: "plist")!
 
     func testReadingValidData_ReturnsStoreInfoWithData() {
         

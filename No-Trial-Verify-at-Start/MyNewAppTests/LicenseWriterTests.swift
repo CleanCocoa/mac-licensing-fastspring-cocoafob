@@ -4,7 +4,7 @@
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class LicenseWriterTests: XCTestCase {
 
@@ -16,12 +16,12 @@ class LicenseWriterTests: XCTestCase {
         
         // No need to set the double on licenseProvider because
         // its property is lazily loaded during test cases later.
-        UserDefaults.setSharedInstance(UserDefaults(userDefaults: userDefaultsDouble))
+        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
     }
     
     override func tearDown() {
         
-        UserDefaults.resetSharedInstance()
+        MyNewApp.UserDefaults.resetSharedInstance()
         
         super.tearDown()
     }
@@ -56,7 +56,7 @@ class LicenseWriterTests: XCTestCase {
     class TestUserDefaults: NullUserDefaults {
         
         var didSetValuesForKeys: [String : String]?
-        override func setValue(value: AnyObject?, forKey key: String) {
+        override func setValue(_ value: Any?, forKey key: String) {
             
             if !hasValue(didSetValuesForKeys) {
                 didSetValuesForKeys = [String : String]()

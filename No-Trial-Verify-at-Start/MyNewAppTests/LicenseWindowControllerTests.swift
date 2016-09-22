@@ -4,7 +4,7 @@
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class LicenseWindowControllerTests: XCTestCase {
     
@@ -41,7 +41,7 @@ class LicenseWindowControllerTests: XCTestCase {
     
     func testBuyButton_Initially_IsEnabled() {
         
-        XCTAssert(controller.buyButton?.enabled == true)
+        XCTAssert(controller.buyButton?.isEnabled == true)
     }
 
     func testExistingLicenseVC_IsConnected() {
@@ -102,7 +102,7 @@ class LicenseWindowControllerTests: XCTestCase {
         
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(.Unregistered)
+        controller.displayLicenseInformation(.unregistered)
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
@@ -113,7 +113,7 @@ class LicenseWindowControllerTests: XCTestCase {
         let license = License(name: "the name", licenseCode: "the code")
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(.Registered(license))
+        controller.displayLicenseInformation(.registered(license))
         
         XCTAssertFalse(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssert(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
@@ -129,7 +129,7 @@ class LicenseWindowControllerTests: XCTestCase {
     
     class TestHandler: HandlesRegistering {
         
-        func register(name: String, licenseCode: String) {
+        func register(_ name: String, licenseCode: String) {
             // no-op
         }
     }
@@ -155,7 +155,7 @@ class LicenseWindowControllerTests: XCTestCase {
         }
         
         var didDisplayLicenseWith: License? = nil
-        override func displayLicense(license: License) {
+        override func displayLicense(_ license: License) {
             
             didDisplayLicenseWith = license
         }

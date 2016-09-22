@@ -10,7 +10,7 @@ let isRunningTests = NSClassFromString("XCTestCase") != nil
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+    lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     
     var licenseProvider = LicenseProvider()
     lazy var licenseInfoProvider: LicenseInformationProvider = LicenseInformationProvider(licenseProvider: self.licenseProvider)
@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Startup
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         if isRunningTests {
             return
@@ -38,12 +38,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func registerForURLScheme() {
         
-        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector: #selector(AppDelegate.handleGetUrlEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(AppDelegate.handleGetUrlEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
     }
     
-    func handleGetUrlEvent(event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
+    func handleGetUrlEvent(_ event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
         
-        guard let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) else {
+        guard let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = URL(string: urlString) else {
             return
         }
         
@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func observeLicenseChanges() {
         
-        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(_:)), name: Events.LicenseChanged.rawValue, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(_:)), name: NSNotification.Name(rawValue: Events.LicenseChanged.rawValue), object: nil)
     }
     
     func prepareLicenseWindowController() {
@@ -79,13 +79,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func launchAppOrShowLicenseWindow() {
         
         switch currentLicenseInformation {
-        case .Unregistered:
+        case .unregistered:
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
             
             showRegisterApp()
-        case .Registered(_):
+        case .registered(_):
             
             unlockApp()
         }
@@ -120,18 +120,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: License changes
     
-    func licenseDidChange(notification: NSNotification) {
+    func licenseDidChange(_ notification: Notification) {
         
-        guard let userInfo = notification.userInfo, licenseInformation = LicenseInformation.fromUserInfo(userInfo) else {
+        guard let userInfo = (notification as NSNotification).userInfo, let licenseInformation = LicenseInformation.fromUserInfo(userInfo) else {
             return
         }
         
         switch licenseInformation {
-        case .Registered(_):
+        case .registered(_):
             displayThankYouAlert()
             unlockApp()
             
-        case .Unregistered:
+        case .unregistered:
             // If you support un-registering, handle it here
             return
         }
@@ -148,7 +148,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // NOTE: Don't cram too much into your AppDelegate. Extract the window
     // from the MainMenu Nib instead and provide a real `NSWindowController`.
     
-    @IBAction func reviewLicense(sender: AnyObject) {
+    @IBAction func reviewLicense(_ sender: AnyObject) {
     
         showRegisterApp()
     }

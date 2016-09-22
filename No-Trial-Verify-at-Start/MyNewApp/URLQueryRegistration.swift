@@ -4,7 +4,7 @@
 
 import Foundation
 
-public class URLQueryRegistration {
+open class URLQueryRegistration {
     
     let registrationHandler: HandlesRegistering
     
@@ -13,24 +13,24 @@ public class URLQueryRegistration {
         self.registrationHandler = registrationHandler
     }
     
-    public lazy var queryParser: URLQueryLicenseParser = URLQueryLicenseParser()
+    open lazy var queryParser: URLQueryLicenseParser = URLQueryLicenseParser()
     
-    public func registerFromURL(url: NSURL) {
+    open func registerFromURL(_ url: URL) {
         
-        guard let query = queryFromURL(url), license = queryParser.parseQuery(query) else {
+        guard let query = queryFromURL(url), let license = queryParser.parseQuery(query) else {
             return
         }
         
         registrationHandler.register(license.name, licenseCode: license.licenseCode)
     }
     
-    func queryFromURL(url: NSURL) -> String? {
+    func queryFromURL(_ url: URL) -> String? {
         
-        if let host = url.host, query = url.query where host == URLComponents.Host {
+        if let host = url.host, let query = url.query , host == URLComponents.Host {
             
             return query
         }
         
-        return .None
+        return .none
     }
 }

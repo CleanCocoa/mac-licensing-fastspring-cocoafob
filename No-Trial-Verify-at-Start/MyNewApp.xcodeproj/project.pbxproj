@@ -43,7 +43,6 @@
 		50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0CF1B7F7B7C002C5449 /* Optional.swift */; };
 		50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */; };
 		50C9B0D51B7F7E3D002C5449 /* LicenseProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */; };
-		50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0CF1B7F7B7C002C5449 /* Optional.swift */; };
 		50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */; };
 		50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */; };
 		50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7C1B81D9990092CD19 /* Helpers.swift */; };
@@ -81,30 +80,30 @@
 
 /* Begin PBXFileReference section */
 		50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReader.swift; sourceTree = "<group>"; };
-		50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReaderTests.swift; sourceTree = "<group>"; };
+		50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StoreInfoReaderTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
 		50397A981BAFF69600780815 /* CFUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUtil.swift; sourceTree = "<group>"; };
 		50397A991BAFF69600780815 /* CocoaFobError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobError.swift; sourceTree = "<group>"; };
 		50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobLicVerifier.swift; sourceTree = "<group>"; };
 		50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobStringExt.swift; sourceTree = "<group>"; };
 		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
-		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; };
+		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		505D9DED1B89E47600D412F1 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		506AB3FA1B84AEA10072CEC8 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		506AB3FC1B84AEB90072CEC8 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
 		506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
-		506AB4001B84B0790072CEC8 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
-		506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowControllerTests.swift; sourceTree = "<group>"; };
+		506AB4001B84B0790072CEC8 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StoreTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StoreWindowControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FastSpringCredentials.plist; path = ../FastSpringCredentials.plist; sourceTree = "<group>"; };
 		506D9FF41B8DF123005F5109 /* LicenseInformationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInformationProvider.swift; sourceTree = "<group>"; };
-		506D9FF61B8DF1E4005F5109 /* LicenseInformationProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInformationProviderTests.swift; sourceTree = "<group>"; };
+		506D9FF61B8DF1E4005F5109 /* LicenseInformationProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseInformationProviderTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		506DA9371B8340C9007B110F /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		506DA9431B835784007B110F /* StoreWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowController.swift; sourceTree = "<group>"; };
 		506DA9441B835784007B110F /* StoreWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWindowController.xib; sourceTree = "<group>"; };
 		5098EA221B9082F8001FBC3C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		5098EA241B90A235001FBC3C /* URLQueryRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistrationTests.swift; sourceTree = "<group>"; };
+		5098EA241B90A235001FBC3C /* URLQueryRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = URLQueryRegistrationTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistration.swift; sourceTree = "<group>"; };
-		50C06EEA1B91C84F00A7DBBE /* URLQueryLicenseParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryLicenseParserTests.swift; sourceTree = "<group>"; };
+		50C06EEA1B91C84F00A7DBBE /* URLQueryLicenseParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = URLQueryLicenseParserTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50C06EEC1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryLicenseParser.swift; sourceTree = "<group>"; };
 		50C06EEE1B91DA0400A7DBBE /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,21 +119,21 @@
 		50C9B0CF1B7F7B7C002C5449 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseProviderTests.swift; sourceTree = "<group>"; };
+		50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseProviderTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseViewController.swift; sourceTree = "<group>"; };
-		50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWindowControllerTests.swift; sourceTree = "<group>"; };
+		50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseWindowControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75D7C1B81D9990092CD19 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseWindowControllerTests.swift; sourceTree = "<group>"; };
+		50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ExistingLicenseWindowControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifierTests.swift; sourceTree = "<group>"; };
+		50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseVerifierTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifier.swift; sourceTree = "<group>"; };
-		50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriterTests.swift; sourceTree = "<group>"; };
+		50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseWriterTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75DB51B82085A0092CD19 /* LicenseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriter.swift; sourceTree = "<group>"; };
 		50E75DB71B820A730092CD19 /* RegisterApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApplication.swift; sourceTree = "<group>"; };
-		50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApplicationTests.swift; sourceTree = "<group>"; };
+		50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RegisterApplicationTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseChangeBroadcaster.swift; sourceTree = "<group>"; };
-		50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInformationTests.swift; sourceTree = "<group>"; };
-		50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseChangeBroadcasterTests.swift; sourceTree = "<group>"; };
+		50E75DBD1B8211BA0092CD19 /* LicenseInformationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseInformationTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseChangeBroadcasterTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75DC21B8225230092CD19 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		50E75DC41B82275D0092CD19 /* FsprgEmbeddedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FsprgEmbeddedStore.h; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgEmbeddedStore.h; sourceTree = "<group>"; };
 		50E75DC51B82275D0092CD19 /* FsprgEmbeddedStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FsprgEmbeddedStoreController.h; path = ../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgEmbeddedStoreController.h; sourceTree = "<group>"; };
@@ -530,7 +529,6 @@
 				506AB4031B84B5A00072CEC8 /* StoreWindowControllerTests.swift in Sources */,
 				50E75DBE1B8211BA0092CD19 /* LicenseInformationTests.swift in Sources */,
 				506D9FF71B8DF1E4005F5109 /* LicenseInformationProviderTests.swift in Sources */,
-				50C9B0D71B7F7E50002C5449 /* Optional.swift in Sources */,
 				50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */,
 				50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */,
 				5098EA251B90A235001FBC3C /* URLQueryRegistrationTests.swift in Sources */,

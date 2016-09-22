@@ -6,17 +6,17 @@ import Foundation
 
 public protocol StoreDelegate: class {
     
-    func didPurchaseLicense(license: License)
+    func didPurchaseLicense(_ license: License)
 }
 
-public class Store {
+open class Store {
 
     let storeInfo: StoreInfo
     
-    public var storeDelegate: StoreDelegate?
+    open var storeDelegate: StoreDelegate?
     
     let storeWindowController: StoreWindowController
-    public lazy var storeController: StoreController = StoreController(storeInfo: self.storeInfo)
+    open lazy var storeController: StoreController = StoreController(storeInfo: self.storeInfo)
     
     convenience init(storeInfo: StoreInfo) {
         
@@ -29,14 +29,14 @@ public class Store {
         self.storeInfo = storeInfo
     }
     
-    public func showStore() {
+    open func showStore() {
         
         storeWindowController.storeController = storeController
         storeWindowController.showWindow(self)
         storeWindowController.storeDelegate = storeDelegate
     }
     
-    public func closeStore() {
+    open func closeStore() {
         
         storeWindowController.close()
     }
