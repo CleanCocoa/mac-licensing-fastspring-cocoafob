@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class RegisterApplicationTests: XCTestCase {
 
@@ -29,7 +29,7 @@ class RegisterApplicationTests: XCTestCase {
         let name = "a name"
         let licenseCode = "123-456"
         
-        service.register(name, licenseCode: licenseCode)
+        service.register(name: name, licenseCode: licenseCode)
         
         XCTAssert(hasValue(verifierDouble.didCallIsValidWith))
         if let values = verifierDouble.didCallIsValidWith {
@@ -43,7 +43,7 @@ class RegisterApplicationTests: XCTestCase {
         
         verifierDouble.testValidity = false
         
-        service.register(irrelevantName, licenseCode: irrelevantLicenseCode)
+        service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
         
         XCTAssertFalse(hasValue(writerDouble.didStoreWith))
     }
@@ -52,7 +52,7 @@ class RegisterApplicationTests: XCTestCase {
         
         verifierDouble.testValidity = false
         
-        service.register(irrelevantName, licenseCode: irrelevantLicenseCode)
+        service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
         
         XCTAssertFalse(hasValue(broadcasterDouble.didBroadcastWith))
     }
@@ -63,7 +63,7 @@ class RegisterApplicationTests: XCTestCase {
         let licenseCode = "0900-ACME"
         verifierDouble.testValidity = true
         
-        service.register(name, licenseCode: licenseCode)
+        service.register(name: name, licenseCode: licenseCode)
         
         XCTAssert(hasValue(writerDouble.didStoreWith))
         if let values = writerDouble.didStoreWith {
@@ -79,7 +79,7 @@ class RegisterApplicationTests: XCTestCase {
         let licenseCode = "fr13nd-001"
         verifierDouble.testValidity = true
         
-        service.register(name, licenseCode: licenseCode)
+        service.register(name: name, licenseCode: licenseCode)
         
         XCTAssert(hasValue(broadcasterDouble.didBroadcastWith))
         if let licenseInfo = broadcasterDouble.didBroadcastWith {
@@ -99,7 +99,7 @@ class RegisterApplicationTests: XCTestCase {
     class TestWriter: LicenseWriter {
         
         var didStoreWith: (licenseCode: String, name: String)?
-        override func storeLicenseCode(licenseCode: String, forName name: String) {
+        override func store(licenseCode: String, forName name: String) {
             
             didStoreWith = (licenseCode, name)
         }
@@ -113,7 +113,7 @@ class RegisterApplicationTests: XCTestCase {
         
         var testValidity = false
         var didCallIsValidWith: (licenseCode: String, name: String)?
-        override func licenseCodeIsValid(licenseCode: String, forName name: String) -> Bool {
+        override func isValid(licenseCode: String, forName name: String) -> Bool {
             
             didCallIsValidWith = (licenseCode, name)
             
@@ -129,7 +129,7 @@ class RegisterApplicationTests: XCTestCase {
         }
         
         var didBroadcastWith: LicenseInformation?
-        override func broadcast(licenseInformation: LicenseInformation) {
+        override func broadcast(_ licenseInformation: LicenseInformation) {
             
             didBroadcastWith = licenseInformation
         }

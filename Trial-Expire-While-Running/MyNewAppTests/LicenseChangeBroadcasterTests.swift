@@ -1,12 +1,12 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
-private func ==(lhs: UserInfo, rhs: UserInfo) -> Bool {
+fileprivate func ==(lhs: UserInfo, rhs: UserInfo) -> Bool {
     
     if lhs.count != rhs.count { return false }
     
@@ -37,8 +37,8 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         XCTAssert(hasValue(values))
         
         if let values = values {
-            XCTAssertEqual(values.name, Events.LicenseChanged.rawValue)
-            XCTAssert(values.object === broadcaster)
+            XCTAssertEqual(values.name, Events.LicenseChanged.notificationName)
+            XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
             
             XCTAssert(hasValue(values.userInfo))
             if let userInfo = values.userInfo {
@@ -49,7 +49,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
     
     func testBroadcast_OnTrial_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.OnTrial(TrialPeriod(startDate: NSDate(), endDate: NSDate()))
+        let licenseInfo = LicenseInformation.OnTrial(TrialPeriod(startDate: Date(), endDate: Date()))
         
         broadcaster.broadcast(licenseInfo)
         
@@ -57,8 +57,8 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         XCTAssert(hasValue(values))
         
         if let values = values {
-            XCTAssertEqual(values.name, Events.LicenseChanged.rawValue)
-            XCTAssert(values.object === broadcaster)
+            XCTAssertEqual(values.name, Events.LicenseChanged.notificationName)
+            XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
             
             XCTAssert(hasValue(values.userInfo))
             if let userInfo = values.userInfo {
@@ -77,8 +77,8 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         XCTAssert(hasValue(values))
         
         if let values = values {
-            XCTAssertEqual(values.name, Events.LicenseChanged.rawValue)
-            XCTAssert(values.object === broadcaster)
+            XCTAssertEqual(values.name, Events.LicenseChanged.notificationName)
+            XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
             
             XCTAssert(hasValue(values.userInfo))
             if let userInfo = values.userInfo {
@@ -92,31 +92,31 @@ class LicenseChangeBroadcasterTests: XCTestCase {
     
     class TestNotificationCenter: NullNotificationCenter {
         
-        var didPostNotificationNameWith: (name: String, object: AnyObject?, userInfo: UserInfo?)?
-        override func postNotificationName(aName: String, object anObject: AnyObject?, userInfo aUserInfo: [NSObject : AnyObject]?) {
+        var didPostNotificationNameWith: (name: Notification.Name, object: Any?, userInfo: UserInfo?)?
+        override func post(name aName: Notification.Name, object anObject: Any?, userInfo aUserInfo: [AnyHashable: Any]?) {
             
             didPostNotificationNameWith = (aName, anObject, aUserInfo)
         }
     }
 }
 
-class NullNotificationCenter: NSNotificationCenter {
+class NullNotificationCenter: NotificationCenter {
     
-    override static func defaultCenter() -> NSNotificationCenter {
+    override class var `default`: NotificationCenter {
         return NullNotificationCenter()
     }
     
-    override func addObserverForName(name: String?, object obj: AnyObject?, queue: NSOperationQueue?, usingBlock block: (NSNotification) -> Void) -> NSObjectProtocol {
+    override func addObserver(forName name: Notification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
         
         return NSObject()
     }
     
-    override func addObserver(observer: AnyObject, selector aSelector: Selector, name aName: String?, object anObject: AnyObject?) {  }
+    override func addObserver(_ observer: Any, selector aSelector: Selector, name aName: Notification.Name?, object anObject: Any?) {  }
     
-    override func removeObserver(observer: AnyObject) { }
-    override func removeObserver(observer: AnyObject, name aName: String?, object anObject: AnyObject?) { }
+    override func removeObserver(_ observer: Any) { }
+    override func removeObserver(_ observer: Any, name aName: Notification.Name?, object anObject: Any?) { }
     
-    override func postNotification(notification: NSNotification) { }
-    override func postNotificationName(aName: String, object anObject: AnyObject?) { }
-    override func postNotificationName(aName: String, object anObject: AnyObject?, userInfo aUserInfo: [NSObject : AnyObject]?) { }
+    override func post(_ notification: Notification) { }
+    override func post(name aName: Notification.Name, object anObject: Any?) { }
+    override func post(name aName: Notification.Name, object anObject: Any?, userInfo aUserInfo: [AnyHashable: Any]?) { }
 }

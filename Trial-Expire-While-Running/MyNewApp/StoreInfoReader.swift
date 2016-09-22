@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -8,29 +8,29 @@ public class StoreInfoReader {
     
     static func defaultStoreInfo() -> StoreInfo? {
         
-        if let URL = NSBundle.mainBundle().URLForResource("FastSpringCredentials", withExtension: "plist") {
+        if let URL = Bundle.main.url(forResource: "FastSpringCredentials", withExtension: "plist") {
             
-            return storeInfoFromURL(URL)
+            return storeInfo(fromURL: URL)
         }
         
-        return .None
+        return .none
     }
     
-    public static func storeInfoFromURL(URL: NSURL) -> StoreInfo? {
+    public static func storeInfo(fromURL url: URL) -> StoreInfo? {
         
-        if let info = NSDictionary(contentsOfURL: URL) as? [String : String] {
+        if let info = NSDictionary(contentsOf: url) as? [String : String] {
             
-            return storeInfoFromDictionary(info)
+            return storeInfo(fromDictionary: info)
         }
         
-        return .None
+        return .none
     }
     
-    public static func storeInfoFromDictionary(info: [String : String]) -> StoreInfo? {
+    public static func storeInfo(fromDictionary info: [String : String]) -> StoreInfo? {
         
         if let storeId = info["storeId"],
-            productName = info["productName"] ,
-            productId = info["productId"] {
+            let productName = info["productName"] ,
+            let productId = info["productId"] {
                 
             #if DEBUG
                 NSLog("Test Store Mode")
@@ -43,6 +43,6 @@ public class StoreInfoReader {
             return StoreInfo(storeId: storeId, productName: productName, productId: productId, storeMode: storeMode)
         }
         
-        return .None
+        return .none
     }
 }

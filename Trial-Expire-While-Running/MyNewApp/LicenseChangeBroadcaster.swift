@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-public typealias UserInfo = [NSObject : AnyObject]
+public typealias UserInfo = [AnyHashable : Any]
 
 extension LicenseInformation {
     
@@ -15,7 +15,7 @@ extension LicenseInformation {
             return [
                 "registered" : false,
                 "on_trial" : true,
-                "trial_start_date" : trialPeriod.startDate,
+                "trial_start_date"  : trialPeriod.startDate,
                 "trial_end_date" : trialPeriod.endDate,
             ]
         case let .Registered(license):
@@ -23,7 +23,7 @@ extension LicenseInformation {
                 "registered" : true,
                 "on_trial" : false,
                 "name" : license.name,
-                "licenseCode" : license.licenseCode
+                "licenseCode"  : license.licenseCode
             ]
         case .TrialUp:
             return [
@@ -39,23 +39,21 @@ extension LicenseInformation {
             return nil
         }
         
-        if let onTrial = userInfo["on_trial"] as? Bool where !registered {
+        if let onTrial = userInfo["on_trial"] as? Bool,
+            !registered {
             
-            if !onTrial {
-                return .TrialUp
-            }
+            guard onTrial else { return .TrialUp }
             
-            if let startDate = userInfo["trial_start_date"] as? NSDate,
-                endDate = userInfo["trial_end_date"] as? NSDate
-                where onTrial == true {
+            if let startDate = userInfo["trial_start_date"] as? Date,
+                let endDate = userInfo["trial_end_date"] as? Date {
                     
                 return .OnTrial(TrialPeriod(startDate: startDate, endDate: endDate))
             }
         }
         
-        guard let name = userInfo["name"] as? String, licenseCode = userInfo["licenseCode"] as? String else {
-            return nil
-        }
+        guard let name = userInfo["name"] as? String,
+            let licenseCode = userInfo["licenseCode"] as? String
+            else { return nil }
         
         return .Registered(License(name: name, licenseCode: licenseCode))
     }
@@ -64,19 +62,23 @@ extension LicenseInformation {
 public enum Events: String {
     
     case LicenseChanged = "License Changed"
+
+    var notificationName: Notification.Name {
+        return Notification.Name(rawValue: self.rawValue)
+    }
 }
 
 public class LicenseChangeBroadcaster {
     
-    let notificationCenter: NSNotificationCenter
+    let notificationCenter: NotificationCenter
     
-    public init(notificationCenter: NSNotificationCenter) {
+    public init(notificationCenter: NotificationCenter) {
         
         self.notificationCenter = notificationCenter
     }
     
-    public func broadcast(licenseInformation: LicenseInformation) {
+    public func broadcast(_ licenseInformation: LicenseInformation) {
         
-        notificationCenter.postNotificationName(Events.LicenseChanged.rawValue, object: self, userInfo: licenseInformation.userInfo())
+        notificationCenter.post(name: Events.LicenseChanged.notificationName, object: self, userInfo: licenseInformation.userInfo())
     }
 }

@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class LicenseInformationProviderTests: XCTestCase {
 
@@ -62,9 +62,9 @@ class LicenseInformationProviderTests: XCTestCase {
     
     func testCurrentInfo_NoLicense_ActiveTrialPeriod_ReturnsOnTrial() {
         
-        let endDate = NSDate()
-        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: NSDate())
-        clockDouble.testDate = endDate.dateByAddingTimeInterval(-1000)
+        let endDate = Date()
+        let expectedPeriod = TrialPeriod(startDate: Date(), endDate: Date())
+        clockDouble.testDate = endDate.addingTimeInterval(-1000)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
         let licenseInfo = licenseInfoProvider.currentLicenseInformation
@@ -77,9 +77,9 @@ class LicenseInformationProviderTests: XCTestCase {
     
     func testCurrentInfo_NoLicense_PassedTrialPeriod_ReturnsTrialUp() {
         
-        let endDate = NSDate()
-        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: NSDate())
-        clockDouble.testDate = endDate.dateByAddingTimeInterval(100)
+        let endDate = Date()
+        let expectedPeriod = TrialPeriod(startDate: Date(), endDate: Date())
+        clockDouble.testDate = endDate.addingTimeInterval(100)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
         let licenseInfo = licenseInfoProvider.currentLicenseInformation
@@ -115,9 +115,9 @@ class LicenseInformationProviderTests: XCTestCase {
         verifierDouble.testValidity = false
         licenseProviderDouble.testLicense = irrelevantLicense
         
-        let endDate = NSDate()
-        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: endDate)
-        clockDouble.testDate = endDate.dateByAddingTimeInterval(-1000)
+        let endDate = Date()
+        let expectedPeriod = TrialPeriod(startDate: Date(), endDate: endDate)
+        clockDouble.testDate = endDate.addingTimeInterval(-1000)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
         // When
@@ -151,9 +151,9 @@ class LicenseInformationProviderTests: XCTestCase {
         // Given
         verifierDouble.testValidity = true
         
-        let endDate = NSDate()
-        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: endDate)
-        clockDouble.testDate = endDate.dateByAddingTimeInterval(-1000)
+        let endDate = Date()
+        let expectedPeriod = TrialPeriod(startDate: Date(), endDate: endDate)
+        clockDouble.testDate = endDate.addingTimeInterval(-1000)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
         let name = "a name"
@@ -175,9 +175,9 @@ class LicenseInformationProviderTests: XCTestCase {
         
         // Given
         verifierDouble.testValidity = true
-        let endDate = NSDate()
-        let expectedPeriod = TrialPeriod(startDate: NSDate(), endDate: endDate)
-        clockDouble.testDate = endDate.dateByAddingTimeInterval(+9999)
+        let endDate = Date()
+        let expectedPeriod = TrialPeriod(startDate: Date(), endDate: endDate)
+        clockDouble.testDate = endDate.addingTimeInterval(+9999)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
         let name = "a name"
@@ -218,8 +218,8 @@ class LicenseInformationProviderTests: XCTestCase {
     
     class TestClock: KnowsTimeAndDate {
         
-        var testDate: NSDate!
-        func now() -> NSDate {
+        var testDate: Date!
+        func now() -> Date {
             
             return testDate
         }
@@ -233,7 +233,7 @@ class LicenseInformationProviderTests: XCTestCase {
         
         var testValidity = false
         var didCallIsValidWith: (licenseCode: String, name: String)?
-        override func licenseCodeIsValid(licenseCode: String, forName name: String) -> Bool {
+        override func isValid(licenseCode: String, forName name: String) -> Bool {
             
             didCallIsValidWith = (licenseCode, name)
             

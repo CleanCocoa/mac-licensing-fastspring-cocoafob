@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class TrialProviderTests: XCTestCase {
 
@@ -18,17 +18,17 @@ class TrialProviderTests: XCTestCase {
         
         // No need to set the double on trialProvider because
         // its property is lazily loaded during test cases later.
-        UserDefaults.setSharedInstance(UserDefaults(userDefaults: userDefaultsDouble))
+        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
     }
     
     override func tearDown() {
         
-        UserDefaults.resetSharedInstance()
+        MyNewApp.UserDefaults.resetSharedInstance()
         
         super.tearDown()
     }
     
-    func provideTrialDefaults(startDate: NSDate, endDate: NSDate) {
+    func provideTrialDefaults(_ startDate: Date, endDate: Date) {
         userDefaultsDouble.testValues = [
             TrialPeriod.UserDefaultsKeys.StartDate.rawValue : startDate,
             TrialPeriod.UserDefaultsKeys.EndDate.rawValue : endDate
@@ -64,7 +64,7 @@ class TrialProviderTests: XCTestCase {
     
     func testCurrentPeriod_WithDefaultsValues_QueriesDefaultsForStartAndEndDate() {
         
-        provideTrialDefaults(NSDate(), endDate: NSDate())
+        provideTrialDefaults(Date(), endDate: Date())
         
         _ = trialProvider.currentTrialPeriod
         
@@ -79,8 +79,8 @@ class TrialProviderTests: XCTestCase {
     
     func testCurrentPeriod_WithDefaultsValues_ReturnsTrialPeriodWithInfo() {
         
-        let startDate = NSDate(timeIntervalSince1970: 0)
-        let endDate = NSDate(timeIntervalSince1970: 12345)
+        let startDate = Date(timeIntervalSince1970: 0)
+        let endDate = Date(timeIntervalSince1970: 12345)
         provideTrialDefaults(startDate, endDate: endDate)
         
         let trialPeriod = trialProvider.currentTrialPeriod
@@ -99,16 +99,16 @@ class TrialProviderTests: XCTestCase {
     
     func testCurrentTrial_WithoutDefaults_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(trialProvider.currentTrialWithClock(clockDouble)))
+        XCTAssertFalse(hasValue(trialProvider.currentTrial(clock: clockDouble)))
     }
     
     func testCurrentTrial_WithTrialPeriod_ReturnsTrialWithClockAndPeriod() {
         
-        let startDate = NSDate(timeIntervalSince1970: 456)
-        let endDate = NSDate(timeIntervalSince1970: 999)
+        let startDate = Date(timeIntervalSince1970: 456)
+        let endDate = Date(timeIntervalSince1970: 999)
         provideTrialDefaults(startDate, endDate: endDate)
         
-        let trial = trialProvider.currentTrialWithClock(clockDouble)
+        let trial = trialProvider.currentTrial(clock: clockDouble)
         
         XCTAssert(hasValue(trial))
         if let trial = trial {
@@ -122,9 +122,9 @@ class TrialProviderTests: XCTestCase {
 
     class TestUserDefaults: NullUserDefaults {
         
-        var testValues = [String : AnyObject]()
+        var testValues = [AnyHashable : Any]()
         var didCallObjectForKeyWith: [String]?
-        override func objectForKey(defaultName: String) -> AnyObject? {
+        override func object(forKey defaultName: String) -> Any? {
             
             if !hasValue(didCallObjectForKeyWith) {
                 didCallObjectForKeyWith = [String]()
@@ -138,8 +138,8 @@ class TrialProviderTests: XCTestCase {
     
     class TestClock: KnowsTimeAndDate {
         
-        var testDate: NSDate!
-        func now() -> NSDate {
+        var testDate: Date!
+        func now() -> Date {
             
             return testDate
         }

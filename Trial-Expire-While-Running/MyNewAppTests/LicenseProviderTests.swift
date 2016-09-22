@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class LicenseProviderTests: XCTestCase {
 
@@ -18,17 +18,17 @@ class LicenseProviderTests: XCTestCase {
         
         // No need to set the double on licenseProvider because 
         // its property is lazily loaded during test cases later.
-        UserDefaults.setSharedInstance(UserDefaults(userDefaults: userDefaultsDouble))
+        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
     }
     
     override func tearDown() {
         
-        UserDefaults.resetSharedInstance()
+        MyNewApp.UserDefaults.resetSharedInstance()
         
         super.tearDown()
     }
 
-    func provideLicenseDefaults(name: String, licenseCode: String) {
+    func provideLicenseDefaults(_ name: String, licenseCode: String) {
         userDefaultsDouble.testValues = [
             License.UserDefaultsKeys.Name.rawValue : name,
             License.UserDefaultsKeys.LicenseCode.rawValue : licenseCode
@@ -99,7 +99,7 @@ class LicenseProviderTests: XCTestCase {
         
         var testValues = [String : String]()
         var didCallStringForKeyWith: [String]?
-        override func stringForKey(defaultName: String) -> String? {
+        override func string(forKey defaultName: String) -> String? {
             
             if !hasValue(didCallStringForKeyWith) {
                 didCallStringForKeyWith = [String]()

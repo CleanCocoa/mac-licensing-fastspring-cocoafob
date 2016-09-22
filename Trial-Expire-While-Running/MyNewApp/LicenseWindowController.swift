@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -36,7 +36,7 @@ public class LicenseWindowController: NSWindowController {
     
     public var purchasingEventHandler: HandlesPurchases?
     
-    @IBAction public func buy(sender: AnyObject) {
+    @IBAction public func buy(_ sender: AnyObject) {
         
         purchasingEventHandler?.purchase()
     }
@@ -46,7 +46,7 @@ public class LicenseWindowController: NSWindowController {
         switch licenseInformation {
         case let .OnTrial(trialPeriod):
             let trial = Trial(trialPeriod: trialPeriod, clock: clock)
-            displayTrialDaysLeft(trial.daysLeft)
+            display(trialDaysLeft: trial.daysLeft)
             existingLicenseViewController.displayEmptyForm()
             
         case .TrialUp:
@@ -55,28 +55,28 @@ public class LicenseWindowController: NSWindowController {
             
         case let .Registered(license):
             displayBought()
-            existingLicenseViewController.displayLicense(license)
+            existingLicenseViewController.display(license: license)
         }
     }
     
-    public func displayTrialDaysLeft(daysLeft: Int) {
+    public func display(trialDaysLeft daysLeft: Int) {
         
-        trialDaysLeftTextField.hidden = false
-        trialUpTextField.hidden = true
+        trialDaysLeftTextField.isHidden = false
+        trialUpTextField.isHidden = true
         
         trialDaysLeftTextField.stringValue = "\(daysLeft) \(trialLabelText)"
     }
     
     public func displayTrialUp() {
         
-        trialDaysLeftTextField.hidden = true
-        trialUpTextField.hidden = false
+        trialDaysLeftTextField.isHidden = true
+        trialUpTextField.isHidden = false
     }
     
     public func displayBought() {
         
-        trialDaysLeftTextField.hidden = true
-        trialUpTextField.hidden = true
+        trialDaysLeftTextField.isHidden = true
+        trialUpTextField.isHidden = true
     }
     
     public var registrationEventHandler: HandlesRegistering? {

@@ -1,23 +1,23 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class TrialPeriodTests: XCTestCase {
 
     let clockDouble = TestClock()
 
-    let irrelevantDate = NSDate(timeIntervalSinceNow: 987654321)
+    let irrelevantDate = Date(timeIntervalSinceNow: 987654321)
     
     func testCreation_WithClock_AddsDaysToCurrentTime() {
         
-        let date = NSDate(timeIntervalSinceReferenceDate: 9999)
+        let date = Date(timeIntervalSinceReferenceDate: 9999)
         clockDouble.testDate = date
         // 10 days
-        let expectedDate = date.dateByAddingTimeInterval(10 * 24 * 60 * 60)
+        let expectedDate = date.addingTimeInterval(10 * 24 * 60 * 60)
         
         let trialPeriod = TrialPeriod(numberOfDays: Days(10), clock: clockDouble)
         
@@ -30,12 +30,12 @@ class TrialPeriodTests: XCTestCase {
     
     func testDaysLeft_12Hours_ReturnsHalfDay() {
         
-        let currentDate = NSDate()
+        let currentDate = Date()
         clockDouble.testDate = currentDate
-        let endDate = currentDate.dateByAddingTimeInterval(12*60*60)
+        let endDate = currentDate.addingTimeInterval(12*60*60)
         let trialPeriod = TrialPeriod(startDate: irrelevantDate, endDate: endDate)
         
-        let daysLeft = trialPeriod.daysLeft(clockDouble)
+        let daysLeft = trialPeriod.daysLeft(clock: clockDouble)
         
         XCTAssertEqual(daysLeft, Days(0.5))
     }
@@ -45,22 +45,22 @@ class TrialPeriodTests: XCTestCase {
     
     func testTrialEnded_WithEarlierClock_ReturnsFalse() {
         
-        let endDate = NSDate(timeIntervalSinceNow: 4567)
+        let endDate = Date(timeIntervalSinceNow: 4567)
         let trialPeriod = TrialPeriod(startDate: irrelevantDate, endDate: endDate)
         
-        clockDouble.testDate = NSDate(timeIntervalSinceNow: 1)
+        clockDouble.testDate = Date(timeIntervalSinceNow: 1)
         
-        XCTAssertFalse(trialPeriod.ended(clockDouble))
+        XCTAssertFalse(trialPeriod.ended(clock: clockDouble))
     }
 
     func testTrialEnded_WithLaterClock_ReturnsTrue() {
         
-        let endDate = NSDate(timeIntervalSinceNow: 4567)
+        let endDate = Date(timeIntervalSinceNow: 4567)
         let trialPeriod = TrialPeriod(startDate: irrelevantDate, endDate: endDate)
         
-        clockDouble.testDate = NSDate(timeIntervalSinceNow: 9999)
+        clockDouble.testDate = Date(timeIntervalSinceNow: 9999)
         
-        XCTAssert(trialPeriod.ended(clockDouble))
+        XCTAssert(trialPeriod.ended(clock: clockDouble))
     }
     
     
@@ -68,8 +68,8 @@ class TrialPeriodTests: XCTestCase {
     
     class TestClock: KnowsTimeAndDate {
         
-        var testDate: NSDate!
-        func now() -> NSDate {
+        var testDate: Date!
+        func now() -> Date {
             
             return testDate
         }

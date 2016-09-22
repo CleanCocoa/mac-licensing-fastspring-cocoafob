@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class PurchaseLicenseTests: XCTestCase {
 
@@ -33,7 +33,7 @@ class PurchaseLicenseTests: XCTestCase {
         let licenseCode = "XXX-123-YYY"
         let license = License(name: name, licenseCode: licenseCode)
         
-        service.didPurchaseLicense(license)
+        service.didPurchaseLicense(license: license)
         
         let values = registerAppDouble.didRegisterWith
         XCTAssert(hasValue(values))

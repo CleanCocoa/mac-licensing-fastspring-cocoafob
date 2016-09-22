@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -8,26 +8,26 @@ public class TrialProvider {
     
     public init() { }
     
-    lazy var userDefaults: NSUserDefaults = UserDefaults.standardUserDefaults()
+    lazy var userDefaults: Foundation.UserDefaults = MyNewApp.UserDefaults.standardUserDefaults()
 
     public var currentTrialPeriod: TrialPeriod? {
         
-        if let startDate = userDefaults.objectForKey("\(TrialPeriod.UserDefaultsKeys.StartDate)") as? NSDate,
-            endDate = userDefaults.objectForKey("\(TrialPeriod.UserDefaultsKeys.EndDate)") as? NSDate {
+        if let startDate = userDefaults.object(forKey: "\(TrialPeriod.UserDefaultsKeys.StartDate)") as? Date,
+            let endDate = userDefaults.object(forKey: "\(TrialPeriod.UserDefaultsKeys.EndDate)") as? Date {
                 
             return TrialPeriod(startDate: startDate, endDate: endDate)
         }
         
-        return .None
+        return .none
     }
     
-    public func currentTrialWithClock(clock: KnowsTimeAndDate) -> Trial? {
+    public func currentTrial(clock: KnowsTimeAndDate) -> Trial? {
         
         if let trialPeriod = currentTrialPeriod {
             
             return Trial(trialPeriod: trialPeriod, clock: clock)
         }
         
-        return .None
+        return .none
     }
 }

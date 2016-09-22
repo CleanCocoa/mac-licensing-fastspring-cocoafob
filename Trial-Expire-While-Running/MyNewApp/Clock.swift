@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -6,29 +6,29 @@ import Foundation
 
 public protocol KnowsTimeAndDate: class {
     
-    func now() -> NSDate
+    func now() -> Date
 }
 
 public class Clock: KnowsTimeAndDate {
     
     public init() { }
     
-    public func now() -> NSDate {
+    public func now() -> Date {
         
-        return NSDate()
+        return Date()
     }
 }
 
 public class StaticClock: KnowsTimeAndDate {
     
-    let date: NSDate
+    let date: Date
     
-    public init(clockDate: NSDate) {
+    public init(clockDate: Date) {
         
         date = clockDate
     }
     
-    public func now() -> NSDate {
+    public func now() -> Date {
         
         return date
     }

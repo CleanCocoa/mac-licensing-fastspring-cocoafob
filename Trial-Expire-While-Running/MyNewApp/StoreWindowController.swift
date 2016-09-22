@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -44,12 +44,12 @@ public class StoreWindowController: NSWindowController {
     
     public override func awakeFromNib() {
         
-        storeController.setWebView(webView)
+        storeController.set(webView: webView)
         storeController.loadStore()
         storeController.orderConfirmationView = orderConfirmationView
     }
     
-    @IBAction public func reloadStore(sender: AnyObject) {
+    @IBAction public func reloadStore(_: AnyObject) {
         
         storeController.loadStore()
     }

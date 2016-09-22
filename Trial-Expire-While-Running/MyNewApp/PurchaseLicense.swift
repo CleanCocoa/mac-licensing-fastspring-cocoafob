@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -28,6 +28,6 @@ extension PurchaseLicense: StoreDelegate {
     
     public func didPurchaseLicense(license: License) {
         
-        registerApplication.register(license.name, licenseCode: license.licenseCode)
+        registerApplication.register(name: license.name, licenseCode: license.licenseCode)
     }
 }
