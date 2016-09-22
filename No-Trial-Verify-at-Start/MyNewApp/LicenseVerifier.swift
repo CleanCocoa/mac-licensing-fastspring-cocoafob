@@ -19,7 +19,7 @@ open class LicenseVerifier {
         self.appName = appName
     }
     
-    open func licenseCodeIsValid(_ licenseCode: String, forName name: String) -> Bool {
+    open func isValid(licenseCode: String, forName name: String) -> Bool {
         
         // Same format as on FastSpring
         let registrationName = "\(appName),\(name)"

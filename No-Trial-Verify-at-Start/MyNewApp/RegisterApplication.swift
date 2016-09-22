@@ -24,7 +24,7 @@ open class RegisterApplication: HandlesRegistering {
     
     open func register(_ name: String, licenseCode: String) {
         
-        if !licenseVerifier.licenseCodeIsValid(licenseCode, forName: name) {
+        if !licenseVerifier.isValid(licenseCode: licenseCode, forName: name) {
             
             displayLicenseCodeError()
             return

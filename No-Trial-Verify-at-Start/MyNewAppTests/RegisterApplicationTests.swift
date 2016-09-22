@@ -113,7 +113,7 @@ class RegisterApplicationTests: XCTestCase {
         
         var testValidity = false
         var didCallIsValidWith: (licenseCode: String, name: String)?
-        override func licenseCodeIsValid(_ licenseCode: String, forName name: String) -> Bool {
+        override func isValid(licenseCode: String, forName name: String) -> Bool {
             
             didCallIsValidWith = (licenseCode, name)
             

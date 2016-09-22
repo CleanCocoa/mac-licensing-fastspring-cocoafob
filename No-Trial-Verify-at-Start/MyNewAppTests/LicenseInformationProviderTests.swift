@@ -109,7 +109,7 @@ class LicenseInformationProviderTests: XCTestCase {
         }
         
         var testValidity = false
-        override func licenseCodeIsValid(_ licenseCode: String, forName name: String) -> Bool {
+        override func isValid(licenseCode: String, forName name: String) -> Bool {
             
             return testValidity
         }

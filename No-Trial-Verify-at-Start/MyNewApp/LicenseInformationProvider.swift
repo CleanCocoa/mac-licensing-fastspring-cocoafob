@@ -8,7 +8,7 @@ extension License {
     
     func isValid(_ licenseVerifier: LicenseVerifier) -> Bool {
         
-        return licenseVerifier.licenseCodeIsValid(licenseCode, forName: name)
+        return licenseVerifier.isValid(licenseCode: licenseCode, forName: name)
     }
 }
 
