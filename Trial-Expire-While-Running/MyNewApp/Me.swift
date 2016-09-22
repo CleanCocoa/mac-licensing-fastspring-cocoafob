@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -14,7 +14,7 @@ class Me {
     convenience init() {
 
         // Force-cast to optional to not crash when rights are missing.
-        self.init(person: ABAddressBook.sharedAddressBook()?.me())
+        self.init(person: ABAddressBook.shared()?.me())
     }
 
     /// - parameter persion: Pass `nil` for unknown data.
@@ -31,7 +31,7 @@ class Me {
             return Me.Unknown
         }
 
-        guard let firstName = person.valueForProperty(kABFirstNameProperty) as? String else {
+        guard let firstName = person.value(forProperty: kABFirstNameProperty) as? String else {
 
             return Me.Unknown
         }
@@ -45,7 +45,7 @@ class Me {
             return Me.Unknown
         }
 
-        guard let lastName = person.valueForProperty(kABLastNameProperty) as? String else {
+        guard let lastName = person.value(forProperty: kABLastNameProperty) as? String else {
 
             return Me.Unknown
         }
@@ -59,7 +59,7 @@ class Me {
             return Me.Unknown
         }
 
-        guard let lastName = person.valueForProperty(kABLastNameProperty) as? String else {
+        guard let lastName = person.value(forProperty: kABLastNameProperty) as? String else {
 
             return Me.Unknown
         }
@@ -73,8 +73,8 @@ class Me {
             return Me.Unknown
         }
 
-        guard let allEmails = person.valueForProperty(kABEmailProperty) as? ABMultiValue,
-            primaryEmail = allEmails.valueAtIndex(allEmails.indexForIdentifier(allEmails.primaryIdentifier())) as? String else {
+        guard let allEmails = person.value(forProperty: kABEmailProperty) as? ABMultiValue,
+            let primaryEmail = allEmails.value(at: allEmails.index(forIdentifier: allEmails.primaryIdentifier())) as? String else {
 
                 return Me.Unknown
         }
@@ -88,8 +88,8 @@ class Me {
             return Me.Unknown
         }
 
-        guard let allPhones = person.valueForProperty(kABPhoneProperty) as? ABMultiValue,
-            primaryPhone = allPhones.valueAtIndex(allPhones.indexForIdentifier(allPhones.primaryIdentifier())) as? String else {
+        guard let allPhones = person.value(forProperty: kABPhoneProperty) as? ABMultiValue,
+            let primaryPhone = allPhones.value(at: allPhones.index(forIdentifier: allPhones.primaryIdentifier())) as? String else {
                 
                 return Me.Unknown
         }

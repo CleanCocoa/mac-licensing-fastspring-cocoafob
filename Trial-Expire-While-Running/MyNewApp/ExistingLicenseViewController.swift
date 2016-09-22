@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -17,7 +17,7 @@ public class ExistingLicenseViewController: NSViewController {
     
     public var eventHandler: HandlesRegistering?
     
-    @IBAction public func register(sender: AnyObject) {
+    @IBAction public func register(_ sender: AnyObject) {
         
         guard let eventHandler = eventHandler else {
             return
@@ -26,7 +26,7 @@ public class ExistingLicenseViewController: NSViewController {
         let name = licenseeTextField.stringValue
         let licenseCode = licenseCodeTextField.stringValue
         
-        eventHandler.register(name, licenseCode: licenseCode)
+        eventHandler.register(name: name, licenseCode: licenseCode)
     }
     
     public func displayEmptyForm() {
@@ -35,7 +35,7 @@ public class ExistingLicenseViewController: NSViewController {
         licenseCodeTextField.stringValue = ""
     }
     
-    public func displayLicense(license: License) {
+    public func display(license: License) {
         
         licenseeTextField.stringValue = license.name
         licenseCodeTextField.stringValue = license.licenseCode

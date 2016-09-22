@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-public class PurchaseLicense {
+open class PurchaseLicense {
     
     let store: Store
     let registerApplication: RegisterApplication
@@ -26,7 +26,7 @@ extension PurchaseLicense: HandlesPurchases {
 
 extension PurchaseLicense: StoreDelegate {
     
-    public func didPurchaseLicense(license: License) {
+    public func didPurchaseLicense(_ license: License) {
         
         registerApplication.register(license.name, licenseCode: license.licenseCode)
     }

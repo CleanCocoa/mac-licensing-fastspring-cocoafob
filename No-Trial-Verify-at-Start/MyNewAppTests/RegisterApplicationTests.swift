@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class RegisterApplicationTests: XCTestCase {
 
@@ -85,8 +85,8 @@ class RegisterApplicationTests: XCTestCase {
         if let licenseInfo = broadcasterDouble.didBroadcastWith {
             
             switch licenseInfo {
-            case .Unregistered: XCTFail("should be registered")
-            case let .Registered(license):
+            case .unregistered: XCTFail("should be registered")
+            case let .registered(license):
                 XCTAssertEqual(license.name, name)
                 XCTAssertEqual(license.licenseCode, licenseCode)
             }
@@ -99,7 +99,7 @@ class RegisterApplicationTests: XCTestCase {
     class TestWriter: LicenseWriter {
         
         var didStoreWith: (licenseCode: String, name: String)?
-        override func storeLicenseCode(licenseCode: String, forName name: String) {
+        override func store(licenseCode: String, forName name: String) {
             
             didStoreWith = (licenseCode, name)
         }
@@ -113,7 +113,7 @@ class RegisterApplicationTests: XCTestCase {
         
         var testValidity = false
         var didCallIsValidWith: (licenseCode: String, name: String)?
-        override func licenseCodeIsValid(licenseCode: String, forName name: String) -> Bool {
+        override func isValid(licenseCode: String, forName name: String) -> Bool {
             
             didCallIsValidWith = (licenseCode, name)
             
@@ -124,7 +124,7 @@ class RegisterApplicationTests: XCTestCase {
     class TestBroadcaster: LicenseChangeBroadcaster {
         
         var didBroadcastWith: LicenseInformation?
-        override func broadcast(licenseInformation: LicenseInformation) {
+        override func broadcast(_ licenseInformation: LicenseInformation) {
             
             didBroadcastWith = licenseInformation
         }

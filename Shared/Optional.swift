@@ -1,35 +1,40 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-func hasValue<T>(value: T?) -> Bool {
+func hasValue<T>(_ value: T?) -> Bool {
     switch (value) {
-    case .Some(_): return true
-    case .None: return false
+    case .some(_): return true
+    case .none: return false
     }
 }
 
-/// Super-useful as `>>=` operator to chain function 
+/// Super-useful as `>>-` operator to chain function 
 /// calls which take optionals:
 ///     
-///     foo() >>= bar >>= baz
+///     foo() >>- bar >>- baz
 ///
 /// `.None` will cascade, `.Some(_:T)` will be passed 
 /// on to the next in chain.
-func bind<T, U>(optional: T?, f: T -> U?) -> U? {
+func bind<T, U>(_ optional: T?, f: (T) -> U?) -> U? {
     
     if let x = optional {
         return f(x)
     } else {
-        return .None
+        return .none
     }
 }
 
-infix operator >>= {  associativity left precedence 150 }
+precedencegroup BindingPrecedence {
+    associativity: left
+    higherThan: MultiplicationPrecedence
+}
 
-func >>=<T, U>(optional: T?, f: T -> U?) -> U? {
+infix operator >>- : BindingPrecedence
+
+func >>-<T, U>(optional: T?, f: (T) -> U?) -> U? {
     
     return bind(optional, f: f)
 }

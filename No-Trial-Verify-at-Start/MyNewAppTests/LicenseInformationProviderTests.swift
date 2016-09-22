@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class LicenseInformationProviderTests: XCTestCase {
 
@@ -50,7 +50,7 @@ class LicenseInformationProviderTests: XCTestCase {
         
         let unregistered: Bool
         switch licenseInfo {
-        case .Unregistered: unregistered = true
+        case .unregistered: unregistered = true
         default: unregistered = false
         }
         
@@ -66,7 +66,7 @@ class LicenseInformationProviderTests: XCTestCase {
         
         let unregistered: Bool
         switch licenseInfo {
-        case .Unregistered: unregistered = true
+        case .unregistered: unregistered = true
         default: unregistered = false
         }
         
@@ -85,7 +85,7 @@ class LicenseInformationProviderTests: XCTestCase {
         let licenseInfo = licenseInfoProvider.currentLicenseInformation
         
         switch licenseInfo {
-        case let .Registered(foundLicense): XCTAssertEqual(foundLicense, license)
+        case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)
         default: XCTFail("expected .Registered(_)")
         }
     }
@@ -109,7 +109,7 @@ class LicenseInformationProviderTests: XCTestCase {
         }
         
         var testValidity = false
-        override func licenseCodeIsValid(licenseCode: String, forName name: String) -> Bool {
+        override func isValid(licenseCode: String, forName name: String) -> Bool {
             
             return testValidity
         }

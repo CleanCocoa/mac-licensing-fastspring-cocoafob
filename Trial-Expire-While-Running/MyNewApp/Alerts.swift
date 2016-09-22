@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -11,9 +11,9 @@ class Alerts {
         if isRunningTests { return nil }
         
         let alert = NSAlert()
-        alert.alertStyle = .InformationalAlertStyle
+        alert.alertStyle = .informational
         alert.messageText = "Thank You for Purchasing!"
-        alert.addButtonWithTitle("Continue")
+        alert.addButton(withTitle: "Continue")
         
         return alert
     }
@@ -23,9 +23,9 @@ class Alerts {
         if isRunningTests { return nil }
         
         let alert = NSAlert()
-        alert.alertStyle = .CriticalAlertStyle
+        alert.alertStyle = .critical
         alert.messageText = "Invalid combination of name and license code."
-        alert.addButtonWithTitle("Close")
+        alert.addButton(withTitle: "Close")
         
         return alert
     }
@@ -35,9 +35,9 @@ class Alerts {
         if isRunningTests { return nil }
         
         let alert = NSAlert()
-        alert.alertStyle = .InformationalAlertStyle
+        alert.alertStyle = .informational
         alert.messageText = "You have \(daysLeft) days left on trial!"
-        alert.addButtonWithTitle("Continue")
+        alert.addButton(withTitle: "Continue")
         
         return alert
     }
@@ -47,9 +47,9 @@ class Alerts {
         if isRunningTests { return nil }
         
         let alert = NSAlert()
-        alert.alertStyle = .InformationalAlertStyle
+        alert.alertStyle = .informational
         alert.messageText = "Your trial has expired."
-        alert.addButtonWithTitle("Register")
+        alert.addButton(withTitle: "Register")
         
         return alert
     }

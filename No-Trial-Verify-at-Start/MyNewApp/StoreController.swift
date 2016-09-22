@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-public class StoreController: NSObject {
+open class StoreController: NSObject {
     
     var storeDelegate: StoreDelegate?
     var orderConfirmationView: OrderConfirmationView?
@@ -22,9 +22,9 @@ public class StoreController: NSObject {
         storeController.setDelegate(self)
     }
     
-    public func loadStore() {
+    open func loadStore() {
         
-        storeController.loadWithParameters(storeParameters)
+        storeController.load(with: storeParameters)
     }
     
     var storeParameters: FsprgStoreParameters {
@@ -32,28 +32,28 @@ public class StoreController: NSObject {
         let storeParameters = FsprgStoreParameters()
         
         // Set up store to display the correct product
-        storeParameters.setOrderProcessType(kFsprgOrderProcessDetail)
-        storeParameters.setStoreId(self.storeInfo.storeId,
+        storeParameters?.setOrderProcessType(kFsprgOrderProcessDetail)
+        storeParameters?.setStoreId(self.storeInfo.storeId,
             withProductId: self.storeInfo.productId)
-        storeParameters.setMode(self.storeInfo.storeMode)
+        storeParameters?.setMode(self.storeInfo.storeMode)
         
         // Pre-populate form fields with personal contact details
         let me = Me()
         
-        storeParameters.setContactFname(me.firstName)
-        storeParameters.setContactLname(me.lastName)
-        storeParameters.setContactCompany(me.organization)
+        storeParameters?.setContactFname(me.firstName)
+        storeParameters?.setContactLname(me.lastName)
+        storeParameters?.setContactCompany(me.organization)
         
-        storeParameters.setContactEmail(me.primaryEmail)
-        storeParameters.setContactPhone(me.primaryPhone)
+        storeParameters?.setContactEmail(me.primaryEmail)
+        storeParameters?.setContactPhone(me.primaryPhone)
         
-        return storeParameters
+        return storeParameters!
     }
     
     
     // MARK: Forwarding to FsprgEmbeddedStoreController
     
-    public func setWebView(webView: WebView) {
+    open func setWebView(_ webView: WebView) {
         
         storeController.setWebView(webView)
     }
@@ -61,21 +61,21 @@ public class StoreController: NSObject {
 
 extension StoreController: FsprgEmbeddedStoreDelegate {
     
-    public func webView(sender: WebView!, didFailProvisionalLoadWithError error: NSError!, forFrame frame: WebFrame!) {
+    public func webView(_ sender: WebView!, didFailProvisionalLoadWithError error: Error!, for frame: WebFrame!) {
     }
     
-    public func webView(sender: WebView!, didFailLoadWithError error: NSError!, forFrame frame: WebFrame!) {
+    public func webView(_ sender: WebView!, didFailLoadWithError error: Error!, for frame: WebFrame!) {
     }
     
-    public func didLoadStore(url: NSURL!) {
+    public func didLoadStore(_ url: URL!) {
     }
     
-    public func didLoadPage(url: NSURL!, ofType pageType: FsprgPageType) {
+    public func didLoadPage(_ url: URL!, of pageType: FsprgPageType) {
     }
     
     // MARK: Order receiced
     
-    public func didReceiveOrder(order: FsprgOrder!) {
+    public func didReceive(_ order: FsprgOrder!) {
         
         // Thanks Obj-C bridging without nullability annotations:
         // implicit unwrapped optionals are not safe
@@ -90,10 +90,10 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         storeDelegate?.didPurchaseLicense(license)
     }
     
-    private func licenseFromOrder(order: FsprgOrder) -> License? {
+    fileprivate func licenseFromOrder(_ order: FsprgOrder) -> License? {
         
         guard  let items = order.orderItems() as? [FsprgOrderItem],
-            license = items
+            let license = items
                 .filter(orderItemIsForThisApp)
                 .map(licenseFromOrderItem) // -> [License?]
                 .filter(hasValue)          // keep non-nil
@@ -106,7 +106,7 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         return license
     }
     
-    private func orderItemIsForThisApp(orderItem: FsprgOrderItem) -> Bool {
+    fileprivate func orderItemIsForThisApp(_ orderItem: FsprgOrderItem) -> Bool {
         
         let appName = storeInfo.productName
         
@@ -117,11 +117,11 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         return productName.hasPrefix(appName)
     }
     
-    private func licenseFromOrderItem(orderItem: FsprgOrderItem) -> License? {
+    fileprivate func licenseFromOrderItem(_ orderItem: FsprgOrderItem) -> License? {
         
         guard let orderLicense = orderItem.license(),
-            name = orderLicense.licenseName(),
-            licenseCode = orderLicense.firstLicenseCode() else {
+            let name = orderLicense.licenseName(),
+            let licenseCode = orderLicense.firstLicenseCode() else {
             
             return nil
         }
@@ -132,10 +132,10 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
     
     // MARK: Thank-you view
     
-    public func viewWithFrame(frame: NSRect, forOrder order: FsprgOrder!) -> NSView! {
+    public func view(withFrame frame: NSRect, for order: FsprgOrder!) -> NSView! {
         
         guard  let orderConfirmationView = orderConfirmationView,
-            license = licenseFromOrder(order) else {
+            let license = licenseFromOrder(order) else {
             
             return nil
         }

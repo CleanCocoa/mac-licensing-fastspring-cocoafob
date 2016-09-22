@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 //
 // See the file LICENSE for copying permission.
 
@@ -16,11 +16,11 @@ public struct Trial {
     }
     
     public var daysLeft: Int {
-        return trialPeriod.daysLeft(clock).userFacingAmount
+        return trialPeriod.daysLeft(clock: clock).userFacingAmount
     }
     
     public var ended: Bool {
-        return trialPeriod.ended(clock)
+        return trialPeriod.ended(clock: clock)
     }
     
     public var isActive: Bool {

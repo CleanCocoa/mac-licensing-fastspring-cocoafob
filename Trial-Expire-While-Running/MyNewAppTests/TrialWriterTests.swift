@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class TrialWriterTests: XCTestCase {
 
@@ -16,12 +16,12 @@ class TrialWriterTests: XCTestCase {
         
         // No need to set the double on TrialWriter because
         // its property is lazily loaded during test cases later.
-        UserDefaults.setSharedInstance(UserDefaults(userDefaults: userDefaultsDouble))
+        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
     }
     
     override func tearDown() {
         
-        UserDefaults.resetSharedInstance()
+        MyNewApp.UserDefaults.resetSharedInstance()
         
         super.tearDown()
     }
@@ -31,12 +31,12 @@ class TrialWriterTests: XCTestCase {
         
         // Given
         let writer = TrialWriter()
-        let startDate = NSDate(timeIntervalSince1970: 4567)
-        let endDate = NSDate(timeIntervalSince1970: 121314)
+        let startDate = Date(timeIntervalSince1970: 4567)
+        let endDate = Date(timeIntervalSince1970: 121314)
         let trialPeriod = TrialPeriod(startDate: startDate, endDate: endDate)
         
         // When
-        writer.storeTrial(trialPeriod)
+        writer.store(trialPeriod: trialPeriod)
         
         // Then
         let changedDefaults = userDefaultsDouble.didSetObjectsForKeys
@@ -44,8 +44,8 @@ class TrialWriterTests: XCTestCase {
         
         if let changedDefaults = changedDefaults {
             
-            XCTAssert(changedDefaults[TrialPeriod.UserDefaultsKeys.StartDate.rawValue] == startDate)
-            XCTAssert(changedDefaults[TrialPeriod.UserDefaultsKeys.EndDate.rawValue] == endDate)
+            XCTAssert(changedDefaults[TrialPeriod.UserDefaultsKeys.startDate.rawValue] == startDate)
+            XCTAssert(changedDefaults[TrialPeriod.UserDefaultsKeys.endDate.rawValue] == endDate)
         }
     }
 
@@ -54,14 +54,14 @@ class TrialWriterTests: XCTestCase {
     
     class TestUserDefaults: NullUserDefaults {
         
-        var didSetObjectsForKeys: [String : NSDate]?
-        override func setObject(value: AnyObject?, forKey key: String) {
+        var didSetObjectsForKeys: [String : Date]?
+        override func set(_ value: Any?, forKey key: String) {
             
             if !hasValue(didSetObjectsForKeys) {
-                didSetObjectsForKeys = [String : NSDate]()
+                didSetObjectsForKeys = [String : Date]()
             }
             
-            didSetObjectsForKeys![key] = value as? NSDate
+            didSetObjectsForKeys![key] = value as? Date
         }
     }
 }

@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class LicenseWindowControllerTests: XCTestCase {
     
@@ -41,7 +41,7 @@ class LicenseWindowControllerTests: XCTestCase {
     
     func testBuyButton_Initially_IsEnabled() {
         
-        XCTAssert(controller.buyButton?.enabled == true)
+        XCTAssert(controller.buyButton?.isEnabled == true)
     }
     
     func testTrialDurationLabel_IsConnected() {
@@ -112,7 +112,7 @@ class LicenseWindowControllerTests: XCTestCase {
         
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(.TrialUp)
+        controller.displayLicenseInformation(licenseInformation: .trialUp)
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
@@ -122,7 +122,7 @@ class LicenseWindowControllerTests: XCTestCase {
         
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(.OnTrial(TrialPeriod(startDate: NSDate(), endDate: NSDate())))
+        controller.displayLicenseInformation(licenseInformation: .onTrial(TrialPeriod(startDate: Date(), endDate: Date())))
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
@@ -133,7 +133,7 @@ class LicenseWindowControllerTests: XCTestCase {
         let license = License(name: "the name", licenseCode: "the code")
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(.Registered(license))
+        controller.displayLicenseInformation(licenseInformation: .registered(license))
         
         XCTAssertFalse(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssert(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
@@ -151,49 +151,49 @@ class LicenseWindowControllerTests: XCTestCase {
         
         controller.displayTrialUp()
         
-        XCTAssert(controller.trialDaysLeftTextField.hidden)
+        XCTAssert(controller.trialDaysLeftTextField.isHidden)
     }
     
     func testDisplayTrialUp_ShowsTrialUpLabel() {
         
         controller.displayTrialUp()
         
-        XCTAssertFalse(controller.trialUpTextField.hidden)
+        XCTAssertFalse(controller.trialUpTextField.isHidden)
     }
     
     func testDisplayTrialDays_To5_ChangesLabelText() {
         
-        controller.displayTrialDaysLeft(5)
-        
+        controller.display(trialDaysLeft: 5)
+
         XCTAssert(controller.trialDaysLeftTextField.stringValue.hasPrefix("5 "))
     }
     
     func testDisplayTrialDays_ShowsDaysLeftLabel() {
         
-        controller.displayTrialDaysLeft(1)
+        controller.display(trialDaysLeft: 1)
         
-        XCTAssertFalse(controller.trialDaysLeftTextField.hidden)
+        XCTAssertFalse(controller.trialDaysLeftTextField.isHidden)
     }
     
     func testDisplayTrialDays_HidesTrialUpLabel() {
         
-        controller.displayTrialDaysLeft(9)
+        controller.display(trialDaysLeft: 9)
         
-        XCTAssert(controller.trialUpTextField.hidden)
+        XCTAssert(controller.trialUpTextField.isHidden)
     }
     
     func testDisplayBought_HidesDaysLeftLabel() {
         
         controller.displayBought()
         
-        XCTAssert(controller.trialDaysLeftTextField.hidden)
+        XCTAssert(controller.trialDaysLeftTextField.isHidden)
     }
     
     func testDisplayBought_HidesTrialUpLabel() {
         
         controller.displayBought()
         
-        XCTAssert(controller.trialUpTextField.hidden)
+        XCTAssert(controller.trialUpTextField.isHidden)
     }
     
     
@@ -227,7 +227,7 @@ class LicenseWindowControllerTests: XCTestCase {
         }
         
         var didDisplayLicenseWith: License? = nil
-        override func displayLicense(license: License) {
+        override func display(license: License) {
             
             didDisplayLicenseWith = license
         }

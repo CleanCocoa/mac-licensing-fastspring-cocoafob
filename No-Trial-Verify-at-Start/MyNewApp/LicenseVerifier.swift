@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-public class LicenseVerifier {
+open class LicenseVerifier {
     
     static let AppName = "MyNewApp"
     let appName: String
@@ -19,7 +19,7 @@ public class LicenseVerifier {
         self.appName = appName
     }
     
-    public func licenseCodeIsValid(licenseCode: String, forName name: String) -> Bool {
+    open func isValid(licenseCode: String, forName name: String) -> Bool {
         
         // Same format as on FastSpring
         let registrationName = "\(appName),\(name)"
@@ -33,12 +33,12 @@ public class LicenseVerifier {
         return verifier.verify(licenseCode, forName: registrationName)
     }
     
-    private func verifierWithPublicKey(publicKey: String) -> CocoaFobLicVerifier? {
+    fileprivate func verifierWithPublicKey(_ publicKey: String) -> CocoaFobLicVerifier? {
 
         return CocoaFobLicVerifier(publicKeyPEM: publicKey)
     }
     
-    private func publicKey() -> String {
+    fileprivate func publicKey() -> String {
         
         var parts = [String]()
         
@@ -61,7 +61,7 @@ public class LicenseVerifier {
         parts.append("YHUlf\nUpIg\n")
         parts.append("-----END DSA PUBLIC KEY-----\n")
         
-        let publicKey = parts.joinWithSeparator("")
+        let publicKey = parts.joined(separator: "")
         
         return publicKey
     }

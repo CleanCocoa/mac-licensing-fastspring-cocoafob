@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class ExistingLicenseWindowControllerTests: XCTestCase {
 
@@ -96,7 +96,7 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
         let license = License(name: "a name", licenseCode: "a code")
         controller.licenseeTextField.stringValue = ""
         
-        controller.displayLicense(license)
+        controller.display(license: license)
         
         XCTAssertEqual(controller.licenseeTextField.stringValue, "a name")
     }
@@ -106,7 +106,7 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
         let license = License(name: "alicenseCodeme", licenseCode: "a code")
         controller.licenseCodeTextField.stringValue = ""
         
-        controller.displayLicense(license)
+        controller.display(license: license)
         
         XCTAssertEqual(controller.licenseCodeTextField.stringValue, "a code")
     }

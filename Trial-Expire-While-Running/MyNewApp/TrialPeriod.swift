@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -6,10 +6,10 @@ import Foundation
 
 public struct TrialPeriod {
     
-    public let startDate: NSDate
-    public let endDate: NSDate
+    public let startDate: Date
+    public let endDate: Date
     
-    public init(startDate aStartDate: NSDate, endDate anEndDate: NSDate) {
+    public init(startDate aStartDate: Date, endDate anEndDate: Date) {
         
         startDate = aStartDate
         endDate = anEndDate
@@ -18,7 +18,7 @@ public struct TrialPeriod {
     public init(numberOfDays daysLeft: Days, clock: KnowsTimeAndDate) {
         
         startDate = clock.now()
-        endDate = startDate.dateByAddingTimeInterval(daysLeft.timeInterval)
+        endDate = startDate.addingTimeInterval(daysLeft.timeInterval)
     }
 }
 
@@ -27,13 +27,13 @@ extension TrialPeriod {
     public func ended(clock: KnowsTimeAndDate) -> Bool {
         
         let now = clock.now()
-        return endDate.laterDate(now) == now
+        return endDate < now
     }
     
     public func daysLeft(clock: KnowsTimeAndDate) -> Days {
         
         let now = clock.now()
-        let timeUntil = now.timeIntervalSinceDate(endDate)
+        let timeUntil = now.timeIntervalSince(endDate)
         
         return Days(timeInterval: timeUntil)
     }
@@ -41,10 +41,10 @@ extension TrialPeriod {
 
 extension TrialPeriod {
     
-    public enum UserDefaultsKeys: String, CustomStringConvertible {
+    enum UserDefaultsKeys: String, CustomStringConvertible {
         
-        case StartDate = "trial_starting"
-        case EndDate = "trial_ending"
+        case startDate = "trial_starting"
+        case endDate = "trial_ending"
         
         public var description: String { return rawValue }
     }

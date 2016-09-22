@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -10,7 +10,7 @@ let initialTrialDuration = Days(5)
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+    lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     lazy var licenseChangeBroadcaster: LicenseChangeBroadcaster = LicenseChangeBroadcaster(notificationCenter: self.notificationCenter)
     
     // Use a clock replacement to see how the app start-up changes.
@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         let trialPeriod = TrialPeriod(numberOfDays: initialTrialDuration, clock: clock)
-        TrialWriter().storeTrial(trialPeriod)
+        TrialWriter().store(trialPeriod: trialPeriod)
     }
     
     func startTrialTimer() {
@@ -76,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func stopTrialTimer() {
         
-        if let trialTimer = trialTimer where trialTimer.isRunning {
+        if let trialTimer = trialTimer , trialTimer.isRunning {
             
             trialTimer.stop()
         }
@@ -86,24 +86,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func registerForURLScheme() {
         
-        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector: #selector(AppDelegate.handleGetUrlEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.shared()
+            .setEventHandler(
+                self,
+                andSelector: #selector(AppDelegate.handle(getUrlEvent:withReplyEvent:)),
+                forEventClass: AEEventClass(kInternetEventClass),
+                andEventID: AEEventID(kAEGetURL))
     }
-    
-    func handleGetUrlEvent(event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
+
+    func handle(getUrlEvent event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
         
-        if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) {
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
+            let url = URL(string: urlString) {
             
             // If you support multiple actions, here'd be the place to
             // delegate to a router object instead.
             
             URLQueryRegistration(registrationHandler: registerApplication)
-                .registerFromURL(url)
+                .register(fromUrl: url)
         }
     }
     
     func observeLicenseChanges() {
         
-        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(_:)), name: Events.LicenseChanged.rawValue, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(notification:)), name: Events.licenseChanged.notificationName, object: nil)
     }
     
     func prepareLicenseWindowController() {
@@ -126,24 +132,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func launchAppOrShowLicenseWindow() {
         
         switch currentLicenseInformation {
-        case .TrialUp:
+        case .trialUp:
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
             
             showRegisterApp()
             
-        case let .OnTrial(trialPeriod):
+        case let .onTrial(trialPeriod):
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
             
-            let trialDaysLeft = trialPeriod.daysLeft(clock)
-            displayTrialDaysLeftAlert(trialDaysLeft)
+            let trialDaysLeft = trialPeriod.daysLeft(clock: clock)
+            displayTrialDaysLeftAlert(daysLeft: trialDaysLeft)
             
             unlockApp()
             
-        case .Registered(_):
+        case .registered(_):
             
             stopTrialTimer()
             unlockApp()
@@ -160,23 +166,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func licenseDidChange(notification: NSNotification) {
         
-        guard let userInfo = notification.userInfo, licenseInformation = LicenseInformation.fromUserInfo(userInfo) else {
+        guard let userInfo = notification.userInfo, let licenseInformation = LicenseInformation.fromUserInfo(userInfo: userInfo) else {
             
             return
         }
         
         switch licenseInformation {
-        case .OnTrial(_):
+        case .onTrial(_):
             // Change to this state is possible if unregistering while
             // trial isn't up, yet.
             return
             
-        case .Registered(_):
+        case .registered(_):
             displayThankYouAlert()
             stopTrialTimer()
             unlockApp()
             
-        case .TrialUp:
+        case .trialUp:
             displayTrialUpAlert()
             lockApp()
             showRegisterApp()
@@ -190,7 +196,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         licenseWindowController.showWindow(self)
         licenseWindowController.registrationEventHandler = registerApplication
-        licenseWindowController.displayLicenseInformation(currentLicenseInformation, clock: clock)
+        licenseWindowController.displayLicenseInformation(licenseInformation: currentLicenseInformation, clock: clock)
     }
     
     func unlockApp() {
@@ -216,7 +222,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func displayTrialDaysLeftAlert(daysLeft: Days) {
         
         let numberOfDaysLeft = daysLeft.userFacingAmount
-        Alerts.trialDaysLeftAlert(numberOfDaysLeft)?.runModal()
+        Alerts.trialDaysLeftAlert(daysLeft: numberOfDaysLeft)?.runModal()
     }
     
     func displayTrialUpAlert() {
@@ -235,7 +241,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // NOTE: Don't cram too much into your AppDelegate. Extract the window
     // from the MainMenu Nib instead and provide a real `NSWindowController`.
     
-    @IBAction func reviewLicense(sender: AnyObject) {
+    @IBAction func reviewLicense(_ sender: AnyObject) {
     
         showRegisterApp()
     }

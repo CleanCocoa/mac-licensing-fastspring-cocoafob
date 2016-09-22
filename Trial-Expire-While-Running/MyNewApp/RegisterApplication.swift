@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -19,15 +19,15 @@ public class RegisterApplication: HandlesRegistering {
     
     public func register(name: String, licenseCode: String) {
         
-        if !licenseVerifier.licenseCodeIsValid(licenseCode, forName: name) {
+        if !licenseVerifier.isValid(licenseCode: licenseCode, forName: name) {
             
             displayLicenseCodeError()
             return
         }
         
-        let licenseInformation = LicenseInformation.Registered(License(name: name, licenseCode: licenseCode))
+        let licenseInformation = LicenseInformation.registered(License(name: name, licenseCode: licenseCode))
         
-        licenseWriter.storeLicenseCode(licenseCode, forName: name)
+        licenseWriter.store(licenseCode: licenseCode, forName: name)
         changeBroadcaster.broadcast(licenseInformation)
     }
     

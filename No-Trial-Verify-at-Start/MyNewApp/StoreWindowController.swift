@@ -1,20 +1,20 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 
-public class OrderConfirmationView: NSView {
+open class OrderConfirmationView: NSView {
     
-    @IBOutlet public var licenseCodeTextField: NSTextField!
+    @IBOutlet open var licenseCodeTextField: NSTextField!
     
-    public func displayLicenseCode(licenseCode: String) {
+    open func displayLicenseCode(_ licenseCode: String) {
         
         licenseCodeTextField.stringValue = licenseCode
     }
 }
 
-public class StoreWindowController: NSWindowController {
+open class StoreWindowController: NSWindowController {
 
     static let NibName = "StoreWindowController"
     
@@ -23,16 +23,16 @@ public class StoreWindowController: NSWindowController {
         self.init(windowNibName: StoreWindowController.NibName)
     }
     
-    @IBOutlet public var webView: WebView!
-    @IBOutlet public var orderConfirmationView: OrderConfirmationView!
+    @IBOutlet open var webView: WebView!
+    @IBOutlet open var orderConfirmationView: OrderConfirmationView!
     
-    @IBOutlet public var backButton: NSButton!
-    @IBOutlet public var forwardButton: NSButton!
-    @IBOutlet public var reloadButton: NSButton!
+    @IBOutlet open var backButton: NSButton!
+    @IBOutlet open var forwardButton: NSButton!
+    @IBOutlet open var reloadButton: NSButton!
     
-    public var storeController: StoreController!
+    open var storeController: StoreController!
     
-    public var storeDelegate: StoreDelegate? {
+    open var storeDelegate: StoreDelegate? {
         get {
             return storeController.storeDelegate
         }
@@ -42,14 +42,14 @@ public class StoreWindowController: NSWindowController {
         }
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         
         storeController.setWebView(webView)
         storeController.loadStore()
         storeController.orderConfirmationView = orderConfirmationView
     }
     
-    @IBAction public func reloadStore(sender: AnyObject) {
+    @IBAction open func reloadStore(_ sender: AnyObject) {
         
         storeController.loadStore()
     }

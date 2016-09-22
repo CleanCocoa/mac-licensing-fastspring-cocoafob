@@ -1,77 +1,77 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 //
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-public class URLQueryLicenseParser {
+open class URLQueryLicenseParser {
     
     public init() { }
     
-    public func parseQuery(query: String) -> License? {
+    open func parseQuery(_ query: String) -> License? {
         
         let queryDictionary = dictionaryFromQuery(query)
         
-        if let name = decode(queryDictionary["\(URLComponents.Licensee)"]),
-            licenseCode = queryDictionary["\(URLComponents.LicenseCode)"] {
+        if let name = decode(queryDictionary["\(URLComponents.licensee)"]),
+            let licenseCode = queryDictionary["\(URLComponents.licenseCode)"] {
                 
             return License(name: name, licenseCode: licenseCode)
         }
         
-        return .None
+        return .none
     }
     
-    func dictionaryFromQuery(query: String) -> [String : String] {
+    func dictionaryFromQuery(_ query: String) -> [String : String] {
         
-        let parameters = query.componentsSeparatedByString("&")
+        let parameters = query.components(separatedBy: "&")
         
         return parameters.mapDictionary() { param -> (String, String)? in
             
             if let queryKey = self.queryKeyFromParameter(param),
-                queryValue = self.queryValueFromParameter(param)
+                let queryValue = self.queryValueFromParameter(param)
             {
                 
                 return (queryKey, queryValue)
             }
             
-            return .None
+            return .none
         }
     }
     
-    func queryKeyFromParameter(parameter: String) -> String? {
+    func queryKeyFromParameter(_ parameter: String) -> String? {
         
-        return parameter.componentsSeparatedByString("=")[safe:0]
+        return parameter.components(separatedBy: "=")[safe:0]
     }
     
-    func queryValueFromParameter(parameter: String) -> String? {
+    func queryValueFromParameter(_ parameter: String) -> String? {
         
         return escapedQueryValueFromParameter(parameter)
-            >>= unescapeQueryValue
+            >>- unescapeQueryValue
     }
     
-    func unescapeQueryValue(queryValue: String) -> String? {
+    func unescapeQueryValue(_ queryValue: String) -> String? {
         
         return queryValue
-            .stringByReplacingOccurrencesOfString("+", withString: " ")
-            .stringByRemovingPercentEncoding
+            .replacingOccurrences(of: "+", with: " ")
+            .removingPercentEncoding
     }
     
-    func escapedQueryValueFromParameter(parameter: String) -> String? {
+    func escapedQueryValueFromParameter(_ parameter: String) -> String? {
         
         // Assume only one `=` is the separator and concatenate 
         // the rest back into the value.
         // (base64-encoded Strings often end with `=`.)
-        return parameter.componentsSeparatedByString("=").dropFirst().joinWithSeparator("=")
+        return parameter.components(separatedBy: "=").dropFirst().joined(separator: "=")
     }
     
-    func decode(string: String?) -> String? {
+    func decode(_ string: String?) -> String? {
         
-        if let string = string, decodedData = NSData(base64EncodedString: string, options: []) {
+        if let string = string, let decodedData = Data(base64Encoded: string, options: []) {
             
-            return NSString(data: decodedData, encoding: NSUTF8StringEncoding) as? String
+            return NSString(data: decodedData, encoding: String.Encoding.utf8.rawValue) as? String
         }
         
-        return .None
+        return .none
     }
     
 }

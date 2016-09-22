@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class LicenseWriterTests: XCTestCase {
 
@@ -16,12 +16,12 @@ class LicenseWriterTests: XCTestCase {
         
         // No need to set the double on licenseProvider because
         // its property is lazily loaded during test cases later.
-        UserDefaults.setSharedInstance(UserDefaults(userDefaults: userDefaultsDouble))
+        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
     }
     
     override func tearDown() {
         
-        UserDefaults.resetSharedInstance()
+        MyNewApp.UserDefaults.resetSharedInstance()
         
         super.tearDown()
     }
@@ -37,7 +37,7 @@ class LicenseWriterTests: XCTestCase {
         let name = "a name"
         
         // When
-        writer.storeLicenseCode(licenseCode, forName: name)
+        writer.store(licenseCode: licenseCode, forName: name)
         
         // Then
         let changedDefaults = userDefaultsDouble.didSetValuesForKeys
@@ -45,8 +45,8 @@ class LicenseWriterTests: XCTestCase {
         
         if let changedDefaults = changedDefaults {
             
-            XCTAssert(changedDefaults[License.UserDefaultsKeys.Name.rawValue] == name)
-            XCTAssert(changedDefaults[License.UserDefaultsKeys.LicenseCode.rawValue] == licenseCode)
+            XCTAssert(changedDefaults[License.UserDefaultsKeys.name.rawValue] == name)
+            XCTAssert(changedDefaults[License.UserDefaultsKeys.licenseCode.rawValue] == licenseCode)
         }
     }
 
@@ -56,7 +56,7 @@ class LicenseWriterTests: XCTestCase {
     class TestUserDefaults: NullUserDefaults {
         
         var didSetValuesForKeys: [String : String]?
-        override func setValue(value: AnyObject?, forKey key: String) {
+        override func setValue(_ value: Any?, forKey key: String) {
             
             if !hasValue(didSetValuesForKeys) {
                 didSetValuesForKeys = [String : String]()

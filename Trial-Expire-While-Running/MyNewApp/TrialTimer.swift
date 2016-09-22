@@ -1,12 +1,12 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 //
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-typealias CancelableDispatchBlock = (cancel: Bool) -> Void
+typealias CancelableDispatchBlock = (_ cancel: Bool) -> Void
 
-func dispatch(cancelableBlock block: dispatch_block_t, atDate date: NSDate) -> CancelableDispatchBlock? {
+func dispatch(cancelableBlock block: @escaping () -> Void, atDate date: Date) -> CancelableDispatchBlock? {
     
     // Use two pointers for the same block handle to make
     // the block reference itself.
@@ -15,7 +15,7 @@ func dispatch(cancelableBlock block: dispatch_block_t, atDate date: NSDate) -> C
     let delayBlock: CancelableDispatchBlock = { cancel in
         
         if !cancel {
-            dispatch_async(dispatch_get_main_queue(), block)
+            DispatchQueue.main.async(execute: block)
         }
         
         cancelableBlock = nil
@@ -23,32 +23,30 @@ func dispatch(cancelableBlock block: dispatch_block_t, atDate date: NSDate) -> C
     
     cancelableBlock = delayBlock
     
-    let interval = Int64(date.timeIntervalSinceNow)
-    let delay = interval * Int64(NSEC_PER_SEC)
-    
-    dispatch_after(dispatch_walltime(nil, delay), dispatch_get_main_queue()) {
+    let delay = Int(date.timeIntervalSinceNow)
+    DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + .seconds(delay)) {
         
         if hasValue(cancelableBlock) {
-            cancelableBlock!(cancel: false)
+            cancelableBlock!(false)
         }
     }
     
     return cancelableBlock
 }
 
-func cancelBlock(block: CancelableDispatchBlock?) {
+func cancelBlock(_ block: CancelableDispatchBlock?) {
     
     if hasValue(block) {
-        block!(cancel: true)
+        block!(true)
     }
 }
 
 public class TrialTimer {
     
-    let trialEndDate: NSDate
+    let trialEndDate: Date
     let licenseChangeBroadcaster: LicenseChangeBroadcaster
     
-    public init(trialEndDate: NSDate, licenseChangeBroadcaster: LicenseChangeBroadcaster) {
+    public init(trialEndDate: Date, licenseChangeBroadcaster: LicenseChangeBroadcaster) {
         
         self.trialEndDate = trialEndDate
         self.licenseChangeBroadcaster = licenseChangeBroadcaster
@@ -76,9 +74,9 @@ public class TrialTimer {
         self.delayedBlock = delayedBlock
     }
     
-    private func timerDidFire() {
+    fileprivate func timerDidFire() {
         
-        licenseChangeBroadcaster.broadcast(.TrialUp)
+        licenseChangeBroadcaster.broadcast(.trialUp)
     }
     
     public func stop() {

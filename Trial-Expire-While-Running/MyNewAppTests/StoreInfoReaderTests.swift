@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class StoreInfoReaderTests: XCTestCase {
 
@@ -19,12 +19,12 @@ class StoreInfoReaderTests: XCTestCase {
 //        }
 //    }
     
-    let validURL = NSBundle(forClass: StoreInfoReaderTests.self).URLForResource("TestCredentialsComplete", withExtension: "plist")!
+    let validURL = Bundle(for: StoreInfoReaderTests.self).url(forResource: "TestCredentialsComplete", withExtension: "plist")!
     
 
     func testReadingValidData_ReturnsStoreInfoWithData() {
         
-        let result = StoreInfoReader.storeInfoFromURL(validURL)
+        let result = StoreInfoReader.storeInfo(fromURL: validURL)
         
         XCTAssert(hasValue(result))
         
@@ -44,7 +44,7 @@ class StoreInfoReaderTests: XCTestCase {
             "productName" : "My Cool Product"
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(data)
+        let result = StoreInfoReader.storeInfo(fromDictionary: data)
         
         XCTAssert(hasValue(result))
         
@@ -65,7 +65,7 @@ class StoreInfoReaderTests: XCTestCase {
             "productName" : "My Cool Product"
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(data)
+        let result = StoreInfoReader.storeInfo(fromDictionary: data)
         
         XCTAssert(hasValue(result))
     }
@@ -77,7 +77,7 @@ class StoreInfoReaderTests: XCTestCase {
             "productName" : "My Cool Product"
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(incompleteData)
+        let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
         XCTAssertFalse(hasValue(result))
     }
@@ -89,7 +89,7 @@ class StoreInfoReaderTests: XCTestCase {
             "productName" : "My Cool Product"
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(incompleteData)
+        let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
         XCTAssertFalse(hasValue(result))
     }
@@ -101,7 +101,7 @@ class StoreInfoReaderTests: XCTestCase {
             "productId" : "coolproduct",
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(incompleteData)
+        let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
         XCTAssertFalse(hasValue(result))
     }

@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class LicenseVerifierTests: XCTestCase {
 
@@ -14,21 +14,21 @@ class LicenseVerifierTests: XCTestCase {
 
     func testVerify_EmptyStrings_ReturnsFalse() {
         
-        let result = verifier.licenseCodeIsValid("", forName: "")
+        let result = verifier.isValid(licenseCode: "", forName: "")
         
         XCTAssertFalse(result)
     }
     
     func testVerify_ValidCodeWrongName_ReturnsFalse() {
         
-        let result = verifier.licenseCodeIsValid(validLicense.licenseCode, forName: "Jon Snow")
+        let result = verifier.isValid(licenseCode: validLicense.licenseCode, forName: "Jon Snow")
         
         XCTAssertFalse(result)
     }
     
     func testVerify_ValidLicense_ReturnsTrue() {
         
-        let result = verifier.licenseCodeIsValid(validLicense.licenseCode, forName: validLicense.name)
+        let result = verifier.isValid(licenseCode: validLicense.licenseCode, forName: validLicense.name)
         
         XCTAssert(result)
     }
@@ -37,7 +37,7 @@ class LicenseVerifierTests: XCTestCase {
         
         let verifier = LicenseVerifier(appName: "AnotherApp")
         
-        let result = verifier.licenseCodeIsValid(validLicense.licenseCode, forName: validLicense.name)
+        let result = verifier.isValid(licenseCode: validLicense.licenseCode, forName: validLicense.name)
         
         XCTAssertFalse(result)
     }

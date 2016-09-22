@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 //
 // See the file LICENSE for copying permission.
 
@@ -15,22 +15,23 @@ public class URLQueryRegistration {
     
     public lazy var queryParser: URLQueryLicenseParser = URLQueryLicenseParser()
     
-    public func registerFromURL(url: NSURL) {
+    public func register(fromUrl url: URL) {
         
-        guard let query = queryFromURL(url), license = queryParser.parseQuery(query) else {
+        guard let query = query(url: url),
+            let license = queryParser.parse(query: query) else {
             return
         }
         
-        registrationHandler.register(license.name, licenseCode: license.licenseCode)
+        registrationHandler.register(name: license.name, licenseCode: license.licenseCode)
     }
     
-    func queryFromURL(url: NSURL) -> String? {
+    fileprivate func query(url: URL) -> String? {
         
-        if let host = url.host, query = url.query where host == URLComponents.Host {
+        if let host = url.host, let query = url.query , host == URLComponents.host {
             
             return query
         }
         
-        return .None
+        return .none
     }
 }

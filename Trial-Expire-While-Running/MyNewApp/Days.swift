@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -6,11 +6,11 @@ import Foundation
 
 public struct Days {
     
-    public static func timeIntervalFromAmount(amount: Double) -> Double {
+    public static func timeInterval(amount: Double) -> Double {
         return amount * 60 * 60 * 24
     }
     
-    public static func amountFromTimeInterval(timeInterval: NSTimeInterval) -> Double {
+    public static func amount(timeInterval: TimeInterval) -> Double {
         return timeInterval / 60 / 60 / 24
     }
     
@@ -22,16 +22,16 @@ public struct Days {
         return Int(ceil(amount))
     }
     
-    public init(timeInterval: NSTimeInterval) {
-        amount = fabs(Days.amountFromTimeInterval(timeInterval))
+    public init(timeInterval: TimeInterval) {
+        amount = fabs(Days.amount(timeInterval: timeInterval))
     }
     
     public init(_ anAmount: Double) {
         amount = anAmount
     }
     
-    public var timeInterval: NSTimeInterval {
-        return Days.timeIntervalFromAmount(amount)
+    public var timeInterval: TimeInterval {
+        return Days.timeInterval(amount: amount)
     }
     
     public var isPast: Bool {

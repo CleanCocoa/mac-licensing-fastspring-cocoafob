@@ -1,38 +1,38 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-public class StoreInfoReader {
+open class StoreInfoReader {
     
     static func defaultStoreInfo() -> StoreInfo? {
         
-        if let URL = NSBundle.mainBundle().URLForResource("FastSpringCredentials", withExtension: "plist") {
+        if let URL = Bundle.main.url(forResource: "FastSpringCredentials", withExtension: "plist") {
             
             return storeInfoFromURL(URL)
         }
         
-        return .None
+        return .none
     }
     
-    public static func storeInfoFromURL(URL: NSURL) -> StoreInfo? {
+    open static func storeInfoFromURL(_ URL: Foundation.URL) -> StoreInfo? {
         
-        if let info = NSDictionary(contentsOfURL: URL) as? [String : String] {
+        if let info = NSDictionary(contentsOf: URL) as? [String : String] {
             
             return storeInfoFromDictionary(info)
         }
         
-        return .None
+        return .none
     }
     
-    public static func storeInfoFromDictionary(info: [String : String]) -> StoreInfo? {
+    open static func storeInfoFromDictionary(_ info: [String : String]) -> StoreInfo? {
         
         guard let storeId = info["storeId"],
-            productName = info["productName"] ,
-            productId = info["productId"] else {
+            let productName = info["productName"] ,
+            let productId = info["productId"] else {
                 
-            return .None
+            return .none
         }
         
         #if DEBUG

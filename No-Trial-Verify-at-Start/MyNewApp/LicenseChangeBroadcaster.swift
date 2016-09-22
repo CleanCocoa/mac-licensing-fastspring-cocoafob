@@ -1,19 +1,19 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-public typealias UserInfo = [NSObject : AnyObject]
+public typealias UserInfo = [AnyHashable: Any]
 
 extension LicenseInformation {
     
     public func userInfo() -> UserInfo {
         
         switch self {
-        case .Unregistered:
+        case .unregistered:
             return ["registered" : false]
-        case let .Registered(license):
+        case let .registered(license):
             return [
                 "registered" : true,
                 "name" : license.name,
@@ -22,37 +22,41 @@ extension LicenseInformation {
         }
     }
     
-    public static func fromUserInfo(userInfo: UserInfo) -> LicenseInformation? {
+    public static func fromUserInfo(_ userInfo: UserInfo) -> LicenseInformation? {
         
         guard let registered = userInfo["registered"] as? Bool else {
             return nil
         }
         
         if !registered {
-            return .Unregistered
+            return .unregistered
         }
         
-        guard let name = userInfo["name"] as? String, licenseCode = userInfo["licenseCode"] as? String else {
+        guard let name = userInfo["name"] as? String, let licenseCode = userInfo["licenseCode"] as? String else {
             return nil
         }
         
-        return .Registered(License(name: name, licenseCode: licenseCode))
+        return .registered(License(name: name, licenseCode: licenseCode))
     }
 }
 
 public enum Events: String {
     
-    case LicenseChanged = "License Changed"
+    case licenseChanged = "License Changed"
+
+    var notificationName: NSNotification.Name {
+        return NSNotification.Name(self.rawValue)
+    }
 }
 
-public class LicenseChangeBroadcaster {
+open class LicenseChangeBroadcaster {
     
-    public lazy var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+    open lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     
     public init() { }
     
-    public func broadcast(licenseInformation: LicenseInformation) {
+    open func broadcast(_ licenseInformation: LicenseInformation) {
         
-        notificationCenter.postNotificationName(Events.LicenseChanged.rawValue, object: self, userInfo: licenseInformation.userInfo())
+        notificationCenter.post(name: Notification.Name(rawValue: Events.licenseChanged.rawValue), object: self, userInfo: licenseInformation.userInfo())
     }
 }

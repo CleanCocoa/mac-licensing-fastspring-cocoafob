@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class StoreTests: XCTestCase {
 
@@ -71,7 +71,7 @@ class StoreTests: XCTestCase {
         }
         
         var didShowWindow = false
-        override func showWindow(sender: AnyObject?) {
+        override func showWindow(_ sender: Any?) {
             
             didShowWindow = true
         }
@@ -97,7 +97,7 @@ class StoreTests: XCTestCase {
     
     class TestDelegate: StoreDelegate {
         
-        func didPurchaseLicense(license: License) {
+        func didPurchaseLicense(_ license: License) {
             // no-op
         }
     }

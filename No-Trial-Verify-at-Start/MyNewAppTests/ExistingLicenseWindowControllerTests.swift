@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class ExistingLicenseWindowControllerTests: XCTestCase {
 
@@ -117,7 +117,7 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
     class TestEventHandler: HandlesRegistering {
         
         var didRegisterWith: (name: String, licenseCode: String)?
-        func register(name: String, licenseCode: String) {
+        func register(_ name: String, licenseCode: String) {
             
             didRegisterWith = (name, licenseCode)
         }

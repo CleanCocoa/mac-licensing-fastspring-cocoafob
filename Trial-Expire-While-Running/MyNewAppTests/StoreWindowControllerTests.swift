@@ -1,12 +1,12 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
-func button(button: NSButton, isWiredTo target: AnyObject?) -> Bool {
+func button(_ button: NSButton, isWiredTo target: AnyObject?) -> Bool {
     
     if !hasValue(target) { return false }
     if !hasValue(button.target) { return false }
@@ -118,7 +118,7 @@ class StoreWindowControllerTests: XCTestCase {
         }
         
         var didSetWebViewTo: WebView?
-        override func setWebView(webView: WebView) {
+        override func set(webView: WebView) {
             
             didSetWebViewTo = webView
         }

@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -8,11 +8,11 @@ public class TrialWriter {
     
     public init() { }
     
-    lazy var userDefaults: NSUserDefaults = UserDefaults.standardUserDefaults()
+    lazy var userDefaults: Foundation.UserDefaults = MyNewApp.UserDefaults.standardUserDefaults()
     
-    public func storeTrial(trialPeriod: TrialPeriod) {
+    public func store(trialPeriod: TrialPeriod) {
         
-        userDefaults.setObject(trialPeriod.startDate, forKey: TrialPeriod.UserDefaultsKeys.StartDate.rawValue)
-        userDefaults.setObject(trialPeriod.endDate, forKey: TrialPeriod.UserDefaultsKeys.EndDate.rawValue)
+        userDefaults.set(trialPeriod.startDate, forKey: TrialPeriod.UserDefaultsKeys.startDate.rawValue)
+        userDefaults.set(trialPeriod.endDate, forKey: TrialPeriod.UserDefaultsKeys.endDate.rawValue)
     }
 }

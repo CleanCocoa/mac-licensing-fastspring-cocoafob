@@ -1,10 +1,10 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Cocoa
 import XCTest
-import MyNewApp
+@testable import MyNewApp
 
 class PurchaseLicenseTests: XCTestCase {
 
@@ -65,7 +65,7 @@ class PurchaseLicenseTests: XCTestCase {
     class TestRegisterApp: RegisterApplication {
         
         var didRegisterWith: (name: String, licenseCode: String)?
-        override func register(name: String, licenseCode: String) {
+        override func register(_ name: String, licenseCode: String) {
             didRegisterWith = (name, licenseCode)
         }
     }

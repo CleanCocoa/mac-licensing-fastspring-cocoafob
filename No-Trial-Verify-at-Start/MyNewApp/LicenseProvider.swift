@@ -1,21 +1,21 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
 import Foundation
 
-public class LicenseProvider {
+open class LicenseProvider {
     
     public init() { }
     
-    lazy var userDefaults: NSUserDefaults = UserDefaults.standardUserDefaults()
+    lazy var userDefaults: Foundation.UserDefaults = UserDefaults.standardUserDefaults()
     
-    public var currentLicense: License? {
+    open var currentLicense: License? {
         
-        guard let name = userDefaults.stringForKey("\(License.UserDefaultsKeys.Name)"),
-            licenseCode = userDefaults.stringForKey("\(License.UserDefaultsKeys.LicenseCode)") else {
+        guard let name = userDefaults.string(forKey: "\(License.UserDefaultsKeys.name)"),
+            let licenseCode = userDefaults.string(forKey: "\(License.UserDefaultsKeys.licenseCode)") else {
                 
-            return .None
+            return .none
         }
         
         return License(name: name, licenseCode: licenseCode)

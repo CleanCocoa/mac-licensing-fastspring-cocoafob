@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Christian Tietze
+// Copyright (c) 2015-2016 Christian Tietze
 // 
 // See the file LICENSE for copying permission.
 
@@ -9,7 +9,7 @@ public protocol HandlesPurchases {
     func purchase()
 }
 
-public class LicenseWindowController: NSWindowController {
+open class LicenseWindowController: NSWindowController {
     
     static let NibName = "LicenseWindowController"
     
@@ -18,25 +18,25 @@ public class LicenseWindowController: NSWindowController {
         self.init(windowNibName: LicenseWindowController.NibName)
     }
     
-    @IBOutlet public var existingLicenseViewController: ExistingLicenseViewController!
-    @IBOutlet public var buyButton: NSButton!
+    @IBOutlet open var existingLicenseViewController: ExistingLicenseViewController!
+    @IBOutlet open var buyButton: NSButton!
     
-    public var purchasingEventHandler: HandlesPurchases?
+    open var purchasingEventHandler: HandlesPurchases?
     
-    @IBAction public func buy(sender: AnyObject) {
+    @IBAction open func buy(_ sender: AnyObject) {
         
         purchasingEventHandler?.purchase()
     }
         
-    public func displayLicenseInformation(licenseInformation: LicenseInformation) {
+    open func displayLicenseInformation(_ licenseInformation: LicenseInformation) {
         
         switch licenseInformation {
-        case .Unregistered: existingLicenseViewController.displayEmptyForm()
-        case let .Registered(license): existingLicenseViewController.displayLicense(license)
+        case .unregistered: existingLicenseViewController.displayEmptyForm()
+        case let .registered(license): existingLicenseViewController.displayLicense(license)
         }
     }
     
-    public var registrationEventHandler: HandlesRegistering? {
+    open var registrationEventHandler: HandlesRegistering? {
         
         set {
             existingLicenseViewController.eventHandler = newValue
