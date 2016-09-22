@@ -46,7 +46,7 @@ public class URLQueryLicenseParser {
     func queryValueFromParameter(parameter: String) -> String? {
         
         return escapedQueryValueFromParameter(parameter)
-            >>= unescapeQueryValue
+            >>- unescapeQueryValue
     }
     
     func unescapeQueryValue(queryValue: String) -> String? {
