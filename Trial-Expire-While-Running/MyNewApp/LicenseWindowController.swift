@@ -18,7 +18,7 @@ public class LicenseWindowController: NSWindowController {
         self.init(windowNibName: LicenseWindowController.NibName)
     }
     
-    var trialLabelText: String!
+    var trialLabelText: String = ""
     
     public override func awakeFromNib() {
         
