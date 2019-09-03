@@ -499,12 +499,12 @@
 				TargetAttributes = {
 					50C9B09C1B7F6DAC002C5449 = {
 						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 					};
 					50C9B0AC1B7F6DAC002C5449 = {
 						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 						TestTargetID = 50C9B09C1B7F6DAC002C5449;
 					};
@@ -512,7 +512,7 @@
 			};
 			buildConfigurationList = 50C9B0981B7F6DAC002C5449 /* Build configuration list for PBXProject "MyNewApp" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -801,7 +801,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -818,7 +818,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewApp/MyNewApp-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
@@ -843,7 +843,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewAppTests/MyNewAppTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNewApp.app/Contents/MacOS/MyNewApp";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore\"/**";
 			};
@@ -864,7 +864,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyNewAppTests/MyNewAppTests-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNewApp.app/Contents/MacOS/MyNewApp";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore\"/**";
 			};

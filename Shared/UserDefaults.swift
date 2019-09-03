@@ -22,7 +22,7 @@ open class UserDefaults {
         userDefaults = aUserDefaults
     }
     
-    open static func standardUserDefaults() -> Foundation.UserDefaults {
+    public static func standardUserDefaults() -> Foundation.UserDefaults {
         return sharedInstance.userDefaults
     }
 }

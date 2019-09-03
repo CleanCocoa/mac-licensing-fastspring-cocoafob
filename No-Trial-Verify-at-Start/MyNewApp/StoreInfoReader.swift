@@ -16,7 +16,7 @@ open class StoreInfoReader {
         return .none
     }
     
-    open static func storeInfoFromURL(_ URL: Foundation.URL) -> StoreInfo? {
+    public static func storeInfoFromURL(_ URL: Foundation.URL) -> StoreInfo? {
         
         if let info = NSDictionary(contentsOf: URL) as? [String : String] {
             
@@ -26,7 +26,7 @@ open class StoreInfoReader {
         return .none
     }
     
-    open static func storeInfoFromDictionary(_ info: [String : String]) -> StoreInfo? {
+    public static func storeInfoFromDictionary(_ info: [String : String]) -> StoreInfo? {
         
         guard let storeId = info["storeId"],
             let productName = info["productName"] ,
