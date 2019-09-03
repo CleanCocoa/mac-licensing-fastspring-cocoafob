@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var trialProvider = TrialProvider()
     var licenseProvider = LicenseProvider()
-    lazy var licenseInfoProvider: LicenseInformationProvider = LicenseInformationProvider(trialProvider: self.trialProvider, licenseProvider: self.licenseProvider, clock: self.clock)
+    lazy var licenseStateProvider: LicenseStateProvider = LicenseStateProvider(trialProvider: self.trialProvider, licenseProvider: self.licenseProvider, clock: self.clock)
     
     // User Interface
     @IBOutlet weak var window: NSWindow!
@@ -124,14 +124,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         licenseWindowController.purchasingEventHandler = purchaseLicense
     }
     
-    var currentLicenseInformation: LicenseInformation {
+    var currentLicenseState: LicenseState {
         
-        return licenseInfoProvider.currentLicenseInformation
+        return licenseStateProvider.currentLicenseState
     }
     
     func launchAppOrShowLicenseWindow() {
         
-        switch currentLicenseInformation {
+        switch currentLicenseState {
         case .trialUp:
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
@@ -158,7 +158,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func licenseIsInvalid() -> Bool {
         
-        return licenseInfoProvider.licenseIsInvalid
+        return licenseStateProvider.licenseIsInvalid
     }
     
     
@@ -166,12 +166,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func licenseDidChange(notification: NSNotification) {
         
-        guard let userInfo = notification.userInfo, let licenseInformation = LicenseInformation.fromUserInfo(userInfo: userInfo) else {
+        guard let userInfo = notification.userInfo, let licenseState = LicenseState.fromUserInfo(userInfo: userInfo) else {
             
             return
         }
         
-        switch licenseInformation {
+        switch licenseState {
         case .onTrial(_):
             // Change to this state is possible if unregistering while
             // trial isn't up, yet.
@@ -196,7 +196,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         licenseWindowController.showWindow(self)
         licenseWindowController.registrationEventHandler = registerApplication
-        licenseWindowController.displayLicenseInformation(licenseInformation: currentLicenseInformation, clock: clock)
+        licenseWindowController.display(licenseState: currentLicenseState, clock: clock)
     }
     
     func unlockApp() {

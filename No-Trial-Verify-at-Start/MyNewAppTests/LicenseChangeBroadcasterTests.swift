@@ -29,7 +29,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
     
     func testBroadcast_Unregistered_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.unregistered
+        let licenseInfo = LicenseState.unregistered
         
         broadcaster.broadcast(licenseInfo)
         
@@ -49,7 +49,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
 
     func testBroadcast_Registered_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.registered(License(name: "the name", licenseCode: "a license"))
+        let licenseInfo = LicenseState.registered(License(name: "the name", licenseCode: "a license"))
         
         broadcaster.broadcast(licenseInfo)
         

@@ -123,10 +123,10 @@ class RegisterApplicationTests: XCTestCase {
     
     class TestBroadcaster: LicenseChangeBroadcaster {
         
-        var didBroadcastWith: LicenseInformation?
-        override func broadcast(_ licenseInformation: LicenseInformation) {
+        var didBroadcastWith: LicenseState?
+        override func broadcast(_ licenseState: LicenseState) {
             
-            didBroadcastWith = licenseInformation
+            didBroadcastWith = licenseState
         }
     }
 }

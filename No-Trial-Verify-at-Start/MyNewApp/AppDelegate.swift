@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     
     var licenseProvider = LicenseProvider()
-    lazy var licenseInfoProvider: LicenseInformationProvider = LicenseInformationProvider(licenseProvider: self.licenseProvider)
+    lazy var licenseInfoProvider: LicenseStateProvider = LicenseStateProvider(licenseProvider: self.licenseProvider)
     
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
@@ -71,14 +71,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         licenseWindowController.purchasingEventHandler = purchaseLicense
     }
     
-    var currentLicenseInformation: LicenseInformation {
+    var currentLicenseState: LicenseState {
         
-        return licenseInfoProvider.currentLicenseInformation
+        return licenseInfoProvider.currentLicenseState
     }
     
     func launchAppOrShowLicenseWindow() {
         
-        switch currentLicenseInformation {
+        switch currentLicenseState {
         case .unregistered:
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
@@ -108,7 +108,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         licenseWindowController.showWindow(self)
         licenseWindowController.registrationEventHandler = registerApplication
-        licenseWindowController.displayLicenseInformation(currentLicenseInformation)
+        licenseWindowController.display(licenseState: currentLicenseState)
     }
     
     func unlockApp() {
@@ -122,11 +122,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func licenseDidChange(_ notification: Notification) {
         
-        guard let userInfo = (notification as NSNotification).userInfo, let licenseInformation = LicenseInformation.fromUserInfo(userInfo) else {
-            return
-        }
+        guard let userInfo = (notification as NSNotification).userInfo,
+            let licenseState = LicenseState.fromUserInfo(userInfo)
+            else { return }
         
-        switch licenseInformation {
+        switch licenseState {
         case .registered(_):
             displayThankYouAlert()
             unlockApp()

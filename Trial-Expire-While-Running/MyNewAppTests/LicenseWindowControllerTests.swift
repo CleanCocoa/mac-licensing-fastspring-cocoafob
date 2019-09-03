@@ -112,7 +112,7 @@ class LicenseWindowControllerTests: XCTestCase {
         
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(licenseInformation: .trialUp)
+        controller.display(licenseState: .trialUp)
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
@@ -122,7 +122,7 @@ class LicenseWindowControllerTests: XCTestCase {
         
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(licenseInformation: .onTrial(TrialPeriod(startDate: Date(), endDate: Date())))
+        controller.display(licenseState: .onTrial(TrialPeriod(startDate: Date(), endDate: Date())))
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
@@ -133,7 +133,7 @@ class LicenseWindowControllerTests: XCTestCase {
         let license = License(name: "the name", licenseCode: "the code")
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.displayLicenseInformation(licenseInformation: .registered(license))
+        controller.display(licenseState: .registered(license))
         
         XCTAssertFalse(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssert(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))

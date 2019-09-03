@@ -6,9 +6,9 @@ import Cocoa
 import XCTest
 @testable import MyNewApp
 
-class LicenseInformationProviderTests: XCTestCase {
+class LicenseStateProviderTests: XCTestCase {
 
-    var licenseInfoProvider: LicenseInformationProvider!
+    var licenseStateProvider: LicenseStateProvider!
     
     let licenseProviderDouble = TestLicenseProvider()
     let verifierDouble = TestVerifier()
@@ -17,15 +17,15 @@ class LicenseInformationProviderTests: XCTestCase {
         
         super.setUp()
         
-        licenseInfoProvider = LicenseInformationProvider(licenseProvider: licenseProviderDouble)
-        licenseInfoProvider.licenseVerifier = verifierDouble
+        licenseStateProvider = LicenseStateProvider(licenseProvider: licenseProviderDouble)
+        licenseStateProvider.licenseVerifier = verifierDouble
     }
 
     let irrelevantLicense = License(name: "", licenseCode: "")
     
     func testLicenceInvalidity_NoLicense_ReturnsFalse() {
         
-        XCTAssertFalse(licenseInfoProvider.licenseIsInvalid)
+        XCTAssertFalse(licenseStateProvider.licenseIsInvalid)
     }
     
     func testLicenceInvalidity_ValidLicense_ReturnsFalse() {
@@ -33,7 +33,7 @@ class LicenseInformationProviderTests: XCTestCase {
         verifierDouble.testValidity = true
         licenseProviderDouble.testLicense = irrelevantLicense
         
-        XCTAssertFalse(licenseInfoProvider.licenseIsInvalid)
+        XCTAssertFalse(licenseStateProvider.licenseIsInvalid)
     }
     
     func testLicenceInvalidity_InvalidLicense_ReturnsFalse() {
@@ -41,12 +41,12 @@ class LicenseInformationProviderTests: XCTestCase {
         verifierDouble.testValidity = false
         licenseProviderDouble.testLicense = irrelevantLicense
         
-        XCTAssert(licenseInfoProvider.licenseIsInvalid)
+        XCTAssert(licenseStateProvider.licenseIsInvalid)
     }
     
     func testCurrentInfo_NoLicense_ReturnsUnregistered() {
         
-        let licenseInfo = licenseInfoProvider.currentLicenseInformation
+        let licenseInfo = licenseStateProvider.currentLicenseState
         
         let unregistered: Bool
         switch licenseInfo {
@@ -62,7 +62,7 @@ class LicenseInformationProviderTests: XCTestCase {
         verifierDouble.testValidity = false
         licenseProviderDouble.testLicense = irrelevantLicense
         
-        let licenseInfo = licenseInfoProvider.currentLicenseInformation
+        let licenseInfo = licenseStateProvider.currentLicenseState
         
         let unregistered: Bool
         switch licenseInfo {
@@ -82,7 +82,7 @@ class LicenseInformationProviderTests: XCTestCase {
         let license = License(name: name, licenseCode: licenseCode)
         licenseProviderDouble.testLicense = license
         
-        let licenseInfo = licenseInfoProvider.currentLicenseInformation
+        let licenseInfo = licenseStateProvider.currentLicenseState
         
         switch licenseInfo {
         case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)

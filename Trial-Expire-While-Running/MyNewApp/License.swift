@@ -31,16 +31,16 @@ public func ==(lhs: License, rhs: License) -> Bool {
     return lhs.name == rhs.name && lhs.licenseCode == rhs.licenseCode
 }
 
-public enum LicenseInformation {
+public enum LicenseState {
     
     case registered(License)
     case onTrial(TrialPeriod)
     case trialUp
 }
 
-extension LicenseInformation: Equatable { }
+extension LicenseState: Equatable { }
 
-public func ==(lhs: LicenseInformation, rhs: LicenseInformation) -> Bool {
+public func ==(lhs: LicenseState, rhs: LicenseState) -> Bool {
     
     switch (lhs, rhs) {
     case (.trialUp, .trialUp): return true

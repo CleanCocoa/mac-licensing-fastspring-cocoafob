@@ -12,7 +12,7 @@ fileprivate extension License {
     }
 }
 
-public class LicenseInformationProvider {
+public class LicenseStateProvider {
     
     let trialProvider: TrialProvider
     let licenseProvider: LicenseProvider
@@ -36,7 +36,7 @@ public class LicenseInformationProvider {
         return !license.isValid(licenseVerifier: licenseVerifier)
     }
     
-    public var currentLicenseInformation: LicenseInformation {
+    public var currentLicenseState: LicenseState {
         
         if let license = self.license(),
             license.isValid(licenseVerifier: licenseVerifier) {

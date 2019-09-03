@@ -128,8 +128,8 @@ class RegisterApplicationTests: XCTestCase {
             self.init(notificationCenter: NullNotificationCenter())
         }
         
-        var didBroadcastWith: LicenseInformation?
-        override func broadcast(_ licenseInformation: LicenseInformation) {
+        var didBroadcastWith: LicenseState?
+        override func broadcast(_ licenseInformation: LicenseState) {
             
             didBroadcastWith = licenseInformation
         }

@@ -29,7 +29,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
     
     func testBroadcast_TrialUp_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.trialUp
+        let licenseInfo = LicenseState.trialUp
         
         broadcaster.broadcast(licenseInfo)
         
@@ -49,7 +49,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
     
     func testBroadcast_OnTrial_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.onTrial(TrialPeriod(startDate: Date(), endDate: Date()))
+        let licenseInfo = LicenseState.onTrial(TrialPeriod(startDate: Date(), endDate: Date()))
         
         broadcaster.broadcast(licenseInfo)
         
@@ -69,7 +69,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
 
     func testBroadcast_Registered_PostsNotification() {
         
-        let licenseInfo = LicenseInformation.registered(License(name: "the name", licenseCode: "a license"))
+        let licenseInfo = LicenseState.registered(License(name: "the name", licenseCode: "a license"))
         
         broadcaster.broadcast(licenseInfo)
         

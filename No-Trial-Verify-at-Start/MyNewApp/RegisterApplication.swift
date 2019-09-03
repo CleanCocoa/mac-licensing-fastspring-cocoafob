@@ -30,10 +30,10 @@ open class RegisterApplication: HandlesRegistering {
             return
         }
         
-        let licenseInformation = LicenseInformation.registered(License(name: name, licenseCode: licenseCode))
+        let licenseState = LicenseState.registered(License(name: name, licenseCode: licenseCode))
         
         licenseWriter.store(licenseCode: licenseCode, forName: name)
-        changeBroadcaster.broadcast(licenseInformation)
+        changeBroadcaster.broadcast(licenseState)
     }
     
     func displayLicenseCodeError() {
