@@ -14,7 +14,7 @@ open class OrderConfirmationView: NSView {
     }
 }
 
-open class StoreWindowController: NSWindowController {
+@objc open class StoreWindowController: NSWindowController {
 
     static let NibName = "StoreWindowController"
     
@@ -30,7 +30,7 @@ open class StoreWindowController: NSWindowController {
     @IBOutlet open var forwardButton: NSButton!
     @IBOutlet open var reloadButton: NSButton!
     
-    open var storeController: StoreController!
+    @objc dynamic open var storeController: StoreController!
     
     open var storeDelegate: StoreDelegate? {
         get {

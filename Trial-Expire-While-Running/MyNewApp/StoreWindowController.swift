@@ -30,7 +30,7 @@ public class StoreWindowController: NSWindowController {
     @IBOutlet public var forwardButton: NSButton!
     @IBOutlet public var reloadButton: NSButton!
     
-    public var storeController: StoreController!
+    @objc public var storeController: StoreController!
     
     public var storeDelegate: StoreDelegate? {
         get {

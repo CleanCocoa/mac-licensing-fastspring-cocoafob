@@ -8,8 +8,9 @@ open class StoreController: NSObject {
     
     var storeDelegate: StoreDelegate?
     var orderConfirmationView: OrderConfirmationView?
-    
-    let storeController: FsprgEmbeddedStoreController
+
+    // Expose to @objc for Key--Value-Coding
+    @objc let storeController: FsprgEmbeddedStoreController
     let storeInfo: StoreInfo
     
     public init(storeInfo: StoreInfo) {

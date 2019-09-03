@@ -105,7 +105,7 @@ class StoreWindowControllerTests: XCTestCase {
     
     // MARK: -
     
-    class TestStoreController: StoreController {
+    @objc class TestStoreController: StoreController {
         
         convenience init() {
             self.init(storeInfo: StoreInfo(storeId: "", productName: "", productId: "", storeMode: ""))

@@ -94,7 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 andEventID: AEEventID(kAEGetURL))
     }
 
-    func handle(getUrlEvent event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
+    @objc func handle(getUrlEvent event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
         
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
             let url = URL(string: urlString) {
@@ -164,7 +164,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: License changes
     
-    func licenseDidChange(notification: NSNotification) {
+    @objc func licenseDidChange(notification: NSNotification) {
         
         guard let userInfo = notification.userInfo, let licenseInformation = LicenseInformation.fromUserInfo(userInfo: userInfo) else {
             
