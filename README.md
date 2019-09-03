@@ -8,9 +8,9 @@ This is the manuscript of the book "[Make Money Outside the Mac App Store (With 
 
 ## Installation / Set Up
 
-If you run Git v.1.6.5 or higher, you should be able to clone this repository recirsively, including all submodules:
+If you run Git v1.6.5 or higher, you should be able to clone this repository recursively, including all submodules:
 
-    $ git clone --recursive git@github.com:DivineDominion/mac-licensing-fastspring-cocoafob.git
+    $ git clone --recursive git@github.com:ChristianTietze/mac-licensing-fastspring-cocoafob.git
 
 If that doesn't work, do it manually:
 
