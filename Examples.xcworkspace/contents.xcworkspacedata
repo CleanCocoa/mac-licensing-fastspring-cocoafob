@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
       location = "group:/Users/ctm/Coding/mac-fastspring-book/No-Trial-Verify-at-Start/No-Trial-Verify-at-Start.xcodeproj">
    </FileRef>
    <FileRef
