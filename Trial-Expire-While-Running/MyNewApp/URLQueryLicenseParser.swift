@@ -67,13 +67,12 @@ public class URLQueryLicenseParser {
     }
     
     fileprivate func decode(string: String?) -> String? {
-        
-        if let string = string, let decodedData = NSData(base64Encoded: string, options: []) {
-            
-            return NSString(data: decodedData as Data, encoding: String.Encoding.utf8.rawValue) as? String
-        }
-        
-        return .none
+
+        guard let string = string,
+            let decodedData = Data(base64Encoded: string, options: [])
+            else { return nil }
+
+        return String(data: decodedData, encoding: .utf8)
     }
-    
+
 }

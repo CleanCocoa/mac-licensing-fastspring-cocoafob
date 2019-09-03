@@ -66,12 +66,11 @@ open class URLQueryLicenseParser {
     
     func decode(_ string: String?) -> String? {
         
-        if let string = string, let decodedData = Data(base64Encoded: string, options: []) {
+        guard let string = string,
+            let decodedData = Data(base64Encoded: string, options: [])
+            else { return nil }
             
-            return NSString(data: decodedData, encoding: String.Encoding.utf8.rawValue) as? String
-        }
-        
-        return .none
+        return String(data: decodedData, encoding: .utf8)
     }
     
 }
