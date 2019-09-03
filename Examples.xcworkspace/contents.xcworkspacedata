@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:No-Trial-Verify-at-Start/MyNewApp.xcodeproj">
+      location = "group:/Users/ctm/Coding/mac-fastspring-book/No-Trial-Verify-at-Start/No-Trial-Verify-at-Start.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Trial-Expire-While-Running/MyNewApp.xcodeproj">
+      location = "group:/Users/ctm/Coding/mac-fastspring-book/Trial-Expire-While-Running/Trial-Expire-While-Running.xcodeproj">
    </FileRef>
 </Workspace>
