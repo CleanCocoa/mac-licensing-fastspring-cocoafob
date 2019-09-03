@@ -4,7 +4,7 @@
 
 This is the manuscript of the book "[Make Money Outside the Mac App Store (With FastSpring)][book]".
 
-[book]: https://leanpub.com/sell-mac-app-fastspring-cocoafob-license-trial
+[book]: https://christiantietze.de/books/make-money-outside-mac-app-store-fastspring/
 
 ## Installation / Set Up
 
