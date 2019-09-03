@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503134BB231EB13C00C9F93D /* CocoaFob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503134AA231EB10100C9F93D /* CocoaFob.framework */; };
+		503134BC231EB13C00C9F93D /* CocoaFob.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 503134AA231EB10100C9F93D /* CocoaFob.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */; };
 		50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */; };
 		50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */; };
-		50397A9C1BAFF69600780815 /* CFUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A981BAFF69600780815 /* CFUtil.swift */; };
-		50397A9D1BAFF69600780815 /* CocoaFobError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A991BAFF69600780815 /* CocoaFobError.swift */; };
-		50397A9E1BAFF69600780815 /* CocoaFobLicVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */; };
-		50397A9F1BAFF69600780815 /* CocoaFobStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */; };
 		50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA01B8313E700727FBA /* PurchaseLicense.swift */; };
 		50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */; };
 		505D9DEE1B89E47600D412F1 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D9DED1B89E47600D412F1 /* License.swift */; };
@@ -69,6 +67,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		503134A9231EB10100C9F93D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503134A3231EB10100C9F93D /* CocoaFob.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C739DCC21B48DFA00074D8F2;
+			remoteInfo = CocoaFob;
+		};
+		503134AB231EB10100C9F93D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503134A3231EB10100C9F93D /* CocoaFob.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C739DCCC1B48DFA10074D8F2;
+			remoteInfo = CocoaFobTests;
+		};
+		503134AD231EB10100C9F93D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503134A3231EB10100C9F93D /* CocoaFob.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C77D71271B5496F00019F670;
+			remoteInfo = "cocoafob-keygen";
+		};
+		503134BD231EB13C00C9F93D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503134A3231EB10100C9F93D /* CocoaFob.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C739DCC11B48DFA00074D8F2;
+			remoteInfo = CocoaFob;
+		};
 		50C9B0AE1B7F6DAC002C5449 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50C9B0951B7F6DAC002C5449 /* Project object */;
@@ -78,14 +104,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		503134BF231EB13C00C9F93D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				503134BC231EB13C00C9F93D /* CocoaFob.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		503134A3231EB10100C9F93D /* CocoaFob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaFob.xcodeproj; path = ../External/cocoafob/swift4/CocoaFob.xcodeproj; sourceTree = "<group>"; };
 		50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoReader.swift; sourceTree = "<group>"; };
 		50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StoreInfoReaderTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
-		50397A981BAFF69600780815 /* CFUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUtil.swift; sourceTree = "<group>"; };
-		50397A991BAFF69600780815 /* CocoaFobError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobError.swift; sourceTree = "<group>"; };
-		50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobLicVerifier.swift; sourceTree = "<group>"; };
-		50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFobStringExt.swift; sourceTree = "<group>"; };
 		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
 		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		505D9DED1B89E47600D412F1 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -162,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				503134BB231EB13C00C9F93D /* CocoaFob.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +213,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503134A4231EB10100C9F93D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				503134AA231EB10100C9F93D /* CocoaFob.framework */,
+				503134AC231EB10100C9F93D /* CocoaFobTests.xctest */,
+				503134AE231EB10100C9F93D /* cocoafob-keygen */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		50337B951B85B4490056FC3B /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,7 +259,7 @@
 				50C9B0CE1B7F7B7C002C5449 /* Shared */,
 				50C9B09F1B7F6DAC002C5449 /* MyNewApp */,
 				50C9B0B01B7F6DAC002C5449 /* MyNewAppTests */,
-				50E75D891B81EB680092CD19 /* CocoaFob */,
+				503134A3231EB10100C9F93D /* CocoaFob.xcodeproj */,
 				50E75DE21B8227610092CD19 /* FastSpring */,
 				50C9B09E1B7F6DAC002C5449 /* Products */,
 			);
@@ -311,18 +359,6 @@
 			name = "User Interface";
 			sourceTree = "<group>";
 		};
-		50E75D891B81EB680092CD19 /* CocoaFob */ = {
-			isa = PBXGroup;
-			children = (
-				50397A981BAFF69600780815 /* CFUtil.swift */,
-				50397A991BAFF69600780815 /* CocoaFobError.swift */,
-				50397A9A1BAFF69600780815 /* CocoaFobLicVerifier.swift */,
-				50397A9B1BAFF69600780815 /* CocoaFobStringExt.swift */,
-			);
-			name = CocoaFob;
-			path = ../External/cocoafob/swift3/CocoaFob;
-			sourceTree = "<group>";
-		};
 		50E75DC11B821D590092CD19 /* License */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,10 +418,12 @@
 				50C9B0991B7F6DAC002C5449 /* Sources */,
 				50C9B09A1B7F6DAC002C5449 /* Frameworks */,
 				50C9B09B1B7F6DAC002C5449 /* Resources */,
+				503134BF231EB13C00C9F93D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				503134BE231EB13C00C9F93D /* PBXTargetDependency */,
 			);
 			name = MyNewApp;
 			productName = MyNewApp;
@@ -445,6 +483,12 @@
 			mainGroup = 50C9B0941B7F6DAC002C5449;
 			productRefGroup = 50C9B09E1B7F6DAC002C5449 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 503134A4231EB10100C9F93D /* Products */;
+					ProjectRef = 503134A3231EB10100C9F93D /* CocoaFob.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				50C9B09C1B7F6DAC002C5449 /* MyNewApp */,
@@ -452,6 +496,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		503134AA231EB10100C9F93D /* CocoaFob.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaFob.framework;
+			remoteRef = 503134A9231EB10100C9F93D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		503134AC231EB10100C9F93D /* CocoaFobTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CocoaFobTests.xctest;
+			remoteRef = 503134AB231EB10100C9F93D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		503134AE231EB10100C9F93D /* cocoafob-keygen */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "cocoafob-keygen";
+			remoteRef = 503134AD231EB10100C9F93D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		50C9B09B1B7F6DAC002C5449 /* Resources */ = {
@@ -481,7 +549,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50397A9C1BAFF69600780815 /* CFUtil.swift in Sources */,
 				50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */,
 				50E75DB81B820A730092CD19 /* RegisterApplication.swift in Sources */,
 				50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */,
@@ -491,7 +558,6 @@
 				5098EA271B90A251001FBC3C /* URLQueryRegistration.swift in Sources */,
 				5098EA231B9082F8001FBC3C /* Array.swift in Sources */,
 				50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */,
-				50397A9D1BAFF69600780815 /* CocoaFobError.swift in Sources */,
 				50E75DC31B8225230092CD19 /* Alerts.swift in Sources */,
 				50C06EED1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift in Sources */,
 				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
@@ -505,14 +571,12 @@
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
 				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
 				50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */,
-				50397A9E1BAFF69600780815 /* CocoaFobLicVerifier.swift in Sources */,
 				50E75DBC1B82119B0092CD19 /* LicenseChangeBroadcaster.swift in Sources */,
 				50E75DDF1B82275D0092CD19 /* FsprgLicense.m in Sources */,
 				50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */,
 				506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */,
 				50E75DDA1B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m in Sources */,
 				506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */,
-				50397A9F1BAFF69600780815 /* CocoaFobStringExt.swift in Sources */,
 				50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */,
 				506DA9381B8340C9007B110F /* Store.swift in Sources */,
 				50E75DE01B82275D0092CD19 /* FsprgOrder.m in Sources */,
@@ -547,6 +611,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		503134BE231EB13C00C9F93D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaFob;
+			targetProxy = 503134BD231EB13C00C9F93D /* PBXContainerItemProxy */;
+		};
 		50C9B0AF1B7F6DAC002C5449 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 50C9B09C1B7F6DAC002C5449 /* MyNewApp */;
@@ -673,6 +742,7 @@
 		50C9B0B81B7F6DAC002C5449 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -691,6 +761,7 @@
 		50C9B0B91B7F6DAC002C5449 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;

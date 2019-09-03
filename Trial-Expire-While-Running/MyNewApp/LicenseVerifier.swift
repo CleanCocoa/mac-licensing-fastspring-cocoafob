@@ -3,6 +3,7 @@
 // See the file LICENSE for copying permission.
 
 import Foundation
+import CocoaFob
 
 public class LicenseVerifier {
     
@@ -33,9 +34,9 @@ public class LicenseVerifier {
         return verifier.verify(licenseCode, forName: registrationName)
     }
     
-    fileprivate func verifier(publicKey: String) -> CocoaFobLicVerifier? {
+    fileprivate func verifier(publicKey: String) -> CocoaFob.LicenseVerifier? {
 
-        return CocoaFobLicVerifier(publicKeyPEM: publicKey)
+        return CocoaFob.LicenseVerifier(publicKeyPEM: publicKey)
     }
     
     fileprivate func publicKey() -> String {
