@@ -73,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var currentLicenseState: LicenseState {
         
-        return licenseInfoProvider.currentLicenseState
+        return licenseInfoProvider.licenseState
     }
     
     func launchAppOrShowLicenseWindow() {

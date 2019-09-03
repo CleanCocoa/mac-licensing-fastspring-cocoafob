@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // they will be able to get a new trial period. So
         // better use a different reader/writer in your app.
         
-        if hasValue(trialProvider.currentTrialPeriod) {
+        if hasValue(trialProvider.trialPeriod) {
             return
         }
         
@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         stopTrialTimer()
         
-        guard let trialPeriod = trialProvider.currentTrialPeriod else {
+        guard let trialPeriod = trialProvider.trialPeriod else {
             return
         }
         
@@ -126,7 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var currentLicenseState: LicenseState {
         
-        return licenseStateProvider.currentLicenseState
+        return licenseStateProvider.licenseState
     }
     
     func launchAppOrShowLicenseWindow() {

@@ -25,25 +25,24 @@ open class LicenseStateProvider {
     
     open var licenseIsInvalid: Bool {
         
-        guard let license = self.license() else {
+        guard let license = self.license else {
             return false
         }
         
         return !license.isValid(licenseVerifier)
     }
     
-    open var currentLicenseState: LicenseState {
+    open var licenseState: LicenseState {
         
-        if let license = self.license() , license.isValid(licenseVerifier) {
+        guard let license = self.license,
+            license.isValid(licenseVerifier)
+            else { return .unregistered }
             
-            return .registered(license)
-        }
-        
-        return .unregistered
+        return .registered(license)
     }
     
-    func license() -> License? {
+    fileprivate var license: License? {
         
-        return licenseProvider.currentLicense
+        return licenseProvider.license
     }
 }

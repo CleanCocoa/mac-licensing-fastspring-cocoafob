@@ -29,22 +29,22 @@ public class LicenseStateProvider {
     
     public var licenseIsInvalid: Bool {
         
-        guard let license = self.license() else {
+        guard let license = self.license else {
             return false
         }
         
         return !license.isValid(licenseVerifier: licenseVerifier)
     }
     
-    public var currentLicenseState: LicenseState {
+    public var licenseState: LicenseState {
         
-        if let license = self.license(),
+        if let license = self.license,
             license.isValid(licenseVerifier: licenseVerifier) {
             
             return .registered(license)
         }
         
-        if let trial = self.trial(),
+        if let trial = self.trial,
             trial.isActive {
             
             return .onTrial(trial.trialPeriod)
@@ -53,13 +53,13 @@ public class LicenseStateProvider {
         return .trialUp
     }
     
-    func license() -> License? {
+    fileprivate var license: License? {
         
-        return licenseProvider.currentLicense
+        return licenseProvider.license
     }
     
-    func trial() -> Trial? {
+    fileprivate var trial: Trial? {
         
-        return trialProvider.currentTrial(clock: clock)
+        return trialProvider.trial(clock: clock)
     }
 }

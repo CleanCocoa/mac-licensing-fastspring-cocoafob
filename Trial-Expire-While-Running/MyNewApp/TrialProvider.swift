@@ -5,29 +5,26 @@
 import Foundation
 
 public class TrialProvider {
-    
+
     public init() { }
-    
+
     lazy var userDefaults: Foundation.UserDefaults = MyNewApp.UserDefaults.standardUserDefaults()
 
-    public var currentTrialPeriod: TrialPeriod? {
+    public var trialPeriod: TrialPeriod? {
         
-        if let startDate = userDefaults.object(forKey: "\(TrialPeriod.UserDefaultsKeys.startDate)") as? Date,
-            let endDate = userDefaults.object(forKey: "\(TrialPeriod.UserDefaultsKeys.endDate)") as? Date {
+        guard let startDate = userDefaults.object(forKey: TrialPeriod.UserDefaultsKeys.startDate.rawValue) as? Date,
+            let endDate = userDefaults.object(forKey: TrialPeriod.UserDefaultsKeys.endDate.rawValue) as? Date
+            else { return nil }
                 
-            return TrialPeriod(startDate: startDate, endDate: endDate)
-        }
-        
-        return .none
+        return TrialPeriod(startDate: startDate, endDate: endDate)
     }
-    
-    public func currentTrial(clock: KnowsTimeAndDate) -> Trial? {
+
+    public func trial(clock: KnowsTimeAndDate) -> Trial? {
         
-        if let trialPeriod = currentTrialPeriod {
-            
-            return Trial(trialPeriod: trialPeriod, clock: clock)
+        guard let trialPeriod = self.trialPeriod else {
+            return nil
         }
-        
-        return .none
+
+        return Trial(trialPeriod: trialPeriod, clock: clock)
     }
 }

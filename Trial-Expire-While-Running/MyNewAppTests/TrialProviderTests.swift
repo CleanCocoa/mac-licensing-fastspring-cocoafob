@@ -41,7 +41,7 @@ class TrialProviderTests: XCTestCase {
     
     func testCurrentPeriod_WithEmptyDefaults_QueriesDefaultsForStartData() {
         
-        _ = trialProvider.currentTrialPeriod
+        _ = trialProvider.trialPeriod
         
         let usedDefaultNames = userDefaultsDouble.didCallObjectForKeyWith
         XCTAssert(hasValue(usedDefaultNames))
@@ -54,7 +54,7 @@ class TrialProviderTests: XCTestCase {
     
     func testCurrentPeriod_WithEmptyDefaults_ReturnsNil() {
         
-        let trialInfo = trialProvider.currentTrialPeriod
+        let trialInfo = trialProvider.trialPeriod
         
         XCTAssertFalse(hasValue(trialInfo))
     }
@@ -66,7 +66,7 @@ class TrialProviderTests: XCTestCase {
         
         provideTrialDefaults(Date(), endDate: Date())
         
-        _ = trialProvider.currentTrialPeriod
+        _ = trialProvider.trialPeriod
         
         let usedDefaultNames = userDefaultsDouble.didCallObjectForKeyWith
         XCTAssert(hasValue(usedDefaultNames))
@@ -83,7 +83,7 @@ class TrialProviderTests: XCTestCase {
         let endDate = Date(timeIntervalSince1970: 12345)
         provideTrialDefaults(startDate, endDate: endDate)
         
-        let trialPeriod = trialProvider.currentTrialPeriod
+        let trialPeriod = trialProvider.trialPeriod
         
         XCTAssert(hasValue(trialPeriod))
         if let trialPeriod = trialPeriod {
@@ -99,7 +99,7 @@ class TrialProviderTests: XCTestCase {
     
     func testCurrentTrial_WithoutDefaults_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(trialProvider.currentTrial(clock: clockDouble)))
+        XCTAssertFalse(hasValue(trialProvider.trial(clock: clockDouble)))
     }
     
     func testCurrentTrial_WithTrialPeriod_ReturnsTrialWithClockAndPeriod() {
@@ -108,11 +108,11 @@ class TrialProviderTests: XCTestCase {
         let endDate = Date(timeIntervalSince1970: 999)
         provideTrialDefaults(startDate, endDate: endDate)
         
-        let trial = trialProvider.currentTrial(clock: clockDouble)
+        let trial = trialProvider.trial(clock: clockDouble)
         
         XCTAssert(hasValue(trial))
         if let trial = trial {
-            XCTAssertEqual(trial.trialPeriod, trialProvider.currentTrialPeriod!)
+            XCTAssertEqual(trial.trialPeriod, trialProvider.trialPeriod!)
             XCTAssert(trial.clock === clockDouble)
         }
     }

@@ -5,19 +5,17 @@
 import Foundation
 
 open class LicenseProvider {
-    
+
     public init() { }
-    
+
     lazy var userDefaults: Foundation.UserDefaults = UserDefaults.standardUserDefaults()
-    
-    open var currentLicense: License? {
+
+    open var license: License? {
         
-        guard let name = userDefaults.string(forKey: "\(License.UserDefaultsKeys.name)"),
-            let licenseCode = userDefaults.string(forKey: "\(License.UserDefaultsKeys.licenseCode)") else {
-                
-            return .none
-        }
-        
+        guard let name = userDefaults.string(forKey: License.UserDefaultsKeys.name.rawValue),
+            let licenseCode = userDefaults.string(forKey: License.UserDefaultsKeys.licenseCode.rawValue)
+            else { return nil }
+
         return License(name: name, licenseCode: licenseCode)
     }
 }

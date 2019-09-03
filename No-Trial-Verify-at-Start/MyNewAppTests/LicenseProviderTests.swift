@@ -41,7 +41,7 @@ class LicenseProviderTests: XCTestCase {
     
     func testObtainingCurrentLicense_WithEmptyDefaults_QueriesDefaultsForName() {
         
-        _ = licenseProvider.currentLicense
+        _ = licenseProvider.license
         
         let usedDefaultNames = userDefaultsDouble.didCallStringForKeyWith
         XCTAssert(hasValue(usedDefaultNames))
@@ -54,7 +54,7 @@ class LicenseProviderTests: XCTestCase {
     
     func testObtainingCurrentLicense_WithEmptyDefaults_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(licenseProvider.currentLicense))
+        XCTAssertFalse(hasValue(licenseProvider.license))
     }
     
     
@@ -64,7 +64,7 @@ class LicenseProviderTests: XCTestCase {
         
         provideLicenseDefaults("irrelevant name", licenseCode: "irrelevant key")
         
-        _ = licenseProvider.currentLicense
+        _ = licenseProvider.license
         
         let usedDefaultNames = userDefaultsDouble.didCallStringForKeyWith
         XCTAssert(hasValue(usedDefaultNames))
@@ -82,7 +82,7 @@ class LicenseProviderTests: XCTestCase {
         let key = "a license key"
         provideLicenseDefaults(name, licenseCode: key)
         
-        let licenseInfo = licenseProvider.currentLicense
+        let licenseInfo = licenseProvider.license
         
         XCTAssert(hasValue(licenseInfo))
         if let licenseInfo = licenseInfo {

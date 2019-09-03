@@ -10,14 +10,12 @@ public class LicenseProvider {
     
     lazy var userDefaults: Foundation.UserDefaults = MyNewApp.UserDefaults.standardUserDefaults()
     
-    public var currentLicense: License? {
+    public var license: License? {
         
-        if let name = userDefaults.string(forKey: "\(License.UserDefaultsKeys.name)"),
-            let licenseCode = userDefaults.string(forKey: "\(License.UserDefaultsKeys.licenseCode)") {
+        guard let name = userDefaults.string(forKey: License.UserDefaultsKeys.name.rawValue),
+            let licenseCode = userDefaults.string(forKey: License.UserDefaultsKeys.licenseCode.rawValue)
+            else { return nil }
                 
-                return License(name: name, licenseCode: licenseCode)
-        }
-        
-        return .none
+        return License(name: name, licenseCode: licenseCode)
     }
 }
