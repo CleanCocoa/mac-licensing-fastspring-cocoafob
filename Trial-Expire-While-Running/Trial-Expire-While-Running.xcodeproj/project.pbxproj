@@ -34,6 +34,8 @@
 		5070B9C41B8C6F3E0036A86C /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C31B8C6F3E0036A86C /* Clock.swift */; };
 		5070B9C61B8C7E560036A86C /* TrialTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C51B8C7E560036A86C /* TrialTimer.swift */; };
 		5082F99F231F8B3C00B667C9 /* Licensing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F99E231F8B3C00B667C9 /* Licensing.swift */; };
+		5082F9B8231FB75400B667C9 /* ValidLicenseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9B7231FB75400B667C9 /* ValidLicenseFactory.swift */; };
+		5082F9BE231FC15B00B667C9 /* ValidLicenseFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9BD231FC15B00B667C9 /* ValidLicenseFactoryTests.swift */; };
 		5098EA291B90A775001FBC3C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA281B90A775001FBC3C /* Array.swift */; };
 		5098EA2B1B90A7B8001FBC3C /* URLQueryRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA2A1B90A7B8001FBC3C /* URLQueryRegistration.swift */; };
 		5098EA2D1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA2C1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift */; };
@@ -157,6 +159,8 @@
 		5070B9C31B8C6F3E0036A86C /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		5070B9C51B8C7E560036A86C /* TrialTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialTimer.swift; sourceTree = "<group>"; };
 		5082F99E231F8B3C00B667C9 /* Licensing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Licensing.swift; sourceTree = "<group>"; };
+		5082F9B7231FB75400B667C9 /* ValidLicenseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidLicenseFactory.swift; sourceTree = "<group>"; };
+		5082F9BD231FC15B00B667C9 /* ValidLicenseFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidLicenseFactoryTests.swift; sourceTree = "<group>"; };
 		5098EA281B90A775001FBC3C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		5098EA2A1B90A7B8001FBC3C /* URLQueryRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistration.swift; sourceTree = "<group>"; };
 		5098EA2C1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistrationTests.swift; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 				5070B9B71B8C50C90036A86C /* TrialProviderTests.swift */,
 				5070B9BD1B8C5AB40036A86C /* TrialWriterTests.swift */,
 				5070B9BF1B8C606D0036A86C /* TrialPeriodTests.swift */,
+				5082F9BD231FC15B00B667C9 /* ValidLicenseFactoryTests.swift */,
 				50E75D7C1B81D9990092CD19 /* Helpers.swift */,
 				50337B951B85B4490056FC3B /* Fixtures */,
 				50C9B0B11B7F6DAC002C5449 /* Supporting Files */,
@@ -409,6 +414,7 @@
 				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
 				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
 				50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */,
+				5082F9B7231FB75400B667C9 /* ValidLicenseFactory.swift */,
 			);
 			name = License;
 			sourceTree = "<group>";
@@ -627,6 +633,7 @@
 				506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */,
 				50C06EF51B91DA9A00A7DBBE /* URLComponents.swift in Sources */,
 				50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */,
+				5082F9B8231FB75400B667C9 /* ValidLicenseFactory.swift in Sources */,
 				506DA9381B8340C9007B110F /* Store.swift in Sources */,
 				50E75DE01B82275D0092CD19 /* FsprgOrder.m in Sources */,
 				50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */,
@@ -657,6 +664,7 @@
 				5070B9B81B8C50C90036A86C /* TrialProviderTests.swift in Sources */,
 				5098EA2D1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift in Sources */,
 				506AB4011B84B0790072CEC8 /* StoreTests.swift in Sources */,
+				5082F9BE231FC15B00B667C9 /* ValidLicenseFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
