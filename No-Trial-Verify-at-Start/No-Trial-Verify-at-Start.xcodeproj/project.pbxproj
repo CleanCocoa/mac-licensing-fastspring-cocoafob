@@ -227,6 +227,16 @@
 			name = Fixtures;
 			sourceTree = "<group>";
 		};
+		5082F9BF231FC5F200B667C9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5098EA221B9082F8001FBC3C /* Array.swift */,
+				50C9B0CF1B7F7B7C002C5449 /* Optional.swift */,
+				50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		50C06EF01B91DA1200A7DBBE /* License Parsing from URL Scheme */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,9 +343,7 @@
 		50C9B0CE1B7F7B7C002C5449 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5098EA221B9082F8001FBC3C /* Array.swift */,
-				50C9B0CF1B7F7B7C002C5449 /* Optional.swift */,
-				50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */,
+				5082F9BF231FC5F200B667C9 /* Util */,
 			);
 			name = Shared;
 			path = ../Shared;
