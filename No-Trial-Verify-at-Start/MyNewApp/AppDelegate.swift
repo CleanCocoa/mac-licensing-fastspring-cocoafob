@@ -56,7 +56,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func observeLicenseChanges() {
         
-        notificationCenter.addObserver(self, selector: #selector(AppDelegate.licenseDidChange(_:)), name: NSNotification.Name(rawValue: Events.licenseChanged.rawValue), object: nil)
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(AppDelegate.licenseDidChange(_:)),
+            name: Licensing.licenseChangedNotification,
+            object: nil)
     }
     
     func prepareLicenseWindowController() {

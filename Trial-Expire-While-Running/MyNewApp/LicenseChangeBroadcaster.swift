@@ -59,26 +59,22 @@ extension Licensing {
     }
 }
 
-public enum Events: String {
-    
-    case licenseChanged = "License Changed"
 
-    var notificationName: Notification.Name {
-        return Notification.Name(rawValue: self.rawValue)
-    }
+extension Licensing {
+    public static let licenseChangedNotification: Notification.Name = Notification.Name(rawValue: "License Changed")
 }
 
 public class LicenseChangeBroadcaster {
-    
     let notificationCenter: NotificationCenter
-    
+
     public init(notificationCenter: NotificationCenter) {
-        
         self.notificationCenter = notificationCenter
     }
-    
+
     public func broadcast(_ licensing: Licensing) {
-        
-        notificationCenter.post(name: Events.licenseChanged.notificationName, object: self, userInfo: licensing.userInfo())
+        notificationCenter.post(
+            name: Licensing.licenseChangedNotification,
+            object: self,
+            userInfo: licensing.userInfo())
     }
 }
