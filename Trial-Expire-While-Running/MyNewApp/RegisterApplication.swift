@@ -24,10 +24,11 @@ public class RegisterApplication: HandlesRegistering {
             displayLicenseCodeError()
             return
         }
+
+        let license = License(name: name, licenseCode: licenseCode)
+        let licensing: Licensing = .registered(license)
         
-        let licensing: Licensing = .registered(License(name: name, licenseCode: licenseCode))
-        
-        licenseWriter.store(licenseCode: licenseCode, forName: name)
+        licenseWriter.store(license)
         changeBroadcaster.broadcast(licensing)
     }
     

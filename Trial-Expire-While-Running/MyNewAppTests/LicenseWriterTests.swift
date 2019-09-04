@@ -37,14 +37,13 @@ class LicenseWriterTests: XCTestCase {
         let name = "a name"
         
         // When
-        writer.store(licenseCode: licenseCode, forName: name)
+        writer.store(License(name: name, licenseCode: licenseCode))
         
         // Then
         let changedDefaults = userDefaultsDouble.didSetValuesForKeys
         XCTAssert(hasValue(changedDefaults))
         
         if let changedDefaults = changedDefaults {
-            
             XCTAssert(changedDefaults[License.DefaultsKey.name.rawValue] == name)
             XCTAssert(changedDefaults[License.DefaultsKey.licenseCode.rawValue] == licenseCode)
         }
@@ -54,10 +53,8 @@ class LicenseWriterTests: XCTestCase {
     // MARK: -
     
     class TestUserDefaults: NullUserDefaults {
-        
         var didSetValuesForKeys: [String : String]?
         override func setValue(_ value: Any?, forKey key: String) {
-            
             if !hasValue(didSetValuesForKeys) {
                 didSetValuesForKeys = [String : String]()
             }

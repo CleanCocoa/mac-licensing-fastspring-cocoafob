@@ -9,9 +9,12 @@ public class LicenseWriter {
     lazy var userDefaults: Foundation.UserDefaults = MyNewApp.UserDefaults.standardUserDefaults()
     
     public init() { }
-    
-    public func store(licenseCode: String, forName name: String) {
-        
+
+    public func store(_ license: License) {
+        store(licenseCode: license.licenseCode, forName: license.name)
+    }
+
+    private func store(licenseCode: String, forName name: String) {
         userDefaults.setValue(name, forLicenseKey: .name)
         userDefaults.setValue(licenseCode, forLicenseKey: .licenseCode)
     }

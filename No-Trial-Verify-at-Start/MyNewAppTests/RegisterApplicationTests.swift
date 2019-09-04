@@ -15,7 +15,6 @@ class RegisterApplicationTests: XCTestCase {
     let broadcasterDouble = TestBroadcaster()
     
     override func setUp() {
-        
         super.setUp()
         
         service = RegisterApplication(licenseVerifier: verifierDouble, licenseWriter: writerDouble, changeBroadcaster: broadcasterDouble)
@@ -33,7 +32,6 @@ class RegisterApplicationTests: XCTestCase {
         
         XCTAssert(hasValue(verifierDouble.didCallIsValidWith))
         if let values = verifierDouble.didCallIsValidWith {
-            
             XCTAssertEqual(values.name, name)
             XCTAssertEqual(values.licenseCode, licenseCode)
         }
@@ -45,7 +43,7 @@ class RegisterApplicationTests: XCTestCase {
         
         service.register(irrelevantName, licenseCode: irrelevantLicenseCode)
         
-        XCTAssertFalse(hasValue(writerDouble.didStoreWith))
+        XCTAssertFalse(hasValue(writerDouble.didStoreLicense))
     }
     
     func testRegister_InvalidLicense_DoesntBroadcastChange() {
@@ -65,11 +63,9 @@ class RegisterApplicationTests: XCTestCase {
         
         service.register(name, licenseCode: licenseCode)
         
-        XCTAssert(hasValue(writerDouble.didStoreWith))
-        if let values = writerDouble.didStoreWith {
-            
-            XCTAssertEqual(values.name, name)
-            XCTAssertEqual(values.licenseCode, licenseCode)
+        XCTAssert(hasValue(writerDouble.didStoreLicense))
+        if let license = writerDouble.didStoreLicense {
+            XCTAssertEqual(license, License(name: name, licenseCode: licenseCode))
         }
     }
     
@@ -83,7 +79,6 @@ class RegisterApplicationTests: XCTestCase {
         
         XCTAssert(hasValue(broadcasterDouble.didBroadcastWith))
         if let licenseInfo = broadcasterDouble.didBroadcastWith {
-            
             switch licenseInfo {
             case .unregistered: XCTFail("should be registered")
             case let .registered(license):
@@ -97,11 +92,9 @@ class RegisterApplicationTests: XCTestCase {
     // MARK: -
     
     class TestWriter: LicenseWriter {
-        
-        var didStoreWith: (licenseCode: String, name: String)?
-        override func store(licenseCode: String, forName name: String) {
-            
-            didStoreWith = (licenseCode, name)
+        var didStoreLicense: License?
+        override func store(_ license: License) {
+            didStoreLicense = license
         }
     }
     

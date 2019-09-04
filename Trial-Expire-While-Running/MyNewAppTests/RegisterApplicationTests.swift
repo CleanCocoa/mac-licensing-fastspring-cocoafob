@@ -15,7 +15,6 @@ class RegisterApplicationTests: XCTestCase {
     let broadcasterDouble = TestBroadcaster()
     
     override func setUp() {
-        
         super.setUp()
         
         service = RegisterApplication(licenseVerifier: verifierDouble, licenseWriter: writerDouble, changeBroadcaster: broadcasterDouble)
@@ -45,7 +44,7 @@ class RegisterApplicationTests: XCTestCase {
         
         service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
         
-        XCTAssertFalse(hasValue(writerDouble.didStoreWith))
+        XCTAssertFalse(hasValue(writerDouble.didStoreLicense))
     }
     
     func testRegister_InvalidLicense_DoesntBroadcastChange() {
@@ -65,11 +64,9 @@ class RegisterApplicationTests: XCTestCase {
         
         service.register(name: name, licenseCode: licenseCode)
         
-        XCTAssert(hasValue(writerDouble.didStoreWith))
-        if let values = writerDouble.didStoreWith {
-            
-            XCTAssertEqual(values.name, name)
-            XCTAssertEqual(values.licenseCode, licenseCode)
+        XCTAssert(hasValue(writerDouble.didStoreLicense))
+        if let license = writerDouble.didStoreLicense {
+            XCTAssertEqual(license, License(name: name, licenseCode: licenseCode))
         }
     }
     
@@ -83,7 +80,6 @@ class RegisterApplicationTests: XCTestCase {
         
         XCTAssert(hasValue(broadcasterDouble.didBroadcastWith))
         if let licenseInfo = broadcasterDouble.didBroadcastWith {
-            
             switch licenseInfo {
             case let .registered(license):
                 XCTAssertEqual(license.name, name)
@@ -97,16 +93,13 @@ class RegisterApplicationTests: XCTestCase {
     // MARK: -
     
     class TestWriter: LicenseWriter {
-        
-        var didStoreWith: (licenseCode: String, name: String)?
-        override func store(licenseCode: String, forName name: String) {
-            
-            didStoreWith = (licenseCode, name)
+        var didStoreLicense: License?
+        override func store(_ license: License) {
+            didStoreLicense = license
         }
     }
     
     class TestVerifier: LicenseVerifier {
-        
         init() {
             super.init(appName: "irrelevant app name")
         }
@@ -114,24 +107,19 @@ class RegisterApplicationTests: XCTestCase {
         var testValidity = false
         var didCallIsValidWith: (licenseCode: String, name: String)?
         override func isValid(licenseCode: String, forName name: String) -> Bool {
-            
             didCallIsValidWith = (licenseCode, name)
-            
             return testValidity
         }
     }
     
     class TestBroadcaster: LicenseChangeBroadcaster {
-        
         convenience init() {
-            
             self.init(notificationCenter: NullNotificationCenter())
         }
         
         var didBroadcastWith: Licensing?
-        override func broadcast(_ licenseInformation: Licensing) {
-            
-            didBroadcastWith = licenseInformation
+        override func broadcast(_ licensing: Licensing) {
+            didBroadcastWith = licensing
         }
     }
 }
