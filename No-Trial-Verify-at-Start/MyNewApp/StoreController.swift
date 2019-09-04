@@ -4,7 +4,7 @@
 
 import Foundation
 
-open class StoreController: NSObject {
+public class StoreController: NSObject {
     
     var storeDelegate: StoreDelegate?
     var orderConfirmationView: OrderConfirmationView?
@@ -23,7 +23,7 @@ open class StoreController: NSObject {
         storeController.setDelegate(self)
     }
     
-    open func loadStore() {
+    public func loadStore() {
         
         storeController.load(with: storeParameters)
     }
@@ -54,7 +54,7 @@ open class StoreController: NSObject {
     
     // MARK: Forwarding to FsprgEmbeddedStoreController
     
-    open func setWebView(_ webView: WebView) {
+    public func setWebView(_ webView: WebView) {
         
         storeController.setWebView(webView)
     }

@@ -4,7 +4,7 @@
 
 import Foundation
 
-open class UserDefaults {
+public class UserDefaults {
 
     public static var sharedInstance: UserDefaults = UserDefaults()
     

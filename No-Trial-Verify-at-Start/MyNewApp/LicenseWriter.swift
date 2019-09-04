@@ -4,13 +4,13 @@
 
 import Foundation
 
-open class LicenseWriter {
+public class LicenseWriter {
     
     lazy var userDefaults: Foundation.UserDefaults = UserDefaults.standardUserDefaults()
     
     public init() { }
     
-    open func store(licenseCode: String, forName name: String) {
+    public func store(licenseCode: String, forName name: String) {
         
         userDefaults.setValue(name, forLicenseKey: .name)
         userDefaults.setValue(licenseCode, forLicenseKey: .licenseCode)

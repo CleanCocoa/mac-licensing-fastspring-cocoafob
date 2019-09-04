@@ -4,11 +4,11 @@
 
 import Foundation
 
-open class URLQueryLicenseParser {
+public class URLQueryLicenseParser {
     
     public init() { }
     
-    open func parseQuery(_ query: String) -> License? {
+    public func parseQuery(_ query: String) -> License? {
         
         let queryDictionary = dictionaryFromQuery(query)
         

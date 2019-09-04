@@ -9,7 +9,7 @@ public protocol HandlesPurchases {
     func purchase()
 }
 
-open class LicenseWindowController: NSWindowController {
+public class LicenseWindowController: NSWindowController {
     
     static let NibName = "LicenseWindowController"
     
@@ -18,17 +18,17 @@ open class LicenseWindowController: NSWindowController {
         self.init(windowNibName: LicenseWindowController.NibName)
     }
     
-    @IBOutlet open var existingLicenseViewController: ExistingLicenseViewController!
-    @IBOutlet open var buyButton: NSButton!
+    @IBOutlet public var existingLicenseViewController: ExistingLicenseViewController!
+    @IBOutlet public var buyButton: NSButton!
     
-    open var purchasingEventHandler: HandlesPurchases?
+    public var purchasingEventHandler: HandlesPurchases?
     
-    @IBAction open func buy(_ sender: AnyObject) {
+    @IBAction public func buy(_ sender: AnyObject) {
         
         purchasingEventHandler?.purchase()
     }
         
-    open func display(licensing: Licensing) {
+    public func display(licensing: Licensing) {
         
         switch licensing {
         case .unregistered:
@@ -38,7 +38,7 @@ open class LicenseWindowController: NSWindowController {
         }
     }
     
-    open var registrationEventHandler: HandlesRegistering? {
+    public var registrationEventHandler: HandlesRegistering? {
         
         set {
             existingLicenseViewController.eventHandler = newValue

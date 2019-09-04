@@ -4,7 +4,7 @@
 
 import Foundation
 
-open class URLQueryRegistration {
+public class URLQueryRegistration {
     
     let registrationHandler: HandlesRegistering
     
@@ -13,9 +13,9 @@ open class URLQueryRegistration {
         self.registrationHandler = registrationHandler
     }
     
-    open lazy var queryParser: URLQueryLicenseParser = URLQueryLicenseParser()
+    public lazy var queryParser: URLQueryLicenseParser = URLQueryLicenseParser()
     
-    open func registerFromURL(_ url: URL) {
+    public func registerFromURL(_ url: URL) {
         
         guard let query = queryFromURL(url), let license = queryParser.parseQuery(query) else {
             return

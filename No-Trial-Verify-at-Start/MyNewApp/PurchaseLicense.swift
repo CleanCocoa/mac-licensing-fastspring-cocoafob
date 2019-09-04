@@ -4,7 +4,7 @@
 
 import Foundation
 
-open class PurchaseLicense {
+public class PurchaseLicense {
     
     let store: Store
     let registerApplication: RegisterApplication

@@ -46,7 +46,7 @@ extension Licensing {
 
 public class LicenseChangeBroadcaster {
     
-    open lazy var notificationCenter: NotificationCenter = NotificationCenter.default
+    public lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     
     public init() { }
     

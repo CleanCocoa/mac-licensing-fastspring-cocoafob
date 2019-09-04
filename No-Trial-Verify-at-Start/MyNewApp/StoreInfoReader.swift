@@ -4,7 +4,7 @@
 
 import Foundation
 
-open class StoreInfoReader {
+public class StoreInfoReader {
     
     static func defaultStoreInfo() -> StoreInfo? {
         

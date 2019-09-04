@@ -5,7 +5,7 @@
 import Foundation
 import CocoaFob
 
-open class LicenseVerifier {
+public class LicenseVerifier {
     
     static let AppName = "MyNewApp"
     let appName: String
@@ -20,7 +20,7 @@ open class LicenseVerifier {
         self.appName = appName
     }
     
-    open func isValid(licenseCode: String, forName name: String) -> Bool {
+    public func isValid(licenseCode: String, forName name: String) -> Bool {
         
         // Same format as on FastSpring
         let registrationName = "\(appName),\(name)"

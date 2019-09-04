@@ -9,14 +9,14 @@ public protocol StoreDelegate: class {
     func didPurchaseLicense(_ license: License)
 }
 
-open class Store {
+public class Store {
 
     let storeInfo: StoreInfo
     
-    open var storeDelegate: StoreDelegate?
+    public var storeDelegate: StoreDelegate?
     
-    let storeWindowController: StoreWindowController
-    open lazy var storeController: StoreController = StoreController(storeInfo: self.storeInfo)
+    public let storeWindowController: StoreWindowController
+    public lazy var storeController: StoreController = StoreController(storeInfo: self.storeInfo)
     
     convenience init(storeInfo: StoreInfo) {
         
@@ -29,14 +29,14 @@ open class Store {
         self.storeInfo = storeInfo
     }
     
-    open func showStore() {
+    public func showStore() {
         
         storeWindowController.storeController = storeController
         storeWindowController.showWindow(self)
         storeWindowController.storeDelegate = storeDelegate
     }
     
-    open func closeStore() {
+    public func closeStore() {
         
         storeWindowController.close()
     }

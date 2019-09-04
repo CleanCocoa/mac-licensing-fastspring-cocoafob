@@ -4,17 +4,17 @@
 
 import Cocoa
 
-open class OrderConfirmationView: NSView {
+public class OrderConfirmationView: NSView {
     
-    @IBOutlet open var licenseCodeTextField: NSTextField!
+    @IBOutlet public var licenseCodeTextField: NSTextField!
     
-    open func displayLicenseCode(_ licenseCode: String) {
+    public func displayLicenseCode(_ licenseCode: String) {
         
         licenseCodeTextField.stringValue = licenseCode
     }
 }
 
-@objc open class StoreWindowController: NSWindowController {
+@objc public class StoreWindowController: NSWindowController {
 
     static let NibName = "StoreWindowController"
     
@@ -23,16 +23,16 @@ open class OrderConfirmationView: NSView {
         self.init(windowNibName: StoreWindowController.NibName)
     }
     
-    @IBOutlet open var webView: WebView!
-    @IBOutlet open var orderConfirmationView: OrderConfirmationView!
+    @IBOutlet public var webView: WebView!
+    @IBOutlet public var orderConfirmationView: OrderConfirmationView!
     
-    @IBOutlet open var backButton: NSButton!
-    @IBOutlet open var forwardButton: NSButton!
-    @IBOutlet open var reloadButton: NSButton!
+    @IBOutlet public var backButton: NSButton!
+    @IBOutlet public var forwardButton: NSButton!
+    @IBOutlet public var reloadButton: NSButton!
     
-    @objc dynamic open var storeController: StoreController!
+    @objc dynamic public var storeController: StoreController!
     
-    open var storeDelegate: StoreDelegate? {
+    public var storeDelegate: StoreDelegate? {
         get {
             return storeController.storeDelegate
         }
@@ -42,14 +42,14 @@ open class OrderConfirmationView: NSView {
         }
     }
     
-    open override func awakeFromNib() {
+    public override func awakeFromNib() {
         
         storeController.setWebView(webView)
         storeController.loadStore()
         storeController.orderConfirmationView = orderConfirmationView
     }
     
-    @IBAction open func reloadStore(_ sender: AnyObject) {
+    @IBAction public func reloadStore(_ sender: AnyObject) {
         
         storeController.loadStore()
     }

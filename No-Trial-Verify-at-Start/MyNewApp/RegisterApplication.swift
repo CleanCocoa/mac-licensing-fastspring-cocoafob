@@ -4,7 +4,7 @@
 
 import Foundation
 
-open class RegisterApplication: HandlesRegistering {
+public class RegisterApplication: HandlesRegistering {
     
     let licenseVerifier: LicenseVerifier
     let licenseWriter: LicenseWriter
@@ -22,7 +22,7 @@ open class RegisterApplication: HandlesRegistering {
         self.changeBroadcaster = changeBroadcaster
     }
     
-    open func register(_ name: String, licenseCode: String) {
+    public func register(_ name: String, licenseCode: String) {
         
         if !licenseVerifier.isValid(licenseCode: licenseCode, forName: name) { 
             displayLicenseCodeError()

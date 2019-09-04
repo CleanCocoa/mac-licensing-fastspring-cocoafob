@@ -4,13 +4,13 @@
 
 import Foundation
 
-open class LicenseProvider {
+public class LicenseProvider {
 
     public init() { }
 
     lazy var userDefaults: Foundation.UserDefaults = UserDefaults.standardUserDefaults()
 
-    open var license: License? {
+    public var license: License? {
         
         guard let name = userDefaults.string(forLicenseKey: .name),
             let licenseCode = userDefaults.string(forLicenseKey: .licenseCode)
