@@ -12,7 +12,13 @@ open class LicenseWriter {
     
     open func store(licenseCode: String, forName name: String) {
         
-        userDefaults.setValue(name, forKey: "\(License.UserDefaultsKeys.name)")
-        userDefaults.setValue(licenseCode, forKey: "\(License.UserDefaultsKeys.licenseCode)")
+        userDefaults.setValue(name, forLicenseKey: .name)
+        userDefaults.setValue(licenseCode, forLicenseKey: .licenseCode)
+    }
+}
+
+extension Foundation.UserDefaults {
+    func setValue(_ value: String, forLicenseKey licenseKey: License.DefaultsKey) {
+        self.setValue(value, forKey: licenseKey.rawValue)
     }
 }

@@ -12,10 +12,16 @@ open class LicenseProvider {
 
     open var license: License? {
         
-        guard let name = userDefaults.string(forKey: License.UserDefaultsKeys.name.rawValue),
-            let licenseCode = userDefaults.string(forKey: License.UserDefaultsKeys.licenseCode.rawValue)
+        guard let name = userDefaults.string(forLicenseKey: .name),
+            let licenseCode = userDefaults.string(forLicenseKey: .licenseCode)
             else { return nil }
 
         return License(name: name, licenseCode: licenseCode)
+    }
+}
+
+extension Foundation.UserDefaults {
+    func string(forLicenseKey licenseKey: License.DefaultsKey) -> String? {
+        return self.string(forKey: licenseKey.rawValue)
     }
 }

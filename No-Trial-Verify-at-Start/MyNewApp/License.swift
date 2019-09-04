@@ -10,12 +10,18 @@ public struct License {
         self.name = name
         self.licenseCode = licenseCode
     }
-    
-    enum UserDefaultsKeys: String, CustomStringConvertible {
-        case name = "licensee"
-        case licenseCode = "license_code"
+}
 
-        public var description: String { return rawValue }
+extension License {
+    internal struct DefaultsKey: RawRepresentable {
+        let rawValue: String
+
+        init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+
+        static let name = DefaultsKey(rawValue: "licensee")
+        static let licenseCode = DefaultsKey(rawValue: "license_code")
     }
 }
 
