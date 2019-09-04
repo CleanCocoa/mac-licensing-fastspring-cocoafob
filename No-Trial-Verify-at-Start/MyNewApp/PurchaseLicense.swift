@@ -28,6 +28,6 @@ extension PurchaseLicense: StoreDelegate {
     
     public func didPurchaseLicense(_ license: License) {
         
-        registerApplication.register(license.name, licenseCode: license.licenseCode)
+        registerApplication.register(name: license.name, licenseCode: license.licenseCode)
     }
 }

@@ -6,7 +6,7 @@ import Cocoa
 
 public protocol HandlesRegistering: class {
     
-    func register(_ name: String, licenseCode: String)
+    func register(name: String, licenseCode: String)
 }
 
 public class ExistingLicenseViewController: NSViewController {
@@ -19,14 +19,9 @@ public class ExistingLicenseViewController: NSViewController {
     
     @IBAction public func register(_ sender: AnyObject) {
         
-        guard let eventHandler = eventHandler else {
-            return
-        }
-        
         let name = licenseeTextField.stringValue
         let licenseCode = licenseCodeTextField.stringValue
-        
-        eventHandler.register(name, licenseCode: licenseCode)
+        eventHandler?.register(name: name, licenseCode: licenseCode)
     }
     
     public func displayEmptyForm() {

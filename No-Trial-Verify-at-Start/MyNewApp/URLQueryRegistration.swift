@@ -21,7 +21,7 @@ public class URLQueryRegistration {
             return
         }
         
-        registrationHandler.register(license.name, licenseCode: license.licenseCode)
+        registrationHandler.register(name: license.name, licenseCode: license.licenseCode)
     }
     
     func queryFromURL(_ url: URL) -> String? {

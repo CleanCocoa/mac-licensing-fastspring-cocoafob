@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
     // Use Cases / Services
-    lazy var registerApplication: RegisterApplication = RegisterApplication(licenseVerifier: LicenseVerifier(), licenseWriter: LicenseWriter(), changeBroadcaster: self.licenseChangeBroadcaster)
+    lazy var registerApplication: RegisterApplication = RegisterApplication(changeBroadcaster: self.licenseChangeBroadcaster)
     var purchaseLicense: PurchaseLicense!
     
     

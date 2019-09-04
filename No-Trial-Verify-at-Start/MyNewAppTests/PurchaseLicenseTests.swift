@@ -65,7 +65,7 @@ class PurchaseLicenseTests: XCTestCase {
     class TestRegisterApp: RegisterApplication {
         
         var didRegisterWith: (name: String, licenseCode: String)?
-        override func register(_ name: String, licenseCode: String) {
+        override func register(name: String, licenseCode: String) {
             didRegisterWith = (name, licenseCode)
         }
     }

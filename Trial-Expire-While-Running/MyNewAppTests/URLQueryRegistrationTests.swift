@@ -86,19 +86,17 @@ class URLQueryRegistrationTests: XCTestCase {
             XCTAssertEqual(licenseData.licenseCode, licenseCode)
         }
     }
-    
-    
+
+
     // MARK: -
-    
+
     class TestRegistrationHandler: HandlesRegistering {
-        
         var didRegisterWith: (name: String, licenseCode: String)?
         func register(name: String, licenseCode: String) {
-            
             didRegisterWith = (name, licenseCode)
         }
     }
-    
+
     class TestQueryParser: URLQueryLicenseParser {
         
         var testParsedLicense: License?

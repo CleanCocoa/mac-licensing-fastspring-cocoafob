@@ -129,7 +129,7 @@ class LicenseWindowControllerTests: XCTestCase {
     
     class TestHandler: HandlesRegistering {
         
-        func register(_ name: String, licenseCode: String) {
+        func register(name: String, licenseCode: String) {
             // no-op
         }
     }

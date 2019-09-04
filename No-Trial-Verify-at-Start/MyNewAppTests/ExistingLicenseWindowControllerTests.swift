@@ -115,10 +115,8 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
     // MARK: - 
     
     class TestEventHandler: HandlesRegistering {
-        
         var didRegisterWith: (name: String, licenseCode: String)?
-        func register(_ name: String, licenseCode: String) {
-            
+        func register(name: String, licenseCode: String) {
             didRegisterWith = (name, licenseCode)
         }
     }

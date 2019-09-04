@@ -2,38 +2,31 @@
 // 
 // See the file LICENSE for copying permission.
 
-import Foundation
-
 public class RegisterApplication: HandlesRegistering {
-    
-    let licenseVerifier: LicenseVerifier
+
+    let licenseFactory: ValidLicenseFactory
     let licenseWriter: LicenseWriter
     let changeBroadcaster: LicenseChangeBroadcaster
-    
-    public init(licenseVerifier: LicenseVerifier, licenseWriter: LicenseWriter, changeBroadcaster: LicenseChangeBroadcaster) {
-        
-        self.licenseVerifier = licenseVerifier
+
+    public init(licenseFactory: ValidLicenseFactory = ValidLicenseFactory(),
+                licenseWriter: LicenseWriter = LicenseWriter(),
+                changeBroadcaster: LicenseChangeBroadcaster = LicenseChangeBroadcaster()) {
+        self.licenseFactory = licenseFactory
         self.licenseWriter = licenseWriter
         self.changeBroadcaster = changeBroadcaster
     }
-    
+
     public func register(name: String, licenseCode: String) {
-        
-        if !licenseVerifier.isValid(licenseCode: licenseCode, forName: name) {
-            
+        guard let license = licenseFactory.license(name: name, licenseCode: licenseCode) else {
             displayLicenseCodeError()
             return
         }
 
-        let license = License(name: name, licenseCode: licenseCode)
-        let licensing: Licensing = .registered(license)
-        
         licenseWriter.store(license)
-        changeBroadcaster.broadcast(licensing)
+        changeBroadcaster.broadcast(.registered(license))
     }
-    
+
     func displayLicenseCodeError() {
-        
         Alerts.invalidLicenseCodeAlert()?.runModal()
     }
 }

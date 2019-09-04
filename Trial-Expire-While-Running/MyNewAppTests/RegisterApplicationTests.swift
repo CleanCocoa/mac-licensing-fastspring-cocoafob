@@ -1,8 +1,7 @@
 // Copyright (c) 2015-2019 Christian Tietze
-// 
+//
 // See the file LICENSE for copying permission.
 
-import Cocoa
 import XCTest
 @testable import MyNewApp
 
@@ -10,115 +9,119 @@ class RegisterApplicationTests: XCTestCase {
 
     var service: RegisterApplication!
 
-    let verifierDouble = TestVerifier()
+    let factoryDouble = TestFactory()
     let writerDouble = TestWriter()
     let broadcasterDouble = TestBroadcaster()
-    
+
     override func setUp() {
         super.setUp()
-        
-        service = RegisterApplication(licenseVerifier: verifierDouble, licenseWriter: writerDouble, changeBroadcaster: broadcasterDouble)
+
+        service = RegisterApplication(
+            licenseFactory: factoryDouble,
+            licenseWriter: writerDouble,
+            changeBroadcaster: broadcasterDouble)
     }
-    
+
     let irrelevantName = "irrelevant"
     let irrelevantLicenseCode = "irrelevant"
-    
-    func testRegister_DelegatesToVerifier() {
-        
+
+    func testRegister_RequestsLicenseFromFactory() {
+
         let name = "a name"
         let licenseCode = "123-456"
-        
+
         service.register(name: name, licenseCode: licenseCode)
-        
-        XCTAssert(hasValue(verifierDouble.didCallIsValidWith))
-        if let values = verifierDouble.didCallIsValidWith {
-            
+
+        XCTAssert(hasValue(factoryDouble.didRequestLicense))
+        if let values = factoryDouble.didRequestLicense {
             XCTAssertEqual(values.name, name)
             XCTAssertEqual(values.licenseCode, licenseCode)
         }
     }
-    
-    func testRegister_InvalidLicense_DoesntTryToStore() {
-        
-        verifierDouble.testValidity = false
-        
+
+    func testRegister_NoLicenseFromFactory_DoesntCallStore() {
+
+        factoryDouble.testLicense = nil
+
         service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
-        
+
         XCTAssertFalse(hasValue(writerDouble.didStoreLicense))
     }
-    
-    func testRegister_InvalidLicense_DoesntBroadcastChange() {
-        
-        verifierDouble.testValidity = false
-        
+
+    func testRegister_NoLicenseFromFactory_DoesntBroadcastChange() {
+
+        factoryDouble.testLicense = nil
+
         service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
-        
+
         XCTAssertFalse(hasValue(broadcasterDouble.didBroadcastWith))
     }
-    
-    func testRegister_ValidLicense_DelegatesToStore() {
-        
-        let name = "It's Me"
-        let licenseCode = "0900-ACME"
-        verifierDouble.testValidity = true
-        
-        service.register(name: name, licenseCode: licenseCode)
-        
+
+    func testRegister_LicenseFromFactory_DelegatesToStore() {
+
+        let license = License(name: "It's Me", licenseCode: "0900-ACME")
+        factoryDouble.testLicense = license
+
+        service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
+
         XCTAssert(hasValue(writerDouble.didStoreLicense))
-        if let license = writerDouble.didStoreLicense {
-            XCTAssertEqual(license, License(name: name, licenseCode: licenseCode))
+        if let storedLicense = writerDouble.didStoreLicense {
+            XCTAssertEqual(storedLicense, license)
         }
     }
-    
-    func testRegister_ValidLicense_BroadcastsChange() {
-        
-        let name = "Hello again"
-        let licenseCode = "fr13nd-001"
-        verifierDouble.testValidity = true
-        
-        service.register(name: name, licenseCode: licenseCode)
-        
-        XCTAssert(hasValue(broadcasterDouble.didBroadcastWith))
-        if let licenseInfo = broadcasterDouble.didBroadcastWith {
-            switch licenseInfo {
-            case let .registered(license):
-                XCTAssertEqual(license.name, name)
-                XCTAssertEqual(license.licenseCode, licenseCode)
-            default: XCTFail("should be registered")
-            }
+
+    func testRegister_LicenseFromFactory_BroadcastsChange() {
+
+        let license = License(name: "Hello again", licenseCode: "fr13nd-001")
+        factoryDouble.testLicense = license
+
+        service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
+
+        switch broadcasterDouble.didBroadcastWith {
+        case .some(.trialUp),
+             .some(.trial(_)),
+             .none:
+            XCTFail("should be registered")
+
+        case let .some(.registered(registeredLicense)):
+            XCTAssertEqual(registeredLicense, license)
         }
     }
 
 
     // MARK: -
-    
+
     class TestWriter: LicenseWriter {
         var didStoreLicense: License?
         override func store(_ license: License) {
             didStoreLicense = license
         }
     }
-    
-    class TestVerifier: LicenseVerifier {
+
+    class TestFactory: ValidLicenseFactory {
         init() {
-            super.init(appName: "irrelevant app name")
+            class NullLicenseVerifier: LicenseVerifier {
+                override func isValid(licenseCode: String, forName name: String) -> Bool {
+                    return false
+                }
+            }
+
+            super.init(licenseVerifier: NullLicenseVerifier())
         }
-        
-        var testValidity = false
-        var didCallIsValidWith: (licenseCode: String, name: String)?
-        override func isValid(licenseCode: String, forName name: String) -> Bool {
-            didCallIsValidWith = (licenseCode, name)
-            return testValidity
+
+        var testLicense: License?
+        var didRequestLicense: (name: String, licenseCode: String)?
+        override func license(name: String, licenseCode: String) -> License? {
+            didRequestLicense = (name, licenseCode)
+            return testLicense
         }
     }
-    
+
     class TestBroadcaster: LicenseChangeBroadcaster {
-        convenience init() {
-            self.init(notificationCenter: NullNotificationCenter())
-        }
-        
+
         var didBroadcastWith: Licensing?
         override func broadcast(_ licensing: Licensing) {
+
             didBroadcastWith = licensing
         }
     }
