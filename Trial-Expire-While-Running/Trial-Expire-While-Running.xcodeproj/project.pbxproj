@@ -33,6 +33,7 @@
 		5070B9C21B8C63700036A86C /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C11B8C63700036A86C /* Days.swift */; };
 		5070B9C41B8C6F3E0036A86C /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C31B8C6F3E0036A86C /* Clock.swift */; };
 		5070B9C61B8C7E560036A86C /* TrialTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9C51B8C7E560036A86C /* TrialTimer.swift */; };
+		5082F99F231F8B3C00B667C9 /* LicenseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F99E231F8B3C00B667C9 /* LicenseState.swift */; };
 		5098EA291B90A775001FBC3C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA281B90A775001FBC3C /* Array.swift */; };
 		5098EA2B1B90A7B8001FBC3C /* URLQueryRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA2A1B90A7B8001FBC3C /* URLQueryRegistration.swift */; };
 		5098EA2D1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA2C1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift */; };
@@ -155,6 +156,7 @@
 		5070B9C11B8C63700036A86C /* Days.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
 		5070B9C31B8C6F3E0036A86C /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		5070B9C51B8C7E560036A86C /* TrialTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialTimer.swift; sourceTree = "<group>"; };
+		5082F99E231F8B3C00B667C9 /* LicenseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseState.swift; sourceTree = "<group>"; };
 		5098EA281B90A775001FBC3C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		5098EA2A1B90A7B8001FBC3C /* URLQueryRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistration.swift; sourceTree = "<group>"; };
 		5098EA2C1B90A7C3001FBC3C /* URLQueryRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistrationTests.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				505D9DED1B89E47600D412F1 /* License.swift */,
+				5082F99E231F8B3C00B667C9 /* LicenseState.swift */,
 				506D9FF01B8DE68E005F5109 /* LicenseStateProvider.swift */,
 				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
 				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
@@ -610,6 +613,7 @@
 				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
 				5070B9BA1B8C58A60036A86C /* TrialPeriod.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
+				5082F99F231F8B3C00B667C9 /* LicenseState.swift in Sources */,
 				50E62FC71B8B6F690047FC6A /* Trial.swift in Sources */,
 				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
 				50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */,
