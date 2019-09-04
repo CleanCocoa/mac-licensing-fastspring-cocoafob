@@ -67,7 +67,7 @@ class LicensingTests: XCTestCase {
     
     func testToUserInfo_OnTrial_SetsRegisteredToFalse() {
         
-        let licenseInfo = Licensing.onTrial(trialPeriod)
+        let licenseInfo = Licensing.trial(trialPeriod)
         
         let registered = licenseInfo.userInfo()["registered"] as? Bool
         XCTAssert(hasValue(registered))
@@ -78,7 +78,7 @@ class LicensingTests: XCTestCase {
     
     func testToUserInfo_OnTrial_SetsOnTrialToTrue() {
         
-        let licenseInfo = Licensing.onTrial(trialPeriod)
+        let licenseInfo = Licensing.trial(trialPeriod)
         
         let registered = licenseInfo.userInfo()["on_trial"] as? Bool
         XCTAssert(hasValue(registered))
@@ -89,21 +89,21 @@ class LicensingTests: XCTestCase {
     
     func testToUserInfo_OnTrial_HasNoNameKey() {
         
-        let licenseInfo = Licensing.onTrial(trialPeriod)
+        let licenseInfo = Licensing.trial(trialPeriod)
         
         XCTAssertFalse(hasValue(licenseInfo.userInfo()["name"]))
     }
     
     func testToUserInfo_OnTrial_HasNoLicenseCodeKey() {
         
-        let licenseInfo = Licensing.onTrial(trialPeriod)
+        let licenseInfo = Licensing.trial(trialPeriod)
         
         XCTAssertFalse(hasValue(licenseInfo.userInfo()["licenseCode"]))
     }
     
     func testToUserInfo_OnTrial_SetsStartDate() {
         
-        let licenseInfo = Licensing.onTrial(trialPeriod)
+        let licenseInfo = Licensing.trial(trialPeriod)
         
         let startDate = licenseInfo.userInfo()["trial_start_date"] as? Date
         XCTAssert(hasValue(startDate))
@@ -114,7 +114,7 @@ class LicensingTests: XCTestCase {
     
     func testToUserInfo_OnTrial_SetsEndDate() {
         
-        let licenseInfo = Licensing.onTrial(trialPeriod)
+        let licenseInfo = Licensing.trial(trialPeriod)
         
         let endDate = licenseInfo.userInfo()["trial_end_date"] as? Date
         XCTAssert(hasValue(endDate))
@@ -296,7 +296,7 @@ class LicensingTests: XCTestCase {
         let result = Licensing.fromUserInfo(userInfo: userInfo)
         
         switch result {
-        case let .some(.onTrial(trialPeriod)):
+        case let .some(.trial(trialPeriod)):
             XCTAssertEqual(trialPeriod.startDate, startDate)
             XCTAssertEqual(trialPeriod.endDate, endDate)
         default:
@@ -314,7 +314,7 @@ class LicensingTests: XCTestCase {
         let result = Licensing.fromUserInfo(userInfo: userInfo)
         
         switch result {
-        case let .some(.onTrial(trialPeriod)):
+        case let .some(.trial(trialPeriod)):
             XCTAssertEqual(trialPeriod.startDate, startDate)
             XCTAssertEqual(trialPeriod.endDate, endDate)
         default:

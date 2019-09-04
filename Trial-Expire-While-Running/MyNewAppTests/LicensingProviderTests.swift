@@ -70,7 +70,7 @@ class LicensingProviderTests: XCTestCase {
         let licenseInfo = licensingProvider.licensing
         
         switch licenseInfo {
-        case let .onTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
+        case let .trial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
         default: XCTFail("expected to be OnTrial")
         }
     }
@@ -125,7 +125,7 @@ class LicensingProviderTests: XCTestCase {
         
         // Then
         switch licenseInfo {
-        case let .onTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
+        case let .trial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
         default: XCTFail("expected to be OnTrial")
         }
     }

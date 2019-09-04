@@ -142,7 +142,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             showRegisterApp()
             
-        case let .onTrial(trialPeriod):
+        case let .trial(trialPeriod):
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
@@ -174,7 +174,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             else { return }
         
         switch licensing {
-        case .onTrial(_):
+        case .trial(_):
             // Change to this state is possible if unregistering while
             // trial isn't up, yet.
             return

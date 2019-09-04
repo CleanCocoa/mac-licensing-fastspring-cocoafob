@@ -44,7 +44,7 @@ public class LicensingProvider {
         if let trial = self.trial,
             trial.isActive {
             
-            return .onTrial(trial.trialPeriod)
+            return .trial(trial.trialPeriod)
         }
         
         return .trialUp

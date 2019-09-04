@@ -4,7 +4,7 @@
 
 public enum Licensing {
     case registered(License)
-    case onTrial(TrialPeriod)
+    case trial(TrialPeriod)
     case trialUp
 }
 
@@ -12,13 +12,16 @@ extension Licensing: Equatable { }
 
 public func ==(lhs: Licensing, rhs: Licensing) -> Bool {
     switch (lhs, rhs) {
-    case (.trialUp, .trialUp):
+    case (.trialUp,
+          .trialUp):
         return true
 
-    case let (.onTrial(lPeriod), .onTrial(rPeriod)):
+    case let (.trial(lPeriod),
+              .trial(rPeriod)):
         return lPeriod == rPeriod
 
-    case let (.registered(lLicense), .registered(rLicense)):
+    case let (.registered(lLicense),
+              .registered(rLicense)):
         return lLicense == rLicense
 
     default:

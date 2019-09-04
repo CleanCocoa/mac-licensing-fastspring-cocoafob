@@ -44,7 +44,7 @@ public class LicenseWindowController: NSWindowController {
     public func display(licensing: Licensing, clock: KnowsTimeAndDate = Clock()) {
         
         switch licensing {
-        case let .onTrial(trialPeriod):
+        case let .trial(trialPeriod):
             let trial = Trial(trialPeriod: trialPeriod, clock: clock)
             display(trialDaysLeft: trial.daysLeft)
             existingLicenseViewController.displayEmptyForm()

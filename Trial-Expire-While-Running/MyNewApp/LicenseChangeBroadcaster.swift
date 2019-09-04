@@ -11,7 +11,7 @@ extension Licensing {
     public func userInfo() -> UserInfo {
         
         switch self {
-        case let .onTrial(trialPeriod):
+        case let .trial(trialPeriod):
             return [
                 "registered" : false,
                 "on_trial" : true,
@@ -47,7 +47,7 @@ extension Licensing {
             if let startDate = userInfo["trial_start_date"] as? Date,
                 let endDate = userInfo["trial_end_date"] as? Date {
                     
-                return .onTrial(TrialPeriod(startDate: startDate, endDate: endDate))
+                return .trial(TrialPeriod(startDate: startDate, endDate: endDate))
             }
         }
         
