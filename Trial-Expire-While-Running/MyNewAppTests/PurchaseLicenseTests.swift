@@ -64,14 +64,6 @@ class PurchaseLicenseTests: XCTestCase {
     
     class TestRegisterApp: RegisterApplication {
         
-        convenience init() {
-            
-            // Use real objects this time because they won't be called anyway
-            self.init(licenseVerifier: LicenseVerifier(),
-                licenseWriter: LicenseWriter(),
-                changeBroadcaster: LicenseChangeBroadcaster(notificationCenter: NullNotificationCenter()))
-        }
-        
         var didRegisterWith: (name: String, licenseCode: String)?
         override func register(name: String, licenseCode: String) {
             didRegisterWith = (name, licenseCode)
