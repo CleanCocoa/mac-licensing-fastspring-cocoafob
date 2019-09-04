@@ -6,7 +6,7 @@ import Foundation
 
 public typealias UserInfo = [AnyHashable : Any]
 
-extension LicenseState {
+extension Licensing {
     
     public func userInfo() -> UserInfo {
         
@@ -33,7 +33,7 @@ extension LicenseState {
         }
     }
     
-    public static func fromUserInfo(userInfo: UserInfo) -> LicenseState? {
+    public static func fromUserInfo(userInfo: UserInfo) -> Licensing? {
         
         guard let registered = userInfo["registered"] as? Bool else {
             return nil
@@ -77,8 +77,8 @@ public class LicenseChangeBroadcaster {
         self.notificationCenter = notificationCenter
     }
     
-    public func broadcast(_ licenseState: LicenseState) {
+    public func broadcast(_ licensing: Licensing) {
         
-        notificationCenter.post(name: Events.licenseChanged.notificationName, object: self, userInfo: licenseState.userInfo())
+        notificationCenter.post(name: Events.licenseChanged.notificationName, object: self, userInfo: licensing.userInfo())
     }
 }

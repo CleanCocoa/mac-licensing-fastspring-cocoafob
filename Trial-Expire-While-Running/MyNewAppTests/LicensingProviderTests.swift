@@ -6,9 +6,9 @@ import Cocoa
 import XCTest
 @testable import MyNewApp
 
-class LicenseStateProviderTests: XCTestCase {
+class LicensingProviderTests: XCTestCase {
 
-    var licenseStateProvider: LicenseStateProvider!
+    var licensingProvider: LicensingProvider!
     
     let trialProviderDouble = TestTrialProvider()
     let licenseProviderDouble = TestLicenseProvider()
@@ -19,15 +19,15 @@ class LicenseStateProviderTests: XCTestCase {
         
         super.setUp()
         
-        licenseStateProvider = LicenseStateProvider(trialProvider: trialProviderDouble, licenseProvider: licenseProviderDouble, clock: clockDouble)
-        licenseStateProvider.licenseVerifier = verifierDouble
+        licensingProvider = LicensingProvider(trialProvider: trialProviderDouble, licenseProvider: licenseProviderDouble, clock: clockDouble)
+        licensingProvider.licenseVerifier = verifierDouble
     }
     
     let irrelevantLicense = License(name: "", licenseCode: "")
 
     func testLicenceInvalidity_NoLicense_ReturnsFalse() {
         
-        XCTAssertFalse(licenseStateProvider.licenseIsInvalid)
+        XCTAssertFalse(licensingProvider.licenseIsInvalid)
     }
     
     func testLicenceInvalidity_ValidLicense_ReturnsFalse() {
@@ -35,7 +35,7 @@ class LicenseStateProviderTests: XCTestCase {
         verifierDouble.testValidity = true
         licenseProviderDouble.testLicense = irrelevantLicense
         
-        XCTAssertFalse(licenseStateProvider.licenseIsInvalid)
+        XCTAssertFalse(licensingProvider.licenseIsInvalid)
     }
     
     func testLicenceInvalidity_InvalidLicense_ReturnsFalse() {
@@ -43,12 +43,12 @@ class LicenseStateProviderTests: XCTestCase {
         verifierDouble.testValidity = false
         licenseProviderDouble.testLicense = irrelevantLicense
         
-        XCTAssert(licenseStateProvider.licenseIsInvalid)
+        XCTAssert(licensingProvider.licenseIsInvalid)
     }
     
     func testCurrentInfo_NoLicense_NoTrialPeriod_ReturnsTrialUp() {
         
-        let licenseInfo = licenseStateProvider.licenseState
+        let licenseInfo = licensingProvider.licensing
         
         let trialIsUp: Bool
         
@@ -67,7 +67,7 @@ class LicenseStateProviderTests: XCTestCase {
         clockDouble.testDate = endDate.addingTimeInterval(-1000)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
-        let licenseInfo = licenseStateProvider.licenseState
+        let licenseInfo = licensingProvider.licensing
         
         switch licenseInfo {
         case let .onTrial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
@@ -82,7 +82,7 @@ class LicenseStateProviderTests: XCTestCase {
         clockDouble.testDate = endDate.addingTimeInterval(100)
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
-        let licenseInfo = licenseStateProvider.licenseState
+        let licenseInfo = licensingProvider.licensing
         
         let trialIsUp: Bool
         switch licenseInfo {
@@ -98,7 +98,7 @@ class LicenseStateProviderTests: XCTestCase {
         verifierDouble.testValidity = false
         licenseProviderDouble.testLicense = irrelevantLicense
         
-        let licenseInfo = licenseStateProvider.licenseState
+        let licenseInfo = licensingProvider.licensing
         
         let trialIsUp: Bool
         switch licenseInfo {
@@ -121,7 +121,7 @@ class LicenseStateProviderTests: XCTestCase {
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
         // When
-        let licenseInfo = licenseStateProvider.licenseState
+        let licenseInfo = licensingProvider.licensing
         
         // Then
         switch licenseInfo {
@@ -138,7 +138,7 @@ class LicenseStateProviderTests: XCTestCase {
         let license = License(name: name, licenseCode: licenseCode)
         licenseProviderDouble.testLicense = license
         
-        let licenseInfo = licenseStateProvider.licenseState
+        let licenseInfo = licensingProvider.licensing
         
         switch licenseInfo {
         case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)
@@ -162,7 +162,7 @@ class LicenseStateProviderTests: XCTestCase {
         licenseProviderDouble.testLicense = license
         
         // When
-        let licenseInfo = licenseStateProvider.licenseState
+        let licenseInfo = licensingProvider.licensing
         
         // Then
         switch licenseInfo {
@@ -186,7 +186,7 @@ class LicenseStateProviderTests: XCTestCase {
         licenseProviderDouble.testLicense = license
         
         // When
-        let licenseInfo = licenseStateProvider.licenseState
+        let licenseInfo = licensingProvider.licensing
         
         // Then
         switch licenseInfo {

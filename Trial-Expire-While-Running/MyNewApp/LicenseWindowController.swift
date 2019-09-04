@@ -41,9 +41,9 @@ public class LicenseWindowController: NSWindowController {
         purchasingEventHandler?.purchase()
     }
     
-    public func display(licenseState: LicenseState, clock: KnowsTimeAndDate = Clock()) {
+    public func display(licensing: Licensing, clock: KnowsTimeAndDate = Clock()) {
         
-        switch licenseState {
+        switch licensing {
         case let .onTrial(trialPeriod):
             let trial = Trial(trialPeriod: trialPeriod, clock: clock)
             display(trialDaysLeft: trial.daysLeft)

@@ -6,13 +6,13 @@ import Cocoa
 import XCTest
 @testable import MyNewApp
 
-class LicenseStateTests: XCTestCase {
+class LicensingTests: XCTestCase {
 
     // MARK: Unregistered user info
     
     func testToUserInfo_Unregistered_SetsRegisteredToFalse() {
         
-        let licenseInfo = LicenseState.unregistered
+        let licenseInfo = Licensing.unregistered
         
         let registered = licenseInfo.userInfo()["registered"] as? Bool
         XCTAssert(hasValue(registered))
@@ -23,14 +23,14 @@ class LicenseStateTests: XCTestCase {
     
     func testToUserInfo_Unregistered_HasNoNameKey() {
 
-        let licenseInfo = LicenseState.unregistered
+        let licenseInfo = Licensing.unregistered
         
         XCTAssertFalse(hasValue(licenseInfo.userInfo()["name"]))
     }
     
     func testToUserInfo_Unregistered_HasNoLicenseCodeKey() {
         
-        let licenseInfo = LicenseState.unregistered
+        let licenseInfo = Licensing.unregistered
         
         XCTAssertFalse(hasValue(licenseInfo.userInfo()["licenseCode"]))
     }
@@ -42,7 +42,7 @@ class LicenseStateTests: XCTestCase {
     
     func testToUserInfo_Registered_SetsRegisteredToTrue() {
         
-        let licenseInfo = LicenseState.registered(license)
+        let licenseInfo = Licensing.registered(license)
         
         let registered = licenseInfo.userInfo()["registered"] as? Bool
         XCTAssert(hasValue(registered))
@@ -53,7 +53,7 @@ class LicenseStateTests: XCTestCase {
     
     func testToUserInfo_Registered_SetsNameKeyToLicense() {
         
-        let licenseInfo = LicenseState.registered(license)
+        let licenseInfo = Licensing.registered(license)
         
         let name = licenseInfo.userInfo()["name"] as? String
         XCTAssert(hasValue(name))
@@ -64,7 +64,7 @@ class LicenseStateTests: XCTestCase {
     
     func testToUserInfo_Registered_SetsLicenseCodeKeyToLicense() {
         
-        let licenseInfo = LicenseState.registered(license)
+        let licenseInfo = Licensing.registered(license)
         
         let licenseCode = licenseInfo.userInfo()["licenseCode"] as? String
         XCTAssert(hasValue(licenseCode))
@@ -81,7 +81,7 @@ class LicenseStateTests: XCTestCase {
         
         let userInfo = UserInfo()
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         XCTAssertFalse(hasValue(result))
     }
@@ -90,7 +90,7 @@ class LicenseStateTests: XCTestCase {
         
         let userInfo: UserInfo = ["name" : "foo", "licenseCode" : "bar"]
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         XCTAssertFalse(hasValue(result))
     }
@@ -99,7 +99,7 @@ class LicenseStateTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : false]
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         XCTAssert(hasValue(result))
         if let result = result {
@@ -118,7 +118,7 @@ class LicenseStateTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : false, "bogus" : 123]
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         XCTAssert(hasValue(result))
         if let result = result {
@@ -140,7 +140,7 @@ class LicenseStateTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : true]
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         XCTAssertFalse(hasValue(result))
     }
@@ -149,7 +149,7 @@ class LicenseStateTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : true, "name" : "a name"]
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         XCTAssertFalse(hasValue(result))
     }
@@ -158,7 +158,7 @@ class LicenseStateTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : true, "licenseCode" : "a license code"]
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         XCTAssertFalse(hasValue(result))
     }
@@ -169,7 +169,7 @@ class LicenseStateTests: XCTestCase {
         let licenseCode = "the license code"
         let userInfo: UserInfo = ["registered" : true, "name" : name, "licenseCode" : licenseCode]
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         switch result {
         case let .some(.registered(license)):
@@ -186,7 +186,7 @@ class LicenseStateTests: XCTestCase {
         let licenseCode = "the license code"
         let userInfo: UserInfo = ["registered" : true, "name" : name, "licenseCode" : licenseCode, "irrelevant" : 999]
         
-        let result = LicenseState.fromUserInfo(userInfo)
+        let result = Licensing.fromUserInfo(userInfo)
         
         switch result {
         case let .some(.registered(license)):

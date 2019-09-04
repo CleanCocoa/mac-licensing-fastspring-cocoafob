@@ -28,9 +28,9 @@ open class LicenseWindowController: NSWindowController {
         purchasingEventHandler?.purchase()
     }
         
-    open func display(licenseState: LicenseState) {
+    open func display(licensing: Licensing) {
         
-        switch licenseState {
+        switch licensing {
         case .unregistered:
             existingLicenseViewController.displayEmptyForm()
         case .registered(let license):

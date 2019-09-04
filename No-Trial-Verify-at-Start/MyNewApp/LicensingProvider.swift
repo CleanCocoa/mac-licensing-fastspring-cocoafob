@@ -12,7 +12,7 @@ extension License {
     }
 }
 
-open class LicenseStateProvider {
+open class LicensingProvider {
     
     let licenseProvider: LicenseProvider
     
@@ -32,7 +32,7 @@ open class LicenseStateProvider {
         return !license.isValid(licenseVerifier)
     }
     
-    open var licenseState: LicenseState {
+    open var licensing: Licensing {
         
         guard let license = self.license,
             license.isValid(licenseVerifier)

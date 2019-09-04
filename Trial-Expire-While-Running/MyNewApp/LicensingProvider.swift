@@ -2,23 +2,20 @@
 //
 // See the file LICENSE for copying permission.
 
-import Foundation
-
 fileprivate extension License {
-    
     func isValid(licenseVerifier: LicenseVerifier) -> Bool {
-        
         return licenseVerifier.isValid(licenseCode: licenseCode, forName: name)
     }
 }
 
-public class LicenseStateProvider {
-    
+public class LicensingProvider {
     let trialProvider: TrialProvider
     let licenseProvider: LicenseProvider
     let clock: KnowsTimeAndDate
     
-    public init(trialProvider: TrialProvider, licenseProvider: LicenseProvider, clock: KnowsTimeAndDate) {
+    public init(trialProvider: TrialProvider,
+                licenseProvider: LicenseProvider,
+                clock: KnowsTimeAndDate) {
         
         self.trialProvider = trialProvider
         self.licenseProvider = licenseProvider
@@ -36,7 +33,7 @@ public class LicenseStateProvider {
         return !license.isValid(licenseVerifier: licenseVerifier)
     }
     
-    public var licenseState: LicenseState {
+    public var licensing: Licensing {
         
         if let license = self.license,
             license.isValid(licenseVerifier: licenseVerifier) {

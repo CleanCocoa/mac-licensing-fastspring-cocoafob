@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     
     var licenseProvider = LicenseProvider()
-    lazy var licenseInfoProvider: LicenseStateProvider = LicenseStateProvider(licenseProvider: self.licenseProvider)
+    lazy var licenseInfoProvider: LicensingProvider = LicensingProvider(licenseProvider: self.licenseProvider)
     
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
@@ -71,14 +71,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         licenseWindowController.purchasingEventHandler = purchaseLicense
     }
     
-    var currentLicenseState: LicenseState {
+    var currentLicensing: Licensing {
         
-        return licenseInfoProvider.licenseState
+        return licenseInfoProvider.licensing
     }
     
     func launchAppOrShowLicenseWindow() {
         
-        switch currentLicenseState {
+        switch currentLicensing {
         case .unregistered:
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
@@ -108,7 +108,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         licenseWindowController.showWindow(self)
         licenseWindowController.registrationEventHandler = registerApplication
-        licenseWindowController.display(licenseState: currentLicenseState)
+        licenseWindowController.display(licensing: currentLicensing)
     }
     
     func unlockApp() {
@@ -123,10 +123,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func licenseDidChange(_ notification: Notification) {
         
         guard let userInfo = (notification as NSNotification).userInfo,
-            let licenseState = LicenseState.fromUserInfo(userInfo)
+            let licensing = Licensing.fromUserInfo(userInfo)
             else { return }
         
-        switch licenseState {
+        switch licensing {
         case .registered(_):
             displayThankYouAlert()
             unlockApp()

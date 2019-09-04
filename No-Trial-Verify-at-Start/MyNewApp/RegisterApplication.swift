@@ -24,16 +24,15 @@ open class RegisterApplication: HandlesRegistering {
     
     open func register(_ name: String, licenseCode: String) {
         
-        if !licenseVerifier.isValid(licenseCode: licenseCode, forName: name) {
-            
+        if !licenseVerifier.isValid(licenseCode: licenseCode, forName: name) { 
             displayLicenseCodeError()
             return
         }
         
-        let licenseState = LicenseState.registered(License(name: name, licenseCode: licenseCode))
+        let licensing: Licensing = .registered(License(name: name, licenseCode: licenseCode))
         
         licenseWriter.store(licenseCode: licenseCode, forName: name)
-        changeBroadcaster.broadcast(licenseState)
+        changeBroadcaster.broadcast(licensing)
     }
     
     func displayLicenseCodeError() {

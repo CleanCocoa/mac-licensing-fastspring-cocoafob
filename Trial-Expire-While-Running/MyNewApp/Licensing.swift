@@ -2,17 +2,21 @@
 //
 // See the file LICENSE for copying permission.
 
-public enum LicenseState {
-    case unregistered
+public enum Licensing {
     case registered(License)
+    case onTrial(TrialPeriod)
+    case trialUp
 }
 
-extension LicenseState: Equatable { }
+extension Licensing: Equatable { }
 
-public func ==(lhs: LicenseState, rhs: LicenseState) -> Bool {
+public func ==(lhs: Licensing, rhs: Licensing) -> Bool {
     switch (lhs, rhs) {
-    case (.unregistered, .unregistered):
+    case (.trialUp, .trialUp):
         return true
+
+    case let (.onTrial(lPeriod), .onTrial(rPeriod)):
+        return lPeriod == rPeriod
 
     case let (.registered(lLicense), .registered(rLicense)):
         return lLicense == rLicense
