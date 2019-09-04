@@ -67,7 +67,7 @@ extension Licensing {
 public class LicenseChangeBroadcaster {
     let notificationCenter: NotificationCenter
 
-    public init(notificationCenter: NotificationCenter) {
+    public init(notificationCenter: NotificationCenter = .default) {
         self.notificationCenter = notificationCenter
     }
 
