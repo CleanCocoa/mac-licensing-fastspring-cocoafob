@@ -5,33 +5,28 @@
 import Foundation
 
 public class URLQueryRegistration {
-    
     let registrationHandler: HandlesRegistering
-    
+
     public init(registrationHandler: HandlesRegistering) {
-        
         self.registrationHandler = registrationHandler
     }
-    
+
     public lazy var queryParser: URLQueryLicenseParser = URLQueryLicenseParser()
-    
-    public func register(fromUrl url: URL) {
-        
-        guard let query = query(url: url),
-            let license = queryParser.parse(query: query) else {
-            return
-        }
-        
-        registrationHandler.register(name: license.name, licenseCode: license.licenseCode)
+
+    public func register(fromURL url: URL) {
+        guard let query = query(fromURL: url),
+            let licenseInfo = queryParser.parse(query: query)
+            else { return }
+
+        registrationHandler.register(name: licenseInfo.name, licenseCode: licenseInfo.licenseCode)
     }
-    
-    fileprivate func query(url: URL) -> String? {
-        
-        if let host = url.host, let query = url.query , host == URLComponents.host {
-            
-            return query
-        }
-        
-        return .none
+
+    private func query(fromURL url: URL) -> String? {
+        guard let host = url.host,
+            let query = url.query,
+            host == URLComponents.host
+            else { return nil }
+
+        return query
     }
 }

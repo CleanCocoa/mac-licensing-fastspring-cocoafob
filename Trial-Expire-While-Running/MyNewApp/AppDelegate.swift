@@ -106,7 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // delegate to a router object instead.
             
             URLQueryRegistration(registrationHandler: registerApplication)
-                .register(fromUrl: url)
+                .register(fromURL: url)
         }
     }
     
