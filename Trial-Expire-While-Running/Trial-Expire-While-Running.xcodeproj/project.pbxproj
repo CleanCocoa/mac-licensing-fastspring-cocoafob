@@ -12,7 +12,6 @@
 		50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */; };
 		50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA01B8313E700727FBA /* PurchaseLicense.swift */; };
 		50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */; };
-		505D9DEE1B89E47600D412F1 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D9DED1B89E47600D412F1 /* License.swift */; };
 		506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FA1B84AEA10072CEC8 /* Me.swift */; };
 		506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FC1B84AEB90072CEC8 /* StoreController.swift */; };
 		506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */; };
@@ -44,10 +43,12 @@
 		5082F9CF231FC67300B667C9 /* URLQueryRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9CC231FC67200B667C9 /* URLQueryRegistration.swift */; };
 		5082F9D3231FC6D800B667C9 /* URLQueryLicenseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9D1231FC6D800B667C9 /* URLQueryLicenseParserTests.swift */; };
 		5082F9D4231FC6D800B667C9 /* URLQueryRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9D2231FC6D800B667C9 /* URLQueryRegistrationTests.swift */; };
+		5082F9E22322589400B667C9 /* LicenseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9DC2322589100B667C9 /* LicenseProvider.swift */; };
+		5082F9E32322589400B667C9 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9DD2322589100B667C9 /* License.swift */; };
+		5082F9E42322589400B667C9 /* LicenseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9DE2322589100B667C9 /* LicenseWriter.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
-		50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */; };
 		50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */; };
 		50C9B0C91B7F7844002C5449 /* LicenseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */; };
 		50C9B0D51B7F7E3D002C5449 /* LicenseProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */; };
@@ -61,7 +62,6 @@
 		50E75DAA1B81FB4F0092CD19 /* LicenseVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */; };
 		50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */; };
 		50E75DB41B82084E0092CD19 /* LicenseWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */; };
-		50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB51B82085A0092CD19 /* LicenseWriter.swift */; };
 		50E75DB81B820A730092CD19 /* RegisterApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB71B820A730092CD19 /* RegisterApplication.swift */; };
 		50E75DBA1B820A880092CD19 /* RegisterApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */; };
 		50E75DBC1B82119B0092CD19 /* LicenseChangeBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */; };
@@ -137,7 +137,6 @@
 		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
 		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
 		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; };
-		505D9DED1B89E47600D412F1 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		506AB3FA1B84AEA10072CEC8 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		506AB3FC1B84AEB90072CEC8 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
 		506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
@@ -169,6 +168,9 @@
 		5082F9CC231FC67200B667C9 /* URLQueryRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistration.swift; sourceTree = "<group>"; };
 		5082F9D1231FC6D800B667C9 /* URLQueryLicenseParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryLicenseParserTests.swift; sourceTree = "<group>"; };
 		5082F9D2231FC6D800B667C9 /* URLQueryRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistrationTests.swift; sourceTree = "<group>"; };
+		5082F9DC2322589100B667C9 /* LicenseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseProvider.swift; sourceTree = "<group>"; };
+		5082F9DD2322589100B667C9 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		5082F9DE2322589100B667C9 /* LicenseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriter.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,7 +178,6 @@
 		50C9B0A71B7F6DAC002C5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		50C9B0AD1B7F6DAC002C5449 /* MyNewAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNewAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0B21B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseProvider.swift; sourceTree = "<group>"; };
 		50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWindowController.swift; sourceTree = "<group>"; };
 		50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseWindowController.xib; sourceTree = "<group>"; };
 		50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -191,7 +192,6 @@
 		50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifierTests.swift; sourceTree = "<group>"; };
 		50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifier.swift; sourceTree = "<group>"; };
 		50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriterTests.swift; sourceTree = "<group>"; };
-		50E75DB51B82085A0092CD19 /* LicenseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriter.swift; sourceTree = "<group>"; };
 		50E75DB71B820A730092CD19 /* RegisterApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApplication.swift; sourceTree = "<group>"; };
 		50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApplicationTests.swift; sourceTree = "<group>"; };
 		50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseChangeBroadcaster.swift; sourceTree = "<group>"; };
@@ -272,9 +272,21 @@
 			children = (
 				5082F9D1231FC6D800B667C9 /* URLQueryLicenseParserTests.swift */,
 				5082F9D2231FC6D800B667C9 /* URLQueryRegistrationTests.swift */,
+				50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */,
+				50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */,
 			);
 			name = "Shared Tests";
 			path = "../../Shared Tests";
+			sourceTree = "<group>";
+		};
+		5082F9DB2322589100B667C9 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				5082F9DD2322589100B667C9 /* License.swift */,
+				5082F9DC2322589100B667C9 /* LicenseProvider.swift */,
+				5082F9DE2322589100B667C9 /* LicenseWriter.swift */,
+			);
+			path = License;
 			sourceTree = "<group>";
 		};
 		50C06EF71B91DAB300A7DBBE /* FastSpring Store Integration */ = {
@@ -339,10 +351,8 @@
 			isa = PBXGroup;
 			children = (
 				5082F9D0231FC6D800B667C9 /* Shared Tests */,
-				50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */,
 				506D9FF21B8DE6A3005F5109 /* LicensingProviderTests.swift */,
 				50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */,
-				50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */,
 				50E75DBD1B8211BA0092CD19 /* LicensingTests.swift */,
 				50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */,
 				50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */,
@@ -375,6 +385,7 @@
 		50C9B0CE1B7F7B7C002C5449 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5082F9DB2322589100B667C9 /* License */,
 				5082F9C9231FC67200B667C9 /* URL Scheme Parsing */,
 				5082F9C1231FC62E00B667C9 /* Util */,
 			);
@@ -424,11 +435,8 @@
 		50E75DC11B821D590092CD19 /* License */ = {
 			isa = PBXGroup;
 			children = (
-				505D9DED1B89E47600D412F1 /* License.swift */,
 				5082F99E231F8B3C00B667C9 /* Licensing.swift */,
 				506D9FF01B8DE68E005F5109 /* LicensingProvider.swift */,
-				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
-				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
 				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
 				50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */,
 				5082F9B7231FB75400B667C9 /* ValidLicenseFactory.swift */,
@@ -613,9 +621,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5082F9E32322589400B667C9 /* License.swift in Sources */,
 				50337B901B85B26D0056FC3B /* StoreInfoReader.swift in Sources */,
 				50E75DB81B820A730092CD19 /* RegisterApplication.swift in Sources */,
-				50E75DB61B82085A0092CD19 /* LicenseWriter.swift in Sources */,
 				5070B9C21B8C63700036A86C /* Days.swift in Sources */,
 				5070B9B61B8C50BB0036A86C /* TrialProvider.swift in Sources */,
 				50E75DE11B82275D0092CD19 /* FsprgOrderItem.m in Sources */,
@@ -627,7 +635,6 @@
 				506AB3FB1B84AEA10072CEC8 /* Me.swift in Sources */,
 				5070B9BC1B8C5A2C0036A86C /* TrialWriter.swift in Sources */,
 				5082F9CE231FC67300B667C9 /* URLQueryLicenseParser.swift in Sources */,
-				505D9DEE1B89E47600D412F1 /* License.swift in Sources */,
 				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
 				5082F9C6231FC62E00B667C9 /* UserDefaults.swift in Sources */,
 				5082F9C7231FC62E00B667C9 /* Optional.swift in Sources */,
@@ -639,13 +646,13 @@
 				5082F9C5231FC62E00B667C9 /* Array.swift in Sources */,
 				5082F99F231F8B3C00B667C9 /* Licensing.swift in Sources */,
 				50E62FC71B8B6F690047FC6A /* Trial.swift in Sources */,
-				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
 				5082F9CF231FC67300B667C9 /* URLQueryRegistration.swift in Sources */,
 				50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */,
 				50E75DBC1B82119B0092CD19 /* LicenseChangeBroadcaster.swift in Sources */,
 				50E75DDF1B82275D0092CD19 /* FsprgLicense.m in Sources */,
 				50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */,
 				506AB3FF1B84AECA0072CEC8 /* StoreInfo.swift in Sources */,
+				5082F9E22322589400B667C9 /* LicenseProvider.swift in Sources */,
 				5070B9C41B8C6F3E0036A86C /* Clock.swift in Sources */,
 				50E75DDA1B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m in Sources */,
 				506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */,
@@ -654,6 +661,7 @@
 				506DA9381B8340C9007B110F /* Store.swift in Sources */,
 				50E75DE01B82275D0092CD19 /* FsprgOrder.m in Sources */,
 				50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */,
+				5082F9E42322589400B667C9 /* LicenseWriter.swift in Sources */,
 				506DA9451B835784007B110F /* StoreWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

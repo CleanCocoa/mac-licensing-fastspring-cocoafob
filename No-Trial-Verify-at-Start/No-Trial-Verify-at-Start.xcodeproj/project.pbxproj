@@ -252,9 +252,21 @@
 			children = (
 				5082F9D6231FC6E600B667C9 /* URLQueryLicenseParserTests.swift */,
 				5082F9D7231FC6E600B667C9 /* URLQueryRegistrationTests.swift */,
+				50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */,
+				50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */,
 			);
 			name = "Shared Tests";
 			path = "../../Shared Tests";
+			sourceTree = "<group>";
+		};
+		5082F9DA2322585F00B667C9 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				505D9DED1B89E47600D412F1 /* License.swift */,
+				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
+				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
+			);
+			path = License;
 			sourceTree = "<group>";
 		};
 		50C06EF11B91DA3D00A7DBBE /* FastSpring Store Integration */ = {
@@ -318,10 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				5082F9D5231FC6E600B667C9 /* Shared Tests */,
-				50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */,
 				506D9FF61B8DF1E4005F5109 /* LicensingProviderTests.swift */,
 				50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */,
-				50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */,
 				50E75DBD1B8211BA0092CD19 /* LicensingTests.swift */,
 				50E75DBF1B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift */,
 				50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */,
@@ -351,6 +361,7 @@
 		50C9B0CE1B7F7B7C002C5449 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5082F9DA2322585F00B667C9 /* License */,
 				5082F9C8231FC64F00B667C9 /* URL Scheme Parsing */,
 				5082F9BF231FC5F200B667C9 /* Util */,
 			);
@@ -386,11 +397,8 @@
 		50E75DC11B821D590092CD19 /* License */ = {
 			isa = PBXGroup;
 			children = (
-				505D9DED1B89E47600D412F1 /* License.swift */,
 				5082F99A231F8B1B00B667C9 /* Licensing.swift */,
 				506D9FF41B8DF123005F5109 /* LicensingProvider.swift */,
-				50C9B0C41B7F775D002C5449 /* LicenseProvider.swift */,
-				50E75DB51B82085A0092CD19 /* LicenseWriter.swift */,
 				50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */,
 				50E75DBB1B82119B0092CD19 /* LicenseChangeBroadcaster.swift */,
 				5082F9B3231FB71600B667C9 /* ValidLicenseFactory.swift */,

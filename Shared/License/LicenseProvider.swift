@@ -11,7 +11,6 @@ public class LicenseProvider {
     lazy var userDefaults: Foundation.UserDefaults = UserDefaults.standardUserDefaults()
 
     public var license: License? {
-        
         guard let name = userDefaults.string(forLicenseKey: .name),
             let licenseCode = userDefaults.string(forLicenseKey: .licenseCode)
             else { return nil }
