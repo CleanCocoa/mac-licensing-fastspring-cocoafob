@@ -54,7 +54,7 @@ public class StoreController: NSObject {
 
     // MARK: Forwarding to FsprgEmbeddedStoreController
 
-    public func setWebView(_ webView: WebView) {
+    public func set(webView: WebView) {
 
         storeController.setWebView(webView)
     }
@@ -136,7 +136,7 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
             return nil
         }
 
-        orderConfirmationView.displayLicenseCode(license.licenseCode)
+        orderConfirmationView.display(licenseCode: license.licenseCode)
         return orderConfirmationView
     }
 }

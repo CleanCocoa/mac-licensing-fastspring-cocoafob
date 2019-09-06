@@ -8,13 +8,13 @@ public class OrderConfirmationView: NSView {
     
     @IBOutlet public var licenseCodeTextField: NSTextField!
     
-    public func displayLicenseCode(_ licenseCode: String) {
+    public func display(licenseCode: String) {
         
         licenseCodeTextField.stringValue = licenseCode
     }
 }
 
-@objc public class StoreWindowController: NSWindowController {
+public class StoreWindowController: NSWindowController {
 
     static let nibName = "StoreWindowController"
     
@@ -30,7 +30,7 @@ public class OrderConfirmationView: NSView {
     @IBOutlet public var forwardButton: NSButton!
     @IBOutlet public var reloadButton: NSButton!
     
-    @objc dynamic public var storeController: StoreController!
+    @objc public var storeController: StoreController!
     
     public var storeDelegate: StoreDelegate? {
         get {
@@ -44,7 +44,7 @@ public class OrderConfirmationView: NSView {
     
     public override func awakeFromNib() {
         
-        storeController.setWebView(webView)
+        storeController.set(webView: webView)
         storeController.loadStore()
         storeController.orderConfirmationView = orderConfirmationView
     }

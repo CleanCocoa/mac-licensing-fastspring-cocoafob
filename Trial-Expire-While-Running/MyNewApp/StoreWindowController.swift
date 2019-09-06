@@ -8,7 +8,7 @@ public class OrderConfirmationView: NSView {
     
     @IBOutlet public var licenseCodeTextField: NSTextField!
     
-    public func displayLicenseCode(licenseCode: String) {
+    public func display(licenseCode: String) {
         
         licenseCodeTextField.stringValue = licenseCode
     }

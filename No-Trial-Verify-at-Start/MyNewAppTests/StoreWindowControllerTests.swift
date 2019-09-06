@@ -6,12 +6,16 @@ import Cocoa
 import XCTest
 @testable import MyNewApp
 
-func button(_ button: NSButton, isWiredTo target: AnyObject?) -> Bool {
-    if let target = target {
-        return button.target === target
-    } else {
-        return button.target == nil
-    }
+func button(_ button: NSButton, isWiredTo target: AnyObject?, using action: Selector?) -> Bool {
+    let targetMatches: Bool = {
+        if let target = target {
+            return button.target === target
+        } else {
+            return button.target == nil
+        }
+    }()
+    let actionMatches: Bool = (button.action == action)
+    return targetMatches && actionMatches
 }
 
 class StoreWindowControllerTests: XCTestCase {
@@ -50,9 +54,8 @@ class StoreWindowControllerTests: XCTestCase {
     }
     
     func testBackButton_IsWiredToAction() {
-        
-        XCTAssertEqual(controller.backButton.action, #selector(WKWebView.goBack(_:)))
-        XCTAssert(button(controller.backButton, isWiredTo: controller.webView))
+
+        XCTAssert(button(controller.backButton, isWiredTo: controller.webView, using: #selector(WKWebView.goBack(_:))))
     }
     
     func testForwardButton_IsConnected() {
@@ -61,9 +64,8 @@ class StoreWindowControllerTests: XCTestCase {
     }
     
     func testForwardButton_IsWiredToAction() {
-        
-        XCTAssertEqual(controller.forwardButton.action, #selector(WKWebView.goForward(_:)))
-        XCTAssert(button(controller.forwardButton, isWiredTo: controller.webView))
+
+        XCTAssert(button(controller.forwardButton, isWiredTo: controller.webView, using: #selector(WKWebView.goForward(_:))))
     }
     
     func testReloadButton_IsConnected() {
@@ -114,7 +116,7 @@ class StoreWindowControllerTests: XCTestCase {
         }
         
         var didSetWebViewTo: WebView?
-        override func setWebView(_ webView: WebView) {
+        override func set(webView: WebView) {
             
             didSetWebViewTo = webView
         }
