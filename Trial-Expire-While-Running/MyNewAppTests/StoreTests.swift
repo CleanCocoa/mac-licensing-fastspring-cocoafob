@@ -33,24 +33,14 @@ class StoreTests: XCTestCase {
         
         store.showStore()
         
-        XCTAssert(hasValue(storeWCDouble.didSetStoreDelegateTo))
-        
-        if let newDelegate = storeWCDouble.didSetStoreDelegateTo {
-            
-            XCTAssert(newDelegate === delegateDouble)
-        }
+        XCTAssert(storeWCDouble.didSetStoreDelegateTo === delegateDouble)
     }
 
     func testShowingStore_TransfersController() {
         
         store.showStore()
         
-        XCTAssert(hasValue(storeWCDouble.didSetStoreControllerTo))
-        
-        if let newController = storeWCDouble.didSetStoreControllerTo {
-            
-            XCTAssert(newController === store.storeController)
-        }
+        XCTAssert(storeWCDouble.didSetStoreControllerTo === store.storeController)
     }
     
     func testClosingStore_ClosesWindow() {

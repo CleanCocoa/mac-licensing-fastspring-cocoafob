@@ -23,20 +23,18 @@ class LicenseWindowControllerTests: XCTestCase {
     
     func testBuyButton_IsConnected() {
 
-        XCTAssert(hasValue(controller.buyButton))
+        XCTAssertNotNil(controller.buyButton)
     }
     
     func testBuyButton_IsLabelledBuyNow() {
-        
-        // Not using XCTAssertEqual on the Implicitely Unwrapped Optional 
-        // so that for a missing value the tests don't crash but 
-        // fail. It's less expressive, though.
-        XCTAssert(controller.buyButton?.title == "Buy Now")
+
+        XCTAssertEqual(controller.buyButton?.title, "Buy Now")
     }
     
     func testBuyButton_IsWiredToAction() {
         
-        XCTAssert(controller.buyButton?.action == #selector(LicenseWindowController.buy(_:)))
+        XCTAssertEqual(controller.buyButton?.action,
+                       #selector(LicenseWindowController.buy(_:)))
     }
     
     func testBuyButton_Initially_IsEnabled() {
@@ -46,17 +44,17 @@ class LicenseWindowControllerTests: XCTestCase {
     
     func testTrialDurationLabel_IsConnected() {
         
-        XCTAssert(hasValue(controller.trialDaysLeftTextField))
+        XCTAssertNotNil(controller.trialDaysLeftTextField)
     }
     
     func testTrialIsUpLabel_IsConnected() {
         
-        XCTAssert(hasValue(controller.trialUpTextField))
+        XCTAssertNotNil(controller.trialUpTextField)
     }
 
     func testExistingLicenseVC_IsConnected() {
     
-        XCTAssert(hasValue(controller.existingLicenseViewController))
+        XCTAssertNotNil(controller.existingLicenseViewController)
     }
     
     
@@ -71,11 +69,7 @@ class LicenseWindowControllerTests: XCTestCase {
         
         controller.registrationEventHandler = handler
         
-        XCTAssert(hasValue(existingLicenseVCDouble.didSetEventHandlerTo))
-        if let newHandler = existingLicenseVCDouble.didSetEventHandlerTo {
-            
-            XCTAssert(newHandler === handler)
-        }
+        XCTAssert(existingLicenseVCDouble.didSetEventHandlerTo === handler)
     }
     
     func testGetRegistrationHandler_DelegatesToVC() {
@@ -86,10 +80,7 @@ class LicenseWindowControllerTests: XCTestCase {
         
         let result = controller.registrationEventHandler
         
-        XCTAssert(hasValue(result))
-        if let result = result {
-            XCTAssert(result === handler)
-        }
+        XCTAssert(result === handler)
     }
     
     
@@ -115,7 +106,7 @@ class LicenseWindowControllerTests: XCTestCase {
         controller.display(licensing: .trialUp)
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
-        XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
+        XCTAssertNil(existingLicenseVCDouble.didDisplayLicenseWith)
     }
     
     func testDisplayLicenseInfo_OnTrial_DisplaysEmptyForm() {
@@ -125,7 +116,7 @@ class LicenseWindowControllerTests: XCTestCase {
         controller.display(licensing: .trial(TrialPeriod(startDate: Date(), endDate: Date())))
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
-        XCTAssertFalse(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
+        XCTAssertNil(existingLicenseVCDouble.didDisplayLicenseWith)
     }
     
     func testDisplayLicenseInfo_Registered_DisplaysLicense() {
@@ -136,12 +127,7 @@ class LicenseWindowControllerTests: XCTestCase {
         controller.display(licensing: .registered(license))
         
         XCTAssertFalse(existingLicenseVCDouble.didDisplayEmptyForm)
-        XCTAssert(hasValue(existingLicenseVCDouble.didDisplayLicenseWith))
-        
-        if let displayedLicense = existingLicenseVCDouble.didDisplayLicenseWith {
-            
-            XCTAssertEqual(displayedLicense, license)
-        }
+        XCTAssertEqual(existingLicenseVCDouble.didDisplayLicenseWith, license)
     }
     
     

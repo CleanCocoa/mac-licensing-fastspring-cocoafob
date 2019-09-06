@@ -26,10 +26,8 @@ class StoreInfoReaderTests: XCTestCase {
         
         let result = StoreInfoReader.storeInfo(fromURL: validURL)
         
-        XCTAssert(hasValue(result))
-        
+        XCTAssertNotNil(result)
         if let result = result {
-            
             XCTAssertEqual(result.storeId, "A Store ID")
             XCTAssertEqual(result.productName, "A Product Name")
             XCTAssertEqual(result.productId, "A Product ID")
@@ -46,10 +44,8 @@ class StoreInfoReaderTests: XCTestCase {
         
         let result = StoreInfoReader.storeInfo(fromDictionary: data)
         
-        XCTAssert(hasValue(result))
-        
+        XCTAssertNotNil(result)
         if let result = result {
-            
             XCTAssertEqual(result.storeId, data["storeId"]!)
             XCTAssertEqual(result.productName, data["productName"]!)
             XCTAssertEqual(result.productId, data["productId"]!)
@@ -67,7 +63,7 @@ class StoreInfoReaderTests: XCTestCase {
         
         let result = StoreInfoReader.storeInfo(fromDictionary: data)
         
-        XCTAssert(hasValue(result))
+        XCTAssertNotNil(result)
     }
     
     func testInfoFromDict_MissingStoreId_ReturnsNil() {
@@ -79,7 +75,7 @@ class StoreInfoReaderTests: XCTestCase {
         
         let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testInfoFromDict_MissingProductId_ReturnsNil() {
@@ -91,7 +87,7 @@ class StoreInfoReaderTests: XCTestCase {
         
         let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testInfoFromDict_MissingProductName_ReturnsNil() {
@@ -103,6 +99,6 @@ class StoreInfoReaderTests: XCTestCase {
         
         let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
 }

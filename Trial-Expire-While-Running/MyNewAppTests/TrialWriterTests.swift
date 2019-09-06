@@ -40,12 +40,10 @@ class TrialWriterTests: XCTestCase {
         
         // Then
         let changedDefaults = userDefaultsDouble.didSetObjectsForKeys
-        XCTAssert(hasValue(changedDefaults))
-        
+        XCTAssertNotNil(changedDefaults)
         if let changedDefaults = changedDefaults {
-            
-            XCTAssert(changedDefaults[TrialPeriod.UserDefaultsKeys.startDate.rawValue] == startDate)
-            XCTAssert(changedDefaults[TrialPeriod.UserDefaultsKeys.endDate.rawValue] == endDate)
+            XCTAssertEqual(changedDefaults[TrialPeriod.UserDefaultsKeys.startDate.rawValue], startDate)
+            XCTAssertEqual(changedDefaults[TrialPeriod.UserDefaultsKeys.endDate.rawValue], endDate)
         }
     }
 
@@ -57,7 +55,7 @@ class TrialWriterTests: XCTestCase {
         var didSetObjectsForKeys: [String : Date]?
         override func set(_ value: Any?, forKey key: String) {
             
-            if !hasValue(didSetObjectsForKeys) {
+            if didSetObjectsForKeys == nil {
                 didSetObjectsForKeys = [String : Date]()
             }
             

@@ -12,29 +12,29 @@ class URLQueryLicenseParserTests: XCTestCase {
     
     func testParse_WithEmptyQuery_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(service.parse(query: "")))
+        XCTAssertNil(service.parse(query: ""))
     }
     
     func testParse_WithoutNameAndLicenseCode_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(service.parse(query: "bogus=info")))
+        XCTAssertNil(service.parse(query: "bogus=info"))
     }
     
     let licensee = "Sm9obiBBcHBsZXNlZWQ=" // John Appleseed
     
     func testParse_WithNameOnly_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(service.parse(query: "name=\(licensee)")))
+        XCTAssertNil(service.parse(query: "name=\(licensee)"))
     }
     
     func testParse_WithLicenseCodeOnly_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(service.parse(query: "licenseCode=foo")))
+        XCTAssertNil(service.parse(query: "licenseCode=foo"))
     }
     
     func testParse_WithUnencodedNameAndLicenseCode_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(service.parse(query: "name=unencoded&licenseCode=foo")))
+        XCTAssertNil(service.parse(query: "name=unencoded&licenseCode=foo"))
     }
     
     func testParse_CompleteQuery_ReturnsLicense() {
@@ -43,7 +43,7 @@ class URLQueryLicenseParserTests: XCTestCase {
         
         let result = service.parse(query: query)
         
-        XCTAssert(hasValue(result))
+        XCTAssertNotNil(result)
         if let license = result {
             XCTAssertEqual(license.name, "John Appleseed")
             XCTAssertEqual(license.licenseCode, "the-license-code")
@@ -56,7 +56,7 @@ class URLQueryLicenseParserTests: XCTestCase {
         
         let result = service.parse(query: query)
         
-        XCTAssert(hasValue(result))
+        XCTAssertNotNil(result)
         if let license = result {
             XCTAssertEqual(license.name, "John Appleseed")
             XCTAssertEqual(license.licenseCode, "the-license-code")

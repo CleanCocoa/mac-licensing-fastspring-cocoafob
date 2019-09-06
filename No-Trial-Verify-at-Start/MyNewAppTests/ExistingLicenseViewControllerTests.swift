@@ -25,17 +25,17 @@ class ExistingLicenseViewControllerTests: XCTestCase {
     
     func testLicenseeTextField_IsConnected() {
         
-        XCTAssert(hasValue(controller.licenseeTextField))
+        XCTAssertNotNil(controller.licenseeTextField)
     }
     
     func testLicenseCodeTextField_IsConnected() {
         
-        XCTAssert(hasValue(controller.licenseCodeTextField))
+        XCTAssertNotNil(controller.licenseCodeTextField)
     }
     
     func testRegisterButton_IsConnected() {
         
-        XCTAssert(hasValue(controller.registerButton))
+        XCTAssertNotNil(controller.registerButton)
     }
 
     func testRegisterButton_IsWiredToAction() {
@@ -62,8 +62,7 @@ class ExistingLicenseViewControllerTests: XCTestCase {
         
         // Then
         let registerParams = eventHandlerDouble.didRegisterWith
-        XCTAssert(hasValue(registerParams))
-        
+        XCTAssertNotNil(registerParams)
         if let registerParams = registerParams {
             XCTAssertEqual(registerParams.name, name)
             XCTAssertEqual(registerParams.licenseCode, licenseCode)

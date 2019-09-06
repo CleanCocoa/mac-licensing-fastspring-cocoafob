@@ -15,7 +15,7 @@ class LicensingTests: XCTestCase {
         let licenseInfo = Licensing.unregistered
         
         let registered = licenseInfo.userInfo()["registered"] as? Bool
-        XCTAssert(hasValue(registered))
+        XCTAssertNotNil(registered)
         if let registered = registered {
             XCTAssert(registered == false)
         }
@@ -25,14 +25,14 @@ class LicensingTests: XCTestCase {
 
         let licenseInfo = Licensing.unregistered
         
-        XCTAssertFalse(hasValue(licenseInfo.userInfo()["name"]))
+        XCTAssertNil(licenseInfo.userInfo()["name"])
     }
     
     func testToUserInfo_Unregistered_HasNoLicenseCodeKey() {
         
         let licenseInfo = Licensing.unregistered
         
-        XCTAssertFalse(hasValue(licenseInfo.userInfo()["licenseCode"]))
+        XCTAssertNil(licenseInfo.userInfo()["licenseCode"])
     }
     
     
@@ -45,9 +45,9 @@ class LicensingTests: XCTestCase {
         let licenseInfo = Licensing.registered(license)
         
         let registered = licenseInfo.userInfo()["registered"] as? Bool
-        XCTAssert(hasValue(registered))
+        XCTAssertNotNil(registered)
         if let registered = registered {
-            XCTAssert(registered)
+            XCTAssertTrue(registered)
         }
     }
     
@@ -56,10 +56,7 @@ class LicensingTests: XCTestCase {
         let licenseInfo = Licensing.registered(license)
         
         let name = licenseInfo.userInfo()["name"] as? String
-        XCTAssert(hasValue(name))
-        if let name = name {
-            XCTAssertEqual(name, license.name)
-        }
+        XCTAssertEqual(name, license.name)
     }
     
     func testToUserInfo_Registered_SetsLicenseCodeKeyToLicense() {
@@ -67,10 +64,7 @@ class LicensingTests: XCTestCase {
         let licenseInfo = Licensing.registered(license)
         
         let licenseCode = licenseInfo.userInfo()["licenseCode"] as? String
-        XCTAssert(hasValue(licenseCode))
-        if let licenseCode = licenseCode {
-            XCTAssertEqual(licenseCode, license.licenseCode)
-        }
+        XCTAssertEqual(licenseCode, license.licenseCode)
     }
     
     
@@ -83,7 +77,7 @@ class LicensingTests: XCTestCase {
         
         let result = Licensing.fromUserInfo(userInfo)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testFromUserInfo_UserInfoWithoutRegistered_ReturnsNil() {
@@ -92,44 +86,34 @@ class LicensingTests: XCTestCase {
         
         let result = Licensing.fromUserInfo(userInfo)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testFromUserInfo_UnregisteredUserInfo_ReturnsUnregistered() {
         
         let userInfo: UserInfo = ["registered" : false]
         
-        let result = Licensing.fromUserInfo(userInfo)
-        
-        XCTAssert(hasValue(result))
-        if let result = result {
-            
-            let valid: Bool
-            switch result {
-            case .unregistered: valid = true
-            default: valid = false
-            }
-            
-            XCTAssert(valid)
+        switch Licensing.fromUserInfo(userInfo) {
+        case .some(.unregistered):
+            break // pass
+
+        case .none,
+             .some(.registered(_)):
+            XCTFail("expected unregistered")
         }
     }
     
     func testFromUserInfo_UnregisteredUserInfo_WithAdditionalInfo_ReturnsUnregistered() {
         
         let userInfo: UserInfo = ["registered" : false, "bogus" : 123]
-        
-        let result = Licensing.fromUserInfo(userInfo)
-        
-        XCTAssert(hasValue(result))
-        if let result = result {
-            
-            let valid: Bool
-            switch result {
-            case .unregistered: valid = true
-            default: valid = false
-            }
-            
-            XCTAssert(valid)
+
+        switch Licensing.fromUserInfo(userInfo) {
+        case .some(.unregistered):
+            break // pass
+
+        case .none,
+             .some(.registered(_)):
+            XCTFail("expected unregistered")
         }
     }
     
@@ -142,7 +126,7 @@ class LicensingTests: XCTestCase {
         
         let result = Licensing.fromUserInfo(userInfo)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testFromUserInfo_RegisteredUserInfo_WithNameOnly_ReturnsNil() {
@@ -151,7 +135,7 @@ class LicensingTests: XCTestCase {
         
         let result = Licensing.fromUserInfo(userInfo)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testFromUserInfo_RegisteredUserInfo_WithLicenseCodeOnly_ReturnsNil() {
@@ -160,7 +144,7 @@ class LicensingTests: XCTestCase {
         
         let result = Licensing.fromUserInfo(userInfo)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testFromUserInfo_RegisteredUserInfo_WithNameAndLicenseCode_ReturnsRegistered() {
@@ -169,13 +153,13 @@ class LicensingTests: XCTestCase {
         let licenseCode = "the license code"
         let userInfo: UserInfo = ["registered" : true, "name" : name, "licenseCode" : licenseCode]
         
-        let result = Licensing.fromUserInfo(userInfo)
-        
-        switch result {
+        switch Licensing.fromUserInfo(userInfo) {
         case let .some(.registered(license)):
             XCTAssertEqual(license.name, name)
             XCTAssertEqual(license.licenseCode, licenseCode)
-        default:
+
+        case .none,
+             .some(.unregistered):
             XCTFail("expected Registered")
         }
     }
@@ -185,14 +169,14 @@ class LicensingTests: XCTestCase {
         let name = "the name"
         let licenseCode = "the license code"
         let userInfo: UserInfo = ["registered" : true, "name" : name, "licenseCode" : licenseCode, "irrelevant" : 999]
-        
-        let result = Licensing.fromUserInfo(userInfo)
-        
-        switch result {
+
+        switch Licensing.fromUserInfo(userInfo) {
         case let .some(.registered(license)):
             XCTAssertEqual(license.name, name)
             XCTAssertEqual(license.licenseCode, licenseCode)
-        default:
+
+        case .none,
+             .some(.unregistered):
             XCTFail("expected Registered")
         }
     }

@@ -36,8 +36,7 @@ class PurchaseLicenseTests: XCTestCase {
         service.didPurchaseLicense(license: license)
         
         let values = registerAppDouble.didRegisterWith
-        XCTAssert(hasValue(values))
-        
+        XCTAssertNotNil(values)        
         if let values = values {
             
             XCTAssertEqual(values.name, name)

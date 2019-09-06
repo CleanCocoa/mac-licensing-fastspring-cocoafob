@@ -44,17 +44,15 @@ class LicenseProviderTests: XCTestCase {
         _ = licenseProvider.license
         
         let usedDefaultNames = userDefaultsDouble.didCallStringForKeyWith
-        XCTAssert(hasValue(usedDefaultNames))
-        
+        XCTAssertNotNil(usedDefaultNames)
         if let usedDefaultNames = usedDefaultNames {
-            
             XCTAssert(usedDefaultNames.contains(License.DefaultsKey.name.rawValue))
         }
     }
 
     func testObtainingCurrentLicense_WithEmptyDefaults_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(licenseProvider.license))
+        XCTAssertNil(licenseProvider.license)
     }
     
     
@@ -67,10 +65,8 @@ class LicenseProviderTests: XCTestCase {
         _ = licenseProvider.license
         
         let usedDefaultNames = userDefaultsDouble.didCallStringForKeyWith
-        XCTAssert(hasValue(usedDefaultNames))
-        
+        XCTAssertNotNil(usedDefaultNames)
         if let usedDefaultNames = usedDefaultNames {
-            
             XCTAssert(usedDefaultNames.contains(License.DefaultsKey.name.rawValue))
             XCTAssert(usedDefaultNames.contains(License.DefaultsKey.licenseCode.rawValue))
         }
@@ -84,9 +80,8 @@ class LicenseProviderTests: XCTestCase {
         
         let licenseInfo = licenseProvider.license
         
-        XCTAssert(hasValue(licenseInfo))
+        XCTAssertNotNil(licenseInfo)
         if let licenseInfo = licenseInfo {
-            
             XCTAssertEqual(licenseInfo.name, name)
             XCTAssertEqual(licenseInfo.licenseCode, key)
         }
@@ -101,7 +96,7 @@ class LicenseProviderTests: XCTestCase {
         var didCallStringForKeyWith: [String]?
         override func string(forKey defaultName: String) -> String? {
             
-            if !hasValue(didCallStringForKeyWith) {
+            if didCallStringForKeyWith == nil {
                 didCallStringForKeyWith = [String]()
             }
             

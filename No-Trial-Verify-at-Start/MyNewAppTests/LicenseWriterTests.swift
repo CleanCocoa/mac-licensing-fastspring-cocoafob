@@ -41,11 +41,10 @@ class LicenseWriterTests: XCTestCase {
         
         // Then
         let changedDefaults = userDefaultsDouble.didSetValuesForKeys
-        XCTAssert(hasValue(changedDefaults))
-        
+        XCTAssertNotNil(changedDefaults)
         if let changedDefaults = changedDefaults {
-            XCTAssert(changedDefaults[License.DefaultsKey.name.rawValue] == name)
-            XCTAssert(changedDefaults[License.DefaultsKey.licenseCode.rawValue] == licenseCode)
+            XCTAssertEqual(changedDefaults[License.DefaultsKey.name.rawValue], name)
+            XCTAssertEqual(changedDefaults[License.DefaultsKey.licenseCode.rawValue], licenseCode)
         }
     }
 

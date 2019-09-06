@@ -49,13 +49,14 @@ class LicensingProviderTests: XCTestCase {
     func testCurrentInfo_NoLicense_NoTrialPeriod_ReturnsTrialUp() {
         
         let licenseInfo = licensingProvider.licensing
-        
-        let trialIsUp: Bool
-        
-        switch licenseInfo {
-        case .trialUp: trialIsUp = true
-        default: trialIsUp = false
-        }
+        let trialIsUp: Bool = {
+            switch licenseInfo {
+            case .trialUp:
+                return true
+            default:
+                return false
+            }
+        }()
         
         XCTAssert(trialIsUp)
     }
@@ -70,8 +71,10 @@ class LicensingProviderTests: XCTestCase {
         let licenseInfo = licensingProvider.licensing
         
         switch licenseInfo {
-        case let .trial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
-        default: XCTFail("expected to be OnTrial")
+        case let .trial(trialPeriod):
+            XCTAssertEqual(trialPeriod, expectedPeriod)
+        default:
+            XCTFail("expected to be OnTrial")
         }
     }
     
@@ -83,13 +86,15 @@ class LicensingProviderTests: XCTestCase {
         trialProviderDouble.testTrialPeriod = expectedPeriod
         
         let licenseInfo = licensingProvider.licensing
-        
-        let trialIsUp: Bool
-        switch licenseInfo {
-        case .trialUp: trialIsUp = true
-        default: trialIsUp = false
-        }
-        
+        let trialIsUp: Bool = {
+            switch licenseInfo {
+            case .trialUp:
+                return true
+            default:
+                return false
+            }
+        }()
+
         XCTAssert(trialIsUp)
     }
 
@@ -99,12 +104,14 @@ class LicensingProviderTests: XCTestCase {
         licenseProviderDouble.testLicense = irrelevantLicense
         
         let licenseInfo = licensingProvider.licensing
-        
-        let trialIsUp: Bool
-        switch licenseInfo {
-        case .trialUp: trialIsUp = true
-        default: trialIsUp = false
-        }
+        let trialIsUp: Bool = {
+            switch licenseInfo {
+            case .trialUp:
+                return true
+            default:
+                return false
+            }
+        }()
         
         XCTAssert(trialIsUp)
     }
@@ -125,8 +132,10 @@ class LicensingProviderTests: XCTestCase {
         
         // Then
         switch licenseInfo {
-        case let .trial(trialPeriod): XCTAssertEqual(trialPeriod, expectedPeriod)
-        default: XCTFail("expected to be OnTrial")
+        case let .trial(trialPeriod):
+            XCTAssertEqual(trialPeriod, expectedPeriod)
+        default:
+            XCTFail("expected to be OnTrial")
         }
     }
     
@@ -141,8 +150,10 @@ class LicensingProviderTests: XCTestCase {
         let licenseInfo = licensingProvider.licensing
         
         switch licenseInfo {
-        case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)
-        default: XCTFail("expected .registered(_)")
+        case let .registered(foundLicense):
+            XCTAssertEqual(foundLicense, license)
+        default:
+            XCTFail("expected .registered(_)")
         }
     }
     
@@ -166,8 +177,10 @@ class LicensingProviderTests: XCTestCase {
         
         // Then
         switch licenseInfo {
-        case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)
-        default: XCTFail("expected .registered(_)")
+        case let .registered(foundLicense):
+            XCTAssertEqual(foundLicense, license)
+        default:
+            XCTFail("expected .registered(_)")
         }
     }
     
@@ -190,8 +203,10 @@ class LicensingProviderTests: XCTestCase {
         
         // Then
         switch licenseInfo {
-        case let .registered(foundLicense): XCTAssertEqual(foundLicense, license)
-        default: XCTFail("expected .registered(_)")
+        case let .registered(foundLicense):
+            XCTAssertEqual(foundLicense, license)
+        default:
+            XCTFail("expected .registered(_)")
         }
     }
     

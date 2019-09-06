@@ -42,12 +42,9 @@ class TrialProviderTests: XCTestCase {
     func testCurrentPeriod_WithEmptyDefaults_QueriesDefaultsForStartData() {
         
         _ = trialProvider.trialPeriod
-        
-        let usedDefaultNames = userDefaultsDouble.didCallObjectForKeyWith
-        XCTAssert(hasValue(usedDefaultNames))
-        
-        if let usedDefaultNames = usedDefaultNames {
-            
+
+        XCTAssertNotNil(userDefaultsDouble.didCallObjectForKeyWith)
+        if let usedDefaultNames = userDefaultsDouble.didCallObjectForKeyWith {
             XCTAssert(usedDefaultNames.contains(TrialPeriod.UserDefaultsKeys.startDate.rawValue))
         }
     }
@@ -56,7 +53,7 @@ class TrialProviderTests: XCTestCase {
         
         let trialInfo = trialProvider.trialPeriod
         
-        XCTAssertFalse(hasValue(trialInfo))
+        XCTAssertNil(trialInfo)
     }
     
     
@@ -67,12 +64,9 @@ class TrialProviderTests: XCTestCase {
         provideTrialDefaults(Date(), endDate: Date())
         
         _ = trialProvider.trialPeriod
-        
-        let usedDefaultNames = userDefaultsDouble.didCallObjectForKeyWith
-        XCTAssert(hasValue(usedDefaultNames))
-        
-        if let usedDefaultNames = usedDefaultNames {
-            
+
+        XCTAssertNotNil(userDefaultsDouble.didCallObjectForKeyWith)
+        if let usedDefaultNames = userDefaultsDouble.didCallObjectForKeyWith {
             XCTAssert(usedDefaultNames.contains(TrialPeriod.UserDefaultsKeys.startDate.rawValue))
         }
     }
@@ -85,7 +79,7 @@ class TrialProviderTests: XCTestCase {
         
         let trialPeriod = trialProvider.trialPeriod
         
-        XCTAssert(hasValue(trialPeriod))
+        XCTAssertNotNil(trialPeriod)
         if let trialPeriod = trialPeriod {
             XCTAssertEqual(trialPeriod.startDate, startDate)
             XCTAssertEqual(trialPeriod.endDate, endDate)
@@ -99,7 +93,7 @@ class TrialProviderTests: XCTestCase {
     
     func testCurrentTrial_WithoutDefaults_ReturnsNil() {
         
-        XCTAssertFalse(hasValue(trialProvider.trial(clock: clockDouble)))
+        XCTAssertNil(trialProvider.trial(clock: clockDouble))
     }
     
     func testCurrentTrial_WithTrialPeriod_ReturnsTrialWithClockAndPeriod() {
@@ -110,7 +104,7 @@ class TrialProviderTests: XCTestCase {
         
         let trial = trialProvider.trial(clock: clockDouble)
         
-        XCTAssert(hasValue(trial))
+        XCTAssertNotNil(trial)
         if let trial = trial {
             XCTAssertEqual(trial.trialPeriod, trialProvider.trialPeriod!)
             XCTAssert(trial.clock === clockDouble)
@@ -126,7 +120,7 @@ class TrialProviderTests: XCTestCase {
         var didCallObjectForKeyWith: [String]?
         override func object(forKey defaultName: String) -> Any? {
             
-            if !hasValue(didCallObjectForKeyWith) {
+            if didCallObjectForKeyWith == nil {
                 didCallObjectForKeyWith = [String]()
             }
             

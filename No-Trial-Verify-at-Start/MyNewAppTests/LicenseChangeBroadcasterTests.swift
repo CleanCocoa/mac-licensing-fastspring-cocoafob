@@ -34,16 +34,11 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         broadcaster.broadcast(licenseInfo)
         
         let values = notificationCenterDouble.didPostNotificationNameWith
-        XCTAssert(hasValue(values))
-        
+        XCTAssertNotNil(values)
         if let values = values {
             XCTAssertEqual(values.name, Licensing.licenseChangedNotification)
             XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
-            
-            XCTAssert(hasValue(values.userInfo))
-            if let userInfo = values.userInfo {
-                XCTAssert(userInfo == licenseInfo.userInfo())
-            }
+            XCTAssertEqual(values.userInfo, licenseInfo.userInfo())
         }
     }
 
@@ -54,16 +49,12 @@ class LicenseChangeBroadcasterTests: XCTestCase {
         broadcaster.broadcast(licenseInfo)
         
         let values = notificationCenterDouble.didPostNotificationNameWith
-        XCTAssert(hasValue(values))
+        XCTAssertNotNil(values)
         
         if let values = values {
             XCTAssertEqual(values.name, Licensing.licenseChangedNotification)
             XCTAssert(values.object as? LicenseChangeBroadcaster === broadcaster)
-            
-            XCTAssert(hasValue(values.userInfo))
-            if let userInfo = values.userInfo {
-                XCTAssert(userInfo == licenseInfo.userInfo())
-            }
+            XCTAssertEqual(values.userInfo, licenseInfo.userInfo())
         }
     }
     

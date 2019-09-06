@@ -32,7 +32,7 @@ class RegisterApplicationTests: XCTestCase {
 
         service.register(name: name, licenseCode: licenseCode)
 
-        XCTAssert(hasValue(factoryDouble.didRequestLicense))
+        XCTAssertNotNil(factoryDouble.didRequestLicense)
         if let values = factoryDouble.didRequestLicense {
             XCTAssertEqual(values.name, name)
             XCTAssertEqual(values.licenseCode, licenseCode)
@@ -45,7 +45,7 @@ class RegisterApplicationTests: XCTestCase {
 
         service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
 
-        XCTAssertFalse(hasValue(writerDouble.didStoreLicense))
+        XCTAssertNil(writerDouble.didStoreLicense)
     }
 
     func testRegister_NoLicenseFromFactory_DoesntBroadcastChange() {
@@ -54,7 +54,7 @@ class RegisterApplicationTests: XCTestCase {
 
         service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
 
-        XCTAssertFalse(hasValue(broadcasterDouble.didBroadcastWith))
+        XCTAssertNil(broadcasterDouble.didBroadcastWith)
     }
 
     func testRegister_LicenseFromFactory_DelegatesToStore() {
@@ -64,7 +64,7 @@ class RegisterApplicationTests: XCTestCase {
 
         service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
 
-        XCTAssert(hasValue(writerDouble.didStoreLicense))
+        XCTAssertNotNil(writerDouble.didStoreLicense)
         if let storedLicense = writerDouble.didStoreLicense {
             XCTAssertEqual(storedLicense, license)
         }

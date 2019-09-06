@@ -122,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func prepareLicenseWindowController() {
         
         let storeInfo = StoreInfoReader.defaultStoreInfo()
-        assert(hasValue(storeInfo), "Provide store details in FastSpringCredentials")
+        assert(storeInfo != nil, "Provide store details in FastSpringCredentials.plist")
         
         let store = Store(storeInfo: storeInfo!)
         purchaseLicense = PurchaseLicense(store: store, registerApplication: registerApplication)

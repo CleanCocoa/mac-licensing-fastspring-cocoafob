@@ -7,11 +7,11 @@ import XCTest
 @testable import MyNewApp
 
 func button(_ button: NSButton, isWiredTo target: AnyObject?) -> Bool {
-    
-    if !hasValue(target) { return false }
-    if !hasValue(button.target) { return false }
-    
-    return button.target === target
+    if let target = target {
+        return button.target === target
+    } else {
+        return button.target == nil
+    }
 }
 
 class StoreWindowControllerTests: XCTestCase {
@@ -31,22 +31,22 @@ class StoreWindowControllerTests: XCTestCase {
 
     func testWebView_IsConnected() {
         
-        XCTAssert(hasValue(controller.webView))
+        XCTAssertNotNil(controller.webView)
     }
 
     func testOrderView_IsConnected() {
         
-        XCTAssert(hasValue(controller.orderConfirmationView))
+        XCTAssertNotNil(controller.orderConfirmationView)
     }
     
     func testOrderViewsLicenseCodeTextField_IsConnected() {
         
-        XCTAssert(hasValue(controller.orderConfirmationView?.licenseCodeTextField))
+        XCTAssertNotNil(controller.orderConfirmationView?.licenseCodeTextField)
     }
     
     func testBackButton_IsConnected() {
         
-        XCTAssert(hasValue(controller.backButton))
+        XCTAssertNotNil(controller.backButton)
     }
     
     func testBackButton_IsWiredToAction() {
@@ -57,7 +57,7 @@ class StoreWindowControllerTests: XCTestCase {
     
     func testForwardButton_IsConnected() {
         
-        XCTAssert(hasValue(controller.forwardButton))
+        XCTAssertNotNil(controller.forwardButton)
     }
     
     func testForwardButton_IsWiredToAction() {
@@ -68,7 +68,7 @@ class StoreWindowControllerTests: XCTestCase {
     
     func testReloadButton_IsConnected() {
         
-        XCTAssert(hasValue(controller.reloadButton))
+        XCTAssertNotNil(controller.reloadButton)
     }
     
     func testReloadButton_IsWiredToAction() {
@@ -78,11 +78,7 @@ class StoreWindowControllerTests: XCTestCase {
     
     func testAfterAwaking_ForwardsWebViewToStoreController() {
         
-        XCTAssert(hasValue(storeControllerDouble.didSetWebViewTo))
-        
-        if let webView = storeControllerDouble.didSetWebViewTo {
-            XCTAssert(webView === controller.webView)
-        }
+        XCTAssert(storeControllerDouble.didSetWebViewTo === controller.webView)
     }
     
     func testAfterAwaking_LoadsStore() {

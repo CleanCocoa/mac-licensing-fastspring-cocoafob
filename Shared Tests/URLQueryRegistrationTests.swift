@@ -27,8 +27,8 @@ class URLQueryRegistrationTests: XCTestCase {
 
         service.register(fromURL: url)
 
-        XCTAssertFalse(hasValue(parserDouble.didParseQuery))
-        XCTAssertFalse(hasValue(regHandlerDouble.didRegisterWith))
+        XCTAssertNil(parserDouble.didParseQuery)
+        XCTAssertNil(regHandlerDouble.didRegisterWith)
     }
 
     func testRegister_URLWithBogusHost_DoesNotDelegate() {
@@ -37,8 +37,8 @@ class URLQueryRegistrationTests: XCTestCase {
 
         service.register(fromURL: url)
 
-        XCTAssertFalse(hasValue(parserDouble.didParseQuery))
-        XCTAssertFalse(hasValue(regHandlerDouble.didRegisterWith))
+        XCTAssertNil(parserDouble.didParseQuery)
+        XCTAssertNil(regHandlerDouble.didRegisterWith)
     }
 
     func testRegister_ActivationURLWithoutQuery_DoesNotDelegate() {
@@ -47,8 +47,8 @@ class URLQueryRegistrationTests: XCTestCase {
 
         service.register(fromURL: url)
 
-        XCTAssertFalse(hasValue(parserDouble.didParseQuery))
-        XCTAssertFalse(hasValue(regHandlerDouble.didRegisterWith))
+        XCTAssertNil(parserDouble.didParseQuery)
+        XCTAssertNil(regHandlerDouble.didRegisterWith)
     }
 
     func testRegister_ActivationURLWithQuery_DelegatesToQueryParser() {
@@ -58,7 +58,7 @@ class URLQueryRegistrationTests: XCTestCase {
 
         service.register(fromURL: url)
 
-        XCTAssert(parserDouble.didParseQuery == query)
+        XCTAssertEqual(parserDouble.didParseQuery, query)
     }
 
     func testRegister_ActivationURLWithQuery_NilQueryParserResult_DoesNotDelegateToRegHandler() {
@@ -68,7 +68,7 @@ class URLQueryRegistrationTests: XCTestCase {
 
         service.register(fromURL: url)
 
-        XCTAssertFalse(hasValue(regHandlerDouble.didRegisterWith))
+        XCTAssertNil(regHandlerDouble.didRegisterWith)
     }
 
     func testRegister_ActivationURLWithQuery_LicenseQueryParserResult_DelegatesToRegHandler() {
@@ -80,7 +80,7 @@ class URLQueryRegistrationTests: XCTestCase {
 
         service.register(fromURL: url)
 
-        XCTAssert(hasValue(regHandlerDouble.didRegisterWith))
+        XCTAssertNotNil(regHandlerDouble.didRegisterWith)
         if let licenseData = regHandlerDouble.didRegisterWith {
             XCTAssertEqual(licenseData.name, name)
             XCTAssertEqual(licenseData.licenseCode, licenseCode)
