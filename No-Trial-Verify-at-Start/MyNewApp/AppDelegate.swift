@@ -127,7 +127,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func licenseDidChange(_ notification: Notification) {
         
-        guard let userInfo = (notification as NSNotification).userInfo,
+        guard let userInfo = notification.userInfo,
             let licensing = Licensing.fromUserInfo(userInfo)
             else { return }
         
