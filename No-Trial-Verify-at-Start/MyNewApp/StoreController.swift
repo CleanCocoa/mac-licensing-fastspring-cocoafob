@@ -88,7 +88,7 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
             return
         }
         
-        storeDelegate?.didPurchaseLicense(license)
+        storeDelegate?.didPurchase(license: license)
     }
     
     fileprivate func licenseFromOrder(_ order: FsprgOrder) -> License? {

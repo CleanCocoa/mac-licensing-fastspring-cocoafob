@@ -85,7 +85,7 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         }
         
         if let license = license(fromOrder: order) {
-            storeDelegate?.didPurchaseLicense(license: license)
+            storeDelegate?.didPurchase(license: license)
         }
     }
     

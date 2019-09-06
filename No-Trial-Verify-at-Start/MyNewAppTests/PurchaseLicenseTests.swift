@@ -33,7 +33,7 @@ class PurchaseLicenseTests: XCTestCase {
         let licenseCode = "XXX-123-YYY"
         let license = License(name: name, licenseCode: licenseCode)
         
-        service.didPurchaseLicense(license)
+        service.didPurchase(license: license)
         
         let values = registerAppDouble.didRegisterWith
         XCTAssertNotNil(values)

@@ -141,7 +141,7 @@ class LicenseWindowControllerTests: XCTestCase {
         }
         
         var didDisplayLicenseWith: License? = nil
-        override func displayLicense(_ license: License) {
+        override func display(license: License) {
             
             didDisplayLicenseWith = license
         }

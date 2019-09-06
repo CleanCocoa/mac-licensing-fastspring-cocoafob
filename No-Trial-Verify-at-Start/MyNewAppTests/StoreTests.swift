@@ -87,7 +87,7 @@ class StoreTests: XCTestCase {
     
     class TestDelegate: StoreDelegate {
         
-        func didPurchaseLicense(_ license: License) {
+        func didPurchase(license: License) {
             // no-op
         }
     }

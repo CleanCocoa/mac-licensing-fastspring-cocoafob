@@ -161,7 +161,7 @@
 		50C9B0CF1B7F7B7C002C5449 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseProviderTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseProviderTests.swift; sourceTree = "<group>"; };
 		50E2D05D231EB35E002871B1 /* CocoaFob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaFob.xcodeproj; path = ../External/cocoafob/swift5/CocoaFob.xcodeproj; sourceTree = "<group>"; };
 		50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseViewController.swift; sourceTree = "<group>"; };
 		50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseWindowControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -269,17 +269,6 @@
 			path = License;
 			sourceTree = "<group>";
 		};
-		50C06EF11B91DA3D00A7DBBE /* FastSpring Store Integration */ = {
-			isa = PBXGroup;
-			children = (
-				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
-				506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */,
-				506DA9371B8340C9007B110F /* Store.swift */,
-				506AB3FA1B84AEA10072CEC8 /* Me.swift */,
-			);
-			name = "FastSpring Store Integration";
-			sourceTree = "<group>";
-		};
 		50C9B0941B7F6DAC002C5449 = {
 			isa = PBXGroup;
 			children = (
@@ -310,7 +299,6 @@
 				50E75DB71B820A730092CD19 /* RegisterApplication.swift */,
 				50455FA01B8313E700727FBA /* PurchaseLicense.swift */,
 				50E75DC11B821D590092CD19 /* License */,
-				50C06EF11B91DA3D00A7DBBE /* FastSpring Store Integration */,
 				50E75D801B81E8810092CD19 /* User Interface */,
 				50C9B0A01B7F6DAC002C5449 /* Supporting Files */,
 				50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */,
@@ -363,10 +351,22 @@
 			children = (
 				5082F9DA2322585F00B667C9 /* License */,
 				5082F9C8231FC64F00B667C9 /* URL Scheme Parsing */,
+				50CB818F23225B5C00F4B653 /* FastSpring Store Integration */,
 				5082F9BF231FC5F200B667C9 /* Util */,
 			);
 			name = Shared;
 			path = ../Shared;
+			sourceTree = "<group>";
+		};
+		50CB818F23225B5C00F4B653 /* FastSpring Store Integration */ = {
+			isa = PBXGroup;
+			children = (
+				50337B8F1B85B26D0056FC3B /* StoreInfoReader.swift */,
+				506AB3FE1B84AECA0072CEC8 /* StoreInfo.swift */,
+				506DA9371B8340C9007B110F /* Store.swift */,
+				506AB3FA1B84AEA10072CEC8 /* Me.swift */,
+			);
+			path = "FastSpring Store Integration";
 			sourceTree = "<group>";
 		};
 		50E2D05E231EB35E002871B1 /* Products */ = {

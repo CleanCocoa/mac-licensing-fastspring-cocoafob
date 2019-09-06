@@ -12,12 +12,10 @@ class StoreInfoReaderTests: XCTestCase {
 
     func testReadingValidData_ReturnsStoreInfoWithData() {
         
-        let result = StoreInfoReader.storeInfoFromURL(validURL)
+        let result = StoreInfoReader.storeInfo(fromURL: validURL)
         
-        XCTAssert(hasValue(result))
-        
+        XCTAssertNotNil(result)
         if let result = result {
-            
             XCTAssertEqual(result.storeId, "A Store ID")
             XCTAssertEqual(result.productName, "A Product Name")
             XCTAssertEqual(result.productId, "A Product ID")
@@ -32,12 +30,10 @@ class StoreInfoReaderTests: XCTestCase {
             "productName" : "My Cool Product"
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(data)
+        let result = StoreInfoReader.storeInfo(fromDictionary: data)
         
-        XCTAssert(hasValue(result))
-        
+        XCTAssertNotNil(result)
         if let result = result {
-            
             XCTAssertEqual(result.storeId, data["storeId"]!)
             XCTAssertEqual(result.productName, data["productName"]!)
             XCTAssertEqual(result.productId, data["productId"]!)
@@ -53,9 +49,9 @@ class StoreInfoReaderTests: XCTestCase {
             "productName" : "My Cool Product"
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(data)
+        let result = StoreInfoReader.storeInfo(fromDictionary: data)
         
-        XCTAssert(hasValue(result))
+        XCTAssertNotNil(result)
     }
     
     func testInfoFromDict_MissingStoreId_ReturnsNil() {
@@ -65,9 +61,9 @@ class StoreInfoReaderTests: XCTestCase {
             "productName" : "My Cool Product"
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(incompleteData)
+        let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testInfoFromDict_MissingProductId_ReturnsNil() {
@@ -77,9 +73,9 @@ class StoreInfoReaderTests: XCTestCase {
             "productName" : "My Cool Product"
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(incompleteData)
+        let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
     
     func testInfoFromDict_MissingProductName_ReturnsNil() {
@@ -89,8 +85,8 @@ class StoreInfoReaderTests: XCTestCase {
             "productId" : "coolproduct",
         ]
         
-        let result = StoreInfoReader.storeInfoFromDictionary(incompleteData)
+        let result = StoreInfoReader.storeInfo(fromDictionary: incompleteData)
         
-        XCTAssertFalse(hasValue(result))
+        XCTAssertNil(result)
     }
 }

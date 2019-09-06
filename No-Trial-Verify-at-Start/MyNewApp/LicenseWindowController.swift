@@ -34,7 +34,7 @@ public class LicenseWindowController: NSWindowController {
         case .unregistered:
             existingLicenseViewController.displayEmptyForm()
         case .registered(let license):
-            existingLicenseViewController.displayLicense(license)
+            existingLicenseViewController.display(license: license)
         }
     }
     

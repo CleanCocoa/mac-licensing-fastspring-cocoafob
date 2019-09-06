@@ -26,7 +26,7 @@ extension PurchaseLicense: HandlesPurchases {
 
 extension PurchaseLicense: StoreDelegate {
     
-    public func didPurchaseLicense(license: License) {
+    public func didPurchase(license: License) {
         
         registerApplication.register(name: license.name, licenseCode: license.licenseCode)
     }

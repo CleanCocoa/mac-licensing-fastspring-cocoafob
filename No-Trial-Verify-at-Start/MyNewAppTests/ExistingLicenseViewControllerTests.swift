@@ -95,7 +95,7 @@ class ExistingLicenseViewControllerTests: XCTestCase {
         let license = License(name: "a name", licenseCode: "a code")
         controller.licenseeTextField.stringValue = ""
         
-        controller.displayLicense(license)
+        controller.display(license: license)
         
         XCTAssertEqual(controller.licenseeTextField.stringValue, "a name")
     }
@@ -105,7 +105,7 @@ class ExistingLicenseViewControllerTests: XCTestCase {
         let license = License(name: "alicenseCodeme", licenseCode: "a code")
         controller.licenseCodeTextField.stringValue = ""
         
-        controller.displayLicense(license)
+        controller.display(license: license)
         
         XCTAssertEqual(controller.licenseCodeTextField.stringValue, "a code")
     }

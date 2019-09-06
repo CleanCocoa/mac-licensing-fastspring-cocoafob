@@ -2,11 +2,9 @@
 // 
 // See the file LICENSE for copying permission.
 
-import Foundation
-
 public protocol StoreDelegate: class {
     
-    func didPurchaseLicense(license: License)
+    func didPurchase(license: License)
 }
 
 public class Store {
@@ -15,7 +13,7 @@ public class Store {
     
     public var storeDelegate: StoreDelegate?
     
-    let storeWindowController: StoreWindowController
+    public let storeWindowController: StoreWindowController
     public lazy var storeController: StoreController = StoreController(storeInfo: self.storeInfo)
     
     convenience init(storeInfo: StoreInfo) {

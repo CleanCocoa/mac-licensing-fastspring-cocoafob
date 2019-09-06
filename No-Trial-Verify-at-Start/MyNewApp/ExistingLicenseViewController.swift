@@ -30,7 +30,7 @@ public class ExistingLicenseViewController: NSViewController {
         licenseCodeTextField.stringValue = ""
     }
     
-    public func displayLicense(_ license: License) {
+    public func display(license: License) {
         
         licenseeTextField.stringValue = license.name
         licenseCodeTextField.stringValue = license.licenseCode

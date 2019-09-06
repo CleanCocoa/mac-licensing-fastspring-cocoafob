@@ -2,8 +2,6 @@
 // 
 // See the file LICENSE for copying permission.
 
-import Foundation
-
 public struct StoreInfo {
     
     public let storeId: String
