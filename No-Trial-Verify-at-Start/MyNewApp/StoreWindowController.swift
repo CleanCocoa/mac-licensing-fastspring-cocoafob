@@ -16,11 +16,11 @@ public class OrderConfirmationView: NSView {
 
 @objc public class StoreWindowController: NSWindowController {
 
-    static let NibName = "StoreWindowController"
+    static let nibName = "StoreWindowController"
     
     public convenience init() {
         
-        self.init(windowNibName: StoreWindowController.NibName)
+        self.init(windowNibName: StoreWindowController.nibName)
     }
     
     @IBOutlet public var webView: WebView!
