@@ -47,7 +47,7 @@
 		50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */; };
 		50E75D7B1B81D8890092CD19 /* LicenseWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */; };
 		50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7C1B81D9990092CD19 /* Helpers.swift */; };
-		50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */; };
+		50E75D7F1B81DA160092CD19 /* ExistingLicenseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75D7E1B81DA160092CD19 /* ExistingLicenseViewControllerTests.swift */; };
 		50E75DAA1B81FB4F0092CD19 /* LicenseVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */; };
 		50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */; };
 		50E75DB41B82084E0092CD19 /* LicenseWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */; };
@@ -166,7 +166,7 @@
 		50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingLicenseViewController.swift; sourceTree = "<group>"; };
 		50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseWindowControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75D7C1B81D9990092CD19 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ExistingLicenseWindowControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		50E75D7E1B81DA160092CD19 /* ExistingLicenseViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ExistingLicenseViewControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75D8A1B81EE080092CD19 /* MyNewApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		50E75DA91B81FB4F0092CD19 /* LicenseVerifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseVerifierTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50E75DAB1B8205EA0092CD19 /* LicenseVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseVerifier.swift; sourceTree = "<group>"; };
@@ -329,7 +329,7 @@
 				506AB4001B84B0790072CEC8 /* StoreTests.swift */,
 				506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */,
 				50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */,
-				50E75D7E1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift */,
+				50E75D7E1B81DA160092CD19 /* ExistingLicenseViewControllerTests.swift */,
 				50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */,
 				5082F9BB231FC09200B667C9 /* ValidLicenseFactoryTests.swift */,
 				50E75D7C1B81D9990092CD19 /* Helpers.swift */,
@@ -629,7 +629,7 @@
 				50337B921B85B2840056FC3B /* StoreInfoReaderTests.swift in Sources */,
 				50E75DBA1B820A880092CD19 /* RegisterApplicationTests.swift in Sources */,
 				5082F9D8231FC6E600B667C9 /* URLQueryLicenseParserTests.swift in Sources */,
-				50E75D7F1B81DA160092CD19 /* ExistingLicenseWindowControllerTests.swift in Sources */,
+				50E75D7F1B81DA160092CD19 /* ExistingLicenseViewControllerTests.swift in Sources */,
 				50E75DC01B8217B40092CD19 /* LicenseChangeBroadcasterTests.swift in Sources */,
 				50E75D7D1B81D9990092CD19 /* Helpers.swift in Sources */,
 				5082F9D9231FC6E600B667C9 /* URLQueryRegistrationTests.swift in Sources */,

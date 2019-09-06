@@ -6,7 +6,7 @@ import Cocoa
 import XCTest
 @testable import MyNewApp
 
-class ExistingLicenseWindowControllerTests: XCTestCase {
+class ExistingLicenseViewControllerTests: XCTestCase {
 
     var controller: ExistingLicenseViewController!
     
@@ -96,7 +96,7 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
         let license = License(name: "a name", licenseCode: "a code")
         controller.licenseeTextField.stringValue = ""
         
-        controller.displayLicense(license)
+        controller.display(license: license)
         
         XCTAssertEqual(controller.licenseeTextField.stringValue, "a name")
     }
@@ -106,7 +106,7 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
         let license = License(name: "alicenseCodeme", licenseCode: "a code")
         controller.licenseCodeTextField.stringValue = ""
         
-        controller.displayLicense(license)
+        controller.display(license: license)
         
         XCTAssertEqual(controller.licenseCodeTextField.stringValue, "a code")
     }
@@ -115,8 +115,10 @@ class ExistingLicenseWindowControllerTests: XCTestCase {
     // MARK: - 
     
     class TestEventHandler: HandlesRegistering {
+        
         var didRegisterWith: (name: String, licenseCode: String)?
         func register(name: String, licenseCode: String) {
+            
             didRegisterWith = (name, licenseCode)
         }
     }
