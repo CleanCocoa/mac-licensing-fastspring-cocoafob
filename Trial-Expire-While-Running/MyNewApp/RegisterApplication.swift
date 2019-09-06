@@ -2,7 +2,7 @@
 // 
 // See the file LICENSE for copying permission.
 
-public class RegisterApplication: HandlesRegistering {
+public class RegisterApplication {
 
     let licenseFactory: ValidLicenseFactory
     let licenseWriter: LicenseWriter
@@ -30,3 +30,6 @@ public class RegisterApplication: HandlesRegistering {
         Alerts.invalidLicenseCodeAlert()?.runModal()
     }
 }
+
+// Implement the UI protocol to be a valid event handler:
+extension RegisterApplication: HandlesRegistering { }
