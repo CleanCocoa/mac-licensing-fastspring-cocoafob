@@ -84,13 +84,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         switch currentLicensing {
         case .unregistered:
+            // Show an alert if there is license info stored, but it's not valid. Could happen if the user mangles with the UserDefaults.
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
             
             showRegisterApp()
+
         case .registered(_):
-            
             unlockApp()
         }
     }

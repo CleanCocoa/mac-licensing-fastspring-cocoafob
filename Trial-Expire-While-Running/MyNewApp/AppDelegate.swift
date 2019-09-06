@@ -140,6 +140,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         switch currentLicensing {
         case .trialUp:
+            // Show an alert if there is license info stored, but it's not valid. Could happen if the user mangles with the UserDefaults.
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
@@ -147,17 +148,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             showRegisterApp()
             
         case let .trial(trialPeriod):
+            // Similar to .trialUp, invalid license details could result in this state
             if licenseIsInvalid() {
                 displayInvalidLicenseAlert()
             }
             
             let trialDaysLeft = trialPeriod.daysLeft(clock: clock)
             displayTrialDaysLeftAlert(daysLeft: trialDaysLeft)
-            
             unlockApp()
             
         case .registered(_):
-            
             stopTrialTimer()
             unlockApp()
         }
