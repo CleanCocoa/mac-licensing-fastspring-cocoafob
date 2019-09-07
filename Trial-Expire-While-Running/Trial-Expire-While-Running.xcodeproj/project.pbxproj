@@ -11,14 +11,11 @@
 		50337B941B85B4420056FC3B /* TestCredentialsComplete.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */; };
 		50455FA11B8313E700727FBA /* PurchaseLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA01B8313E700727FBA /* PurchaseLicense.swift */; };
 		50455FA31B831D3600727FBA /* PurchaseLicenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */; };
-		506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB3FC1B84AEB90072CEC8 /* StoreController.swift */; };
 		506AB4011B84B0790072CEC8 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB4001B84B0790072CEC8 /* StoreTests.swift */; };
 		506AB4031B84B5A00072CEC8 /* StoreWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */; };
 		506AB4071B84CC310072CEC8 /* FastSpringCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */; };
 		506D9FF11B8DE68E005F5109 /* LicensingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D9FF01B8DE68E005F5109 /* LicensingProvider.swift */; };
 		506D9FF31B8DE6A3005F5109 /* LicensingProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D9FF21B8DE6A3005F5109 /* LicensingProviderTests.swift */; };
-		506DA9451B835784007B110F /* StoreWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DA9431B835784007B110F /* StoreWindowController.swift */; };
-		506DA9461B835784007B110F /* StoreWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506DA9441B835784007B110F /* StoreWindowController.xib */; };
 		5070B9B61B8C50BB0036A86C /* TrialProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B51B8C50BB0036A86C /* TrialProvider.swift */; };
 		5070B9B81B8C50C90036A86C /* TrialProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B71B8C50C90036A86C /* TrialProviderTests.swift */; };
 		5070B9BA1B8C58A60036A86C /* TrialPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070B9B91B8C58A60036A86C /* TrialPeriod.swift */; };
@@ -42,6 +39,9 @@
 		5082F9E22322589400B667C9 /* LicenseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9DC2322589100B667C9 /* LicenseProvider.swift */; };
 		5082F9E32322589400B667C9 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9DD2322589100B667C9 /* License.swift */; };
 		5082F9E42322589400B667C9 /* LicenseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082F9DE2322589100B667C9 /* LicenseWriter.swift */; };
+		50B4658F2323B8A400DF6E55 /* StoreWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B4658C2323B8A400DF6E55 /* StoreWindowController.xib */; };
+		50B465902323B8A400DF6E55 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B4658D2323B8A400DF6E55 /* StoreController.swift */; };
+		50B465912323B8A400DF6E55 /* StoreWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B4658E2323B8A400DF6E55 /* StoreWindowController.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -136,14 +136,11 @@
 		50337B931B85B4420056FC3B /* TestCredentialsComplete.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestCredentialsComplete.plist; sourceTree = "<group>"; };
 		50455FA01B8313E700727FBA /* PurchaseLicense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicense.swift; sourceTree = "<group>"; };
 		50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseLicenseTests.swift; sourceTree = "<group>"; };
-		506AB3FC1B84AEB90072CEC8 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
 		506AB4001B84B0790072CEC8 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
 		506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowControllerTests.swift; sourceTree = "<group>"; };
 		506AB4061B84CC310072CEC8 /* FastSpringCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FastSpringCredentials.plist; path = ../FastSpringCredentials.plist; sourceTree = "<group>"; };
 		506D9FF01B8DE68E005F5109 /* LicensingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensingProvider.swift; sourceTree = "<group>"; };
 		506D9FF21B8DE6A3005F5109 /* LicensingProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensingProviderTests.swift; sourceTree = "<group>"; };
-		506DA9431B835784007B110F /* StoreWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowController.swift; sourceTree = "<group>"; };
-		506DA9441B835784007B110F /* StoreWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWindowController.xib; sourceTree = "<group>"; };
 		5070B9B51B8C50BB0036A86C /* TrialProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialProvider.swift; sourceTree = "<group>"; };
 		5070B9B71B8C50C90036A86C /* TrialProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialProviderTests.swift; sourceTree = "<group>"; };
 		5070B9B91B8C58A60036A86C /* TrialPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialPeriod.swift; sourceTree = "<group>"; };
@@ -167,6 +164,9 @@
 		5082F9DC2322589100B667C9 /* LicenseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseProvider.swift; sourceTree = "<group>"; };
 		5082F9DD2322589100B667C9 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		5082F9DE2322589100B667C9 /* LicenseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWriter.swift; sourceTree = "<group>"; };
+		50B4658C2323B8A400DF6E55 /* StoreWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWindowController.xib; sourceTree = "<group>"; };
+		50B4658D2323B8A400DF6E55 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
+		50B4658E2323B8A400DF6E55 /* StoreWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowController.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +273,7 @@
 				5082F9D1231FC6D800B667C9 /* URLQueryLicenseParserTests.swift */,
 				5082F9D2231FC6D800B667C9 /* URLQueryRegistrationTests.swift */,
 				50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */,
+				506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */,
 				50E75DB31B82084E0092CD19 /* LicenseWriterTests.swift */,
 			);
 			name = "Shared Tests";
@@ -346,7 +347,6 @@
 				50E75DB91B820A880092CD19 /* RegisterApplicationTests.swift */,
 				50455FA21B831D3600727FBA /* PurchaseLicenseTests.swift */,
 				506AB4001B84B0790072CEC8 /* StoreTests.swift */,
-				506AB4021B84B5A00072CEC8 /* StoreWindowControllerTests.swift */,
 				50E75D7A1B81D8890092CD19 /* LicenseWindowControllerTests.swift */,
 				50E75D7E1B81DA160092CD19 /* ExistingLicenseViewControllerTests.swift */,
 				50337B911B85B2840056FC3B /* StoreInfoReaderTests.swift */,
@@ -389,6 +389,9 @@
 				50CB819423225C8100F4B653 /* StoreInfo.swift */,
 				50CB819523225C8100F4B653 /* Me.swift */,
 				50CB819623225C8100F4B653 /* Store.swift */,
+				50B4658D2323B8A400DF6E55 /* StoreController.swift */,
+				50B4658E2323B8A400DF6E55 /* StoreWindowController.swift */,
+				50B4658C2323B8A400DF6E55 /* StoreWindowController.xib */,
 			);
 			path = "FastSpring Store Integration";
 			sourceTree = "<group>";
@@ -424,9 +427,6 @@
 				50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */,
 				50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */,
 				50E75D781B81D7B60092CD19 /* ExistingLicenseViewController.swift */,
-				506DA9431B835784007B110F /* StoreWindowController.swift */,
-				506DA9441B835784007B110F /* StoreWindowController.xib */,
-				506AB3FC1B84AEB90072CEC8 /* StoreController.swift */,
 				50C9B0A41B7F6DAC002C5449 /* Images.xcassets */,
 			);
 			name = "User Interface";
@@ -598,11 +598,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50B4658F2323B8A400DF6E55 /* StoreWindowController.xib in Resources */,
 				50C9B0C91B7F7844002C5449 /* LicenseWindowController.xib in Resources */,
 				50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */,
 				506AB4071B84CC310072CEC8 /* FastSpringCredentials.plist in Resources */,
 				50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */,
-				506DA9461B835784007B110F /* StoreWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +624,7 @@
 				5082F9E32322589400B667C9 /* License.swift in Sources */,
 				50E75DB81B820A730092CD19 /* RegisterApplication.swift in Sources */,
 				5070B9C21B8C63700036A86C /* Days.swift in Sources */,
+				50B465912323B8A400DF6E55 /* StoreWindowController.swift in Sources */,
 				5070B9B61B8C50BB0036A86C /* TrialProvider.swift in Sources */,
 				50E75DE11B82275D0092CD19 /* FsprgOrderItem.m in Sources */,
 				50E75DDC1B82275D0092CD19 /* FsprgStoreParameters.m in Sources */,
@@ -631,6 +632,7 @@
 				506D9FF11B8DE68E005F5109 /* LicensingProvider.swift in Sources */,
 				50E75DC31B8225230092CD19 /* Alerts.swift in Sources */,
 				50E75DD91B82275D0092CD19 /* FsprgEmbeddedStoreController.m in Sources */,
+				50B465902323B8A400DF6E55 /* StoreController.swift in Sources */,
 				5070B9BC1B8C5A2C0036A86C /* TrialWriter.swift in Sources */,
 				5082F9CE231FC67300B667C9 /* URLQueryLicenseParser.swift in Sources */,
 				50E75D791B81D7B60092CD19 /* ExistingLicenseViewController.swift in Sources */,
@@ -654,7 +656,6 @@
 				5082F9E22322589400B667C9 /* LicenseProvider.swift in Sources */,
 				5070B9C41B8C6F3E0036A86C /* Clock.swift in Sources */,
 				50E75DDA1B82275D0092CD19 /* FsprgOrderDocumentRepresentation.m in Sources */,
-				506AB3FD1B84AEB90072CEC8 /* StoreController.swift in Sources */,
 				50CB819923225C8100F4B653 /* Me.swift in Sources */,
 				50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */,
 				5082F9B8231FB75400B667C9 /* ValidLicenseFactory.swift in Sources */,
@@ -662,7 +663,6 @@
 				50E75DAC1B8205EA0092CD19 /* LicenseVerifier.swift in Sources */,
 				50CB819723225C8100F4B653 /* StoreInfoReader.swift in Sources */,
 				5082F9E42322589400B667C9 /* LicenseWriter.swift in Sources */,
-				506DA9451B835784007B110F /* StoreWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
