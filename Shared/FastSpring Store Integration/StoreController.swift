@@ -90,15 +90,11 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
     fileprivate func license(fromOrder order: FsprgOrder) -> License? {
 
         guard let items = order.orderItems() as? [FsprgOrderItem],
-            let license = items
+            let license: License = items
                 .filter(orderItemIsForThisApp)
-                .map(license(fromOrderItem:)) // -> [License?]
-                .filter(hasValue)          // keep non-nil
-                .map({ $0! })              // -> [License]
-                .first else {
-
-            return nil
-        }
+                .compactMap(license(fromOrderItem:))
+                .first
+            else { return nil }
 
         return license
     }
