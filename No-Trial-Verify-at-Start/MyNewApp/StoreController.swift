@@ -81,18 +81,18 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
         // Thanks Obj-C bridging without nullability annotations:
         // implicit unwrapped optionals are not safe
         guard let order = order,
-            let license = licenseFromOrder(order)
+            let license = license(fromOrder: order)
             else { return }
 
         storeDelegate?.didPurchase(license: license)
     }
 
-    fileprivate func licenseFromOrder(_ order: FsprgOrder) -> License? {
+    fileprivate func license(fromOrder order: FsprgOrder) -> License? {
 
         guard let items = order.orderItems() as? [FsprgOrderItem],
             let license = items
                 .filter(orderItemIsForThisApp)
-                .map(licenseFromOrderItem) // -> [License?]
+                .map(license(fromOrderItem:)) // -> [License?]
                 .filter(hasValue)          // keep non-nil
                 .map({ $0! })              // -> [License]
                 .first else {
@@ -105,22 +105,19 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
 
     fileprivate func orderItemIsForThisApp(_ orderItem: FsprgOrderItem) -> Bool {
 
-        guard let productName = orderItem.productName() else {
-            return false
-        }
+        guard let productName = orderItem.productName()
+            else { return false }
 
         let appName = storeInfo.productName
         return productName.hasPrefix(appName)
     }
 
-    fileprivate func licenseFromOrderItem(_ orderItem: FsprgOrderItem) -> License? {
+    fileprivate func license(fromOrderItem orderItem: FsprgOrderItem) -> License? {
 
         guard let orderLicense = orderItem.license(),
             let name = orderLicense.licenseName(),
-            let licenseCode = orderLicense.firstLicenseCode() else {
-
-            return nil
-        }
+            let licenseCode = orderLicense.firstLicenseCode()
+            else { return nil }
 
         return License(name: name, licenseCode: licenseCode)
     }
@@ -131,10 +128,8 @@ extension StoreController: FsprgEmbeddedStoreDelegate {
     public func view(withFrame frame: NSRect, for order: FsprgOrder!) -> NSView! {
 
         guard let orderConfirmationView = orderConfirmationView,
-            let license = licenseFromOrder(order) else {
-
-            return nil
-        }
+            let license = license(fromOrder: order)
+            else { return nil }
 
         orderConfirmationView.display(licenseCode: license.licenseCode)
         return orderConfirmationView
