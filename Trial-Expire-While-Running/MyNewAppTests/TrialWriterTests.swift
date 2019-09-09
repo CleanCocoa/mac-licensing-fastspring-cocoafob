@@ -8,29 +8,12 @@ import XCTest
 
 class TrialWriterTests: XCTestCase {
 
-    let userDefaultsDouble: TestUserDefaults = TestUserDefaults()
-    
-    override func setUp() {
-        
-        super.setUp()
-        
-        // No need to set the double on TrialWriter because
-        // its property is lazily loaded during test cases later.
-        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
-    }
-    
-    override func tearDown() {
-        
-        MyNewApp.UserDefaults.resetSharedInstance()
-        
-        super.tearDown()
-    }
-    
-
     func testStoring_DelegatesToUserDefaults() {
         
         // Given
         let writer = TrialWriter()
+        let userDefaultsDouble = TestUserDefaults()
+        writer.userDefaults = userDefaultsDouble
         let startDate = Date(timeIntervalSince1970: 4567)
         let endDate = Date(timeIntervalSince1970: 121314)
         let trialPeriod = TrialPeriod(startDate: startDate, endDate: endDate)

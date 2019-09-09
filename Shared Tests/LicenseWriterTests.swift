@@ -8,31 +8,14 @@ import XCTest
 
 class LicenseWriterTests: XCTestCase {
 
-    let userDefaultsDouble: TestUserDefaults = TestUserDefaults()
-    
-    override func setUp() {
-        
-        super.setUp()
-        
-        // No need to set the double on LicenseWriter because
-        // its property is lazily loaded during test cases later.
-        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
-    }
-    
-    override func tearDown() {
-        
-        MyNewApp.UserDefaults.resetSharedInstance()
-        
-        super.tearDown()
-    }
-    
-    
     // MARK: Storing
     
     func testStoring_DelegatesToUserDefaults() {
         
         // Given
         let writer = LicenseWriter()
+        let userDefaultsDouble: TestUserDefaults = TestUserDefaults()
+        writer.userDefaults = userDefaultsDouble
         let licenseCode = "a license code"
         let name = "a name"
         

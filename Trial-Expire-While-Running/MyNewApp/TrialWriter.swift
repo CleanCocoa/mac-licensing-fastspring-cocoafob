@@ -2,13 +2,13 @@
 // 
 // See the file LICENSE for copying permission.
 
-import Foundation
+import class Foundation.UserDefaults
 
 public class TrialWriter {
     
     public init() { }
     
-    lazy var userDefaults: Foundation.UserDefaults = MyNewApp.UserDefaults.standardUserDefaults()
+    lazy var userDefaults: Foundation.UserDefaults = .standard
     
     public func store(trialPeriod: TrialPeriod) {
         

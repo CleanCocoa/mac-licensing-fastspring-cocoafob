@@ -40,7 +40,6 @@
 		50C9B0C81B7F7844002C5449 /* LicenseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */; };
 		50C9B0C91B7F7844002C5449 /* LicenseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */; };
 		50C9B0D11B7F7B7C002C5449 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0CF1B7F7B7C002C5449 /* Optional.swift */; };
-		50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */; };
 		50C9B0D51B7F7E3D002C5449 /* LicenseProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */; };
 		50E2D069231EB365002871B1 /* CocoaFob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E2D064231EB35E002871B1 /* CocoaFob.framework */; };
 		50E2D06A231EB365002871B1 /* CocoaFob.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50E2D064231EB35E002871B1 /* CocoaFob.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -159,7 +158,6 @@
 		50C9B0C61B7F7844002C5449 /* LicenseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseWindowController.swift; sourceTree = "<group>"; };
 		50C9B0C71B7F7844002C5449 /* LicenseWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseWindowController.xib; sourceTree = "<group>"; };
 		50C9B0CF1B7F7B7C002C5449 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
-		50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		50C9B0D31B7F7E3D002C5449 /* MyNewAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyNewAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50C9B0D41B7F7E3D002C5449 /* LicenseProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LicenseProviderTests.swift; sourceTree = "<group>"; };
 		50E2D05D231EB35E002871B1 /* CocoaFob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaFob.xcodeproj; path = ../External/cocoafob/swift5/CocoaFob.xcodeproj; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 			children = (
 				5098EA221B9082F8001FBC3C /* Array.swift */,
 				50C9B0CF1B7F7B7C002C5449 /* Optional.swift */,
-				50C9B0D01B7F7B7C002C5449 /* UserDefaults.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -603,7 +600,6 @@
 				50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */,
 				50E75DDD1B82275D0092CD19 /* FsprgFileDownload.m in Sources */,
 				50C06EEF1B91DA0400A7DBBE /* URLComponents.swift in Sources */,
-				50C9B0D21B7F7B7C002C5449 /* UserDefaults.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
 				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
 				50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */,

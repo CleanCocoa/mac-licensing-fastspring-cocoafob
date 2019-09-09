@@ -2,29 +2,26 @@
 // 
 // See the file LICENSE for copying permission.
 
-import Cocoa
 import XCTest
 @testable import MyNewApp
 
 class TrialProviderTests: XCTestCase {
 
-    let trialProvider = TrialProvider()
+    var trialProvider: TrialProvider!
     
-    let userDefaultsDouble: TestUserDefaults = TestUserDefaults()
+    var userDefaultsDouble: TestUserDefaults!
     
     override func setUp() {
-        
         super.setUp()
         
-        // No need to set the double on trialProvider because
-        // its property is lazily loaded during test cases later.
-        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
+        userDefaultsDouble = TestUserDefaults()
+        trialProvider = TrialProvider()
+        trialProvider.userDefaults = userDefaultsDouble
     }
     
     override func tearDown() {
-        
-        MyNewApp.UserDefaults.resetSharedInstance()
-        
+        userDefaultsDouble = nil
+        trialProvider = nil
         super.tearDown()
     }
     
