@@ -1,4 +1,6 @@
-//
-//  Use this file to import your target's public headers that you would like to expose to Swift.
-//
+// FastSpring
+#import "../../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/Model/FsprgOrder.h"
+#import "../../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/Model/FsprgOrderItem.h"
 
+#import "../../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgEmbeddedStoreController.h"
+#import "../../External/FsprgEmbeddedStoreMac/FsprgEmbeddedStore/FsprgEmbeddedStoreDelegate.h"
