@@ -85,7 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         switch currentLicensing {
         case .unregistered:
             // Show an alert if there is license info stored, but it's not valid. Could happen if the user mangles with the UserDefaults.
-            if licenseIsInvalid() {
+            if hasInvalidLicenseInformation {
                 displayInvalidLicenseAlert()
             }
             
@@ -96,9 +96,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func licenseIsInvalid() -> Bool {
-        
-        return licensingProvider.licenseIsInvalid
+    fileprivate var hasInvalidLicenseInformation: Bool {
+        return licenseProvider.hasInvalidLicenseInformation
     }
     
     func displayInvalidLicenseAlert() {

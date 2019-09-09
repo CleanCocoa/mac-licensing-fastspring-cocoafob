@@ -141,7 +141,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         switch currentLicensing {
         case .trialUp:
             // Show an alert if there is license info stored, but it's not valid. Could happen if the user mangles with the UserDefaults.
-            if licenseIsInvalid() {
+            if hasInvalidLicenseInformation {
                 displayInvalidLicenseAlert()
             }
             
@@ -149,7 +149,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
         case let .trial(trialPeriod):
             // Similar to .trialUp, invalid license details could result in this state
-            if licenseIsInvalid() {
+            if hasInvalidLicenseInformation {
                 displayInvalidLicenseAlert()
             }
             
@@ -163,9 +163,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func licenseIsInvalid() -> Bool {
-        
-        return licensingProvider.licenseIsInvalid
+    fileprivate var hasInvalidLicenseInformation: Bool {
+        return licenseProvider.hasInvalidLicenseInformation
     }
     
     

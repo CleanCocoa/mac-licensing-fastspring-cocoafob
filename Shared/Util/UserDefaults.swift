@@ -4,6 +4,7 @@
 
 import Foundation
 
+@available(*, deprecated)
 public class UserDefaults {
 
     public static var sharedInstance: UserDefaults = UserDefaults()

@@ -2,12 +2,6 @@
 //
 // See the file LICENSE for copying permission.
 
-fileprivate extension License {
-    func isValid(licenseVerifier: LicenseVerifier) -> Bool {
-        return licenseVerifier.isValid(licenseCode: licenseCode, forName: name)
-    }
-}
-
 public class LicensingProvider {
     let trialProvider: TrialProvider
     let licenseProvider: LicenseProvider
@@ -16,47 +10,32 @@ public class LicensingProvider {
     public init(trialProvider: TrialProvider,
                 licenseProvider: LicenseProvider,
                 clock: KnowsTimeAndDate) {
-        
         self.trialProvider = trialProvider
         self.licenseProvider = licenseProvider
         self.clock = clock
     }
-    
-    public lazy var licenseVerifier: LicenseVerifier = LicenseVerifier()
-    
-    public var licenseIsInvalid: Bool {
-        
-        guard let license = self.license else {
-            return false
-        }
-        
-        return !license.isValid(licenseVerifier: licenseVerifier)
-    }
-    
+
     public var licensing: Licensing {
-        
-        if let license = self.license,
-            license.isValid(licenseVerifier: licenseVerifier) {
-            
+        if let license = self.license {
             return .registered(license)
         }
         
-        if let trial = self.trial,
-            trial.isActive {
-            
+        if let trial = self.trial {
             return .trial(trial.trialPeriod)
         }
         
         return .trialUp
     }
-    
+
+    /// Valid license.
     fileprivate var license: License? {
-        
         return licenseProvider.license
     }
-    
+
+    /// Active trial.
     fileprivate var trial: Trial? {
-        
-        return trialProvider.trial(clock: clock)
+        guard let trial = trialProvider.trial(clock: clock) else { return nil }
+        guard trial.isActive else { return nil }
+        return trial
     }
 }

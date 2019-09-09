@@ -2,6 +2,7 @@
 // 
 // See the file LICENSE for copying permission.
 
+/// Valid license information.
 public struct License {
     public let name: String
     public let licenseCode: String

@@ -8,23 +8,27 @@ import XCTest
 
 class LicenseProviderTests: XCTestCase {
 
-    let licenseProvider = LicenseProvider()
-    
-    let userDefaultsDouble: TestUserDefaults = TestUserDefaults()
+    var licenseProvider: LicenseProvider!
+
+    var factoryDouble: TestFactory!
+    var userDefaultsDouble: TestUserDefaults!
 
     override func setUp() {
-        
         super.setUp()
-        
-        // No need to set the double on licenseProvider because 
-        // its property is lazily loaded during test cases later.
-        MyNewApp.UserDefaults.sharedInstance = MyNewApp.UserDefaults(userDefaults: userDefaultsDouble)
+
+        factoryDouble = TestFactory()
+        userDefaultsDouble = TestUserDefaults()
+
+        licenseProvider = LicenseProvider()
+        licenseProvider.userDefaults = userDefaultsDouble
+        licenseProvider.validLicenseFactory = factoryDouble
     }
     
     override func tearDown() {
-        
-        MyNewApp.UserDefaults.resetSharedInstance()
-        
+        factoryDouble = nil
+        userDefaultsDouble = nil
+        licenseProvider = nil
+
         super.tearDown()
     }
 
@@ -37,11 +41,11 @@ class LicenseProviderTests: XCTestCase {
     
     
     // MARK: -
-    // MARK: Empty Defaults, no License
+    // MARK: License Info Reading
     
-    func testObtainingCurrentLicense_WithEmptyDefaults_QueriesDefaultsForName() {
+    func testObtainingCurrentLicenseInfo_WithEmptyDefaults_QueriesDefaultsForName() {
         
-        _ = licenseProvider.license
+        _ = licenseProvider.licenseInformation
         
         let usedDefaultNames = userDefaultsDouble.didCallStringForKeyWith
         XCTAssertNotNil(usedDefaultNames)
@@ -50,20 +54,17 @@ class LicenseProviderTests: XCTestCase {
         }
     }
 
-    func testObtainingCurrentLicense_WithEmptyDefaults_ReturnsNil() {
+    func testObtainingCurrentLicenseInfo_WithEmptyDefaults_ReturnsNil() {
         
-        XCTAssertNil(licenseProvider.license)
+        XCTAssertNil(licenseProvider.licenseInformation)
     }
-    
-    
-    // MARK: Existing Defaults, Registered
-    
-    func testObtainingCurrentLicense_WithDefaultsValues_QueriesDefaultsForNameAndKey() {
-        
+
+    func testObtainingCurrentLicenseInfo_WithDefaultsValues_QueriesDefaultsForNameAndKey() {
+
         provideLicenseDefaults("irrelevant name", licenseCode: "irrelevant key")
-        
-        _ = licenseProvider.license
-        
+
+        _ = licenseProvider.licenseInformation
+
         let usedDefaultNames = userDefaultsDouble.didCallStringForKeyWith
         XCTAssertNotNil(usedDefaultNames)
         if let usedDefaultNames = usedDefaultNames {
@@ -72,21 +73,101 @@ class LicenseProviderTests: XCTestCase {
         }
     }
 
-    func testObtainingCurrentLicense_WithDefaultsValues_ReturnsLicenseWithInfo() {
+    func testObtainingCurrentLicenseInfo_WithDefaultsValues_ReturnsLicenseInfo() {
 
         let name = "a name"
-        let key = "a license key"
-        provideLicenseDefaults(name, licenseCode: key)
-        
-        let licenseInfo = licenseProvider.license
-        
+        let licenseCode = "a license key"
+        provideLicenseDefaults(name, licenseCode: licenseCode)
+
+        let licenseInfo = licenseProvider.licenseInformation
+
         XCTAssertNotNil(licenseInfo)
         if let licenseInfo = licenseInfo {
             XCTAssertEqual(licenseInfo.name, name)
-            XCTAssertEqual(licenseInfo.licenseCode, key)
+            XCTAssertEqual(licenseInfo.licenseCode, licenseCode)
         }
     }
-    
+
+
+    // MARK: - License creation
+
+    func testObtainingLicense_WithEmptyDefaults_DoesNotCallFactory() {
+
+        XCTAssertNil(factoryDouble.didCreateLicense)
+    }
+
+    func testObtainingLicense_WithDefaultsValues_ForwardsValuesToFactory() {
+
+        let name = "a name"
+        let licenseCode = "a license key"
+        provideLicenseDefaults(name, licenseCode: licenseCode)
+
+        _ = licenseProvider.license
+
+        XCTAssertNotNil(factoryDouble.didCreateLicense)
+        if let values = factoryDouble.didCreateLicense {
+            XCTAssertEqual(values.name, name)
+            XCTAssertEqual(values.licenseCode, licenseCode)
+        }
+    }
+
+    func testObtainingLicense_WithDefaultsValues_FactoryReturnsNil_ReturnsNil() {
+
+        let name = "a name"
+        let licenseCode = "a license key"
+        provideLicenseDefaults(name, licenseCode: licenseCode)
+        factoryDouble.testLicense = nil
+
+        let result = licenseProvider.license
+
+        XCTAssertNil(result)
+    }
+
+    func testObtainingLicense_WithDefaultsValues_FactoryReturnsLicense_ReturnsLicense() {
+
+        provideLicenseDefaults("irrelevant", licenseCode: "irrelevant")
+        let license = License(name: "relevant name", licenseCode: "and relevant code")
+        factoryDouble.testLicense = license
+
+        let result = licenseProvider.license
+
+        XCTAssertEqual(result, license)
+    }
+
+
+    // MARK: - Stored license info validity test
+
+    func testHasInvalidLicenseInformation_EmptyDefaults_FactoryReturnsNil_ReturnsFalse() {
+
+        factoryDouble.testLicense = nil
+
+        XCTAssertFalse(licenseProvider.hasInvalidLicenseInformation)
+    }
+
+    func testHasInvalidLicenseInformation_EmptyDefaults_FactoryReturnsLicense_ReturnsFalse() {
+
+        factoryDouble.testLicense = License(name: "irrelevant", licenseCode: "irrelevant")
+
+        XCTAssertFalse(licenseProvider.hasInvalidLicenseInformation)
+    }
+
+    func testHasInvalidLicenseInformation_WithDefaults_FactoryReturnsNil_ReturnsTrue() {
+
+        provideLicenseDefaults("some name", licenseCode: "some code")
+        factoryDouble.testLicense = nil
+
+        XCTAssert(licenseProvider.hasInvalidLicenseInformation)
+    }
+
+    func testHasInvalidLicenseInformation_WithDefaults_FactoryReturnsLicense_ReturnsFalse() {
+
+        provideLicenseDefaults("some name", licenseCode: "some code")
+        factoryDouble.testLicense = License(name: "irrelevant", licenseCode: "irrelevant")
+
+        XCTAssertFalse(licenseProvider.hasInvalidLicenseInformation)
+    }
+
+
     
     // MARK: -
     
@@ -103,6 +184,15 @@ class LicenseProviderTests: XCTestCase {
             didCallStringForKeyWith?.append(defaultName)
             
             return testValues[defaultName]
+        }
+    }
+
+    class TestFactory: ValidLicenseFactory {
+        var testLicense: License?
+        var didCreateLicense: (name: String, licenseCode: String)?
+        override func license(name: String, licenseCode: String) -> License? {
+            didCreateLicense = (name, licenseCode)
+            return testLicense
         }
     }
 }
