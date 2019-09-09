@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     
     var licenseProvider = LicenseProvider()
-    lazy var licenseInfoProvider: LicensingProvider = LicensingProvider(licenseProvider: self.licenseProvider)
+    lazy var licensingProvider: LicensingProvider = LicensingProvider(licenseProvider: self.licenseProvider)
     
     lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     
@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var currentLicensing: Licensing {
         
-        return licenseInfoProvider.licensing
+        return licensingProvider.licensing
     }
     
     func launchAppOrShowLicenseWindow() {
@@ -98,7 +98,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func licenseIsInvalid() -> Bool {
         
-        return licenseInfoProvider.licenseIsInvalid
+        return licensingProvider.licenseIsInvalid
     }
     
     func displayInvalidLicenseAlert() {
