@@ -27,7 +27,7 @@ class LicensingProviderTests: XCTestCase {
         let licenseInfo = licensingProvider.licensing
         let trialIsUp: Bool = {
             switch licenseInfo {
-            case .trialUp:
+            case .trialExpired:
                 return true
             default:
                 return false
@@ -64,7 +64,7 @@ class LicensingProviderTests: XCTestCase {
         let licenseInfo = licensingProvider.licensing
         let trialIsUp: Bool = {
             switch licenseInfo {
-            case .trialUp:
+            case .trialExpired:
                 return true
             default:
                 return false

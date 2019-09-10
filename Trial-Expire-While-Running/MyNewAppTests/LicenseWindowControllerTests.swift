@@ -103,7 +103,7 @@ class LicenseWindowControllerTests: XCTestCase {
         
         controller.existingLicenseViewController = existingLicenseVCDouble
         
-        controller.display(licensing: .trialUp)
+        controller.display(licensing: .trialExpired)
         
         XCTAssert(existingLicenseVCDouble.didDisplayEmptyForm)
         XCTAssertNil(existingLicenseVCDouble.didDisplayLicenseWith)

@@ -25,7 +25,7 @@ extension Licensing {
                 "name" : license.name,
                 "licenseCode"  : license.licenseCode
             ]
-        case .trialUp:
+        case .trialExpired:
             return [
                 "registered" : false,
                 "on_trial" : false
@@ -42,7 +42,7 @@ extension Licensing {
         if let onTrial = userInfo["on_trial"] as? Bool,
             !registered {
             
-            guard onTrial else { return .trialUp }
+            guard onTrial else { return .trialExpired }
             
             if let startDate = userInfo["trial_start_date"] as? Date,
                 let endDate = userInfo["trial_end_date"] as? Date {

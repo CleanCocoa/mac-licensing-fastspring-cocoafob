@@ -139,7 +139,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func launchAppOrShowLicenseWindow() {
         
         switch currentLicensing {
-        case .trialUp:
+        case .trialExpired:
             // Show an alert if there is license info stored, but it's not valid. Could happen if the user mangles with the UserDefaults.
             if hasInvalidLicenseInformation {
                 displayInvalidLicenseAlert()
@@ -187,7 +187,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             stopTrialTimer()
             unlockApp()
             
-        case .trialUp:
+        case .trialExpired:
             displayTrialUpAlert()
             lockApp()
             showRegisterApp()

@@ -24,7 +24,7 @@ public class LicensingProvider {
             return .trial(trial.trialPeriod)
         }
         
-        return .trialUp
+        return .trialExpired
     }
 
     /// Valid license.

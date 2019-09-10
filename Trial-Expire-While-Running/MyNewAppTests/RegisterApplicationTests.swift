@@ -78,7 +78,7 @@ class RegisterApplicationTests: XCTestCase {
         service.register(name: irrelevantName, licenseCode: irrelevantLicenseCode)
 
         switch broadcasterDouble.didBroadcastWith {
-        case .some(.trialUp),
+        case .some(.trialExpired),
              .some(.trial(_)),
              .none:
             XCTFail("should be registered")

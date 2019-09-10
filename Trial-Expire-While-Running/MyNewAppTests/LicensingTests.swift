@@ -12,7 +12,7 @@ class LicensingTests: XCTestCase {
     
     func testToUserInfo_TrialUp_SetsRegisteredToFalse() {
         
-        let licenseInfo = Licensing.trialUp
+        let licenseInfo = Licensing.trialExpired
         
         let registered = licenseInfo.userInfo()["registered"] as? Bool
         XCTAssertNotNil(registered)
@@ -23,7 +23,7 @@ class LicensingTests: XCTestCase {
     
     func testToUserInfo_TrialUp_SetsOnTrialToFalse() {
         
-        let licenseInfo = Licensing.trialUp
+        let licenseInfo = Licensing.trialExpired
         
         let registered = licenseInfo.userInfo()["on_trial"] as? Bool
         XCTAssertNotNil(registered)
@@ -34,28 +34,28 @@ class LicensingTests: XCTestCase {
     
     func testToUserInfo_TrialUp_HasNoNameKey() {
 
-        let licenseInfo = Licensing.trialUp
+        let licenseInfo = Licensing.trialExpired
         
         XCTAssertNil(licenseInfo.userInfo()["name"])
     }
     
     func testToUserInfo_TrialUp_HasNoLicenseCodeKey() {
         
-        let licenseInfo = Licensing.trialUp
+        let licenseInfo = Licensing.trialExpired
         
         XCTAssertNil(licenseInfo.userInfo()["licenseCode"])
     }
     
     func testToUserInfo_TrialUp_HasNoStartDateKey() {
         
-        let licenseInfo = Licensing.trialUp
+        let licenseInfo = Licensing.trialExpired
         
         XCTAssertNil(licenseInfo.userInfo()["trial_start_date"])
     }
     
     func testToUserInfo_TrialUp_HasNoEndDateKey() {
         
-        let licenseInfo = Licensing.trialUp
+        let licenseInfo = Licensing.trialExpired
         
         XCTAssertNil(licenseInfo.userInfo()["trial_end_date"])
     }
@@ -230,7 +230,7 @@ class LicensingTests: XCTestCase {
             
             let trialIsUp: Bool = {
                 switch result {
-                case .trialUp:
+                case .trialExpired:
                     return true
                 default:
                     return false
@@ -253,7 +253,7 @@ class LicensingTests: XCTestCase {
             
             let trialIsUp: Bool = {
                 switch result {
-                case .trialUp:
+                case .trialExpired:
                     return true
                 default:
                     return false

@@ -49,7 +49,7 @@ public class LicenseWindowController: NSWindowController {
             display(trialDaysLeft: trial.daysLeft)
             existingLicenseViewController.displayEmptyForm()
             
-        case .trialUp:
+        case .trialExpired:
             displayTrialUp()
             existingLicenseViewController.displayEmptyForm()
             

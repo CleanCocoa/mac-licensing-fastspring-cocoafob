@@ -29,7 +29,7 @@ class LicenseChangeBroadcasterTests: XCTestCase {
     
     func testBroadcast_TrialUp_PostsNotification() {
         
-        let licenseInfo = Licensing.trialUp
+        let licenseInfo = Licensing.trialExpired
         
         broadcaster.broadcast(licenseInfo)
         

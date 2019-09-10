@@ -76,7 +76,7 @@ public class TrialTimer {
     
     fileprivate func timerDidFire() {
         
-        licenseChangeBroadcaster.broadcast(.trialUp)
+        licenseChangeBroadcaster.broadcast(.trialExpired)
     }
     
     public func stop() {
