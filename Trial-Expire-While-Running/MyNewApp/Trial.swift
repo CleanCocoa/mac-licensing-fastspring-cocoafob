@@ -19,11 +19,11 @@ public struct Trial {
         return trialPeriod.daysLeft(clock: clock).userFacingAmount
     }
     
-    public var ended: Bool {
-        return trialPeriod.ended(clock: clock)
+    public var isExpired: Bool {
+        return trialPeriod.isExpired(clock: clock)
     }
     
     public var isActive: Bool {
-        return !ended
+        return !isExpired
     }
 }

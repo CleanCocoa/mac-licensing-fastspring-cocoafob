@@ -20,16 +20,16 @@ extension TrialPeriod {
         let endDate = startDate.addingTimeInterval(duration.timeInterval)
         self.init(startDate: startDate, endDate: endDate)
     }
-    
-    public func ended(clock: Clock) -> Bool {
+
+    public func isExpired(clock: Clock) -> Bool {
         let now = clock.now()
         return endDate < now
     }
 
     public func daysLeft(clock: Clock) -> Days {
         let now = clock.now()
-        let timeUntil = now.timeIntervalSince(endDate)
-        return Days(timeInterval: timeUntil)
+        let remainingTime = now.timeIntervalSince(endDate)
+        return Days(timeInterval: remainingTime)
     }
 }
 

@@ -50,7 +50,7 @@ class TrialPeriodTests: XCTestCase {
 
         clockDouble.testDate = Date(timeIntervalSinceNow: 1)
 
-        XCTAssertFalse(trialPeriod.ended(clock: clockDouble))
+        XCTAssertFalse(trialPeriod.isExpired(clock: clockDouble))
     }
 
     func testTrialEnded_WithLaterClock_ReturnsTrue() {
@@ -60,7 +60,7 @@ class TrialPeriodTests: XCTestCase {
 
         clockDouble.testDate = Date(timeIntervalSinceNow: 9999)
 
-        XCTAssert(trialPeriod.ended(clock: clockDouble))
+        XCTAssert(trialPeriod.isExpired(clock: clockDouble))
     }
 
 
