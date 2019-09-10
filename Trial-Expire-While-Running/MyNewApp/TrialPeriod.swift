@@ -12,14 +12,15 @@ public struct TrialPeriod {
         self.startDate = startDate
         self.endDate = endDate
     }
-
-    public init(numberOfDays daysLeft: Days, clock: Clock) {
-        startDate = clock.now()
-        endDate = startDate.addingTimeInterval(daysLeft.timeInterval)
-    }
 }
 
 extension TrialPeriod {
+    public init(numberOfDays duration: Days, clock: Clock) {
+        let startDate = clock.now()
+        let endDate = startDate.addingTimeInterval(duration.timeInterval)
+        self.init(startDate: startDate, endDate: endDate)
+    }
+    
     public func ended(clock: Clock) -> Bool {
         let now = clock.now()
         return endDate < now
