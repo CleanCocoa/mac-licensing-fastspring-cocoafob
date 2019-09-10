@@ -17,7 +17,7 @@ public class TrialProvider {
         return TrialPeriod(startDate: startDate, endDate: endDate)
     }
 
-    public func trial(clock: KnowsTimeAndDate) -> Trial? {
+    public func trial(clock: Clock) -> Trial? {
         guard let trialPeriod = self.trialPeriod
             else { return nil }
 

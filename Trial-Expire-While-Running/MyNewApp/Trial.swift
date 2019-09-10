@@ -7,9 +7,9 @@ import Foundation
 public struct Trial {
     
     public let trialPeriod: TrialPeriod
-    public let clock: KnowsTimeAndDate
+    public let clock: Clock
     
-    public init(trialPeriod: TrialPeriod, clock: KnowsTimeAndDate) {
+    public init(trialPeriod: TrialPeriod, clock: Clock) {
         
         self.trialPeriod = trialPeriod
         self.clock = clock

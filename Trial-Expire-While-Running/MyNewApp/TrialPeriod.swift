@@ -13,19 +13,19 @@ public struct TrialPeriod {
         self.endDate = endDate
     }
 
-    public init(numberOfDays daysLeft: Days, clock: KnowsTimeAndDate) {
+    public init(numberOfDays daysLeft: Days, clock: Clock) {
         startDate = clock.now()
         endDate = startDate.addingTimeInterval(daysLeft.timeInterval)
     }
 }
 
 extension TrialPeriod {
-    public func ended(clock: KnowsTimeAndDate) -> Bool {
+    public func ended(clock: Clock) -> Bool {
         let now = clock.now()
         return endDate < now
     }
 
-    public func daysLeft(clock: KnowsTimeAndDate) -> Days {
+    public func daysLeft(clock: Clock) -> Days {
         let now = clock.now()
         let timeUntil = now.timeIntervalSince(endDate)
         return Days(timeInterval: timeUntil)

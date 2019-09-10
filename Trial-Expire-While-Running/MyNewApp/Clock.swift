@@ -2,34 +2,28 @@
 // 
 // See the file LICENSE for copying permission.
 
-import Foundation
+import struct Foundation.Date
 
-public protocol KnowsTimeAndDate: class {
-    
+public protocol Clock: class {
     func now() -> Date
 }
 
-public class Clock: KnowsTimeAndDate {
-    
+public class SystemClock: Clock {
     public init() { }
     
     public func now() -> Date {
-        
         return Date()
     }
 }
 
-public class StaticClock: KnowsTimeAndDate {
-    
+public class StaticClock: Clock {
     let date: Date
     
-    public init(clockDate: Date) {
-        
-        date = clockDate
+    public init(date: Date) {
+        self.date = date
     }
     
     public func now() -> Date {
-        
         return date
     }
 }

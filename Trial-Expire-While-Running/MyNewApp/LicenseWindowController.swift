@@ -41,7 +41,7 @@ public class LicenseWindowController: NSWindowController {
         purchasingEventHandler?.purchase()
     }
     
-    public func display(licensing: Licensing, clock: KnowsTimeAndDate = Clock()) {
+    public func display(licensing: Licensing, clock: Clock = SystemClock()) {
         
         switch licensing {
         case let .trial(trialPeriod):

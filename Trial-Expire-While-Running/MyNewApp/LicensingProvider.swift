@@ -5,11 +5,11 @@
 public class LicensingProvider {
     let trialProvider: TrialProvider
     let licenseProvider: LicenseProvider
-    let clock: KnowsTimeAndDate
+    let clock: Clock
     
     public init(trialProvider: TrialProvider,
                 licenseProvider: LicenseProvider,
-                clock: KnowsTimeAndDate) {
+                clock: Clock) {
         self.trialProvider = trialProvider
         self.licenseProvider = licenseProvider
         self.clock = clock

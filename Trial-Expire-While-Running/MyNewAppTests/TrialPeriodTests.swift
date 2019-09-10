@@ -66,7 +66,7 @@ class TrialPeriodTests: XCTestCase {
     
     // MARK: -
     
-    class TestClock: KnowsTimeAndDate {
+    class TestClock: Clock {
         
         var testDate: Date!
         func now() -> Date {

@@ -14,8 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var licenseChangeBroadcaster: LicenseChangeBroadcaster = LicenseChangeBroadcaster(notificationCenter: self.notificationCenter)
     
     // Use a clock replacement to see how the app start-up changes.
-//    let clock = StaticClock(clockDate: NSDate(timeIntervalSinceNow: 10 /* days */ * 24 * 60 * 60))
-    let clock = Clock()
+//    let clock = StaticClock(clockDate: Date(timeIntervalSinceNow: 10 /* days */ * 24 /* hours */ * 60 * 60))
+    let clock = SystemClock()
     var trialTimer: TrialTimer?
     
     var trialProvider = TrialProvider()

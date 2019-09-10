@@ -127,7 +127,7 @@ class TrialProviderTests: XCTestCase {
         }
     }
     
-    class TestClock: KnowsTimeAndDate {
+    class TestClock: Clock {
         
         var testDate: Date!
         func now() -> Date {
