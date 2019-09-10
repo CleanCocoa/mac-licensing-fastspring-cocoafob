@@ -51,8 +51,3 @@ extension TrialPeriod {
 }
 
 extension TrialPeriod: Equatable { }
-
-public func ==(lhs: TrialPeriod, rhs: TrialPeriod) -> Bool {
-    
-    return lhs.startDate == rhs.startDate && lhs.endDate == rhs.endDate
-}

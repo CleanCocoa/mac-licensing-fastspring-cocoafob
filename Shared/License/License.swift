@@ -27,8 +27,3 @@ extension License {
 }
 
 extension License: Equatable { }
-
-public func ==(lhs: License, rhs: License) -> Bool {
-    return lhs.name == rhs.name
-        && lhs.licenseCode == rhs.licenseCode
-}
