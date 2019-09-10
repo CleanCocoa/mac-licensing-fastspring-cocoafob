@@ -25,8 +25,8 @@ class TrialWriterTests: XCTestCase {
         let changedDefaults = userDefaultsDouble.didSetObjectsForKeys
         XCTAssertNotNil(changedDefaults)
         if let changedDefaults = changedDefaults {
-            XCTAssertEqual(changedDefaults[TrialPeriod.UserDefaultsKeys.startDate.rawValue], startDate)
-            XCTAssertEqual(changedDefaults[TrialPeriod.UserDefaultsKeys.endDate.rawValue], endDate)
+            XCTAssertEqual(changedDefaults[TrialPeriod.DefaultsKey.startDate.rawValue], startDate)
+            XCTAssertEqual(changedDefaults[TrialPeriod.DefaultsKey.endDate.rawValue], endDate)
         }
     }
 

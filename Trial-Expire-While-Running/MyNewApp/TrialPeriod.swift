@@ -2,51 +2,46 @@
 // 
 // See the file LICENSE for copying permission.
 
-import Foundation
+import struct Foundation.Date
 
 public struct TrialPeriod {
-    
     public let startDate: Date
     public let endDate: Date
-    
-    public init(startDate aStartDate: Date, endDate anEndDate: Date) {
-        
-        startDate = aStartDate
-        endDate = anEndDate
+
+    public init(startDate: Date, endDate: Date) {
+        self.startDate = startDate
+        self.endDate = endDate
     }
-    
+
     public init(numberOfDays daysLeft: Days, clock: KnowsTimeAndDate) {
-        
         startDate = clock.now()
         endDate = startDate.addingTimeInterval(daysLeft.timeInterval)
     }
 }
 
 extension TrialPeriod {
-
     public func ended(clock: KnowsTimeAndDate) -> Bool {
-        
         let now = clock.now()
         return endDate < now
     }
-    
+
     public func daysLeft(clock: KnowsTimeAndDate) -> Days {
-        
         let now = clock.now()
         let timeUntil = now.timeIntervalSince(endDate)
-        
         return Days(timeInterval: timeUntil)
     }
 }
 
 extension TrialPeriod {
-    
-    enum UserDefaultsKeys: String, CustomStringConvertible {
-        
-        case startDate = "trial_starting"
-        case endDate = "trial_ending"
-        
-        public var description: String { return rawValue }
+    internal struct DefaultsKey: RawRepresentable {
+        let rawValue: String
+
+        init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+
+        static let startDate = DefaultsKey(rawValue: "trial_starting")
+        static let endDate = DefaultsKey(rawValue: "trial_ending")
     }
 }
 

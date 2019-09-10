@@ -5,14 +5,18 @@
 import class Foundation.UserDefaults
 
 public class TrialWriter {
-    
     public init() { }
-    
+
     lazy var userDefaults: Foundation.UserDefaults = .standard
-    
+
     public func store(trialPeriod: TrialPeriod) {
-        
-        userDefaults.set(trialPeriod.startDate, forKey: TrialPeriod.UserDefaultsKeys.startDate.rawValue)
-        userDefaults.set(trialPeriod.endDate, forKey: TrialPeriod.UserDefaultsKeys.endDate.rawValue)
+        userDefaults.set(trialPeriod.startDate, forTrialKey: .startDate)
+        userDefaults.set(trialPeriod.endDate, forTrialKey: .endDate)
+    }
+}
+
+extension Foundation.UserDefaults {
+    func set(_ date: Date, forTrialKey trialKey: TrialPeriod.DefaultsKey) {
+        self.set(date, forKey: trialKey.rawValue)
     }
 }
