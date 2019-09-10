@@ -79,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func stopTrialTimer() {
         
-        if let trialTimer = trialTimer , trialTimer.isRunning {
+        if let trialTimer = trialTimer, trialTimer.isRunning {
             
             trialTimer.stop()
         }

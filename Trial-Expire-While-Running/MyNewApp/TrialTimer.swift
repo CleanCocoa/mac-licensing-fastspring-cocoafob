@@ -4,88 +4,54 @@
 
 import Foundation
 
-typealias CancelableDispatchBlock = (_ cancel: Bool) -> Void
-
-func dispatch(cancelableBlock block: @escaping () -> Void, atDate date: Date) -> CancelableDispatchBlock? {
-    
-    // Use two pointers for the same block handle to make
-    // the block reference itself.
-    var cancelableBlock: CancelableDispatchBlock? = nil
-    
-    let delayBlock: CancelableDispatchBlock = { cancel in
-        
-        if !cancel {
-            DispatchQueue.main.async(execute: block)
-        }
-        
-        cancelableBlock = nil
-    }
-    
-    cancelableBlock = delayBlock
-    
-    let delay = Int(date.timeIntervalSinceNow)
-    DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + .seconds(delay)) {
-        
-        if hasValue(cancelableBlock) {
-            cancelableBlock!(false)
-        }
-    }
-    
-    return cancelableBlock
-}
-
-func cancelBlock(_ block: CancelableDispatchBlock?) {
-    
-    if hasValue(block) {
-        block!(true)
-    }
-}
-
 public class TrialTimer {
-    
     let trialEndDate: Date
     let licenseChangeBroadcaster: LicenseChangeBroadcaster
     
     public init(trialEndDate: Date, licenseChangeBroadcaster: LicenseChangeBroadcaster) {
-        
         self.trialEndDate = trialEndDate
         self.licenseChangeBroadcaster = licenseChangeBroadcaster
     }
-    
+
+    deinit {
+        stop()
+    }
+
     public var isRunning: Bool {
-        
-        return hasValue(delayedBlock)
+        return hasValue(timerWorkItem)
     }
-    
-    var delayedBlock: CancelableDispatchBlock?
-    
+
+    private var timerWorkItem: DispatchWorkItem?
+
     public func start() {
-        
         guard !isRunning else {
-            NSLog("invalid re-starting of a running timer")
+            NSLog("Invalid re-starting of a running timer")
             return
         }
-        
-        guard let delayedBlock = dispatch(cancelableBlock: timerDidFire, atDate: trialEndDate) else {
-            fatalError("Cannot create a cancellable timer.")
-        }
-        
+
         NSLog("Starting trial timer for: \(trialEndDate)")
-        self.delayedBlock = delayedBlock
-    }
-    
-    fileprivate func timerDidFire() {
-        
-        licenseChangeBroadcaster.broadcast(.trialExpired)
-    }
-    
-    public func stop() {
-        
-        guard isRunning else {
-            NSLog("attempting to stop non-running timer")
-            return
+        self.timerWorkItem = dispatch(fireAt: trialEndDate) { [unowned self] in
+            self.timerDidFire()
         }
-        
-        cancelBlock(delayedBlock)
     }
+
+    fileprivate func timerDidFire() {
+        self.timerWorkItem = nil
+        self.licenseChangeBroadcaster.broadcast(.trialExpired)
+    }
+
+    public func stop() {
+        guard isRunning else { return }
+        self.timerWorkItem?.cancel()
+        self.timerWorkItem = nil
+    }
+}
+
+fileprivate func dispatch(fireAt deadline: Date,
+                          queue: DispatchQueue = .main,
+                          block: @escaping () -> Void) -> DispatchWorkItem {
+    let workItem = DispatchWorkItem(block: block)
+    let delay = Int(deadline.timeIntervalSinceNow)
+    queue.asyncAfter(wallDeadline: .now() + .seconds(delay), execute: workItem)
+    return workItem
 }
