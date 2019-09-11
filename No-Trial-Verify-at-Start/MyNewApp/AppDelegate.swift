@@ -10,6 +10,7 @@ let isRunningTests = NSClassFromString("XCTestCase") != nil
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     
     lazy var licenseProvider = LicenseProvider()

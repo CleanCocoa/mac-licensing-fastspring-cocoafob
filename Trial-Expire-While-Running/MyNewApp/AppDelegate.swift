@@ -10,31 +10,29 @@ let initialTrialDuration = Days(5)
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    @IBOutlet weak var window: NSWindow!
+
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     lazy var licenseChangeBroadcaster: LicenseChangeBroadcaster = LicenseChangeBroadcaster(notificationCenter: self.notificationCenter)
     
     // Use a clock replacement to see how the app start-up changes.
 //    let clock = StaticClock(clockDate: Date(timeIntervalSinceNow: 10 /* days */ * 24 /* hours */ * 60 * 60))
     let clock = SystemClock()
-    var trialTimer: TrialTimer?
     
-    var trialProvider = TrialProvider()
-    var licenseProvider = LicenseProvider()
+    lazy var trialProvider = TrialProvider()
+    lazy var licenseProvider = LicenseProvider()
     lazy var licensingProvider: LicensingProvider = LicensingProvider(
         trialProvider: self.trialProvider,
         licenseProvider: self.licenseProvider,
         clock: self.clock)
     
-    // User Interface
-    @IBOutlet weak var window: NSWindow!
-    lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
-    
-    // Use Cases / Services
+
     lazy var registerApplication: RegisterApplication = RegisterApplication(changeBroadcaster: self.licenseChangeBroadcaster)
+    lazy var licenseWindowController: LicenseWindowController = LicenseWindowController()
     var purchaseLicense: PurchaseLicense!
     
     
-    // MARK: Startup
+    // MARK: - Startup
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -64,8 +62,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let trialPeriod = TrialPeriod(numberOfDays: initialTrialDuration, clock: clock)
         TrialWriter().store(trialPeriod: trialPeriod)
     }
-    
-    func startTrialTimer() {
+
+    // MARK: Trial expiration timer
+
+    fileprivate var trialTimer: TrialTimer?
+
+    fileprivate func startTrialTimer() {
         
         stopTrialTimer()
         
@@ -73,19 +75,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        trialTimer = TrialTimer(trialEndDate: trialPeriod.endDate, licenseChangeBroadcaster: licenseChangeBroadcaster)
-        trialTimer!.start()
+        let trialTimer = TrialTimer(trialEndDate: trialPeriod.endDate, licenseChangeBroadcaster: licenseChangeBroadcaster)
+        trialTimer.start()
+        self.trialTimer = trialTimer
     }
     
-    func stopTrialTimer() {
+    fileprivate func stopTrialTimer() {
         
         if let trialTimer = trialTimer, trialTimer.isRunning {
-            
             trialTimer.stop()
         }
         
         trialTimer = nil
     }
+
+    // MARK: URL Scheme
     
     func registerForURLScheme() {
         
@@ -109,7 +113,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 .register(fromURL: url)
         }
     }
-    
+
+    // MARK: License changes
+
     func observeLicenseChanges() {
         
         notificationCenter.addObserver(
@@ -130,12 +136,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         store.storeDelegate = purchaseLicense
         licenseWindowController.purchasingEventHandler = purchaseLicense
     }
-    
-    var currentLicensing: Licensing {
 
-        return licensingProvider.licensing
-    }
-    
     func launchAppOrShowLicenseWindow() {
         
         switch currentLicensing {
@@ -162,13 +163,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             unlockApp()
         }
     }
-    
+
+    fileprivate var currentLicensing: Licensing {
+        return licensingProvider.licensing
+    }
+
     fileprivate var hasInvalidLicenseInformation: Bool {
         return licenseProvider.hasInvalidLicenseInformation
     }
     
     
-    // MARK: License changes
+    // MARK: - License changes
     
     @objc func licenseDidChange(notification: NSNotification) {
         
