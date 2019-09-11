@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LicenseWindowController" customModule="MyNewApp" customModuleProvider="target">
@@ -13,17 +15,17 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="License" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="License" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="388" height="265"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="388" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6x-P8-587">
-                        <rect key="frame" x="147" y="197" width="96" height="32"/>
+                        <rect key="frame" x="147" y="197" width="94" height="32"/>
                         <buttonCell key="cell" type="push" title="Buy Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nvH-oq-LkR">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -32,14 +34,11 @@
                             </connections>
                         </buttonCell>
                     </button>
-                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="u1l-UB-a2p">
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="u1l-UB-a2p">
                         <rect key="frame" x="40" y="161" width="308" height="5"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cxa-4Y-4Tu">
-                        <rect key="frame" x="18" y="127" width="93" height="17"/>
+                        <rect key="frame" x="18" y="128" width="91" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Licensed To:" id="5TQ-O1-vQD">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -47,15 +46,15 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g5f-4D-yNK">
-                        <rect key="frame" x="117" y="125" width="251" height="22"/>
+                        <rect key="frame" x="115" y="125" width="253" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Uos-IR-FCB">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pbM-Kg-vbe">
-                        <rect key="frame" x="18" y="95" width="93" height="17"/>
+                        <rect key="frame" x="18" y="96" width="91" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="License Code:" id="phi-Qg-uKZ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -63,18 +62,18 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mOE-Ed-uYF">
-                        <rect key="frame" x="117" y="49" width="251" height="66"/>
+                        <rect key="frame" x="115" y="49" width="253" height="66"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="PBe-zd-6Ax"/>
                         </constraints>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="G8s-se-XXs">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GVD-Bh-qbk">
-                        <rect key="frame" x="282" y="13" width="92" height="32"/>
+                        <rect key="frame" x="284" y="13" width="90" height="32"/>
                         <buttonCell key="cell" type="push" title="Register" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9NJ-lA-cH2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -99,7 +98,7 @@
                     <constraint firstItem="pbM-Kg-vbe" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" priority="800" constant="20" id="XAA-QK-mrn"/>
                     <constraint firstItem="pbM-Kg-vbe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="cmb-C9-GiH"/>
                     <constraint firstItem="Cxa-4Y-4Tu" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" priority="800" constant="20" id="eJf-T9-la8"/>
-                    <constraint firstAttribute="centerX" secondItem="j6x-P8-587" secondAttribute="centerX" constant="-1" id="gyQ-OY-Cbc"/>
+                    <constraint firstAttribute="centerX" secondItem="j6x-P8-587" secondAttribute="centerX" id="gyQ-OY-Cbc"/>
                     <constraint firstAttribute="bottom" secondItem="GVD-Bh-qbk" secondAttribute="bottom" constant="20" id="hzp-KQ-BjD"/>
                     <constraint firstItem="g5f-4D-yNK" firstAttribute="top" secondItem="u1l-UB-a2p" secondAttribute="bottom" constant="16" id="knf-Rt-2qE"/>
                     <constraint firstItem="pbM-Kg-vbe" firstAttribute="top" secondItem="Cxa-4Y-4Tu" secondAttribute="bottom" constant="15" id="nwA-rW-EZc"/>
