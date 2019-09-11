@@ -33,23 +33,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     // MARK: - Startup
-    
+
+    func applicationWillFinishLaunching(_ notification: Notification) {
+
+        if isRunningTests {
+            return
+        }
+
+        prepareTrialOnFirstLaunch()
+        registerForURLScheme()
+    }
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         if isRunningTests {
             return
         }
-        
-        prepareTrialOnFirstLaunch()
+
         startTrialTimer()
-        
-        registerForURLScheme()
         observeLicenseChanges()
         prepareLicenseWindowController()
         launchAppOrShowLicenseWindow()
     }
     
-    func prepareTrialOnFirstLaunch() {
+    fileprivate func prepareTrialOnFirstLaunch() {
         
         // If someone deletes the values from user defaults,
         // they will be able to get a new trial period. So
@@ -62,6 +69,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let trialPeriod = TrialPeriod(numberOfDays: initialTrialDuration, clock: clock)
         TrialWriter().store(trialPeriod: trialPeriod)
     }
+
+    fileprivate func prepareLicenseWindowController() {
+
+        let storeInfo = StoreInfoReader.defaultStoreInfo()
+        assert(storeInfo != nil, "Provide store details in FastSpringCredentials.plist")
+
+        let store = Store(storeInfo: storeInfo!)
+        purchaseLicense = PurchaseLicense(store: store, registerApplication: registerApplication)
+
+        store.storeDelegate = purchaseLicense
+        licenseWindowController.purchasingEventHandler = purchaseLicense
+    }
+
 
     // MARK: Trial expiration timer
 
@@ -89,9 +109,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trialTimer = nil
     }
 
-    // MARK: URL Scheme
-    
-    func registerForURLScheme() {
+
+    // MARK: Initial license state
+
+    fileprivate func launchAppOrShowLicenseWindow() {
+
+        switch currentLicensing {
+        case .trialExpired:
+            // Show an alert if there is license info stored, but it's not valid. Could happen if the user mangles with the UserDefaults.
+            if hasInvalidLicenseInformation {
+                displayInvalidLicenseAlert()
+            }
+
+            showRegisterApp()
+
+        case let .trial(trialPeriod):
+            // Similar to .trialUp, invalid license details could result in this state
+            if hasInvalidLicenseInformation {
+                displayInvalidLicenseAlert()
+            }
+
+            let trialDaysLeft = trialPeriod.daysLeft(clock: clock)
+            displayTrialDaysLeftAlert(daysLeft: trialDaysLeft)
+            unlockApp()
+
+        case .registered(_):
+            stopTrialTimer()
+            unlockApp()
+        }
+    }
+
+    fileprivate var currentLicensing: Licensing {
+        return licensingProvider.licensing
+    }
+
+    fileprivate var hasInvalidLicenseInformation: Bool {
+        return licenseProvider.hasInvalidLicenseInformation
+    }
+
+
+    // MARK: - URL Scheme
+
+    fileprivate func registerForURLScheme() {
         
         NSAppleEventManager.shared()
             .setEventHandler(
@@ -114,67 +173,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    // MARK: License changes
+    
+    // MARK: - License changes
 
-    func observeLicenseChanges() {
-        
+    fileprivate func observeLicenseChanges() {
+
         notificationCenter.addObserver(
             self,
             selector: #selector(AppDelegate.licenseDidChange(notification:)),
             name: Licensing.licenseChangedNotification,
             object: nil)
     }
-    
-    func prepareLicenseWindowController() {
-        
-        let storeInfo = StoreInfoReader.defaultStoreInfo()
-        assert(storeInfo != nil, "Provide store details in FastSpringCredentials.plist")
-        
-        let store = Store(storeInfo: storeInfo!)
-        purchaseLicense = PurchaseLicense(store: store, registerApplication: registerApplication)
 
-        store.storeDelegate = purchaseLicense
-        licenseWindowController.purchasingEventHandler = purchaseLicense
-    }
-
-    func launchAppOrShowLicenseWindow() {
-        
-        switch currentLicensing {
-        case .trialExpired:
-            // Show an alert if there is license info stored, but it's not valid. Could happen if the user mangles with the UserDefaults.
-            if hasInvalidLicenseInformation {
-                displayInvalidLicenseAlert()
-            }
-            
-            showRegisterApp()
-            
-        case let .trial(trialPeriod):
-            // Similar to .trialUp, invalid license details could result in this state
-            if hasInvalidLicenseInformation {
-                displayInvalidLicenseAlert()
-            }
-            
-            let trialDaysLeft = trialPeriod.daysLeft(clock: clock)
-            displayTrialDaysLeftAlert(daysLeft: trialDaysLeft)
-            unlockApp()
-            
-        case .registered(_):
-            stopTrialTimer()
-            unlockApp()
-        }
-    }
-
-    fileprivate var currentLicensing: Licensing {
-        return licensingProvider.licensing
-    }
-
-    fileprivate var hasInvalidLicenseInformation: Bool {
-        return licenseProvider.hasInvalidLicenseInformation
-    }
-    
-    
-    // MARK: - License changes
-    
     @objc func licenseDidChange(notification: NSNotification) {
         
         guard let userInfo = notification.userInfo,
@@ -209,13 +219,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         licenseWindowController.display(licensing: currentLicensing, clock: clock)
     }
     
-    func unlockApp() {
+    fileprivate func unlockApp() {
         
         licenseWindowController.close()
         window.makeKeyAndOrderFront(self)
     }
     
-    func lockApp() {
+    fileprivate func lockApp() {
         
         // Disable the main application somehow.
         window.close()
@@ -246,7 +256,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    // MARK: UI Interactions
+    // MARK: - UI Interactions
     
     // NOTE: Don't cram too much into your AppDelegate. Extract the window
     // from the MainMenu Nib instead and provide a real `NSWindowController`.
