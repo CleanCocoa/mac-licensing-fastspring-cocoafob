@@ -22,21 +22,22 @@ extension Licensing {
         }
     }
     
-    public static func fromUserInfo(_ userInfo: UserInfo) -> Licensing? {
+    public init?(fromUserInfo userInfo: UserInfo) {
         
         guard let registered = userInfo["registered"] as? Bool else {
             return nil
         }
         
         if !registered {
-            return .unregistered
+            self = .unregistered
+            return
         }
         
-        guard let name = userInfo["name"] as? String, let licenseCode = userInfo["licenseCode"] as? String else {
-            return nil
-        }
+        guard let name = userInfo["name"] as? String,
+            let licenseCode = userInfo["licenseCode"] as? String
+            else { return nil }
         
-        return .registered(License(name: name, licenseCode: licenseCode))
+        self = .registered(License(name: name, licenseCode: licenseCode))
     }
 }
 

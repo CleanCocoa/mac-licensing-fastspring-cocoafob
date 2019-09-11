@@ -193,7 +193,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo = UserInfo()
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -202,7 +202,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["name" : "foo", "licenseCode" : "bar"]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -214,7 +214,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : false]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -223,7 +223,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : false, "on_trial" : false]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNotNil(result)
         if let result = result {
@@ -246,7 +246,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : false, "on_trial" : false, "bogus" : 123]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNotNil(result)
         if let result = result {
@@ -271,7 +271,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : false, "on_trial" : true]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -280,7 +280,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : false, "on_trial" : true, "trial_start_date" : NSDate()]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -289,7 +289,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : false, "on_trial" : true, "trial_end_date" : NSDate()]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -300,7 +300,7 @@ class LicensingTests: XCTestCase {
         let endDate = Date(timeIntervalSinceReferenceDate: 9000)
         let userInfo: UserInfo = ["registered" : false, "on_trial" : true, "trial_start_date" : startDate, "trial_end_date" : endDate]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         switch result {
         case let .some(.trial(trialPeriod)):
@@ -318,7 +318,7 @@ class LicensingTests: XCTestCase {
         let endDate = Date(timeIntervalSinceReferenceDate: 9000)
         let userInfo: UserInfo = ["registered" : false, "on_trial" : true, "trial_start_date" : startDate, "trial_end_date" : endDate, "to be ignored" : "stuff"]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         switch result {
         case let .some(.trial(trialPeriod)):
@@ -336,7 +336,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : true]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -345,7 +345,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : true, "name" : "a name"]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -354,7 +354,7 @@ class LicensingTests: XCTestCase {
         
         let userInfo: UserInfo = ["registered" : true, "licenseCode" : "a license code"]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         XCTAssertNil(result)
     }
@@ -365,7 +365,7 @@ class LicensingTests: XCTestCase {
         let licenseCode = "the license code"
         let userInfo: UserInfo = ["registered" : true, "name" : name, "licenseCode" : licenseCode]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         switch result {
         case let .some(.registered(license)):
@@ -382,7 +382,7 @@ class LicensingTests: XCTestCase {
         let licenseCode = "the license code"
         let userInfo: UserInfo = ["registered" : true, "name" : name, "licenseCode" : licenseCode, "irrelevant" : 999]
         
-        let result = Licensing.fromUserInfo(userInfo: userInfo)
+        let result = Licensing(fromUserInfo: userInfo)
         
         switch result {
         case let .some(.registered(license)):

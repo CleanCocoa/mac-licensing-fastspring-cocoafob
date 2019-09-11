@@ -33,21 +33,24 @@ extension Licensing {
         }
     }
     
-    public static func fromUserInfo(userInfo: UserInfo) -> Licensing? {
+    public init?(fromUserInfo userInfo: UserInfo) {
         
         guard let registered = userInfo["registered"] as? Bool else {
             return nil
         }
         
-        if let onTrial = userInfo["on_trial"] as? Bool,
-            !registered {
+        if !registered, let onTrial = userInfo["on_trial"] as? Bool {
             
-            guard onTrial else { return .trialExpired }
+            if !onTrial {
+                self = .trialExpired
+                return
+            }
             
             if let startDate = userInfo["trial_start_date"] as? Date,
                 let endDate = userInfo["trial_end_date"] as? Date {
                     
-                return .trial(TrialPeriod(startDate: startDate, endDate: endDate))
+                self = .trial(TrialPeriod(startDate: startDate, endDate: endDate))
+                return
             }
         }
         
@@ -55,7 +58,7 @@ extension Licensing {
             let licenseCode = userInfo["licenseCode"] as? String
             else { return nil }
         
-        return .registered(License(name: name, licenseCode: licenseCode))
+        self = .registered(License(name: name, licenseCode: licenseCode))
     }
 }
 

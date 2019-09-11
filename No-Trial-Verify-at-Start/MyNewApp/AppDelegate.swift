@@ -10,7 +10,7 @@ let isRunningTests = NSClassFromString("XCTestCase") != nil
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    
+
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
     
     lazy var licenseProvider = LicenseProvider()
@@ -128,7 +128,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func licenseDidChange(_ notification: Notification) {
         
         guard let userInfo = notification.userInfo,
-            let licensing = Licensing.fromUserInfo(userInfo)
+            let licensing = Licensing(fromUserInfo: userInfo)
             else { return }
         
         switch licensing {
