@@ -24,6 +24,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     // MARK: Startup
+
+    func applicationWillFinishLaunching(_ notification: Notification) {
+
+        if isRunningTests {
+            return
+        }
+
+        registerForURLScheme()
+    }
+
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -31,7 +41,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        registerForURLScheme()
         observeLicenseChanges()
         prepareLicenseWindowController()
         launchAppOrShowLicenseWindow()
