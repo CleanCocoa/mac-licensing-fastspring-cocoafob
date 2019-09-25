@@ -40,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if isRunningTests {
             return
         }
-        
+
         observeLicenseChanges()
         prepareLicenseWindowController()
         launchAppOrShowLicenseWindow()
@@ -48,14 +48,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func registerForURLScheme() {
         
-        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(AppDelegate.handleGetUrlEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.shared()
+            .setEventHandler(
+                self,
+                andSelector: #selector(AppDelegate.handleURL(event:replyEvent:)),
+                forEventClass: AEEventClass(kInternetEventClass),
+                andEventID: AEEventID(kAEGetURL))
     }
     
-    @objc func handleGetUrlEvent(_ event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
+    @objc func handleURL(event: NSAppleEventDescriptor, replyEvent: NSAppleEventDescriptor) {
         
-        guard let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = URL(string: urlString) else {
-            return
-        }
+        guard let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
+            let url = URL(string: urlString)
+            else { return }
         
         // If you support multiple actions, here'd be the place to 
         // delegate to a router object instead.

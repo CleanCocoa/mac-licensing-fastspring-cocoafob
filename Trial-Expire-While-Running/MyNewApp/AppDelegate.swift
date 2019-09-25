@@ -155,22 +155,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSAppleEventManager.shared()
             .setEventHandler(
                 self,
-                andSelector: #selector(AppDelegate.handle(getUrlEvent:withReplyEvent:)),
+                andSelector: #selector(AppDelegate.handleURL(event:replyEvent:)),
                 forEventClass: AEEventClass(kInternetEventClass),
                 andEventID: AEEventID(kAEGetURL))
     }
 
-    @objc func handle(getUrlEvent event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
+    @objc func handleURL(event: NSAppleEventDescriptor, replyEvent: NSAppleEventDescriptor) {
         
-        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
-            let url = URL(string: urlString) {
+        guard let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
+            let url = URL(string: urlString)
+            else { return }
             
-            // If you support multiple actions, here'd be the place to
-            // delegate to a router object instead.
-            
-            URLQueryRegistration(registrationHandler: registerApplication)
-                .register(fromURL: url)
-        }
+        // If you support multiple actions, here'd be the place to
+        // delegate to a router object instead.
+
+        URLQueryRegistration(registrationHandler: registerApplication)
+            .register(fromURL: url)
     }
 
     
