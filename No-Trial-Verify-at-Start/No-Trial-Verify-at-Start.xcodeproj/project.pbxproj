@@ -32,7 +32,7 @@
 		5098EA271B90A251001FBC3C /* URLQueryRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */; };
 		50B4658B2323B87E00DF6E55 /* StoreWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B4658A2323B87E00DF6E55 /* StoreWindowControllerTests.swift */; };
 		50C06EED1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EEC1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift */; };
-		50C06EEF1B91DA0400A7DBBE /* URLSchemeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EEE1B91DA0400A7DBBE /* URLSchemeComponents.swift */; };
+		50C06EEF1B91DA0400A7DBBE /* URLSchemeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C06EEE1B91DA0400A7DBBE /* URLSchemeComponent.swift */; };
 		50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */; };
 		50C9B0A51B7F6DAC002C5449 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A41B7F6DAC002C5449 /* Images.xcassets */; };
 		50C9B0A81B7F6DAC002C5449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C9B0A61B7F6DAC002C5449 /* MainMenu.xib */; };
@@ -146,7 +146,7 @@
 		5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryRegistration.swift; sourceTree = "<group>"; };
 		50B4658A2323B87E00DF6E55 /* StoreWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWindowControllerTests.swift; sourceTree = "<group>"; };
 		50C06EEC1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryLicenseParser.swift; sourceTree = "<group>"; };
-		50C06EEE1B91DA0400A7DBBE /* URLSchemeComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSchemeComponents.swift; sourceTree = "<group>"; };
+		50C06EEE1B91DA0400A7DBBE /* URLSchemeComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSchemeComponent.swift; sourceTree = "<group>"; };
 		50C9B09D1B7F6DAC002C5449 /* MyNewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C9B0A11B7F6DAC002C5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C9B0A21B7F6DAC002C5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 			children = (
 				5098EA261B90A251001FBC3C /* URLQueryRegistration.swift */,
 				50C06EEC1B91D7BD00A7DBBE /* URLQueryLicenseParser.swift */,
-				50C06EEE1B91DA0400A7DBBE /* URLSchemeComponents.swift */,
+				50C06EEE1B91DA0400A7DBBE /* URLSchemeComponent.swift */,
 			);
 			path = "URL Scheme Parsing";
 			sourceTree = "<group>";
@@ -599,7 +599,7 @@
 				5082F99B231F8B1B00B667C9 /* Licensing.swift in Sources */,
 				50E75DDE1B82275D0092CD19 /* FsprgFulfillment.m in Sources */,
 				50E75DDD1B82275D0092CD19 /* FsprgFileDownload.m in Sources */,
-				50C06EEF1B91DA0400A7DBBE /* URLSchemeComponents.swift in Sources */,
+				50C06EEF1B91DA0400A7DBBE /* URLSchemeComponent.swift in Sources */,
 				50C9B0A31B7F6DAC002C5449 /* AppDelegate.swift in Sources */,
 				50C9B0C51B7F775D002C5449 /* LicenseProvider.swift in Sources */,
 				50E75DDB1B82275D0092CD19 /* FsprgOrderView.m in Sources */,

@@ -23,7 +23,7 @@ public class URLQueryRegistration {
 
     private func query(fromURL url: URL) -> String? {
         guard let host = url.host,
-            host == URLSchemeComponents.host.rawValue,
+            host == URLSchemeComponent.host.rawValue,
             let query = url.query
             else { return nil }
 

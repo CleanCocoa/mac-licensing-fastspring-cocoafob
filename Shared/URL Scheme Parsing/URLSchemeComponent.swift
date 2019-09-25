@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct URLSchemeComponents: RawRepresentable, Hashable {
+struct URLSchemeComponent: RawRepresentable, Hashable {
 
     var rawValue: String
 
@@ -12,9 +12,9 @@ struct URLSchemeComponents: RawRepresentable, Hashable {
         self.rawValue = rawValue
     }
 
-    static let host = URLSchemeComponents(rawValue: "activate")
-    static let licensee = URLSchemeComponents(rawValue: "name")
-    static let licenseCode = URLSchemeComponents(rawValue: "licenseCode")
+    static let host = URLSchemeComponent(rawValue: "activate")
+    static let licensee = URLSchemeComponent(rawValue: "name")
+    static let licenseCode = URLSchemeComponent(rawValue: "licenseCode")
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(rawValue)

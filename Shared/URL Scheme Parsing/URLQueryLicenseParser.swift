@@ -20,11 +20,11 @@ public class URLQueryLicenseParser {
         return (name, licenseCode)
     }
 
-    fileprivate func dictionary(fromQuery query: String) -> [URLSchemeComponents : String] {
+    fileprivate func dictionary(fromQuery query: String) -> [URLSchemeComponent : String] {
 
         let parameters = query.components(separatedBy: "&")
 
-        return parameters.mapDictionary() { param -> (URLSchemeComponents, String)? in
+        return parameters.mapDictionary() { param -> (URLSchemeComponent, String)? in
 
             guard let queryKey = self.queryKey(fromParameter: param),
                 let queryValue = self.queryValue(fromParameter: param)
@@ -34,13 +34,13 @@ public class URLQueryLicenseParser {
         }
     }
 
-    fileprivate func queryKey(fromParameter parameter: String) -> URLSchemeComponents? {
+    fileprivate func queryKey(fromParameter parameter: String) -> URLSchemeComponent? {
 
         // Of the `key=value` parameter string, take the `key` only
         return parameter
             .components(separatedBy: "=")
             .first
-            .map(URLSchemeComponents.init(rawValue:))
+            .map(URLSchemeComponent.init(rawValue:))
     }
 
     fileprivate func queryValue(fromParameter parameter: String) -> String? {
