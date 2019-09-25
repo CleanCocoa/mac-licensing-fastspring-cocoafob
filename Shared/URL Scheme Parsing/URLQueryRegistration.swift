@@ -23,8 +23,8 @@ public class URLQueryRegistration {
 
     private func query(fromURL url: URL) -> String? {
         guard let host = url.host,
-            let query = url.query,
-            host == URLComponents.host
+            host == URLSchemeComponents.host.rawValue,
+            let query = url.query
             else { return nil }
 
         return query

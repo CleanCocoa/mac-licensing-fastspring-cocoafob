@@ -10,21 +10,21 @@ public class URLQueryLicenseParser {
 
     public func parse(query: String) -> (name: String, licenseCode: String)? {
 
-        let queryDictionary = dictionaryFromQuery(query)
+        let queryDictionary = dictionary(fromQuery: query)
 
-        guard let encodedName = queryDictionary["\(URLComponents.licensee)"],
+        guard let encodedName = queryDictionary[.licensee],
             let name = String(base64EncodedString: encodedName),
-            let licenseCode = queryDictionary["\(URLComponents.licenseCode)"]
+            let licenseCode = queryDictionary[.licenseCode]
             else { return nil }
 
         return (name, licenseCode)
     }
 
-    fileprivate func dictionaryFromQuery(_ query: String) -> [String : String] {
+    fileprivate func dictionary(fromQuery query: String) -> [URLSchemeComponents : String] {
 
         let parameters = query.components(separatedBy: "&")
 
-        return parameters.mapDictionary() { param -> (String, String)? in
+        return parameters.mapDictionary() { param -> (URLSchemeComponents, String)? in
 
             guard let queryKey = self.queryKey(fromParameter: param),
                 let queryValue = self.queryValue(fromParameter: param)
@@ -34,9 +34,13 @@ public class URLQueryLicenseParser {
         }
     }
 
-    fileprivate func queryKey(fromParameter parameter: String) -> String? {
+    fileprivate func queryKey(fromParameter parameter: String) -> URLSchemeComponents? {
 
-        return parameter.components(separatedBy: "=").first
+        // Of the `key=value` parameter string, take the `key` only
+        return parameter
+            .components(separatedBy: "=")
+            .first
+            .map(URLSchemeComponents.init(rawValue:))
     }
 
     fileprivate func queryValue(fromParameter parameter: String) -> String? {
