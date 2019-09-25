@@ -12,7 +12,8 @@ public class URLQueryLicenseParser {
 
         let queryDictionary = dictionaryFromQuery(query)
 
-        guard let name = decode(queryDictionary["\(URLComponents.licensee)"]),
+        guard let encodedName = queryDictionary["\(URLComponents.licensee)"],
+            let name = String(base64EncodedString: encodedName),
             let licenseCode = queryDictionary["\(URLComponents.licenseCode)"]
             else { return nil }
 
@@ -25,52 +26,47 @@ public class URLQueryLicenseParser {
 
         return parameters.mapDictionary() { param -> (String, String)? in
 
-            if let queryKey = self.queryKeyFromParameter(param),
-                let queryValue = self.queryValueFromParameter(param)
-            {
+            guard let queryKey = self.queryKey(fromParameter: param),
+                let queryValue = self.queryValue(fromParameter: param)
+                else { return nil }
 
-                return (queryKey, queryValue)
-            }
-
-            return nil
+            return (queryKey, queryValue)
         }
     }
 
-    fileprivate func queryKeyFromParameter(_ parameter: String) -> String? {
+    fileprivate func queryKey(fromParameter parameter: String) -> String? {
 
-        return parameter.components(separatedBy: "=")[safe:0]
+        return parameter.components(separatedBy: "=").first
     }
 
-    fileprivate func queryValueFromParameter(_ parameter: String) -> String? {
+    fileprivate func queryValue(fromParameter parameter: String) -> String? {
 
-        return escapedQueryValueFromParameter(parameter)
-            >>- unescapeQueryValue
+        return unescape(queryValue: escapedQueryValue(fromParameter: parameter))
     }
 
-    fileprivate func unescapeQueryValue(_ queryValue: String) -> String? {
+    fileprivate func unescape(queryValue: String) -> String? {
 
         return queryValue
             .replacingOccurrences(of: "+", with: " ")
             .removingPercentEncoding
     }
 
-    fileprivate func escapedQueryValueFromParameter(_ parameter: String) -> String? {
+    fileprivate func escapedQueryValue(fromParameter parameter: String) -> String {
 
-        // Assume only one `=` is the separator and concatenate
-        // the rest back into the value.
-        // (base64-encoded Strings often end with `=`.)
+        // Queries are of the form `key=value`, and we want to drop the `key=` part.
+        // But base64-encoded Strings often end with `=`, so we also want to
+        // keep all the other equals signs by joining things back.
         return parameter.components(separatedBy: "=")
             .dropFirst()
             .joined(separator: "=")
     }
+}
 
-    fileprivate func decode(_ string: String?) -> String? {
-
-        guard let string = string,
-            let decodedData = Data(base64Encoded: string, options: [])
+extension String {
+    fileprivate init?(base64EncodedString string: String) {
+        guard let decodedData = Data(base64Encoded: string, options: [])
             else { return nil }
 
-        return String(data: decodedData, encoding: .utf8)
+        self.init(data: decodedData, encoding: .utf8)
     }
-
 }
