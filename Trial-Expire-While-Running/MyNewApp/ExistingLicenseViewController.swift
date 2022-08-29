@@ -4,7 +4,7 @@
 
 import Cocoa
 
-public protocol HandlesRegistering: class {
+public protocol HandlesRegistering: AnyObject {
     
     func register(name: String, licenseCode: String)
 }

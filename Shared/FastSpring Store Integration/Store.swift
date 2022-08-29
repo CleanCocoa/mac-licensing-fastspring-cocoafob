@@ -2,7 +2,7 @@
 // 
 // See the file LICENSE for copying permission.
 
-public protocol StoreDelegate: class {
+public protocol StoreDelegate: AnyObject {
     
     func didPurchase(license: License)
 }

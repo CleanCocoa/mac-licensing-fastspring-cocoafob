@@ -4,7 +4,7 @@
 
 import struct Foundation.Date
 
-public protocol Clock: class {
+public protocol Clock: AnyObject {
     func now() -> Date
 }
 
